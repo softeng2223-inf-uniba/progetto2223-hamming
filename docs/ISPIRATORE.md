@@ -3,7 +3,7 @@
 
 **Richard Hamming** (1915-1998) è stato un matematico e informatico americano, noto per i suoi contributi alla teoria dell'informazione, codifica dei dati e progettazione di algoritmi.
 
-Durante la Seconda Guerra Mondiale ha partecipato al **Progetto Manhattan** presso il Los Alamos National Laboratory, dove ha sviluppato la teoria dell'**errore di Hamming**, usato per rilevare e correggere gli errori dutante la trasmissione dei dati.
+Durante la Seconda Guerra Mondiale ha partecipato al **Progetto Manhattan** presso il Los Alamos National Laboratory, dove ha sviluppato la teoria dell'**errore di Hamming**, usato per rilevare e correggere gli errori durante la trasmissione dei dati.
 
 In seguito Hamming si è trasferito all'Università di Chicago, dove ha sviluppato il **codice di Hamming**, usato da molte applicazioni per correggere errori di trasmissione digitale di dati sensibili a lunga distanza.
 
