@@ -9,7 +9,7 @@ In seguito Hamming si è trasferito all'Università di Chicago, dove ha sviluppa
 
 Successivamente ha sviluppato l'**algoritmo di Hamming**, un metodo per determinare la **distanza di Hamming** tra le sequenze di bit, migliorando la correzione degli errori nei dati trasmessi digitalmente.
 
-In generale Hamming ha dedicato gran parte della sua vita all'analisi e alla progettazioni di algoritmi utili per applicazioni scientifiche e ingegneristiche.
+In generale Hamming ha dedicato gran parte della sua vita all'analisi e alla progettazione di algoritmi utili per applicazioni scientifiche e ingegneristiche.
 
 Ha inoltre scritto diversi libri sull'argomento, tra cui "*Numerical Methods for Scientists and Engineers*" e "*Programming and Mathematics for Scientists and Engineers*".
 
@@ -17,4 +17,4 @@ Durante la sua vita Hamming è stato anche un professore molto stimato. Ha inseg
 
 Nel 1968 è stato premiato con la medaglia di **Turing**, vincendo quindi il **Touring Award** di quell'anno.
 
-In sintesi, Richard Hamming ha avuto un'enorme influenza sull'informatica, contribuendo in modo significativo alla teoria dell'informazione, alla codifica dei dati e alla progettazione di algoritmi per il calcolo numerico. I suoi contributi sono ancora oggi presenti in molte applicazioni informatiche e scientifiche, facendo si che la sua figura sia considerata una delle più importanti della storia dell'Informatica.
+In sintesi, Richard Hamming ha avuto un'enorme influenza sull'informatica, contribuendo in modo significativo alla teoria dell'informazione, alla codifica dei dati e alla progettazione di algoritmi per il calcolo numerico. I suoi contributi sono ancora oggi presenti in molte applicazioni informatiche e scientifiche, facendo sì che la sua figura sia considerata una delle più importanti della storia dell'Informatica.
