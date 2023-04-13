@@ -7,7 +7,8 @@ La struttura della repository si presenta nel seguente modo:
 ```plaintext
 |-- .github
 |    |-- workflows
-|    |      |-- ingsw2122.yml
+|    |      |-- docker_build&push.yml
+|    |      |-- gradle_build.yml
 |-- build
 |    |-- reports
 |    |      |-- checkstyle
@@ -15,10 +16,12 @@ La struttura della repository si presenta nel seguente modo:
 |    |      |-- tests/test
 |–– config
 |    |–– checkstyle
+|    |–– pmd
 |–– docs
+|    |–– img
 |    |–– Assegnazione progetto.md
 |    |–– Guida per lo studente.md
-|    |–– img
+|    |–– ISPIRATORE.md
 |    |–– Report.md
 |–– drawings
 |–– gradle
