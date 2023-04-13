@@ -181,7 +181,7 @@ Per aggiungere il badge che riporta l'ultimo esito dell'esecuzione del workflow 
   ![Update_GitHub_badge_3](./img/Update_GitHub_badge_3.png)
 - La modifica del file Markdown `README.md` sarà fatta come parte dei task dello *Sprint 0* incollando il codice markdown per la costruzione del badge in cima al `README.md`, accanto al titolo del repository.
 
-Il titolo del README.md dovrà apparire come nella seguente figura, con *Battleship* al posto di *scacchi*:
+Il titolo del README.md dovrà apparire come nella seguente figura:
 
 ![actions-badge](./img/actions-badge.png)
 
