@@ -1,3 +1,4 @@
+# CODICE DI COMPORTAMENTO
 **Partecipazione del team**
 * Aggiustare le build non funzionanti del mio team è la mia priorità più alta.
 * Partecipare alle code review del mio team è la mia seconda priorità più alta.
