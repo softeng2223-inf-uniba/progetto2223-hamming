@@ -37,7 +37,7 @@ La struttura della repository si presenta nel seguente modo:
 |–– README.md
 |–– build.gradle
 |–– gradlew
-|–– gradle.bat
+|–– gradlew.bat
 |–– settings.gradle
 ```
 
