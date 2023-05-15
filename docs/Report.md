@@ -5,6 +5,7 @@
 
 
 ## 2. Modello di dominio
+![Modello concettuale](../drawings/ModelloConcettuale.png)
 
 
 ## 3. Requisiti specifici
