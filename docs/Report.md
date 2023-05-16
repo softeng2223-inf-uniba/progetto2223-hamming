@@ -33,7 +33,14 @@ Si è deciso di utilizzare Java come linguaggio di programmazione, Gradle per ge
 
 Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della durata di 2 settimane, durante i quali vengono sviluppate le varie funzionalità dell'applicazione.
 
+<br>
 
+### Membri del team:
+- Daniele Gentile
+- Valerio Di Maggio
+- Simone Columpsi
+- Fabio Cirullo
+- Marzia Capuano
 
 <br> 
 
