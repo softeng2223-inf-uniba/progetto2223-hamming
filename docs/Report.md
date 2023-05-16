@@ -5,7 +5,81 @@
 
 
 ## 2. Modello di dominio
+![Modello concettuale](../drawings/ModelloConcettuale.png)
 
+### Concetti
+
+- **Cella**
+
+    Singola cella all'interno della griglia di gioco.
+
+    - Attributi
+        - **colpita**: boolean
+            
+            Indica se la cella è stata colpita da un attacco del giocatore.
+<br><br>
+
+- **CellaPiena**
+
+    Specializzazione di Cella. Rappresenta una cella che è stata occupata da una nave.
+<br><br>
+
+- **Griglia**
+
+    Griglia di gioco. È composta da una tabella 10x10 di celle.
+<br><br>
+
+- **Nave**
+
+    Nave che occupa due o più celle piene sulla griglia.
+    
+    - Attributi
+
+        - **tipologia**: string
+
+            Tipo di nave. Può essere una delle seguenti:
+            - portaerei
+            - corazzata
+            - incrociatore
+            - cacciatorpediniere
+
+        - **celleRimanenti**: int
+            
+            Numero di celle non ancora colpite della nave.
+<br><br>
+
+- **Partita**
+
+    Partita del gioco. Contiene le navi posizionate e la griglia di gioco.
+
+    - Attributi
+
+        - **livello**: string
+
+            Livello di difficoltà della partita. Può essere uno dei seguenti:
+            - facile
+            - medio
+            - difficile
+
+        - **tentativiRimasti**: int
+                
+            Numero di tentativi rimasti prima della sconfitta.
+<br><br>
+
+- **Comando**
+
+    Comando con cui l'utente gestisce la partita.
+
+    - Attributi
+
+        - **nome**: string
+
+            Nome del comando. Corrisponde alla stringa che l'utente deve inserire per eseguirlo.
+        
+        - **categoria**: string
+
+            Categoria a cui appartiene il comando.
+<br><br>
 
 ## 3. Requisiti specifici
 
