@@ -14,18 +14,20 @@
     Singola cella all'interno della griglia di gioco.
 
     - Attributi
-        - colpita: boolean
+        - **colpita**: boolean
             
             Indica se la cella è stata colpita da un attacco del giocatore.
+<br><br>
 
 - **CellaPiena**
 
     Specializzazione di Cella. Rappresenta una cella che è stata occupata da una nave.
+<br><br>
 
 - **Griglia**
 
     Griglia di gioco. È composta da una tabella 10x10 di celle.
-
+<br><br>
 
 - **Nave**
 
@@ -44,7 +46,7 @@
         - **celleRimanenti**: int
             
             Numero di celle non ancora colpite della nave.
-
+<br><br>
 
 - **Partita**
 
@@ -62,6 +64,7 @@
         - **tentativiRimasti**: int
                 
             Numero di tentativi rimasti prima della sconfitta.
+<br><br>
 
 - **Comando**
 
@@ -76,7 +79,7 @@
         - **categoria**: string
 
             Categoria a cui appartiene il comando.
-
+<br><br>
 
 ## 3. Requisiti specifici
 
