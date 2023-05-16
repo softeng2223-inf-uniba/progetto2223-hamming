@@ -79,6 +79,30 @@
 
 ### 3.2 Requisiti non funzionali
 
+- **RNF1**: Il container docker dell'app deve essere eseguito da terminali che supportano Unicode con encoding UTF-8 o UTF-16.
+
+    **Elenco di terminali supportati**
+
+    Linux:
+    - terminal
+
+    Windows:
+    - Powershell
+    - Git Bash (in questo caso il comando Docker ha come prefisso winpty; es: winpty docker -it ...)
+    
+    **Comando per l'esecuzione del container**
+
+    Dopo aver eseguito il comando docker pull copiandolo da GitHub Packages, il comando Docker da usare per eseguire il container contenente l'applicazione è:
+
+    ```console
+    docker run --rm -it ghcr.io/softeng2223-inf-uniba/battleship-base2223:latest
+    ```
+    <br />
+- **RNF2**: Il gioco deve offrire un'interfaccia utente intuitiva e facile da usare. (Usabilità)<br /><br />
+- **RNF3**: Il gioco deve gestire errori e ogni tipo di situazione in modo da non provocare interruzioni o crash. (Affidabilità)<br /><br />
+- **RNF4**: Il gioco deve essere sviluppato in maniera tale da garantire l'aggiunta di nuove funzionalità o miglioramenti senza modificare l'intero codice. (Manutenibilità)<br /><br />
+- **RNF5**: Il gioco deve garantire prestazioni ottime in termini di utilizzo di memoria e latenza. (Efficienza)<br /><br />
+
 
 ## 7. Manuale utente
 
