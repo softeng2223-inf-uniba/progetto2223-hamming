@@ -27,10 +27,15 @@ La pianificazione del progetto prevede l'adozione di una metodologia di sviluppo
 
 Si è deciso di utilizzare Java come linguaggio di programmazione, Gradle per gestire le dipendenze e altri strumenti di sviluppo moderni come Checkstyle e PMD.
 
+<br>
+
+#### Metodologia Agile
+
+Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della durata di 2 settimane, durante i quali vengono sviluppate le varie funzionalità dell'applicazione.
 
 
 
-
+<br> 
 
 ## 2. Modello di dominio
 
