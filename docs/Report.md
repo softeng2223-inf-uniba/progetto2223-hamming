@@ -2,11 +2,21 @@
 
 
 ## 1. Introduzione
+
 ### Introduzione al progetto
 
 Il progetto del gioco della battaglia navale è stato avviato al fine di creare un'applicazione interattiva da terminale basata sul gioco da tavolo. 
 Il gioco della battaglia navale è un gioco strategico nel quale ogni giocatore cerca di individuare e affondare le navi nemiche posizionate su una griglia. 
 In questo progetto si considera una versione a giocatore singolo del gioco, in cui il giocatore attacca una griglia virtuale generata dall'applicazione.
+
+<br><br>
+### Scopi del progetto
+
+- Creare un'applicazione interattiva che consenta agli utenti di giocare al gioco della Battaglia Navale in versione a singolo giocatore con diversi livelli di difficoltà.
+
+- Garantire la stabilità e la fluidità del gioco, evitando bug e problemi tecnici che potrebbero compromettere l'esperienza di gioco.
+
+- Offrire una documentazione tecnica completa per consentire agli utenti di utilizzare l'applicazione e comprenderne il funzionamento interno.
 
 
 
