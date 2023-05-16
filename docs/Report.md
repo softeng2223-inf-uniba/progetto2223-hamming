@@ -18,6 +18,16 @@ In questo progetto si considera una versione a giocatore singolo del gioco, in c
 
 - Offrire una documentazione tecnica completa per consentire agli utenti di utilizzare l'applicazione e comprenderne il funzionamento interno.
 
+<br><br>
+### Pianificazione
+
+La pianificazione del progetto prevede l'adozione di una metodologia di sviluppo agile, con una suddivisione delle attività in 3 sprint.
+
+È stato adottato GitHub come software di controllo versione per collaborare, tenere traccia delle modifiche al codice dell'applicazione e assegnare compiti ai membri del gruppo.
+
+Si è deciso di utilizzare Java come linguaggio di programmazione, Gradle per gestire le dipendenze e altri strumenti di sviluppo moderni come Checkstyle e PMD.
+
+
 
 
 
