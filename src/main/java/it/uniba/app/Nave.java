@@ -4,7 +4,7 @@ package it.uniba.app;
  * Classe che rappresenta una nave della griglia di gioco.
  * @author Gruppo Hamming
  */
-public class Nave {
+public class Nave implements Cloneable {
     private final String tipologia;
     private int celleRimanenti;
 
@@ -33,5 +33,13 @@ public class Nave {
      */
     public int getCelleRimanenti() {
         return celleRimanenti;
+    }
+
+    /**
+     * Metodo che clone la nave.
+     * @return la nave clonata.
+     */
+    public Nave clone() throws CloneNotSupportedException {
+        return (Nave) super.clone();
     }
 }
