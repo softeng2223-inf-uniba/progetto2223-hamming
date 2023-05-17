@@ -25,4 +25,12 @@ public class CellaPiena extends Cella {
     public Nave getNave() {
         return nave;
     }
+
+    /**
+     * Metodo che clona la cella piena.
+     * @return la cella piena clonata.
+     */
+    public CellaPiena clone() throws CloneNotSupportedException {
+        return (CellaPiena) super.clone();
+    }
 }
