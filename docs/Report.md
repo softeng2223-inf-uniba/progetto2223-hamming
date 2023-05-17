@@ -9,7 +9,6 @@ Il progetto del gioco della battaglia navale è stato avviato al fine di creare 
 Il gioco della battaglia navale è un gioco strategico nel quale ogni giocatore cerca di individuare e affondare le navi nemiche posizionate su una griglia. 
 In questo progetto si considera una versione a giocatore singolo del gioco, in cui il giocatore attacca una griglia virtuale generata dall'applicazione.
 
-<br><br>
 ### Scopi del progetto
 
 - Creare un'applicazione interattiva che consenta agli utenti di giocare al gioco della Battaglia Navale in versione a singolo giocatore con diversi livelli di difficoltà.
@@ -18,7 +17,6 @@ In questo progetto si considera una versione a giocatore singolo del gioco, in c
 
 - Offrire una documentazione tecnica completa per consentire agli utenti di utilizzare l'applicazione e comprenderne il funzionamento interno.
 
-<br><br>
 ### Pianificazione
 
 La pianificazione del progetto prevede l'adozione di una metodologia di sviluppo agile, con una suddivisione delle attività in 3 sprint.
@@ -27,13 +25,9 @@ La pianificazione del progetto prevede l'adozione di una metodologia di sviluppo
 
 Si è deciso di utilizzare Java come linguaggio di programmazione, Gradle per gestire le dipendenze e altri strumenti di sviluppo moderni come Checkstyle e PMD.
 
-<br>
-
 #### Metodologia Agile
 
 Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della durata di 2 settimane, durante i quali vengono sviluppate le varie funzionalità dell'applicazione.
-
-<br>
 
 ### Membri del team:
 - Daniele Gentile
