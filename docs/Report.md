@@ -15,7 +15,7 @@
 
 
 ## 7. Manuale utente
-Benvenuto/a nel gioco della battaglia navale! Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare e divertirsi.
+Benvenuto/a nel gioco della battaglia navale! Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
 ### Comandi Disponibili
 Il giocatore può utilizzare una serie di comandi utili per impostare e avere informazioni relative al gioco.
 #### Comando /help
@@ -64,7 +64,22 @@ Il giocatore ha a disposizione 1 colpo per tentativo.
 Il programma controlla se, nella cella scelta sulla griglia dal giocatore, è stata posizionata una nave e in tal caso si visualizzerà il simbolo: ⊠, altrimenti se la cella non contiene una nave si visualizzerà il simbolo: ░ che indica la cella vuota. Quando la nave viene affondata il simbolo varia per ogni tipo di nave.
 ### Fase finale
 In conclusione il gioco termina con una vittoria, quando il giocatore affonda tutte le navi, oppure con una sconfitta, quando il giocatore termina il numero massimo di tentativi falliti.
+<br>
+### Esecuzione dell'applicazione
+Il container docker dell'app deve essere eseguito da terminali che supportano Unicode con encoding UTF-8 o UTF-16.
+#### Elenco di terminali supportati
 
+Linux:
+- terminal
+
+Windows:
+- Powershell
+- Git Bash (in questo caso il comando Docker ha come prefisso winpty; es: winpty docker -it ...)
+
+#### Comando per l'esecuzione del container
+Dopo aver eseguito il comando ```docker pull``` copiandolo da GitHub Packages, il comando Docker da usare per eseguire il container contenente l'applicazione è:
+```docker run --rm -it ghcr.io/softeng2223-inf-uniba battleship-base2223:latest```
+<br>
 ## 9. Analisi retrospettiva
 
 ### 9.1 Sprint 0
