@@ -39,9 +39,10 @@ public class Partita {
 
     /**
      * Metodo che restituisce la griglia della partita.
+     * @throws CloneNotSupportedException
      */
-    public Griglia getGriglia() {
-        return griglia;
+    public Griglia getGriglia() throws CloneNotSupportedException {
+        return griglia.clone();
     }
 
     /**
