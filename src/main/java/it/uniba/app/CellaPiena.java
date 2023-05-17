@@ -6,7 +6,7 @@ package it.uniba.app;
  * @author Gruppo Hamming
  */
 public class CellaPiena extends Cella {
-    private Nave nave;
+    private final Nave nave;
 
     /**
      * Costruttore della classe che inizializza la cella come non colpita e
