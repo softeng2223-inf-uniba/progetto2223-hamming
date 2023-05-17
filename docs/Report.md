@@ -5,13 +5,13 @@
 
 ### Introduzione al progetto
 
-Il progetto del gioco della battaglia navale è stato avviato al fine di creare un'applicazione interattiva da terminale basata sul gioco da tavolo. 
-Il gioco della battaglia navale è un gioco strategico nel quale ogni giocatore cerca di individuare e affondare le navi nemiche posizionate su una griglia. 
-In questo progetto si considera una versione a giocatore singolo del gioco, in cui il giocatore attacca una griglia virtuale generata dall'applicazione.
+Il progetto del gioco della **battaglia navale** è stato avviato al fine di creare un'applicazione interattiva da terminale basata sul gioco da tavolo. 
+Il gioco della battaglia navale è un **gioco strategico** nel quale ogni giocatore cerca di individuare e affondare le navi nemiche posizionate su una griglia. 
+In questo progetto si considera una **versione a giocatore singolo** del gioco, in cui il giocatore attacca una griglia virtuale generata dall'applicazione.
 
 ### Scopi del progetto
 
-- Creare un'applicazione interattiva che consenta agli utenti di giocare al gioco della Battaglia Navale in versione a singolo giocatore con diversi livelli di difficoltà.
+- Creare un'applicazione interattiva che consenta agli utenti di giocare al gioco della battaglia Navale in versione a singolo giocatore con diversi livelli di difficoltà.
 
 - Garantire la stabilità e la fluidità del gioco, evitando bug e problemi tecnici che potrebbero compromettere l'esperienza di gioco.
 
@@ -19,24 +19,25 @@ In questo progetto si considera una versione a giocatore singolo del gioco, in c
 
 ### Pianificazione
 
-La pianificazione del progetto prevede l'adozione di una metodologia di sviluppo agile, con una suddivisione delle attività in 3 sprint.
+La pianificazione del progetto prevede l'adozione di una metodologia di **sviluppo agile**, con una suddivisione delle attività in 3 sprint.
 
-È stato adottato GitHub come software di controllo versione per collaborare, tenere traccia delle modifiche al codice dell'applicazione e assegnare compiti ai membri del gruppo.
+È stato adottato **GitHub** come software di controllo versione per collaborare, tenere traccia delle modifiche al codice dell'applicazione e assegnare compiti ai membri del gruppo.
 
-Si è deciso di utilizzare Java come linguaggio di programmazione, Gradle per gestire le dipendenze e altri strumenti di sviluppo moderni come Checkstyle e PMD.
+Si è deciso di utilizzare **Java** come linguaggio di programmazione, **Gradle** per gestire le dipendenze e altri strumenti di sviluppo moderni come Checkstyle e PMD.
 
 #### Metodologia Agile
 
-Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della durata di 2 settimane, durante i quali vengono sviluppate le varie funzionalità dell'applicazione.
+Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della durata di circa 2 settimane, durante i quali vengono sviluppate le varie funzionalità dell'applicazione.
 
-### Membri del team:
-- Daniele Gentile
-- Valerio Di Maggio
-- Simone Columpsi
-- Fabio Cirullo
+### Membri del team
+
 - Marzia Capuano
+- Fabio Cirullo
+- Simone Columpsi
+- Valerio Di Maggio 
+- Daniele Gentile
 
-<br> 
+<br>
 
 ## 2. Modello di dominio
 
