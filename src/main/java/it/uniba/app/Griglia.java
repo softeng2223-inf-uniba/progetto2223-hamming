@@ -46,6 +46,7 @@ public class Griglia implements Cloneable {
      */
     public Griglia clone() throws CloneNotSupportedException {
         Griglia griglia = (Griglia) super.clone();
+        griglia.celle = new Cella[Configurazioni.getRigheGriglia()][Configurazioni.getColonneGriglia()];
         for (int i = 0; i < Configurazioni.getRigheGriglia(); i++) {
             for (int j = 0; j < Configurazioni.getColonneGriglia(); j++) {
                 griglia.celle[i][j] = celle[i][j].clone();
