@@ -15,7 +15,34 @@
 
 
 ## 7. Manuale utente
-### Introduzione
+Benvenuto/a nel gioco della battaglia navale! Questo manuale utente ti fornirà le informazioni necessarie per giocare e goderti l'esperienza di questa classica sfida strategica.
+
+### Comandi Disponibili
+Il giocatore può utilizzare una serie di comandi utili per impostare e avere informazioni relative al gioco.
+#### Comando /help
+Si utilizza per visualizzare l'elenco dei comandi disponibili, uno per riga, per esempio:
+- gioca
+- esci
+- ...
+#### Comando /esci
+Per chiudere il gioco, il giocatore, può utilizzare il comando /esci. L'applicazione richiederà una conferma per procedere. Se il giocatore conferma la chiusura, l'applicazione si chiuderà e il controllo verrà restituito al sistema operativo. Se il giocatore nega la chiusura, l'applicazione sarà pronta a ricevere nuovi tentativi o comandi.
+#### Impostazione del livello di gioco
+Il giocatore, prima dell'inizio della partita, può decidere tra tre livelli di gioco: facile, medio, difficile. Per poter scegliere il livello si utilizza un comando che varia in base al livello, per esempio se il giocatore vuole impostare il livello facile, dovrà utilizzare il comando /facile. 
+##### Comando /facile
+Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti a 50.
+##### Comando /medio 
+Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti a 30.
+##### Comando /difficile
+Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti a 10.
+#### Comando /mostralivello
+Il giocatore può visualizzare il livello di gioco corrente e il numero massimo di tentativi falliti utilizzando il comando /mostralivello. Il gioco risponderà mostrando queste informazioni.
+#### Comando /mostranavi
+Per conoscere i tipi di nave presenti nel gioco e il numero di esemplari da affondare per ciascun tipo, il giocatore può utilizzare il comando /mostranavi. 
+#### Comando /gioca
+Per iniziare una nuova partita, il giocatore può utilizzare il comando /gioca. Se non è in corso alcuna partita, il gioco imposterà casualmente le navi in posizione orizzontale o verticale, mostrerà la griglia vuota e sarà pronta a ricevere il primo tentativo del giocatore o altri comandi.
+#### Comando /svelagriglia
+Utilizzando il comando /svelagriglia il gioco risponde visualizzando, una griglia 10 x 10, con le righe numerate da 1 a 10 e le colonne numerate da A a J, e tutte le navi posizionate.
+### Introduzione di gioco
 La **battaglia navale** è un gioco, in questo caso a giocatore singolo, il cui **obiettivo** è quello di **affondare tutte le navi** che sono posizionate su una griglia 10x10 nascosta al giocatore con le righe numerate da 1 a 10 e le colonne numerate da A a J.
 ### Regole
 Prima di iniziare, il giocatore può impostare un **livello di gioco**: **facile**, **medio** o **difficile**; Ognuno di questi livelli ha un numero massimo di tentativi falliti, il livello facile offre un numero di tentativi falliti pari a 50, il livello medio ne offre 30 e il livello difficile ne offre 10.
