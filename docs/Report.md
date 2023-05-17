@@ -15,8 +15,7 @@
 
 
 ## 7. Manuale utente
-Benvenuto/a nel gioco della battaglia navale! Questo manuale utente ti fornirà le informazioni necessarie per giocare e goderti l'esperienza di questa classica sfida strategica.
-
+Benvenuto/a nel gioco della battaglia navale! Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare e divertirsi.
 ### Comandi Disponibili
 Il giocatore può utilizzare una serie di comandi utili per impostare e avere informazioni relative al gioco.
 #### Comando /help
