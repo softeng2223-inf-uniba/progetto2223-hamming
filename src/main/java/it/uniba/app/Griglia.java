@@ -4,7 +4,7 @@ package it.uniba.app;
  * Classe che rappresenta la griglia della battaglia navale.
  * @author Gruppo Hamming
 */
-public class Griglia {
+public class Griglia implements Cloneable {
     private Cella[][] celle;
 
     /**
@@ -38,5 +38,19 @@ public class Griglia {
      */
     public void setCella(final int riga, final int colonna, final Cella cella) {
         celle[riga][colonna] = cella;
+    }
+
+    /**
+     * Metodo che clona la griglia.
+     * @return la griglia clonata.
+     */
+    public Griglia clone() throws CloneNotSupportedException {
+        Griglia griglia = (Griglia) super.clone();
+        for (int i = 0; i < Configurazioni.getRigheGriglia(); i++) {
+            for (int j = 0; j < Configurazioni.getColonneGriglia(); j++) {
+                griglia.celle[i][j] = celle[i][j].clone();
+            }
+        }
+        return griglia;
     }
 }
