@@ -179,3 +179,17 @@ class Difficile extends Comando {
         }
     }
 }
+
+class MostraLivello extends Comando {
+    MostraLivello() {
+        super("mostraLivello", "utility");
+    }
+
+    String getDescrizione() {
+        return "Mostra il livello di difficoltà impostato e il corrispondente numero massimo di tentativi falliti";
+    }
+
+    void esegui() {
+        Grafica.mostraLivello(GestioneComandi.getLivello());
+    }
+}

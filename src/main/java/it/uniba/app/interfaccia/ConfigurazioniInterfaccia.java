@@ -19,6 +19,7 @@ public final class ConfigurazioniInterfaccia {
             put("facile", new Facile());
             put("medio", new Medio());
             put("difficile", new Difficile());
+            put("mostralivello", new MostraLivello());
         }
     };
 

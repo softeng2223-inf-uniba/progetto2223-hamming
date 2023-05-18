@@ -35,10 +35,12 @@ public final class Configurazioni {
      *
      * @param livello livello di difficoltà
      */
-     public  static  int getTentativi(final  String livello) {
-         if (!CONFIGURAZIONE_LIVELLO.containsKey(livello)) {
-         throw new LivelloNonEsistenteException("Livello " + livello + " non esiste");
-         }
-         return CONFIGURAZIONE_LIVELLO.get(livello);
-     }
+    public static int getTentativi(final String livello) {
+        if (livello == null) {
+            throw new LivelloNonEsistenteException("Livello non impostato");
+        } else if (!CONFIGURAZIONE_LIVELLO.containsKey(livello)) {
+            throw new LivelloNonEsistenteException("Livello " + livello + " non esiste");
+        }
+        return CONFIGURAZIONE_LIVELLO.get(livello);
+    }
 }
