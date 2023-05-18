@@ -1,6 +1,8 @@
 package it.uniba.app.interfaccia;
 
+import it.uniba.app.exceptions.ComandoNonFormattatoException;
 import it.uniba.app.gioco.Partita;
+import it.uniba.app.util.Util;
 
 /**
  * Classe che gestisce i comandi inseriti dall'utente e li esegue.
@@ -45,4 +47,30 @@ public class GestioneComandi {
     public Boolean getContinua() {
         return continua;
     }
+
+    /**
+     * Ciclo principale del menu.
+     */
+    public static void mainLoop() {
+        continua = true;
+        while (continua) {
+        }
+    }
+
+    /**
+     * Legge un comando da tastiera.
+     */
+    public static String leggiComando() throws ComandoNonFormattatoException {
+        System.out.println("\nInserisci un comando: ");
+        System.out.print("> ");
+
+        String input = Util.getString();
+        if (!input.startsWith("/")) {
+            throw new ComandoNonFormattatoException(input);
+        }
+        input = input.substring(1).toLowerCase();
+        return input;
+    }
+
+
 }
