@@ -14,11 +14,11 @@ public abstract class Comando {
 
     abstract void esegui();
 
-    abstract void getDescrizione();
+    abstract String getDescrizione();
 
     /**
      * Metodo che restituisce il nome del comando.
-     * @return
+     * @return nome del comando
      */
     public String getNome() {
         return nome;
@@ -26,7 +26,7 @@ public abstract class Comando {
 
     /**
      * Metodo che restituisce la categoria del comando.
-     * @return
+     * @return categoria del comando
      */
     public String getCategoria() {
         return categoria;
