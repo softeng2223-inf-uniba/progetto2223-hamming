@@ -2,7 +2,6 @@ package it.uniba.app.interfaccia;
 
 import it.uniba.app.exceptions.ComandoNonEsistenteException;
 import it.uniba.app.exceptions.ComandoNonFormattatoException;
-import it.uniba.app.gioco.Configurazioni;
 import it.uniba.app.gioco.Partita;
 import it.uniba.app.util.Util;
 
@@ -85,12 +84,41 @@ public class GestioneComandi {
      * @param comando nome del comando da eseguire
      */
     public static void chiamaComando(final String comando) throws ComandoNonEsistenteException {
-        Comando c = Configurazioni.getComando(comando.toLowerCase());
+        Comando c = ConfigurazioniInterfaccia.getComando(comando.toLowerCase());
 
         if (c != null) {
             c.esegui();
         } else {
             throw new ComandoNonEsistenteException(comando);
+        }
+    }
+}
+
+class Esci extends Comando {
+    Esci() {
+        super("esci", "utility");
+    }
+
+    String getDescrizione() {
+        return "Chiude il programma";
+    }
+
+    void esegui() {
+        String input;
+        while (true) {
+            System.out.print("Conferma l'uscita dal programma(s/n): ");
+            input = Util.getString();
+            if ("s".equals(input) || "n".equals(input)) {
+                break;
+            }
+            System.out.println("Inserire solo s o n");
+        }
+
+        if ("s".equals(input)) {
+            System.out.println("Uscita dal programma");
+            GestioneComandi.setContinua(false);
+        } else {
+            System.out.println("Uscita annullata");
         }
     }
 }
