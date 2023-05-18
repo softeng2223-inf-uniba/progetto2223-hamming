@@ -2,6 +2,7 @@ package it.uniba.app.interfaccia;
 
 import it.uniba.app.exceptions.ComandoNonEsistenteException;
 import it.uniba.app.exceptions.ComandoNonFormattatoException;
+import it.uniba.app.exceptions.PartitaGiaIniziataException;
 import it.uniba.app.gioco.Partita;
 import it.uniba.app.util.Util;
 
@@ -31,8 +32,12 @@ public class GestioneComandi {
     /**
      * Imposta il livello di difficoltà.
      */
-    public static void setLivello(final String livelloParam) {
+    public static void setLivello(final String livelloParam) throws PartitaGiaIniziataException {
+        if (partita != null) {
+            throw new PartitaGiaIniziataException("Non puoi cambiare difficoltà durante una partita");
+        }
         livello = livelloParam;
+        System.out.println("La difficoltà è stata cambiata.");
     }
 
     /**
@@ -119,6 +124,58 @@ class Esci extends Comando {
             GestioneComandi.setContinua(false);
         } else {
             System.out.println("Uscita annullata");
+        }
+    }
+}
+
+class Facile extends Comando {
+    Facile() {
+        super("facile", "difficolta");
+    }
+
+    public String getDescrizione() {
+        return "imposta la difficoltà facile";
+    }
+
+    public void esegui() {
+        try {
+            GestioneComandi.setLivello("facile");
+        } catch (PartitaGiaIniziataException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+class Medio extends Comando {
+    Medio() {
+        super("medio", "difficolta");
+    }
+
+    public String getDescrizione() {
+        return "imposta la difficoltà media";
+    }
+
+    public void esegui() {
+        try {
+            GestioneComandi.setLivello("medio");
+        } catch (PartitaGiaIniziataException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+class Difficile extends Comando {
+    Difficile() {
+        super("difficile", "difficolta");
+    }
+
+    public String getDescrizione() {
+        return "imposta la difficoltà difficile";
+    }
+
+    public void esegui() {
+        try {
+            GestioneComandi.setLivello("difficile");
+        } catch (PartitaGiaIniziataException e) {
+            System.out.println(e.getMessage());
         }
     }
 }
