@@ -1,4 +1,4 @@
-package it.uniba.app;
+package it.uniba.app.interfaccia;
 
 /**
  * Classe che rappresenta un comando di gioco.
