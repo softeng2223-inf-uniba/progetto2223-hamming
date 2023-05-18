@@ -6,7 +6,7 @@ package it.uniba.app;
  * @author Gruppo Hamming
  */
 public class CellaPiena extends Cella {
-    private final Nave nave;
+    private Nave nave;
 
     /**
      * Costruttore della classe che inizializza la cella come non colpita e
@@ -31,6 +31,8 @@ public class CellaPiena extends Cella {
      * @return la cella piena clonata.
      */
     public CellaPiena clone() throws CloneNotSupportedException {
-        return (CellaPiena) super.clone();
+        CellaPiena cellaPienaClone = (CellaPiena) super.clone();
+        cellaPienaClone.nave = this.nave.clone();
+        return cellaPienaClone;
     }
 }
