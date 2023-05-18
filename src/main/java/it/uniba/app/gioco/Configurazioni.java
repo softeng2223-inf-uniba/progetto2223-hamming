@@ -1,11 +1,5 @@
 package it.uniba.app.gioco;
 
-import it.uniba.app.interfaccia.Comando;
-
-import java.util.Map;
-
-import java.util.LinkedHashMap;
-
 /**
  * Classe che contiene le configurazioni del gioco.
  * @author Gruppo Hamming
