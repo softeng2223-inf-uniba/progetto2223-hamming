@@ -1,5 +1,6 @@
 package it.uniba.app.interfaccia;
 
+import it.uniba.app.exceptions.LivelloNonEsistenteException;
 import it.uniba.app.gioco.Configurazioni;
 
 /**
@@ -17,7 +18,13 @@ public final class Grafica {
      * @param livello livello di difficoltà attuale
      */
     public static void mostraLivello(final String livello) {
-        System.out.println("Livello di difficoltà: " + livello
-                + " (" + Configurazioni.getTentativi(livello) + " tentativi falliti massimi)");
+        int tentativi;
+        try {
+            tentativi = Configurazioni.getTentativi(livello);
+            System.out.println("Livello di difficoltà: " + livello
+                    + " (" + Integer.toString(tentativi) + " tentativi falliti massimi)");
+        } catch (LivelloNonEsistenteException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
