@@ -162,4 +162,20 @@ class Medio extends Comando {
         }
     }
 }
+class Difficile extends Comando {
+    Difficile() {
+        super("difficile", "difficolta");
+    }
 
+    public String getDescrizione() {
+        return "imposta la difficoltà difficile";
+    }
+
+    public void esegui() {
+        try {
+            GestioneComandi.setLivello("difficile");
+        } catch (PartitaGiaIniziataException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
