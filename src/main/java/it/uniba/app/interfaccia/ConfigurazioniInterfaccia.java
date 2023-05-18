@@ -3,13 +3,21 @@ package it.uniba.app.interfaccia;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class ConfigurazioniInterfaccia {
+/**
+ * Classe che contiene le configurazioni dell'interfaccia del gioco.
+ * @author Gruppo Hamming
+ */
+public final class ConfigurazioniInterfaccia {
 
     private ConfigurazioniInterfaccia() {
     }
 
     //SEZIONE COMANDI
     private static final Map<String, Comando> COMANDI = new LinkedHashMap<String, Comando>() {
+        {
+            put("esci", new Esci());
+
+        }
     };
 
     /**
