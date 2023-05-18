@@ -16,7 +16,7 @@ public final class ConfigurazioniInterfaccia {
     private static final Map<String, Comando> COMANDI = new LinkedHashMap<String, Comando>() {
         {
             put("esci", new Esci());
-
+            put("facile", new Facile());
         }
     };
 
