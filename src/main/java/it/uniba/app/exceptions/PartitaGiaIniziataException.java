@@ -1,7 +1,5 @@
 package it.uniba.app.exceptions;
 
-import java.lang.module.FindException;
-
 /**
  * Eccezione lanciata quando un comando richiesto non può essere
  * eseguito mentre una partita è già iniziata.
@@ -10,7 +8,7 @@ import java.lang.module.FindException;
  */
 public class PartitaGiaIniziataException extends Exception {
     /**
-     * Costruttore di default
+     * Costruttore di default.
      *
      */
     public PartitaGiaIniziataException() {
@@ -18,7 +16,7 @@ public class PartitaGiaIniziataException extends Exception {
     }
 
     /**
-     * Costruttore che richiama il costruttore della super-classe e passa il messaggio di errore
+     * Costruttore che richiama il costruttore della super-classe e passa il messaggio di errore.
      *
      * @param msg messaggio stampato
      */

@@ -33,7 +33,7 @@ public class GestioneComandi {
      * Imposta il livello di difficoltà.
      */
     public static void setLivello(final String livelloParam) throws PartitaGiaIniziataException {
-        if (partita != null){
+        if (partita != null) {
             throw new PartitaGiaIniziataException("Non puoi cambiare difficoltà durante una partita");
         }
         livello = livelloParam;
@@ -127,7 +127,7 @@ class Esci extends Comando {
     }
 }
 
-class Facile extends Comando{
+class Facile extends Comando {
     Facile() {
         super("facile", "difficolta");
     }
