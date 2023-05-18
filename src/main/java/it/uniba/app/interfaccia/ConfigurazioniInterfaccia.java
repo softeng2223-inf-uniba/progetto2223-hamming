@@ -17,6 +17,7 @@ public final class ConfigurazioniInterfaccia {
         {
             put("esci", new Esci());
             put("facile", new Facile());
+            put("medio", new Medio());
         }
     };
 

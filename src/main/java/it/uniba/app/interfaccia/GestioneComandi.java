@@ -37,6 +37,7 @@ public class GestioneComandi {
             throw new PartitaGiaIniziataException("Non puoi cambiare difficoltà durante una partita");
         }
         livello = livelloParam;
+        System.out.println("La difficoltà è stata cambiata.");
     }
 
     /**
@@ -144,3 +145,21 @@ class Facile extends Comando {
         }
     }
 }
+class Medio extends Comando {
+    Medio() {
+        super("medio", "difficolta");
+    }
+
+    public String getDescrizione() {
+        return "imposta la difficoltà media";
+    }
+
+    public void esegui() {
+        try {
+            GestioneComandi.setLivello("medio");
+        } catch (PartitaGiaIniziataException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
