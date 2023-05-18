@@ -1,4 +1,4 @@
-package it.uniba.app;
+package it.uniba.app.gioco;
 
 import java.util.ArrayList;
 
