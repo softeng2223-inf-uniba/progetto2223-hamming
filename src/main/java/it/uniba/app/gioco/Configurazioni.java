@@ -1,6 +1,8 @@
 package it.uniba.app.gioco;
 import it.uniba.app.exceptions.LivelloNonEsistenteException;
+import it.uniba.app.exceptions.TipologiaNonEsistenteException;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -24,7 +26,7 @@ public final class Configurazioni {
     }
 
 
-    // sezione livelli
+    //SEZIONE LIVELLI
     private  static final Map<String, Integer> CONFIGURAZIONE_LIVELLO = Map.of(
       "facile", 50,
       "medio", 30,
@@ -42,5 +44,63 @@ public final class Configurazioni {
             throw new LivelloNonEsistenteException("Livello " + livello + " non esiste");
         }
         return CONFIGURAZIONE_LIVELLO.get(livello);
+    }
+
+    //SEZIONE NAVI
+    private static final ConfigurazioneNave PORTAEREI = new ConfigurazioneNave(1, 5);
+    private static final ConfigurazioneNave CORAZZATA = new ConfigurazioneNave(2, 4);
+    private static final ConfigurazioneNave INCROCIATORE = new ConfigurazioneNave(3, 3);
+    private static final ConfigurazioneNave CACCIATORPEDINIERE = new ConfigurazioneNave(4, 2);
+
+    private static final Map<String, ConfigurazioneNave> CONFIGURAZIONE_NAVI =
+    new LinkedHashMap<String, ConfigurazioneNave>();
+
+    static {
+        CONFIGURAZIONE_NAVI.put("portaerei", PORTAEREI);
+        CONFIGURAZIONE_NAVI.put("corazzata", CORAZZATA);
+        CONFIGURAZIONE_NAVI.put("incrociatore", INCROCIATORE);
+        CONFIGURAZIONE_NAVI.put("cacciatorpediniere", CACCIATORPEDINIERE);
+    }
+
+    public Map<String, ConfigurazioneNave> getConfigurazioneNavi() {
+        return CONFIGURAZIONE_NAVI;
+    }
+
+    /**
+     * Restituisce la lunghezza di una tipologia di navi.
+     * @param tipologia tipologia di nave
+     */
+    public static int getLunghezzaNavi(final String tipologia) {
+        if (!CONFIGURAZIONE_NAVI.containsKey(tipologia)) {
+            throw new TipologiaNonEsistenteException("Tipologia di nave non valida");
+        }
+        return CONFIGURAZIONE_NAVI.get(tipologia).getLunghezza();
+    }
+}
+
+/**
+ * Classe che rappresentale le configurazioni di una tipologia di nave.
+ * Contiene il numero di navi della stessa tipologia, la lunghezza e il simbolo
+ * da stampare per
+ * far vedere la nave sulla griglia.
+ * Contiene i metodi per accedere alle configurazioni.
+ *
+ * @author Gruppo Hamming
+ */
+class ConfigurazioneNave {
+    private int numero;
+    private int lunghezza;
+
+    ConfigurazioneNave(final int num, final int lun) {
+        numero = num;
+        lunghezza = lun;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public int getLunghezza() {
+        return lunghezza;
     }
 }
