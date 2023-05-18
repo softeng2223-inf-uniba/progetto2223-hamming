@@ -1,6 +1,8 @@
 package it.uniba.app.interfaccia;
 
+import it.uniba.app.exceptions.ComandoNonEsistenteException;
 import it.uniba.app.exceptions.ComandoNonFormattatoException;
+import it.uniba.app.gioco.Configurazioni;
 import it.uniba.app.gioco.Partita;
 import it.uniba.app.util.Util;
 
@@ -54,6 +56,12 @@ public class GestioneComandi {
     public static void mainLoop() {
         continua = true;
         while (continua) {
+            try {
+                String input = leggiComando();
+                chiamaComando(input);
+            } catch (ComandoNonEsistenteException | ComandoNonFormattatoException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
@@ -72,5 +80,17 @@ public class GestioneComandi {
         return input;
     }
 
+    /**
+     * Esegue il comando specificato.
+     * @param comando nome del comando da eseguire
+     */
+    public static void chiamaComando(final String comando) throws ComandoNonEsistenteException {
+        Comando c = Configurazioni.getComando(comando.toLowerCase());
 
+        if (c != null) {
+            c.esegui();
+        } else {
+            throw new ComandoNonEsistenteException(comando);
+        }
+    }
 }
