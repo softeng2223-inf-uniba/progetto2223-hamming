@@ -1,4 +1,4 @@
-package it.uniba.app;
+package it.uniba.app.gioco;
 
 /**
  * Classe che contiene le configurazioni del gioco.

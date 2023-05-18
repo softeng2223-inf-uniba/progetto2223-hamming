@@ -1,4 +1,4 @@
-package it.uniba.app;
+package it.uniba.app.gioco;
 
 /**
  * Classe che rappresenta una nave della griglia di gioco.
