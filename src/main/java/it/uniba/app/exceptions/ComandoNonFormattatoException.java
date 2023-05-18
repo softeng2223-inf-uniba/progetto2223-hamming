@@ -1,7 +1,8 @@
 package it.uniba.app.exceptions;
 
 /**
- * Eccezione lanciata quando si cerca di eseguire un comando non esistente.
+ * Eccezione lanciata quando viene inserito un comando che non inizia con /.
+ *
  * @author Gruppo Hamming
  */
 public class ComandoNonFormattatoException extends Exception {

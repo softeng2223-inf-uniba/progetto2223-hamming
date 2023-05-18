@@ -17,7 +17,6 @@ public class ComandoNonEsistenteException extends Exception {
      * @param message messaggio da visualizzare
      */
     public ComandoNonEsistenteException(final String message) {
-        // ConfigurazioniInterfaccia.getComando(Util.suggestCommand(message)).getNome()
         super("Il comando /" + message + " non esiste.");
     }
 }
