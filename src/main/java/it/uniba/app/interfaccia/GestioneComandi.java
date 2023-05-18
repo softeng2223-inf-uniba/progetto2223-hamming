@@ -37,7 +37,7 @@ public class GestioneComandi {
     }
 
     /**
-     * Imposta il valore di cotinua.
+     * Imposta il valore di continua.
      */
     public static void setContinua(final Boolean continuaParam) {
         continua = continuaParam;
