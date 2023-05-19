@@ -2,6 +2,7 @@ package it.uniba.app.interfaccia;
 
 import it.uniba.app.exceptions.ComandoNonEsistenteException;
 import it.uniba.app.exceptions.ComandoNonFormattatoException;
+import it.uniba.app.exceptions.LivelloNonImpostatoException;
 import it.uniba.app.exceptions.PartitaGiaIniziataException;
 import it.uniba.app.gioco.Partita;
 import it.uniba.app.util.Util;
@@ -10,16 +11,33 @@ import it.uniba.app.util.Util;
  * Classe che gestisce i comandi inseriti dall'utente e li esegue.
  * @author Gruppo Hamming
  */
-public class GestioneComandi {
+public final class GestioneComandi {
     private static Partita partita = null;
     private static Boolean continua = true;
     private static String livello = null;
+
+    private GestioneComandi() { }
 
     /**
      * Restituisce la partita.
      */
     public static Partita getPartita() {
         return partita;
+    }
+
+    /**
+     * Metodo che inizializza la partita.
+     * @throws LivelloNonImpostatoException
+     * @throws PartitaGiaIniziataException
+     */
+    public static void inizializzaPartita() throws LivelloNonImpostatoException, PartitaGiaIniziataException {
+        if (partita != null) {
+            throw new PartitaGiaIniziataException("Una partita è già in corso");
+        }
+        if (livello == null) {
+            throw new LivelloNonImpostatoException("Devi impostare la difficoltà prima di iniziare una partita");
+        }
+        partita = new Partita(livello);
     }
 
     /**
@@ -50,7 +68,7 @@ public class GestioneComandi {
     /**
      * Restituisce il valore di continua.
      */
-    public Boolean getContinua() {
+    public static Boolean getContinua() {
         return continua;
     }
 
@@ -191,5 +209,30 @@ class MostraLivello extends Comando {
 
     void esegui() {
         Grafica.mostraLivello(GestioneComandi.getLivello());
+    }
+}
+
+class Gioca extends Comando {
+    Gioca() {
+        super("gioca", "gioco");
+    }
+
+    String getDescrizione() {
+        return "Inizia una nuova partita";
+    }
+
+    void esegui() {
+        try {
+            GestioneComandi.inizializzaPartita();
+            GestioneComandi.getPartita().posizionaNavi();
+            System.out.println("Nuova partita iniziata\n");
+            Grafica.stampaGrigliaColpita(GestioneComandi.getPartita().getGriglia());
+        } catch (LivelloNonImpostatoException e) {
+            System.out.println(e.getMessage());
+        } catch (PartitaGiaIniziataException e) {
+            System.out.println(e.getMessage());
+        } catch (CloneNotSupportedException e) {
+            System.out.println("Clone non supportato");
+        }
     }
 }
