@@ -43,6 +43,14 @@ public class Nave implements Cloneable {
     }
 
     /**
+     * Metodo che indica se la nave è affondata.
+     * @return true se la nave è affondata, false altrimenti.
+     */
+    public boolean eAffondata() {
+        return celleRimanenti == 0;
+    }
+
+    /**
      * Metodo che clone la nave.
      * @return la nave clonata.
      */
