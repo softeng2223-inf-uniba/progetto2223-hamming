@@ -25,46 +25,46 @@ Si utilizza per visualizzare l'elenco dei comandi disponibili, uno per riga, per
 - ...
 - per esempio:
 <br>
-![comando_help.png](img%2Fcomando_help.png)
+![comando_help.png](img/comando_help.png)
 #### Comando /esci
 Per chiudere il gioco, il giocatore, può utilizzare il comando /esci. L'applicazione richiederà una conferma per procedere. Se il giocatore conferma la chiusura, l'applicazione si chiuderà e il controllo verrà restituito al sistema operativo. Se il giocatore nega la chiusura, l'applicazione sarà pronta a ricevere nuovi tentativi o comandi.
 <br>
-![comando_esci.png](comando_esci.png)
+![comando_esci.png](img/comando_esci.png)
 ### Impostazione del livello di gioco
 Il giocatore, prima dell'inizio della partita, può decidere tra tre livelli di gioco: facile, medio, difficile. Per poter scegliere il livello si utilizza un comando che varia in base al livello, per esempio se il giocatore vuole impostare il livello facile, dovrà utilizzare il comando /facile. 
 ##### Comando /facile
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti a 50.
 <br>
-![comando_facile.png](img%2Fcomando_facile.png)
+![comando_facile.png](img/comando_facile.png)
 ##### Comando /medio 
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti a 30.
 <br>
-![comando_medio.png](comando_medio.png)
+![comando_medio.png](img/comando_medio.png)
 ##### Comando /difficile
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti a 10.
 <br>
-![comando_difficile.png](img%2Fcomando_difficile.png)
+![comando_difficile.png](img/comando_difficile.png)
 #### Comando /mostralivello
 Il giocatore può visualizzare il livello di gioco corrente e il numero massimo di tentativi falliti utilizzando il comando /mostralivello. Il gioco risponderà mostrando queste informazioni.
 <br>
-![comando_mostralivello.png](img%2Fcomando_mostralivello.png)
+![comando_mostralivello.png](img/comando_mostralivello.png)
 #### Comando /mostranavi
 Per conoscere i tipi di nave presenti nel gioco e il numero di esemplari da affondare per ciascun tipo, il giocatore può utilizzare il comando /mostranavi.
 <br>
-![comando_mostranavi.png](img%2Fcomando_mostranavi.png)
+![comando_mostranavi.png](img/comando_mostranavi.png)
 #### Comando /gioca
 Per iniziare una nuova partita, il giocatore può utilizzare il comando /gioca. Se non è in corso alcuna partita, il gioco imposterà casualmente le navi in posizione orizzontale o verticale, mostrerà la griglia vuota e sarà pronta a ricevere il primo tentativo del giocatore o altri comandi.
 
 - Se non è stato impostato alcun livello di gioco, bisogna impostarlo tra i tre disponibili e la situazione sarà questa:
   <br>
-![comando_gioca.png](img%2Fcomando_gioca.png)
+![comando_gioca.png](img/comando_gioca.png)
 - Se invece il livello di gioco è stato impostato la situazione sarà questa:
   <br>
-![comando_gioca.png](comando_gioca.png)
+![comando_gioca.png](img/comando_gioca1.png)
 #### Comando /svelagriglia
 Utilizzando il comando /svelagriglia il gioco risponde visualizzando, una griglia 10 x 10, con le righe numerate da 1 a 10 e le colonne numerate da A a J, e tutte le navi posizionate.
 <br>
-![comando_svelagriglia.png](comando_svelagriglia.png)
+![comando_svelagriglia.png](img/comando_svelagriglia.png)
 ### Introduzione di gioco
 La **battaglia navale** è un gioco, in questo caso a giocatore singolo, il cui **obiettivo** è quello di **affondare tutte le navi** che sono posizionate su una griglia 10x10 nascosta al giocatore con le righe numerate da 1 a 10 e le colonne numerate da A a J.
 ### Regole
