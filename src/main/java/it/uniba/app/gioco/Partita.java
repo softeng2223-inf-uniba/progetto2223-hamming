@@ -1,6 +1,7 @@
 package it.uniba.app.gioco;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Classe che rappresenta una partita di battaglia navale.
@@ -19,6 +20,12 @@ public class Partita {
     public Partita(final String livelloParam) {
         this.livello = livelloParam;
         this.griglia = new Griglia();
+
+        for (String tipologia : Configurazioni.getTipologieNavi()) {
+            for (int i = 0; i < Configurazioni.getNumeroNaviPerTipologia(tipologia); i++) {
+                aggiungereNave(new Nave(tipologia));
+            }
+        }
     }
 
     /**
@@ -52,5 +59,39 @@ public class Partita {
      */
     public Nave getNave(final int indice) {
         return navi.get(indice);
+    }
+
+    /**
+        Metodo che aggiunge una nave alla lista delle navi.
+        @param nave nave da aggiungere alla lista
+     */
+    public final void aggiungereNave(final Nave nave) {
+        this.navi.add(nave);
+    }
+
+    /**
+     * Metodo che posiziona le navi sulla griglia.
+     */
+    public final void posizionaNavi() {
+        var random = new Random();
+        int i = 0;
+        while (i < navi.size()) {
+            boolean posizionata = false;
+            int tentativiPosizionamento = 0;
+            do {
+                int riga = random.nextInt(Configurazioni.getRigheGriglia());
+                int colonna = random.nextInt(Configurazioni.getColonneGriglia());
+                boolean orizzontale = random.nextBoolean();
+                posizionata = griglia.posizionaNave(navi.get(i), riga, colonna, orizzontale);
+                tentativiPosizionamento++;
+            } while (!posizionata && tentativiPosizionamento < Configurazioni.getTentativiMassimiPosizionamento());
+
+            if (!posizionata) {
+                griglia = new Griglia();
+                i = 0;
+            } else {
+                i++;
+            }
+        }
     }
 }
