@@ -58,7 +58,7 @@ public final class Grafica {
 
     /**
      * Restituisce il simbolo della cella quando si svela la griglia.
-     * Le celle vuote sono rappresentate dal carattere ~.
+     * Le celle vuote sono rappresentate da uno spazio vuoto.
      * Le celle contenenti una nave affondata sono rappresentate
      * da un carattere diverso per tipo di nave.
      *
@@ -66,7 +66,7 @@ public final class Grafica {
      */
     public static String getSimboloCellaSvelata(final Cella cella) {
         if (cella.eVuota()) {
-            return "~";
+            return " ";
         } else {
             return ConfigurazioniInterfaccia.getSimboloNavi(cella.getNave().getTipologia());
         }
