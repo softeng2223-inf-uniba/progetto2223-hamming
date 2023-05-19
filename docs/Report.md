@@ -15,7 +15,7 @@
 
 
 ## 7. Manuale utente
-Benvenuto/a nel gioco della battaglia navale! Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
+Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
 ### Comandi Disponibili
 Il giocatore può utilizzare una serie di comandi utili per impostare e avere informazioni relative al gioco.
 #### Comando /help
@@ -23,6 +23,8 @@ Si utilizza per visualizzare l'elenco dei comandi disponibili, uno per riga, per
 - gioca
 - esci
 - ...
+- per esempio:
+![comando_help.png](img%2Fcomando_help.png)
 #### Comando /esci
 Per chiudere il gioco, il giocatore, può utilizzare il comando /esci. L'applicazione richiederà una conferma per procedere. Se il giocatore conferma la chiusura, l'applicazione si chiuderà e il controllo verrà restituito al sistema operativo. Se il giocatore nega la chiusura, l'applicazione sarà pronta a ricevere nuovi tentativi o comandi.
 ![comando_esci.png](comando_esci.png)
