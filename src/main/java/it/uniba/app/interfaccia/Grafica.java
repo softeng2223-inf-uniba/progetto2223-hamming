@@ -71,4 +71,35 @@ public final class Grafica {
             System.out.println("|\n   +---+---+---+---+---+---+---+---+---+---+");
         }
     }
+
+
+    /**
+     * Stampa l'elenco delle navi presenti nel gioco con il numero di esemplari per tipologia
+     * e la loro lunghezza.
+     */
+    public static void stampaNavi() {
+        int lunghezzaTipologia = 0;
+        for (String tipologiaNave : Configurazioni.getTipologieNavi()) {
+            lunghezzaTipologia = Math.max(lunghezzaTipologia, tipologiaNave.length());
+        }
+        int lunghezzaSimboli = 0;
+        for (String tipologiaNave : Configurazioni.getTipologieNavi()) {
+            lunghezzaSimboli = Math.max(lunghezzaSimboli, Configurazioni.getLunghezzaNavi(tipologiaNave));
+        }
+        System.out.println("Navi presenti sulla griglia:\n");
+        for (String tipologiaNave : Configurazioni.getTipologieNavi()) {
+            String riga = "" + tipologiaNave + ":   ";
+            for (int i = 0; i < lunghezzaTipologia - tipologiaNave.length(); i++) {
+                riga += " ";
+            }
+            for (int i = 0; i < Configurazioni.getLunghezzaNavi(tipologiaNave); i++) {
+                riga += "[X]";
+            }
+            for (int i = 0; i < lunghezzaSimboli - Configurazioni.getLunghezzaNavi(tipologiaNave); i++) {
+                riga += "   ";
+            }
+            riga = riga.concat("    Numero esemplari: " + Configurazioni.getNumeroNaviPerTipologia(tipologiaNave));
+            System.out.println(riga);
+        }
+    }
 }
