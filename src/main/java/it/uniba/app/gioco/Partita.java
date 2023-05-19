@@ -12,6 +12,7 @@ public class Partita {
     private int tentativiRimasti;
     private ArrayList<Nave> navi = new ArrayList<Nave>();
     private Griglia griglia;
+    private Random random = new Random();
 
     /**
      * Costruttore della classe Partita che inizializza il livello della partita.
@@ -26,6 +27,8 @@ public class Partita {
                 aggiungereNave(new Nave(tipologia));
             }
         }
+
+        random.setSeed(System.currentTimeMillis());
     }
 
     /**
@@ -73,7 +76,6 @@ public class Partita {
      * Metodo che posiziona le navi sulla griglia.
      */
     public final void posizionaNavi() {
-        var random = new Random();
         int i = 0;
         while (i < navi.size()) {
             boolean posizionata = false;
