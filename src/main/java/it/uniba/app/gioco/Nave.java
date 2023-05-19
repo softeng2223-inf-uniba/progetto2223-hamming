@@ -11,12 +11,11 @@ public class Nave implements Cloneable {
     /**
      * Costruttore che inizializza la nave con la tipologia e il numero di celle rimanenti
      * per essere distrutta.
-     * @param tipologiaParam
-     * @param celleRimanentiParam
+     * @param tipologiaParam tipologia della nave
      */
-    public Nave(final String tipologiaParam, final int celleRimanentiParam) {
+    public Nave(final String tipologiaParam) {
         this.tipologia = tipologiaParam;
-        this.celleRimanenti = celleRimanentiParam;
+        this.celleRimanenti = Configurazioni.getLunghezzaNavi(tipologia);
     }
 
     /**
@@ -33,6 +32,14 @@ public class Nave implements Cloneable {
      */
     public int getCelleRimanenti() {
         return celleRimanenti;
+    }
+
+    /**
+        Restituisce la lunghezza della nave.
+        @return lunghezza della nave
+     */
+    public int getLunghezza() {
+        return Configurazioni.getLunghezzaNavi(tipologia);
     }
 
     /**
