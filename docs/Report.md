@@ -219,3 +219,32 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
 ## 9. Analisi retrospettiva
 
 ### 9.1 Sprint 0
+**Data:** 3 aprile 2023 - 14 aprile 2023 -- **Revisione**: 26 aprile 2023
+
+![Modello Retrospettiva "Arrabbiato, Triste, Felice"](img/sprint0WhiteBoard.png)
+
+**Partecipanti:**
+- Marzia Capuano
+- Fabio Cirullo
+- Simone Columpsi
+- Valerio Di Maggio
+- Daniele Gentile
+
+**Obiettivo dello Sprint:** dimostrare familiarità con Git, Github Flow e il processo agile tramite delle modifiche richieste dal docente da attuare sulla repository.
+
+Cosa **è andato bene**:
+- Il team ha lavorato collaborando, nessuno ha esitato a chiedere aiuto agli altri membri del team qualora ce ne fosse stato il bisogno.
+- Il team è riuscito a consegnare ciò che era stato richiesto nel tempo previsto.
+- Non sono stati segnalati dei difetti maggiori durante la revisione del progetto.
+
+Cosa **può essere migliorato**:
+- I membri del team sono consapevoli che lavorare in pochi giorni è peggio che lavorare di meno ogni giorno per tutta la durata dello Sprint, suddividendo il lavoro nel tempo a disposizione.
+
+Cosa **non è andato bene**:
+- Abbiamo riscontrato un problema durante delle modifiche alle impostazioni di Github riguardo la visibilità della Repository assegnata al team. Questo ha richiesto un intervento da parte del Professore e dei Dottorandi.
+
+Possibili azioni per la **correzione dei problemi**:
+- Organizzare dei brevi meeting quasi ogni giorno per organizzare al meglio lo sviluppo del progetto.
+
+**Conclusioni:**
+Nonostante ci siano stati problemi di tempo derivati dai vari impegni dei partecipanti del team, e qualche problema fortunatamente risolto grazie all'aiuto del docente e dei dottorandi, lo **Sprint 0** è finito senza intoppi, con un progetto consegnato in tempo e senza difetti maggiori. Bisogna lavorare di più sull'organizzazione del tempo per evitare di trovarsi a lavorare molto durante le ultime giornate prima della consegna.
