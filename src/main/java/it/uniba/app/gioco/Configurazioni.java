@@ -4,6 +4,7 @@ import it.uniba.app.exceptions.TipologiaNonEsistenteException;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Classe che contiene le configurazioni del gioco.
@@ -12,6 +13,17 @@ import java.util.Map;
 public final class Configurazioni {
 
     private Configurazioni() { }
+
+    // SEZIONE PARTITA
+    private static final int TENTATIVI_MASSIMI_POSIZIONAMENTO = 100;
+
+    /**
+     * Metodo che restituisce il numero massimo di tentativi per posizionare casualmente una nave sulla griglia.
+     * @return numero massimo di tentativi
+     */
+    public static int getTentativiMassimiPosizionamento() {
+        return TENTATIVI_MASSIMI_POSIZIONAMENTO;
+    }
 
     //SEZIONE GRIGLIA
     private static final int RIGHE_GRIGLIA = 10;
@@ -75,6 +87,27 @@ public final class Configurazioni {
             throw new TipologiaNonEsistenteException("Tipologia di nave non valida");
         }
         return CONFIGURAZIONE_NAVI.get(tipologia).getLunghezza();
+    }
+
+    /**
+     * Restituisce il numero di navi di una tipologia.
+     * @param tipologia tipologia di nave
+     * @return numero di navi di una tipologia
+     */
+    public static int getNumeroNaviPerTipologia(final String tipologia) {
+        if (!CONFIGURAZIONE_NAVI.containsKey(tipologia)) {
+            throw new TipologiaNonEsistenteException("Tipologia di nave non valida");
+        }
+
+        return CONFIGURAZIONE_NAVI.get(tipologia).getNumero();
+    }
+
+    /**
+     * Restituisce le tipologie di navi.
+     * @return tipologie di navi
+     */
+    public static Set<String> getTipologieNavi() {
+        return CONFIGURAZIONE_NAVI.keySet();
     }
 }
 
