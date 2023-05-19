@@ -73,7 +73,10 @@ public final class Grafica {
     }
 
 
-
+    /**
+     * Stampa l'elenco delle navi presenti nel gioco con il numero di esemplari per tipologia
+     * e la loro lunghezza.
+     */
     public static void stampaNavi() {
         int lunghezzaTipologia = 0;
         for (String tipologiaNave : Configurazioni.getTipologieNavi()) {
@@ -95,7 +98,7 @@ public final class Grafica {
             for (int i = 0; i < lunghezzaSimboli - Configurazioni.getLunghezzaNavi(tipologiaNave); i++) {
                 riga += "   ";
             }
-            riga += "    Numero esemplari: " + Configurazioni.getNumeroNaviPerTipologia(tipologiaNave);
+            riga = riga.concat("    Numero esemplari: " + Configurazioni.getNumeroNaviPerTipologia(tipologiaNave));
             System.out.println(riga);
         }
     }
