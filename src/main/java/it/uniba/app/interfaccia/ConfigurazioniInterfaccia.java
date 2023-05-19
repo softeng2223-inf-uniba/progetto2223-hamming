@@ -41,7 +41,7 @@ public final class ConfigurazioniInterfaccia {
      * @return mappa dei comandi
      */
     public static Map<String, Comando> getComandi() {
-        return COMANDI;
+        return new LinkedHashMap<>(COMANDI);
     }
 
     //SEZIONE NAVI
