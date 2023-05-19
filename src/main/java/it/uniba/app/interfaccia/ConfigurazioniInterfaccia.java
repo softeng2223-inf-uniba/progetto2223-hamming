@@ -38,8 +38,8 @@ public final class ConfigurazioniInterfaccia {
     }
 
     /**
-     * Restituisce la mappa dei comandi.
-     * @return
+     * Metodo che restituisce la mappa dei comandi.
+     * @return mappa dei comandi
      */
     public static Map<String, Comando> getComandi() {
         return new LinkedHashMap<>(COMANDI);
