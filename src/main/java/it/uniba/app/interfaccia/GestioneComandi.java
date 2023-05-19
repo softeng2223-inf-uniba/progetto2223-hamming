@@ -9,6 +9,7 @@ import it.uniba.app.util.Util;
 
 /**
  * Classe che gestisce i comandi inseriti dall'utente e li esegue.
+ *
  * @author Gruppo Hamming
  */
 public final class GestioneComandi {
@@ -16,7 +17,8 @@ public final class GestioneComandi {
     private static Boolean continua = true;
     private static String livello = null;
 
-    private GestioneComandi() { }
+    private GestioneComandi() {
+    }
 
     /**
      * Restituisce la partita.
@@ -34,6 +36,7 @@ public final class GestioneComandi {
 
     /**
      * Metodo che inizializza la partita.
+     *
      * @throws LivelloNonImpostatoException
      * @throws PartitaGiaIniziataException
      */
@@ -111,6 +114,7 @@ public final class GestioneComandi {
 
     /**
      * Esegue il comando specificato.
+     *
      * @param comando nome del comando da eseguire
      */
     public static void chiamaComando(final String comando) throws ComandoNonEsistenteException {
@@ -170,6 +174,7 @@ class Facile extends Comando {
         }
     }
 }
+
 class Medio extends Comando {
     Medio() {
         super("medio", "difficolta");
@@ -187,6 +192,7 @@ class Medio extends Comando {
         }
     }
 }
+
 class Difficile extends Comando {
     Difficile() {
         super("difficile", "difficolta");
@@ -255,5 +261,27 @@ class MostraNavi extends Comando {
 
     void esegui() {
         Grafica.stampaNavi();
+    }
+}
+
+class SvelaGriglia extends Comando {
+    SvelaGriglia() {
+        super("svelaGriglia", "utility");
+    }
+
+    public String getDescrizione() {
+        return "Svela la griglia di gioco";
+    }
+
+    public void esegui() {
+        if (!GestioneComandi.partitaIniziata()) {
+            System.out.println("Non c'è nessuna partita in corso");
+            return;
+        }
+        try {
+            Grafica.svelaGrigliaNavi(GestioneComandi.getPartita().getGriglia());
+        } catch (CloneNotSupportedException e) {
+            System.out.println("Impossibile svelare la griglia");
+        }
     }
 }
