@@ -78,7 +78,7 @@ Windows:
 
 #### Comando per l'esecuzione del container
 Dopo aver eseguito il comando ```docker pull``` copiandolo da GitHub Packages, il comando Docker da usare per eseguire il container contenente l'applicazione è:
-```docker run --rm -it ghcr.io/softeng2223-inf-uniba battleship-base2223:latest```
+```docker run --rm -it ghcr.io/softeng2223-inf-uniba/battleship-hamming:latest```
 <br>
 ## 9. Analisi retrospettiva
 
