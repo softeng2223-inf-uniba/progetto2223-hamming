@@ -211,3 +211,28 @@ class MostraLivello extends Comando {
         Grafica.mostraLivello(GestioneComandi.getLivello());
     }
 }
+
+class Gioca extends Comando {
+    Gioca() {
+        super("gioca", "gioco");
+    }
+
+    String getDescrizione() {
+        return "Inizia una nuova partita";
+    }
+
+    void esegui() {
+        try {
+            GestioneComandi.inizializzaPartita();
+            GestioneComandi.getPartita().posizionaNavi();
+            System.out.println("Nuova partita iniziata\n");
+            Grafica.stampaGrigliaColpita(GestioneComandi.getPartita().getGriglia());
+        } catch (LivelloNonImpostatoException e) {
+            System.out.println(e.getMessage());
+        } catch (PartitaGiaIniziataException e) {
+            System.out.println(e.getMessage());
+        } catch (CloneNotSupportedException e) {
+            System.out.println("Clone non supportato");
+        }
+    }
+}
