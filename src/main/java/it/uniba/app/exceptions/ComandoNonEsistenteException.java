@@ -19,6 +19,7 @@ public class ComandoNonEsistenteException extends Exception {
      * @param message messaggio da visualizzare
      */
     public ComandoNonEsistenteException(final String message) {
-        super("Il comando /" + message + " non esiste. Forse il comando che volevi eseguire era /" + Util.suggestCommand(message));
+        super("Il comando /" + message + " non esiste. Forse il comando "
+        + "che volevi eseguire era /" + Util.suggestCommand(message));
     }
 }
