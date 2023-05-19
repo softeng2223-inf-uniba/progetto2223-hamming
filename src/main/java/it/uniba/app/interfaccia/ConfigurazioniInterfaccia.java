@@ -24,6 +24,7 @@ public final class ConfigurazioniInterfaccia {
             put("mostralivello", new MostraLivello());
             put("gioca", new Gioca());
             put("mostranavi", new MostraNavi());
+            put("help", new Help());
             put("svelagriglia", new SvelaGriglia());
         }
     };
@@ -35,6 +36,14 @@ public final class ConfigurazioniInterfaccia {
      */
     public static Comando getComando(final String comando) {
         return COMANDI.get(comando);
+    }
+
+    /**
+     * Metodo che restituisce la mappa dei comandi.
+     * @return mappa dei comandi
+     */
+    public static Map<String, Comando> getComandi() {
+        return new LinkedHashMap<>(COMANDI);
     }
 
     //SEZIONE NAVI

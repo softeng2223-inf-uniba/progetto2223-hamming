@@ -139,5 +139,23 @@ public final class Grafica {
             System.out.println("|\n   +---+---+---+---+---+---+---+---+---+---+");
         }
 
+     Stampa l'elenco dei comandi del gioco.
+     */
+    public static void stampaHelp() {
+        System.out.print("\nComandi utilizzabili in gioco:\n\n");
+        String utility = "Comandi utility:\n";
+        String gioco = "Comandi di gioco:\n";
+        String difficolta = "Comandi di difficoltà:\n";
+        for (String c : ConfigurazioniInterfaccia.getComandi().keySet()) {
+            Comando comando = ConfigurazioniInterfaccia.getComando(c);
+            if (comando.getCategoria().equals("utility")) {
+                utility += "  " + comando.getNome() + " - " + comando.getDescrizione() + "\n";
+            } else if (comando.getCategoria().equals("gioco")) {
+                gioco += "  " + comando.getNome() + " - " + comando.getDescrizione() + "\n";
+            } else if (comando.getCategoria().equals("difficolta")) {
+                difficolta += "  " + comando.getNome() + " - " + comando.getDescrizione() + "\n";
+            }
+        }
+        System.out.print(utility + "\n" + gioco + "\n" + difficolta + "\n");
     }
 }

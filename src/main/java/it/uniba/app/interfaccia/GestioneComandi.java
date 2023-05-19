@@ -264,6 +264,7 @@ class MostraNavi extends Comando {
     }
 }
 
+
 class SvelaGriglia extends Comando {
     SvelaGriglia() {
         super("svelaGriglia", "utility");
@@ -283,5 +284,22 @@ class SvelaGriglia extends Comando {
         } catch (CloneNotSupportedException e) {
             System.out.println("Impossibile svelare la griglia");
         }
+
+/**
+ Classe che rappresenta il comando /help.
+
+ @author Gruppo Hamming
+ */
+class Help extends Comando {
+    Help() {
+        super("help", "utility");
+    }
+
+    public String getDescrizione() {
+        return "Mostra l'elenco dei comandi utilizzabili";
+    }
+
+    public void esegui() {
+        Grafica.stampaHelp();
     }
 }
