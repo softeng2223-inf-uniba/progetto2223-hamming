@@ -2,6 +2,8 @@ package it.uniba.app.util;
 
 import java.util.Scanner;
 
+import it.uniba.app.interfaccia.ConfigurazioniInterfaccia;
+
 /**
  * Classe di utilità contenente dei metodi generici utili per l'applicazione.
  */
@@ -41,5 +43,21 @@ public final class Util {
             }
         }
         return d[s.length()][t.length()];
+    }
+
+    /**
+     * Metodo che suggerisce un comando simile a quello inserito dall'utente.
+     */
+    public static String suggestCommand(final String message) {
+        int minDistance = Integer.MAX_VALUE;
+        String suggestedString = "";
+        for (String comando : ConfigurazioniInterfaccia.getComandi().keySet()) {
+            int distance = Util.getLevenshteinDistance(message, comando);
+            if (distance < minDistance) {
+                minDistance = distance;
+                suggestedString = comando;
+            }
+        }
+        return suggestedString;
     }
 }
