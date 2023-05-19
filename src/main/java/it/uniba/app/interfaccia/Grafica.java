@@ -138,8 +138,10 @@ public final class Grafica {
             }
             System.out.println("|\n   +---+---+---+---+---+---+---+---+---+---+");
         }
+    }
 
-     Stampa l'elenco dei comandi del gioco.
+    /**
+     * Stampa l'elenco dei comandi del gioco.
      */
     public static void stampaHelp() {
         System.out.print("\nComandi utilizzabili in gioco:\n\n");

@@ -279,16 +279,19 @@ class SvelaGriglia extends Comando {
             System.out.println("Non c'è nessuna partita in corso");
             return;
         }
+
         try {
             Grafica.svelaGrigliaNavi(GestioneComandi.getPartita().getGriglia());
         } catch (CloneNotSupportedException e) {
-            System.out.println("Impossibile svelare la griglia");
+            System.out.println("Impossibile svelare la griglia: clonazione di griglia fallita");
         }
+    }
+}
 
 /**
- Classe che rappresenta il comando /help.
-
- @author Gruppo Hamming
+ * Classe che rappresenta il comando /help.
+ *
+ * @author Gruppo Hamming
  */
 class Help extends Comando {
     Help() {

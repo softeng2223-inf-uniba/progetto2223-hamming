@@ -24,8 +24,8 @@ public final class ConfigurazioniInterfaccia {
             put("mostralivello", new MostraLivello());
             put("gioca", new Gioca());
             put("mostranavi", new MostraNavi());
-            put("help", new Help());
             put("svelagriglia", new SvelaGriglia());
+            put("help", new Help());
         }
     };
 
