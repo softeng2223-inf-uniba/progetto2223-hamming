@@ -235,18 +235,18 @@ class Gioca extends Comando {
             System.out.println("Clone non supportato");
         }
     }
+}
 
-    class MostraNavi extends Comando {
-        MostraNavi() {
-            super("mostraNavi", "utility");
-        }
+class MostraNavi extends Comando {
+    MostraNavi() {
+        super("mostraNavi", "utility");
+    }
 
-        String getDescrizione() {
-            return "Mostra le navi presenti nella griglia";
-        }
+    String getDescrizione() {
+        return "Mostra le navi presenti nella griglia";
+    }
 
-        void esegui() {
-            Grafica.stampaNavi();
-        }
+    void esegui() {
+        Grafica.stampaNavi();
     }
 }
