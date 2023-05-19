@@ -26,6 +26,13 @@ public final class GestioneComandi {
     }
 
     /**
+     * Restituisce true se la partita è iniziata, false altrimenti.
+     */
+    public static boolean partitaIniziata() {
+        return partita != null;
+    }
+
+    /**
      * Metodo che inizializza la partita.
      * @throws LivelloNonImpostatoException
      * @throws PartitaGiaIniziataException
