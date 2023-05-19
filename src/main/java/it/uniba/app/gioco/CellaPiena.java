@@ -27,6 +27,14 @@ public class CellaPiena extends Cella {
     }
 
     /**
+     * Metodo che indica se la cella è vuota (non contiene navi).
+     * @return false
+     */
+    public boolean eVuota() {
+        return false;
+    }
+
+    /**
      * Metodo che clona la cella piena.
      * @return la cella piena clonata.
      */

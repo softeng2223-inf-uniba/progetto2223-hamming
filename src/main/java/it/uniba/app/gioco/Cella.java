@@ -27,6 +27,22 @@ public class Cella implements Cloneable {
     }
 
     /**
+     * Metodo che indica se la cella è vuota (non contiene navi).
+     * @return true
+     */
+    public boolean eVuota() {
+        return true;
+    }
+
+    /**
+     * Metodo che restituisce la nave occupante la cella (null).
+     * @return null
+     */
+    public Nave getNave() {
+        return null;
+    }
+
+    /**
      * Metodo che clona la cella.
      * @return la cella clonata.
      */
