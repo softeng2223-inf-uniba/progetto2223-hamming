@@ -36,6 +36,14 @@ public final class ConfigurazioniInterfaccia {
         return COMANDI.get(comando);
     }
 
+    /**
+     * Metodo che restituisce la mappa dei comandi.
+     * @return mappa dei comandi
+     */
+    public static Map<String, Comando> getComandi() {
+        return COMANDI;
+    }
+
     //SEZIONE NAVI
     private static final LinkedHashMap<String, String> SIMBOLI_NAVI = new LinkedHashMap<String, String>();
 
