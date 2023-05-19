@@ -23,6 +23,7 @@ public final class ConfigurazioniInterfaccia {
             put("difficile", new Difficile());
             put("mostralivello", new MostraLivello());
             put("gioca", new Gioca());
+            put("mostranavi", new MostraNavi());
         }
     };
 
