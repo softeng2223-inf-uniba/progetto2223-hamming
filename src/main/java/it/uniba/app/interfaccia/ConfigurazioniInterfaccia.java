@@ -22,6 +22,7 @@ public final class ConfigurazioniInterfaccia {
             put("medio", new Medio());
             put("difficile", new Difficile());
             put("mostralivello", new MostraLivello());
+            put("gioca", new Gioca());
         }
     };
 
