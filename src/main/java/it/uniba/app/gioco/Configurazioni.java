@@ -74,10 +74,6 @@ public final class Configurazioni {
         CONFIGURAZIONE_NAVI.put("cacciatorpediniere", CACCIATORPEDINIERE);
     }
 
-    public Map<String, ConfigurazioneNave> getConfigurazioneNavi() {
-        return CONFIGURAZIONE_NAVI;
-    }
-
     /**
      * Restituisce la lunghezza di una tipologia di navi.
      * @param tipologia tipologia di nave
