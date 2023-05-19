@@ -71,4 +71,21 @@ public final class Grafica {
             System.out.println("|\n   +---+---+---+---+---+---+---+---+---+---+");
         }
     }
+
+
+
+    public static void stampaNavi() {
+        System.out.println("Navi presenti sulla griglia:\n");
+        for (String tipologiaNave : Configurazioni.getTipologieNavi()) {
+            String riga = "" + tipologiaNave + ":   ";
+            for (int i = 0; i < Configurazioni.getLunghezzaNavi(tipologiaNave); i++) {
+                riga += ConfigurazioniInterfaccia.getSimboloNavi(tipologiaNave);
+            }
+            for (int i = 0; i < Configurazioni.getLunghezzaNavi(tipologiaNave); i++) {
+                riga += " ";
+            }
+            riga += "    Numero esemplari: " + Configurazioni.getNumeroNaviPerTipologia(tipologiaNave);
+            System.out.println(riga);
+        }
+    }
 }
