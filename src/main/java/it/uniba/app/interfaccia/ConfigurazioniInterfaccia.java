@@ -52,7 +52,7 @@ public final class ConfigurazioniInterfaccia {
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_MAGENTA = "\u001B[35m";
-    public static final String SIMBOLO_DEFAULT = "\u25A0";
+    public static final String SIMBOLO_DEFAULT = "X";//"\u25A0";
 
     /**
      * Restituisce il simbolo di default delle navi.
