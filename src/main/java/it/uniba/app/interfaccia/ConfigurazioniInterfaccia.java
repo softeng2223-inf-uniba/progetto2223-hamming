@@ -66,10 +66,10 @@ public final class ConfigurazioniInterfaccia {
     private static final LinkedHashMap<String, String> SIMBOLI_NAVI = new LinkedHashMap<String, String>();
 
     static {
-        SIMBOLI_NAVI.put("portaerei", "P");
-        SIMBOLI_NAVI.put("corazzata", "C");
-        SIMBOLI_NAVI.put("incrociatore", "I");
-        SIMBOLI_NAVI.put("cacciatorpediniere", "T");
+        SIMBOLI_NAVI.put("portaerei", ANSI_RED + SIMBOLO_DEFAULT + ANSI_RESET);
+        SIMBOLI_NAVI.put("corazzata", ANSI_GREEN + SIMBOLO_DEFAULT + ANSI_RESET);
+        SIMBOLI_NAVI.put("incrociatore", ANSI_CYAN + SIMBOLO_DEFAULT + ANSI_RESET);
+        SIMBOLI_NAVI.put("cacciatorpediniere", ANSI_MAGENTA + SIMBOLO_DEFAULT + ANSI_RESET);
     }
 
     /**
