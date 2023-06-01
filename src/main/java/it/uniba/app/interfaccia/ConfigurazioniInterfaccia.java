@@ -54,6 +54,15 @@ public final class ConfigurazioniInterfaccia {
     public static final String ANSI_MAGENTA = "\u001B[35m";
     public static final String SIMBOLO_DEFAULT = "\u25A0";
 
+    /**
+     * Restituisce il simbolo di default delle navi.
+     * 
+     * @return simbolo di default delle navi
+     */
+    public static String getSimboloDefault() {
+        return SIMBOLO_DEFAULT;
+    }
+
     private static final LinkedHashMap<String, String> SIMBOLI_NAVI = new LinkedHashMap<String, String>();
 
     static {
