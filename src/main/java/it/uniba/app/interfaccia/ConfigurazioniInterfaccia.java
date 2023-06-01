@@ -47,6 +47,12 @@ public final class ConfigurazioniInterfaccia {
     }
 
     //SEZIONE NAVI
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_MAGENTA = "\u001B[35m";
+
     private static final LinkedHashMap<String, String> SIMBOLI_NAVI = new LinkedHashMap<String, String>();
 
     static {
