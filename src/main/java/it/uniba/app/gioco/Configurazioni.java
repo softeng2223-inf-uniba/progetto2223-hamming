@@ -44,18 +44,27 @@ public final class Configurazioni {
       "medio", 30,
       "difficile", 10);
 
+    private static final String LIVELLO_DEFAULT = "medio";
+
     /**
      * Restituisce il numero di tentativi di un livello di difficoltà.
      *
      * @param livello livello di difficoltà
+     * @return numero di tentativi
      */
     public static int getTentativi(final String livello) {
-        if (livello == null) {
-            throw new LivelloNonEsistenteException("Livello non impostato");
-        } else if (!CONFIGURAZIONE_LIVELLO.containsKey(livello)) {
+        if (!CONFIGURAZIONE_LIVELLO.containsKey(livello)) {
             throw new LivelloNonEsistenteException("Livello " + livello + " non esiste");
         }
         return CONFIGURAZIONE_LIVELLO.get(livello);
+    }
+
+    /**
+     * Restituisce il livello di default.
+     * @return livello di default
+     */
+    public static String getLivelloDefault() {
+        return LIVELLO_DEFAULT;
     }
 
     //SEZIONE NAVI
