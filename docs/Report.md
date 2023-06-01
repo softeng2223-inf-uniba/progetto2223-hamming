@@ -1,4 +1,14 @@
 # Report
+## Indice
+- [1. Introduzione](#1-introduzione)
+- [2. Modello di dominio](#2-modello-di-dominio)
+- [3. Requisiti specifici](#3-requisiti-specifici)
+    - [3.1 Requisiti funzionali](#31-requisiti-funzionali)
+    - [3.2 Requisiti non funzionali](#32-requisiti-non-funzionali)
+- [7. Manuale Utente](#7-manuale-utente)
+- [9. Analisi retrospettiva](#9-analisi-retrospettiva)
+    - [9.1 Sprint 0](#91-sprint-0)         
+
 
 
 ## 1. Introduzione
@@ -312,7 +322,8 @@ Windows:
 #### Comando per l'esecuzione del container
 Dopo aver eseguito il comando ```docker pull``` copiandolo da GitHub Packages, il comando Docker da usare per eseguire il container contenente l'applicazione è:
 ```docker run --rm -it ghcr.io/softeng2223-inf-uniba/battleship-hamming:latest```
-<br>
+
+
 ## 9. Analisi retrospettiva
 
 ### 9.1 Sprint 0
