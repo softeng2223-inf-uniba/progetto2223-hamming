@@ -48,9 +48,9 @@ public final class Grafica {
                 return "~";
             } else {
                 if (!cella.getNave().eAffondata()) {
-                    return "X";
-                } else {
                     return ConfigurazioniInterfaccia.getSimboloNavi(cella.getNave().getTipologia());
+                } else {
+                    return ConfigurazioniInterfaccia.getSimboloDefault();
                 }
             }
         }
