@@ -2,8 +2,8 @@ package it.uniba.app.interfaccia;
 
 import it.uniba.app.exceptions.ComandoNonEsistenteException;
 import it.uniba.app.exceptions.ComandoNonFormattatoException;
-import it.uniba.app.exceptions.LivelloNonImpostatoException;
 import it.uniba.app.exceptions.PartitaGiaIniziataException;
+import it.uniba.app.gioco.Configurazioni;
 import it.uniba.app.gioco.Partita;
 import it.uniba.app.util.Util;
 
@@ -15,7 +15,7 @@ import it.uniba.app.util.Util;
 public final class GestioneComandi {
     private static Partita partita = null;
     private static Boolean continua = true;
-    private static String livello = null;
+    private static String livello = Configurazioni.getLivelloDefault();
 
     private GestioneComandi() {
     }
@@ -37,15 +37,11 @@ public final class GestioneComandi {
     /**
      * Metodo che inizializza la partita.
      *
-     * @throws LivelloNonImpostatoException
      * @throws PartitaGiaIniziataException
      */
-    public static void inizializzaPartita() throws LivelloNonImpostatoException, PartitaGiaIniziataException {
+    public static void inizializzaPartita() throws PartitaGiaIniziataException {
         if (partita != null) {
             throw new PartitaGiaIniziataException("Una partita è già in corso");
-        }
-        if (livello == null) {
-            throw new LivelloNonImpostatoException("Devi impostare la difficoltà prima di iniziare una partita");
         }
         partita = new Partita(livello);
     }
@@ -240,8 +236,6 @@ class Gioca extends Comando {
             GestioneComandi.getPartita().posizionaNavi();
             System.out.println("Nuova partita iniziata\n");
             Grafica.stampaGrigliaColpita(GestioneComandi.getPartita().getGriglia());
-        } catch (LivelloNonImpostatoException e) {
-            System.out.println(e.getMessage());
         } catch (PartitaGiaIniziataException e) {
             System.out.println(e.getMessage());
         } catch (CloneNotSupportedException e) {
