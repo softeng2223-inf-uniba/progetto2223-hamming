@@ -52,6 +52,7 @@ public final class ConfigurazioniInterfaccia {
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_MAGENTA = "\u001B[35m";
+    public static final String SIMBOLO_DEFAULT = "\u25A0";
 
     private static final LinkedHashMap<String, String> SIMBOLI_NAVI = new LinkedHashMap<String, String>();
 
