@@ -12,7 +12,7 @@ public abstract class Comando {
         this.categoria = categoriaParam;
     }
 
-    abstract void esegui();
+    abstract void esegui(String[] parametri);
 
     abstract String getDescrizione();
 
