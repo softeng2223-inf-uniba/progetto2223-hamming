@@ -101,13 +101,15 @@ public final class GestioneComandi {
         System.out.print("> ");
 
         String input = Util.getString();
+
         if (!input.startsWith("/")) {
             throw new ComandoNonFormattatoException(input);
         }
-        input = input.substring(1).toLowerCase();
+
+        input = input.toLowerCase();
         return input;
     }
-
+    
     /**
      * Esegue il comando specificato.
      *
@@ -133,7 +135,7 @@ class Esci extends Comando {
         return "Chiude il programma";
     }
 
-    void esegui() {
+    void esegui(String[] parametri) {
         String input;
         while (true) {
             System.out.print("Conferma l'uscita dal programma(s/n): ");
@@ -162,7 +164,7 @@ class Facile extends Comando {
         return "imposta la difficoltà facile";
     }
 
-    public void esegui() {
+    public void esegui(String[] parametri) {
         try {
             GestioneComandi.setLivello("facile");
         } catch (PartitaGiaIniziataException e) {
@@ -180,7 +182,7 @@ class Medio extends Comando {
         return "imposta la difficoltà media";
     }
 
-    public void esegui() {
+    public void esegui(String[] parametri) {
         try {
             GestioneComandi.setLivello("medio");
         } catch (PartitaGiaIniziataException e) {
@@ -198,7 +200,7 @@ class Difficile extends Comando {
         return "imposta la difficoltà difficile";
     }
 
-    public void esegui() {
+    public void esegui(String[] parametri) {
         try {
             GestioneComandi.setLivello("difficile");
         } catch (PartitaGiaIniziataException e) {
@@ -216,7 +218,7 @@ class MostraLivello extends Comando {
         return "Mostra il livello di difficoltà impostato e il corrispondente numero massimo di tentativi falliti";
     }
 
-    void esegui() {
+    void esegui(String[] parametri) {
         Grafica.mostraLivello(GestioneComandi.getLivello());
     }
 }
@@ -230,7 +232,7 @@ class Gioca extends Comando {
         return "Inizia una nuova partita";
     }
 
-    void esegui() {
+    void esegui(String[] parametri) {
         try {
             GestioneComandi.inizializzaPartita();
             GestioneComandi.getPartita().posizionaNavi();
@@ -253,7 +255,7 @@ class MostraNavi extends Comando {
         return "Mostra le navi presenti nella griglia";
     }
 
-    void esegui() {
+    void esegui(String[] parametri) {
         Grafica.stampaNavi();
     }
 }
@@ -268,7 +270,7 @@ class SvelaGriglia extends Comando {
         return "Svela la griglia di gioco";
     }
 
-    public void esegui() {
+    public void esegui(String[] parametri) {
         if (!GestioneComandi.partitaIniziata()) {
             System.out.println("Non c'è nessuna partita in corso");
             return;
@@ -296,7 +298,7 @@ class Help extends Comando {
         return "Mostra l'elenco dei comandi utilizzabili";
     }
 
-    public void esegui() {
+    public void esegui(String[] parametri) {
         Grafica.stampaHelp();
     }
 }
