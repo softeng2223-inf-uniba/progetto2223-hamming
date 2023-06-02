@@ -109,17 +109,18 @@ public final class GestioneComandi {
         input = input.toLowerCase();
         return input;
     }
-    
+
     /**
-     * Esegue il comando specificato.
+     * Esegue il comando specificato, passandogli i parametri.
      *
      * @param comando nome del comando da eseguire
+     * @param parametri parametri da passare al comando
      */
-    public static void chiamaComando(final String comando) throws ComandoNonEsistenteException {
-        Comando c = ConfigurazioniInterfaccia.getComando(comando.toLowerCase());
+    public static void chiamaComando(final String comando, final String[] parametri) throws ComandoNonEsistenteException {
+        Comando c = ConfigurazioniInterfaccia.getComando(comando.substring(1).toLowerCase());
 
         if (c != null) {
-            c.esegui();
+            c.esegui(parametri);
         } else {
             throw new ComandoNonEsistenteException(comando);
         }
