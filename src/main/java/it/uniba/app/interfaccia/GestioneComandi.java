@@ -126,7 +126,8 @@ public final class GestioneComandi {
      * @param comando nome del comando da eseguire
      * @param parametri parametri da passare al comando
      */
-    public static void chiamaComando(final String comando, final String[] parametri) throws ComandoNonEsistenteException {
+    public static void chiamaComando(final String comando, final String[] parametri) 
+            throws ComandoNonEsistenteException {
         Comando c = ConfigurazioniInterfaccia.getComando(comando.substring(1).toLowerCase());
 
         if (c != null) {
@@ -146,7 +147,7 @@ class Esci extends Comando {
         return "Chiude il programma";
     }
 
-    void esegui(String[] parametri) {
+    void esegui(final String[] parametri) {
         String input;
         while (true) {
             System.out.print("Conferma l'uscita dal programma(s/n): ");
@@ -175,7 +176,7 @@ class Facile extends Comando {
         return "imposta la difficoltà facile";
     }
 
-    public void esegui(String[] parametri) {
+    public void esegui(final String[] parametri) {
         try {
             GestioneComandi.setLivello("facile");
         } catch (PartitaGiaIniziataException e) {
@@ -193,7 +194,7 @@ class Medio extends Comando {
         return "imposta la difficoltà media";
     }
 
-    public void esegui(String[] parametri) {
+    public void esegui(final String[] parametri) {
         try {
             GestioneComandi.setLivello("medio");
         } catch (PartitaGiaIniziataException e) {
@@ -211,7 +212,7 @@ class Difficile extends Comando {
         return "imposta la difficoltà difficile";
     }
 
-    public void esegui(String[] parametri) {
+    public void esegui(final String[] parametri) {
         try {
             GestioneComandi.setLivello("difficile");
         } catch (PartitaGiaIniziataException e) {
@@ -229,7 +230,7 @@ class MostraLivello extends Comando {
         return "Mostra il livello di difficoltà impostato e il corrispondente numero massimo di tentativi falliti";
     }
 
-    void esegui(String[] parametri) {
+    void esegui(final String[] parametri) {
         Grafica.mostraLivello(GestioneComandi.getLivello());
     }
 }
@@ -243,7 +244,7 @@ class Gioca extends Comando {
         return "Inizia una nuova partita";
     }
 
-    void esegui(String[] parametri) {
+    void esegui(final String[] parametri) {
         try {
             GestioneComandi.inizializzaPartita();
             GestioneComandi.getPartita().posizionaNavi();
@@ -266,7 +267,7 @@ class MostraNavi extends Comando {
         return "Mostra le navi presenti nella griglia";
     }
 
-    void esegui(String[] parametri) {
+    void esegui(final String[] parametri) {
         Grafica.stampaNavi();
     }
 }
@@ -281,7 +282,7 @@ class SvelaGriglia extends Comando {
         return "Svela la griglia di gioco";
     }
 
-    public void esegui(String[] parametri) {
+    public void esegui(final String[] parametri) {
         if (!GestioneComandi.partitaIniziata()) {
             System.out.println("Non c'è nessuna partita in corso");
             return;
@@ -309,7 +310,7 @@ class Help extends Comando {
         return "Mostra l'elenco dei comandi utilizzabili";
     }
 
-    public void esegui(String[] parametri) {
+    public void esegui(final String[] parametri) {
         Grafica.stampaHelp();
     }
 }
