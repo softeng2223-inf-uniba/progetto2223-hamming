@@ -48,9 +48,9 @@ public final class Grafica {
                 return "~";
             } else {
                 if (!cella.getNave().eAffondata()) {
-                    return "X";
-                } else {
                     return ConfigurazioniInterfaccia.getSimboloNavi(cella.getNave().getTipologia());
+                } else {
+                    return ConfigurazioniInterfaccia.getSimboloDefault();
                 }
             }
         }
@@ -112,10 +112,10 @@ public final class Grafica {
                 riga += " ";
             }
             for (int i = 0; i < Configurazioni.getLunghezzaNavi(tipologiaNave); i++) {
-                riga += "[X]";
+                riga += ConfigurazioniInterfaccia.getSimboloNavi(tipologiaNave) + " ";
             }
             for (int i = 0; i < lunghezzaSimboli - Configurazioni.getLunghezzaNavi(tipologiaNave); i++) {
-                riga += "   ";
+                riga += "  ";
             }
             riga = riga.concat("    Numero esemplari: " + Configurazioni.getNumeroNaviPerTipologia(tipologiaNave));
             System.out.println(riga);
