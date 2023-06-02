@@ -25,7 +25,7 @@ public final class App {
     public static void main(final String[] args) {
         if (args.length == 1 && ("--help".equals(args[0]) || "-h".equals(args[0]))) {
             try {
-                GestioneComandi.chiamaComando("help");
+                GestioneComandi.chiamaComando("/help", new String[0]);
             } catch (ComandoNonEsistenteException e) {
                 System.out.println(e.getMessage());
             }

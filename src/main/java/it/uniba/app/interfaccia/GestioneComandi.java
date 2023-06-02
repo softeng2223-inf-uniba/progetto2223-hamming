@@ -1,5 +1,7 @@
 package it.uniba.app.interfaccia;
 
+import java.util.Arrays;
+
 import it.uniba.app.exceptions.ComandoNonEsistenteException;
 import it.uniba.app.exceptions.ComandoNonFormattatoException;
 import it.uniba.app.exceptions.PartitaGiaIniziataException;
@@ -86,7 +88,15 @@ public final class GestioneComandi {
         while (continua) {
             try {
                 String input = leggiComando();
-                chiamaComando(input);
+                    String[] split = input.split(" ");
+                    if (split.length > 2) {
+                        throw new ComandoNonFormattatoException(input);
+                    }
+                    String[] parametri = new String[split.length - 1];
+                    if (split.length > 1) {
+                        parametri = Arrays.copyOfRange(split, 1, split.length);
+                    }
+                    chiamaComando(split[0], parametri);
             } catch (ComandoNonEsistenteException | ComandoNonFormattatoException e) {
                 System.out.println(e.getMessage());
             }
