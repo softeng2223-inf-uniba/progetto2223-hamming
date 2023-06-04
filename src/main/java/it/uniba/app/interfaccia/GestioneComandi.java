@@ -3,6 +3,7 @@ package it.uniba.app.interfaccia;
 import it.uniba.app.exceptions.ComandoNonEsistenteException;
 import it.uniba.app.exceptions.InputNonFormattatoException;
 import it.uniba.app.exceptions.PartitaGiaIniziataException;
+import it.uniba.app.exceptions.PartitaNonIniziataException;
 import it.uniba.app.gioco.Configurazioni;
 import it.uniba.app.gioco.Partita;
 import it.uniba.app.util.Util;
@@ -95,8 +96,16 @@ public final class GestioneComandi {
         while (continua) {
             try {
                 String input = leggiInput();
-                chiamaComando(input);
-            } catch (ComandoNonEsistenteException | InputNonFormattatoException e) {
+                if (eComando(input)) {
+                    chiamaComando(input);
+                } else {
+                    if (!partitaIniziata()) {
+                        throw new PartitaNonIniziataException();
+                    }
+                    //attacco ancora da implementare
+                    System.out.println("Attacco non ancora implementato");
+                }
+            } catch (ComandoNonEsistenteException | InputNonFormattatoException | PartitaNonIniziataException e) {
                 System.out.println(e.getMessage());
             }
         }
