@@ -26,20 +26,33 @@ public final class Configurazioni {
     }
 
     //SEZIONE GRIGLIA
-    private static final int RIGHE_GRIGLIA = 10;
-    private static final int COLONNE_GRIGLIA = 10;
+
+    public static final int DIMENSIONI_GRIGLIA_STANDARD = 10;
+    public static final int DIMENSIONI_GRIGLIA_LARGE = 18;
+    public static final int DIMENSIONI_GRIGLIA_EXTRA_LARGE = 26;
+
+    private static int righeGriglia = DIMENSIONI_GRIGLIA_STANDARD;
+    private static int colonneGriglia = DIMENSIONI_GRIGLIA_STANDARD;
 
     public static int getRigheGriglia() {
-        return RIGHE_GRIGLIA;
+        return righeGriglia;
+    }
+
+    public static void setRigheGriglia(final int righe) {
+        righeGriglia = righe;
     }
 
     public static int getColonneGriglia() {
-        return COLONNE_GRIGLIA;
+        return colonneGriglia;
+    }
+
+    public static void setColonneGriglia(final int colonne) {
+        colonneGriglia = colonne;
     }
 
 
     //SEZIONE LIVELLI
-    private  static final Map<String, Integer> CONFIGURAZIONE_LIVELLO = Map.of(
+    private static final Map<String, Integer> CONFIGURAZIONE_LIVELLO = Map.of(
       "facile", 50,
       "medio", 30,
       "difficile", 10);
