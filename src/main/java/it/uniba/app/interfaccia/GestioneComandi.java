@@ -79,6 +79,15 @@ public final class GestioneComandi {
     }
 
     /**
+     * restituisce true se input è un comando altrimenti false.
+     * @param input input da controllare
+     * @return true se input è un comando altrimenti false
+     */
+    static boolean eComando(final String input) {
+        return input.startsWith("/");
+    }
+
+    /**
      * Ciclo principale del menu.
      */
     public static void mainLoop() {
@@ -101,7 +110,7 @@ public final class GestioneComandi {
         System.out.print("> ");
 
         String input = Util.getString();
-        if (!input.startsWith("/")) {
+        if (!eComando(input)) {
             throw new ComandoNonFormattatoException(input);
         }
         input = input.substring(1).toLowerCase();
