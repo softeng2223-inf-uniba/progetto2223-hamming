@@ -351,3 +351,29 @@ class Large extends Comando {
         System.out.println("Dimensione della griglia impostata a 18x18");
     }
 }
+
+/**
+ * Classe rappresentante il comando /extralarge, che
+ * imposta a 26x26 la dimensione della griglia.
+ */
+class ExtraLarge extends Comando {
+
+    ExtraLarge() {
+        super("extralarge", "difficolta");
+    }
+
+    public String getDescrizione() {
+        return "Imposta la dimensione della griglia a 26x26";
+    }
+
+    public void esegui() {
+        if (GestioneComandi.partitaIniziata()) {
+            System.out.println("Non puoi cambiare la dimensione della griglia durante una partita");
+            return;
+        }
+
+        Configurazioni.setRigheGriglia(Configurazioni.DIMENSIONI_GRIGLIA_EXTRA_LARGE);
+        Configurazioni.setColonneGriglia(Configurazioni.DIMENSIONI_GRIGLIA_EXTRA_LARGE);
+        System.out.println("Dimensione della griglia impostata a 26x26");
+    }
+}
