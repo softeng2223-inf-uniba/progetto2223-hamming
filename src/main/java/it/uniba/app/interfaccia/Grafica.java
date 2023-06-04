@@ -81,14 +81,36 @@ public final class Grafica {
      * @param griglia griglia da stampare
      */
     public static void stampaGrigliaColpita(final Griglia griglia) {
-        System.out.println("     A   B   C   D   E   F   G   H   I   J");
-        System.out.println("   +---+---+---+---+---+---+---+---+---+---+");
-        for (int i = 0; i < Configurazioni.getRigheGriglia(); i++) {
-            System.out.print((i + 1) + (Integer.toString(i + 1).length() == 2 ? " " : "  "));
-            for (int y = 0; y < Configurazioni.getColonneGriglia(); y++) {
-                System.out.print("| " + getSimboloCella(griglia.getCella(i, y)) + " ");
+        int righe = Configurazioni.getRigheGriglia();
+        int colonne = Configurazioni.getColonneGriglia();
+
+        final int margine = 3;
+
+        String[] lettereColonne = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
+                "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+
+        //     A   B   C   D   E   F   G   H   I   J
+        StringBuilder riga = new StringBuilder(" ".repeat(margine + 2));
+        for (int i = 0; i < colonne; i++) {
+            riga.append(lettereColonne[i]).append("   ");
+        }
+        System.out.println(riga);
+
+        //   +---+---+---+---+---+---+---+---+---+---+
+        String divisore = " ".repeat(margine) + "+---".repeat(colonne) + "+";
+        System.out.println(divisore);
+
+        for (int i = 0; i < righe; i++) {
+            //1  |   |   |   |   |   |   |   |   |   |   |
+            riga = new StringBuilder(Integer.toString(i + 1));
+            riga.append(" ".repeat(margine - riga.length()));
+            for (int y = 0; y < colonne; y++) {
+                riga.append("| ").append(getSimboloCella(griglia.getCella(i, y))).append(" ");
             }
-            System.out.println("|\n   +---+---+---+---+---+---+---+---+---+---+");
+            riga.append("|");
+            System.out.println(riga);
+
+            System.out.println(divisore);
         }
     }
 
