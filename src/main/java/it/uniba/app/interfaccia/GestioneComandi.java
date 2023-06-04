@@ -1,7 +1,7 @@
 package it.uniba.app.interfaccia;
 
 import it.uniba.app.exceptions.ComandoNonEsistenteException;
-import it.uniba.app.exceptions.ComandoNonFormattatoException;
+import it.uniba.app.exceptions.InputNonFormattatoException;
 import it.uniba.app.exceptions.PartitaGiaIniziataException;
 import it.uniba.app.gioco.Configurazioni;
 import it.uniba.app.gioco.Partita;
@@ -94,9 +94,9 @@ public final class GestioneComandi {
         continua = true;
         while (continua) {
             try {
-                String input = leggiComando();
+                String input = leggiInput();
                 chiamaComando(input);
-            } catch (ComandoNonEsistenteException | ComandoNonFormattatoException e) {
+            } catch (ComandoNonEsistenteException | InputNonFormattatoException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -105,15 +105,17 @@ public final class GestioneComandi {
     /**
      * Legge un comando da tastiera.
      */
-    public static String leggiComando() throws ComandoNonFormattatoException {
-        System.out.println("\nInserisci un comando: ");
+    public static String leggiInput() throws InputNonFormattatoException {
+        String comandoRegex = "^[A-z]-[0-9]{1,2}$";
+
+        System.out.println(partitaIniziata() ? "\nInserisci un comando o un attacco: " : "\nInserisci un comando: ");
         System.out.print("> ");
 
         String input = Util.getString();
-        if (!eComando(input)) {
-            throw new ComandoNonFormattatoException(input);
+        if (!eComando(input) && !input.matches(comandoRegex)) {
+            throw new InputNonFormattatoException(input);
         }
-        input = input.substring(1).toLowerCase();
+        input = input.toLowerCase();
         return input;
     }
 
@@ -123,7 +125,7 @@ public final class GestioneComandi {
      * @param comando nome del comando da eseguire
      */
     public static void chiamaComando(final String comando) throws ComandoNonEsistenteException {
-        Comando c = ConfigurazioniInterfaccia.getComando(comando.toLowerCase());
+        Comando c = ConfigurazioniInterfaccia.getComando(comando.substring(1).toLowerCase());
 
         if (c != null) {
             c.esegui();
