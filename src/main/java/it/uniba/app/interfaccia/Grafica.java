@@ -153,15 +153,36 @@ public final class Grafica {
     public static void svelaGrigliaNavi(final Griglia griglia) {
         int righe = Configurazioni.getRigheGriglia();
         int colonne = Configurazioni.getColonneGriglia();
+
+        final int margine = 3;
+
+        String[] lettereColonne = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
+                "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+
         System.out.println("Posizione delle navi:\n");
-        System.out.println("     A   B   C   D   E   F   G   H   I   J");
-        for (int i = 0; i < Configurazioni.getRigheGriglia(); i++) {
-            System.out.print((i + 1) + (Integer.toString(i + 1).length() == 2 ? " " : "  "));
-            for (int j = 0; j < Configurazioni.getColonneGriglia(); j++) {
-                System.out.print("| " + getSimboloCellaSvelata(griglia.getCella(i, j)) + " ");
+
+        //     A   B   C   D   E   F   G   H   I   J
+        StringBuilder riga = new StringBuilder(" ".repeat(margine + 2));
+        for (int i = 0; i < colonne; i++) {
+            riga.append(lettereColonne[i]).append("   ");
+        }
+        System.out.println(riga);
+
+        //   +---+---+---+---+---+---+---+---+---+---+
+        String divisore = " ".repeat(margine) + "+---".repeat(colonne) + "+";
+        System.out.println(divisore);
+
+        for (int i = 0; i < righe; i++) {
+            //1  |   |   |   |   |   |   |   |   |   |   |
+            riga = new StringBuilder(Integer.toString(i + 1));
+            riga.append(" ".repeat(margine - riga.length()));
+            for (int y = 0; y < colonne; y++) {
+                riga.append("| ").append(getSimboloCellaSvelata(griglia.getCella(i, y))).append(" ");
             }
-            System.out.println("|\n   +---+---+---+---+---+---+---+---+---+---+");
             riga.append("|");
+            System.out.println(riga);
+
+            System.out.println(divisore);
         }
     }
 
