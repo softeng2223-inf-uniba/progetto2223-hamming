@@ -300,3 +300,28 @@ class Help extends Comando {
         Grafica.stampaHelp();
     }
 }
+
+/**
+ * Classe rappresentante il comando /standard, che
+ * imposta a 10x10 la dimensione della griglia (è il default).
+ */
+class Standard extends Comando {
+    Standard() {
+        super("standard", "difficolta");
+    }
+
+    public String getDescrizione() {
+        return "Imposta la dimensione della griglia a 10x10 (default)";
+    }
+
+    public void esegui() {
+        if (GestioneComandi.partitaIniziata()) {
+            System.out.println("Non puoi cambiare la dimensione della griglia durante una partita");
+            return;
+        }
+
+        Configurazioni.setRigheGriglia(Configurazioni.DIMENSIONI_GRIGLIA_STANDARD);
+        Configurazioni.setColonneGriglia(Configurazioni.DIMENSIONI_GRIGLIA_STANDARD);
+        System.out.println("Dimensione della griglia impostata a 10x10");
+    }
+}
