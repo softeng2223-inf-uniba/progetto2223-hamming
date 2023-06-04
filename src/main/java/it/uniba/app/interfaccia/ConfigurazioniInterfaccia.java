@@ -26,6 +26,9 @@ public final class ConfigurazioniInterfaccia {
             put("mostranavi", new MostraNavi());
             put("svelagriglia", new SvelaGriglia());
             put("help", new Help());
+            put("standard", new Standard());
+            put("large", new Large());
+            put("extralarge", new ExtraLarge());
         }
     };
 
