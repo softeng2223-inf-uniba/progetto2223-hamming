@@ -371,3 +371,5 @@ Cosa **può essere migliorato**:
 Cosa **non è andato bene**:
 
 Possibili azioni per la **correzione dei problemi**:
+
+**Conclusioni**:
