@@ -333,6 +333,9 @@ Per l'organizzazione di lavoro il gruppo ha utilizzato varie piattaforme di comu
 
 ![img\immagineGruppoWhatsapp.png](img\immagineGruppoWhatsapp.png)
 
+Inoltre, il gruppo si è impegnato a tenere circa tre daily meeting settimanali per analizzare le modifiche apportate da ciascun membro e valutare eventuali cambiamenti da apportare al progetto. In particolare, si è posta maggiore attenzione sull'individuazione degli aspetti che esigevano miglioramenti.
+Organizzazione daily meeting dello Sprint2:
+![docs\img\organizzazione_daily_meeting.png](img\organizzazione_daily_meeting.png)
 
 ## 9. Analisi retrospettiva
 
