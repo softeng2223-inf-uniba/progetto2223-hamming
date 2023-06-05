@@ -347,7 +347,7 @@ Per ogni sprint, è stata assegnata una lista di user story, ciascuna delle qual
 Il gruppo ha implementato le user story selezionate dal product backlog per lo sprint. Ogni user story è stata assegnata a uno o due membri del team di sviluppo, la cui gestione è dipesa da loro.   
 
 ##### Fase finale
-Nella fase conclusiva sono state condotte varie riunioni svolte dopo la consegna di ogni sprint. La sua finalità principale è stata quella di mostrare al Product Owner il lavoro svolto durante lo sprint corrente e ottenere il suo feedback.
+Nella fase conclusiva è stata condotta una riunione, svolta dopo la consegna di ogni sprint. La sua finalità principale è stata quella di ottenere il feedback dal product owner.
 
 
 ## 9. Analisi retrospettiva
