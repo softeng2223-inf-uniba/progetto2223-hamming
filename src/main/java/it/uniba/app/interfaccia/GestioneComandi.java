@@ -149,8 +149,8 @@ public final class GestioneComandi {
      * @param comando nome del comando da eseguire
      * @param parametri parametri da passare al comando
      */
-    public static void chiamaComando(final String comando, final String[] parametri) 
-            throws ComandoNonEsistenteException {
+    public static void chiamaComando(final String comando, final String[] parametri)
+            throws ComandoNonEsistenteException, InputNonFormattatoException {
         Comando c = ConfigurazioniInterfaccia.getComando(comando.substring(1).toLowerCase());
 
         if (c != null) {
@@ -478,7 +478,7 @@ class Abbandona extends Comando {
         if (parametri.length > 0){
             throw new InputNonFormattatoException();
         }
-        
+
         if (!GestioneComandi.partitaIniziata()) {
             System.out.println("Non c'è nessuna partita in corso");
             return;
