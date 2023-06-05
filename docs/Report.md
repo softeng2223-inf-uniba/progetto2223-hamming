@@ -361,3 +361,5 @@ Nonostante ci siano stati problemi di tempo derivati dai vari impegni dei partec
 **Data:** 3 Maggio 2023 - 19 Maggio 2023 -- **Revisione**: 31 Maggio 2023
 
 **Partecipanti:**
+
+**Obiettivo dello Sprint**:
