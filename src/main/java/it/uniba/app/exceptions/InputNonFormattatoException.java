@@ -10,7 +10,7 @@ public class InputNonFormattatoException extends Exception {
      * Costruttore senza parametri.
      */
     public InputNonFormattatoException() {
-        super();
+        super("L'input non è formattato correttamente.");
     }
 
     /**
@@ -18,7 +18,7 @@ public class InputNonFormattatoException extends Exception {
      * @param input comando o attacco inserito
      */
     public InputNonFormattatoException(final String input) {
-        super("Il comando \"" + input
+        super("L'input \"" + input
                 + "\" non è formattato correttamente.\n"
                 + "Inserire il carattere \"/\" all'inizio se si tratta di un comando;\n"
                 + "Scriverlo nella forma <colonna>-<riga> (es. B-4) se si tratta di un attacco.");
