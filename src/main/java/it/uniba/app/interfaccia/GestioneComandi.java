@@ -48,6 +48,13 @@ public final class GestioneComandi {
     }
 
     /**
+     * Metodo che termina la partita.
+     */
+    public static void terminaPartita() {
+        partita = null;
+    }
+
+    /**
      * Restituisce il livello di difficoltà impostato.
      */
     public static String getLivello() {
@@ -81,6 +88,7 @@ public final class GestioneComandi {
 
     /**
      * restituisce true se input è un comando altrimenti false.
+     *
      * @param input input da controllare
      * @return true se input è un comando altrimenti false
      */
@@ -154,17 +162,13 @@ class Esci extends Comando {
     }
 
     void esegui() {
-        String input;
-        while (true) {
-            System.out.print("Conferma l'uscita dal programma(s/n): ");
-            input = Util.getString();
-            if ("s".equals(input) || "n".equals(input)) {
-                break;
-            }
-            System.out.println("Inserire solo s o n");
+        if (GestioneComandi.partitaIniziata()) {
+            System.out.println("Attenzione: se esci abbandonerai la partita in corso");
         }
 
-        if ("s".equals(input)) {
+        boolean conferma = Util.chiediConferma("Conferma l'uscita dal programma(s/n): ");
+
+        if (conferma) {
             System.out.println("Uscita dal programma");
             GestioneComandi.setContinua(false);
         } else {
@@ -395,5 +399,45 @@ class ExtraLarge extends Comando {
         Configurazioni.setRigheGriglia(Configurazioni.DIMENSIONI_GRIGLIA_EXTRA_LARGE);
         Configurazioni.setColonneGriglia(Configurazioni.DIMENSIONI_GRIGLIA_EXTRA_LARGE);
         System.out.println("Dimensione della griglia impostata a 26x26");
+    }
+}
+
+/**
+ * Classe rappresentante il comando /abbandona, che
+ * chiede conferma all'utente:
+ * se la conferma è positiva, l’applicazione risponde visualizzando
+ * sulla griglia la posizione di tutte le navi e si predispone a ricevere nuovi comandi;
+ * se la conferma è negativa, l'applicazione si predispone a ricevere nuovi tentativi o comandi.
+ */
+class Abbandona extends Comando {
+    Abbandona() {
+        super("abbandona", "gioco");
+    }
+
+    public String getDescrizione() {
+        return "Abbandona la partita in corso";
+    }
+
+    public void esegui() {
+        if (!GestioneComandi.partitaIniziata()) {
+            System.out.println("Non c'è nessuna partita in corso");
+            return;
+        }
+
+        boolean conferma = Util.chiediConferma("Conferma l'abbandono della partita(s/n): ");
+
+        if (conferma) {
+            System.out.println("Abbandono della partita...");
+            try {
+                Grafica.svelaGrigliaNavi(GestioneComandi.getPartita().getGriglia());
+            } catch (CloneNotSupportedException e) {
+                System.out.println("Impossibile svelare la griglia: clonazione di griglia fallita");
+            }
+
+            GestioneComandi.terminaPartita();
+            System.out.println("Partita abbandonata");
+        } else {
+            System.out.println("Abbandono della partita annullato");
+        }
     }
 }
