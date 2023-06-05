@@ -412,7 +412,11 @@ class Large extends Comando {
         return "Imposta la dimensione della griglia a 18x18";
     }
 
-    public void esegui(String[] parametri) {
+    public void esegui(String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0){
+            throw new InputNonFormattatoException();
+        }
+
         if (GestioneComandi.partitaIniziata()) {
             System.out.println("Non puoi cambiare la dimensione della griglia durante una partita");
             return;
