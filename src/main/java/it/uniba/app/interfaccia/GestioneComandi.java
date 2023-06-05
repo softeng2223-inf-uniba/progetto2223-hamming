@@ -202,7 +202,7 @@ class Facile extends Comando {
         if (parametri.length > 0){
             throw new InputNonFormattatoException();
         }
-        
+
         try {
             GestioneComandi.setLivello("facile");
         } catch (PartitaGiaIniziataException e) {
@@ -220,7 +220,11 @@ class Medio extends Comando {
         return "imposta la difficoltà media";
     }
 
-    public void esegui(final String[] parametri) {
+    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0){
+            throw new InputNonFormattatoException();
+        }
+
         try {
             GestioneComandi.setLivello("medio");
         } catch (PartitaGiaIniziataException e) {
