@@ -268,7 +268,7 @@ class MostraLivello extends Comando {
         if (parametri.length > 0){
             throw new InputNonFormattatoException();
         }
-        
+
         Grafica.mostraLivello(GestioneComandi.getLivello());
     }
 }
@@ -282,7 +282,11 @@ class Gioca extends Comando {
         return "Inizia una nuova partita";
     }
 
-    void esegui(final String[] parametri) {
+    void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0){
+            throw new InputNonFormattatoException();
+        }
+
         try {
             GestioneComandi.inizializzaPartita();
             GestioneComandi.getPartita().posizionaNavi();
