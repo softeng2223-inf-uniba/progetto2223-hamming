@@ -246,7 +246,7 @@ class Difficile extends Comando {
         if (parametri.length > 0){
             throw new InputNonFormattatoException();
         }
-        
+
         try {
             GestioneComandi.setLivello("difficile");
         } catch (PartitaGiaIniziataException e) {
@@ -264,7 +264,11 @@ class MostraLivello extends Comando {
         return "Mostra il livello di difficoltà impostato e il corrispondente numero massimo di tentativi falliti";
     }
 
-    void esegui(final String[] parametri) {
+    void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0){
+            throw new InputNonFormattatoException();
+        }
+        
         Grafica.mostraLivello(GestioneComandi.getLivello());
     }
 }
