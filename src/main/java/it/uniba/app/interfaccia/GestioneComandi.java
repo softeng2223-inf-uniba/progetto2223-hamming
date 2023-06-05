@@ -309,7 +309,11 @@ class MostraNavi extends Comando {
         return "Mostra le navi presenti nella griglia";
     }
 
-    void esegui(final String[] parametri) {
+    void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0){
+            throw new InputNonFormattatoException();
+        }
+        
         Grafica.stampaNavi();
     }
 }
