@@ -337,7 +337,7 @@ Inoltre, il gruppo si è impegnato a tenere circa tre daily meeting settimanali 
 Organizzazione daily meeting dello Sprint2:
 ![docs\img\organizzazione_daily_meeting.png](img\organizzazione_daily_meeting.png)
 
-Inoltre, al termine di ogni sprint, è stata condotta un'analisi retrospettiva tra i membri del gruppo. Questa sessione, di solito della durata di 15-30 minuti, ha fornito a ciascun membro l'opportunità di esprimere un feedback sul lavoro svolto, identificando ciò che è stato fatto correttamente e ciò che è necessario evitare per gli sprint successivi.
+Al termine di ogni sprint, è stata condotta un'analisi retrospettiva tra i membri del gruppo. Questa sessione, di solito della durata di 15-30 minuti, ha fornito a ciascun membro l'opportunità di esprimere un feedback sul lavoro svolto, identificando ciò che è stato fatto correttamente e ciò che è necessario evitare per gli sprint successivi.
 
 #### Processo di sviluppo
 ##### Fase inziale
