@@ -474,7 +474,11 @@ class Abbandona extends Comando {
         return "Abbandona la partita in corso";
     }
 
-    public void esegui(String[] parametri) {
+    public void esegui(String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0){
+            throw new InputNonFormattatoException();
+        }
+        
         if (!GestioneComandi.partitaIniziata()) {
             System.out.println("Non c'è nessuna partita in corso");
             return;
