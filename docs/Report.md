@@ -6,6 +6,7 @@
     - [3.1 Requisiti funzionali](#31-requisiti-funzionali)
     - [3.2 Requisiti non funzionali](#32-requisiti-non-funzionali)
 - [7. Manuale Utente](#7-manuale-utente)
+- [8.Processo di sviluppo e organizzazione del lavoro](#8-Processo-di-sviluppo-e-organizzazione-del-lavoro)
 - [9. Analisi retrospettiva](#9-analisi-retrospettiva)
     - [9.1 Sprint 0](#91-sprint-0)         
 
@@ -322,6 +323,14 @@ Windows:
 #### Comando per l'esecuzione del container
 Dopo aver eseguito il comando ```docker pull``` copiandolo da GitHub Packages, il comando Docker da usare per eseguire il container contenente l'applicazione è:
 ```docker run --rm -it ghcr.io/softeng2223-inf-uniba/battleship-hamming:latest```
+
+## 8. Processo di sviluppo e organizzazione del lavoro
+Il gruppo Hamming, durante lo svolgimento delle consegne ha perseguito una strategia precisa nell'organizzazione e nella divisione del lavoro, tale framework di gestione è denominato "Scrum".
+#### Organizzazione del lavoro
+I progetti Scrum fanno progressi in una serie di iterazioni dette sprint, non interrompibili, con una durata, in questo caso, di 2 settimane. 
+In questo progetto precisamente il gruppo ha lavorato su 3 sprint: sprint0, sprint1, sprint2, per ognuno dei quali i requisiti sono stati: analizzati, progettati, realizzati e testati.
+Per l'organizzazione di lavoro il gruppo ha utilizzato varie piattaforme di comunicazione come: whatsapp, per fissare daily meeting o per avvisi extra di lavoro e discord utilizzato, come alternativa, per condurre daily meeting straordinari quando non vi era la possibilità di effettuarlo fisicamente.
+
 
 
 ## 9. Analisi retrospettiva
