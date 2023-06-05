@@ -341,6 +341,9 @@ Organizzazione daily meeting dello Sprint2:
 ##### Fase inziale
 Per ogni sprint, è stata assegnata una lista di user story, ciascuna delle quali rappresenta un lavoro distinto necessario per il completamento del progetto. Queste user story sono state stabilite dal Product Owner, che è il responsabile esclusivo della gestione del Product Backlog. Il Product Owner prende decisioni riguardo all'accettazione o al rifiuto dei risultati del lavoro del team di sviluppo e stabilisce la data di scadenza di ciascuno sprint.
 
+##### Fase intermedia
+Dopo aver selezionato le user story, per ciascuno sprint dal Product Backlog, il gruppo ha creato uno sprint backlog che ha raccolto un elenco di attività specifiche da svolgere durante lo sprint. Queste attività sono state assegnate ai membri del team di sviluppo, la cui gestione è dipesa da loro.
+
 
 ## 9. Analisi retrospettiva
 
