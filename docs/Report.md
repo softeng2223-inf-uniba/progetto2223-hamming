@@ -337,6 +337,11 @@ Inoltre, il gruppo si è impegnato a tenere circa tre daily meeting settimanali 
 Organizzazione daily meeting dello Sprint2:
 ![docs\img\organizzazione_daily_meeting.png](img\organizzazione_daily_meeting.png)
 
+#### Processo di sviluppo
+##### Fase inziale
+Per ogni sprint, è stata assegnata una lista di user story, ciascuna delle quali rappresenta un lavoro distinto necessario per il completamento del progetto. Queste user story sono state stabilite dal Product Owner, che è il responsabile esclusivo della gestione del Product Backlog. Il Product Owner prende decisioni riguardo all'accettazione o al rifiuto dei risultati del lavoro del team di sviluppo e stabilisce la data di scadenza di ciascuno sprint.
+
+
 ## 9. Analisi retrospettiva
 
 ### 9.1 Sprint 0
