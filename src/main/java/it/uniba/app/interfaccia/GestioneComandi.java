@@ -162,6 +162,10 @@ class Esci extends Comando {
     }
 
     void esegui() {
+        if (GestioneComandi.partitaIniziata()) {
+            System.out.println("Attenzione: se esci abbandonerai la partita in corso");
+        }
+        
         String input;
         while (true) {
             System.out.print("Conferma l'uscita dal programma(s/n): ");
