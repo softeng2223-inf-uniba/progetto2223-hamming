@@ -146,7 +146,7 @@ public final class GestioneComandi {
     /**
      * Esegue il comando specificato, passandogli i parametri.
      *
-     * @param comando nome del comando da eseguire
+     * @param comando   nome del comando da eseguire
      * @param parametri parametri da passare al comando
      */
     public static void chiamaComando(final String comando, final String[] parametri)
@@ -169,8 +169,9 @@ class Esci extends Comando {
     String getDescrizione() {
         return "Chiude il programma";
     }
-    void esegui(String[] parametri) throws InputNonFormattatoException {
-        if (parametri.length > 0){
+
+    void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0) {
             throw new InputNonFormattatoException();
         }
 
@@ -199,7 +200,7 @@ class Facile extends Comando {
     }
 
     public void esegui(final String[] parametri) throws InputNonFormattatoException {
-        if (parametri.length > 0){
+        if (parametri.length > 0) {
             throw new InputNonFormattatoException();
         }
 
@@ -221,7 +222,7 @@ class Medio extends Comando {
     }
 
     public void esegui(final String[] parametri) throws InputNonFormattatoException {
-        if (parametri.length > 0){
+        if (parametri.length > 0) {
             throw new InputNonFormattatoException();
         }
 
@@ -243,7 +244,7 @@ class Difficile extends Comando {
     }
 
     public void esegui(final String[] parametri) throws InputNonFormattatoException {
-        if (parametri.length > 0){
+        if (parametri.length > 0) {
             throw new InputNonFormattatoException();
         }
 
@@ -265,7 +266,7 @@ class MostraLivello extends Comando {
     }
 
     void esegui(final String[] parametri) throws InputNonFormattatoException {
-        if (parametri.length > 0){
+        if (parametri.length > 0) {
             throw new InputNonFormattatoException();
         }
 
@@ -283,7 +284,7 @@ class Gioca extends Comando {
     }
 
     void esegui(final String[] parametri) throws InputNonFormattatoException {
-        if (parametri.length > 0){
+        if (parametri.length > 0) {
             throw new InputNonFormattatoException();
         }
 
@@ -310,7 +311,7 @@ class MostraNavi extends Comando {
     }
 
     void esegui(final String[] parametri) throws InputNonFormattatoException {
-        if (parametri.length > 0){
+        if (parametri.length > 0) {
             throw new InputNonFormattatoException();
         }
 
@@ -329,7 +330,7 @@ class SvelaGriglia extends Comando {
     }
 
     public void esegui(final String[] parametri) throws InputNonFormattatoException {
-        if (parametri.length > 0){
+        if (parametri.length > 0) {
             throw new InputNonFormattatoException();
         }
 
@@ -361,7 +362,7 @@ class Help extends Comando {
     }
 
     public void esegui(final String[] parametri) throws InputNonFormattatoException {
-        if (parametri.length > 0){
+        if (parametri.length > 0) {
             throw new InputNonFormattatoException();
         }
 
@@ -382,7 +383,7 @@ class Standard extends Comando {
         return "Imposta la dimensione della griglia a 10x10 (default)";
     }
 
-    public void esegui(String[] parametri) throws InputNonFormattatoException {
+    public void esegui(final String[] parametri) throws InputNonFormattatoException {
         if (parametri.length > 0) {
             throw new InputNonFormattatoException();
         }
@@ -412,8 +413,8 @@ class Large extends Comando {
         return "Imposta la dimensione della griglia a 18x18";
     }
 
-    public void esegui(String[] parametri) throws InputNonFormattatoException {
-        if (parametri.length > 0){
+    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0) {
             throw new InputNonFormattatoException();
         }
 
@@ -442,8 +443,8 @@ class ExtraLarge extends Comando {
         return "Imposta la dimensione della griglia a 26x26";
     }
 
-    public void esegui(String[] parametri) throws InputNonFormattatoException {
-        if (parametri.length > 0){
+    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0) {
             throw new InputNonFormattatoException();
         }
 
@@ -474,8 +475,8 @@ class Abbandona extends Comando {
         return "Abbandona la partita in corso";
     }
 
-    public void esegui(String[] parametri) throws InputNonFormattatoException {
-        if (parametri.length > 0){
+    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0) {
             throw new InputNonFormattatoException();
         }
 
