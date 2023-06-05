@@ -166,17 +166,9 @@ class Esci extends Comando {
             System.out.println("Attenzione: se esci abbandonerai la partita in corso");
         }
 
-        String input;
-        while (true) {
-            System.out.print("Conferma l'uscita dal programma(s/n): ");
-            input = Util.getString();
-            if ("s".equals(input) || "n".equals(input)) {
-                break;
-            }
-            System.out.println("Inserire solo s o n");
-        }
+        boolean conferma = Util.chiediConferma("Conferma l'uscita dal programma(s/n): ");
 
-        if ("s".equals(input)) {
+        if (conferma) {
             System.out.println("Uscita dal programma");
             GestioneComandi.setContinua(false);
         } else {
@@ -432,17 +424,9 @@ class Abbandona extends Comando {
             return;
         }
 
-        String input;
-        while (true) {
-            System.out.print("Conferma l'abbandono della partita(s/n): ");
-            input = Util.getString();
-            if ("s".equals(input) || "n".equals(input)) {
-                break;
-            }
-            System.out.println("Inserire solo s o n");
-        }
+        boolean conferma = Util.chiediConferma("Conferma l'abbandono della partita(s/n): ");
 
-        if ("s".equals(input)) {
+        if (conferma) {
             System.out.println("Abbandono della partita...");
             try {
                 Grafica.svelaGrigliaNavi(GestioneComandi.getPartita().getGriglia());
