@@ -242,7 +242,11 @@ class Difficile extends Comando {
         return "imposta la difficoltà difficile";
     }
 
-    public void esegui(final String[] parametri) {
+    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0){
+            throw new InputNonFormattatoException();
+        }
+        
         try {
             GestioneComandi.setLivello("difficile");
         } catch (PartitaGiaIniziataException e) {
