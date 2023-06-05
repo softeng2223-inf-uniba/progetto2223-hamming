@@ -430,7 +430,7 @@ class Abbandona extends Comando {
 
         String input;
         while (true) {
-            System.out.println("Conferma l'abbandono della partita(s/n): ");
+            System.out.print("Conferma l'abbandono della partita(s/n): ");
             input = Util.getString();
             if ("s".equals(input) || "n".equals(input)) {
                 break;
