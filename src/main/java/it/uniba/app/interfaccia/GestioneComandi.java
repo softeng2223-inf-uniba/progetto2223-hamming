@@ -48,6 +48,13 @@ public final class GestioneComandi {
     }
 
     /**
+     * Metodo che termina la partita.
+     */
+    public static void terminaPartita() {
+        partita = null;
+    }
+
+    /**
      * Restituisce il livello di difficoltà impostato.
      */
     public static String getLivello() {
@@ -81,6 +88,7 @@ public final class GestioneComandi {
 
     /**
      * restituisce true se input è un comando altrimenti false.
+     *
      * @param input input da controllare
      * @return true se input è un comando altrimenti false
      */
