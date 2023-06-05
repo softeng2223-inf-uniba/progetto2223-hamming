@@ -313,7 +313,7 @@ class MostraNavi extends Comando {
         if (parametri.length > 0){
             throw new InputNonFormattatoException();
         }
-        
+
         Grafica.stampaNavi();
     }
 }
@@ -328,7 +328,11 @@ class SvelaGriglia extends Comando {
         return "Svela la griglia di gioco";
     }
 
-    public void esegui(final String[] parametri) {
+    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0){
+            throw new InputNonFormattatoException();
+        }
+        
         if (!GestioneComandi.partitaIniziata()) {
             System.out.println("Non c'è nessuna partita in corso");
             return;
