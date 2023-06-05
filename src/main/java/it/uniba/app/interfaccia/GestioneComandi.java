@@ -108,9 +108,6 @@ public final class GestioneComandi {
                 String input = leggiInput();
                 if (eComando(input)) {
                     String[] split = input.split(" ");
-                    if (split.length > 2) {
-                        throw new InputNonFormattatoException(input);
-                    }
                     String[] parametri = new String[split.length - 1];
                     if (split.length > 1) {
                         parametri = Arrays.copyOfRange(split, 1, split.length);
