@@ -198,7 +198,11 @@ class Facile extends Comando {
         return "imposta la difficoltà facile";
     }
 
-    public void esegui(final String[] parametri) {
+    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0){
+            throw new InputNonFormattatoException();
+        }
+        
         try {
             GestioneComandi.setLivello("facile");
         } catch (PartitaGiaIniziataException e) {
