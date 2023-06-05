@@ -344,6 +344,8 @@ Per ogni sprint, è stata assegnata una lista di user story, ciascuna delle qual
 ##### Fase intermedia
 Dopo aver selezionato le user story, per ciascuno sprint dal Product Backlog, il gruppo ha creato uno sprint backlog che ha raccolto un elenco di attività specifiche da svolgere durante lo sprint. Queste attività sono state assegnate ai membri del team di sviluppo, la cui gestione è dipesa da loro.
 
+##### Fase finale
+Nella fase conclusiva sono state condotte varie riunioni svolte dopo la consegna di ogni sprint. La sua finalità principale è stata quella di mostrare al Product Owner il lavoro svolto durante lo sprint corrente e ottenere il suo feedback.
 
 ## 9. Analisi retrospettiva
 
