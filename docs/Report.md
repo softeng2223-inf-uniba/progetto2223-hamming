@@ -6,7 +6,7 @@
     - [3.1 Requisiti funzionali](#31-requisiti-funzionali)
     - [3.2 Requisiti non funzionali](#32-requisiti-non-funzionali)
 - [7. Manuale Utente](#7-manuale-utente)
-- [8.Processo di sviluppo e organizzazione del lavoro](#8-Processo-di-sviluppo-e-organizzazione-del-lavoro)
+- [8. Processo di sviluppo e organizzazione del lavoro](#8-Processo-di-sviluppo-e-organizzazione-del-lavoro)
 - [9. Analisi retrospettiva](#9-analisi-retrospettiva)
     - [9.1 Sprint 0](#91-sprint-0)         
 
@@ -331,6 +331,7 @@ I progetti Scrum fanno progressi in una serie di iterazioni dette sprint, non in
 In questo progetto precisamente il gruppo ha lavorato su 3 sprint: sprint0, sprint1, sprint2, per ognuno dei quali i requisiti sono stati: analizzati, progettati, realizzati e testati.
 Per l'organizzazione di lavoro il gruppo ha utilizzato varie piattaforme di comunicazione come: whatsapp, per fissare daily meeting o per avvisi extra di lavoro e discord utilizzato, come alternativa, per condurre daily meeting straordinari quando non vi era la possibilità di effettuarlo fisicamente.
 
+![img\immagineGruppoWhatsapp.png](img\immagineGruppoWhatsapp.png)
 
 
 ## 9. Analisi retrospettiva
