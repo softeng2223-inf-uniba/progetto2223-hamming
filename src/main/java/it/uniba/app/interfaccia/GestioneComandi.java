@@ -332,7 +332,7 @@ class SvelaGriglia extends Comando {
         if (parametri.length > 0){
             throw new InputNonFormattatoException();
         }
-        
+
         if (!GestioneComandi.partitaIniziata()) {
             System.out.println("Non c'è nessuna partita in corso");
             return;
@@ -360,7 +360,11 @@ class Help extends Comando {
         return "Mostra l'elenco dei comandi utilizzabili";
     }
 
-    public void esegui(final String[] parametri) {
+    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0){
+            throw new InputNonFormattatoException();
+        }
+        
         Grafica.stampaHelp();
     }
 }
