@@ -1,5 +1,7 @@
 package it.uniba.app.interfaccia;
 
+import java.util.Arrays;
+
 import it.uniba.app.exceptions.ComandoNonEsistenteException;
 import it.uniba.app.exceptions.InputNonFormattatoException;
 import it.uniba.app.exceptions.PartitaGiaIniziataException;
@@ -105,7 +107,12 @@ public final class GestioneComandi {
             try {
                 String input = leggiInput();
                 if (eComando(input)) {
-                    chiamaComando(input);
+                    String[] split = input.split(" ");
+                    String[] parametri = new String[split.length - 1];
+                    if (split.length > 1) {
+                        parametri = Arrays.copyOfRange(split, 1, split.length);
+                    }
+                    chiamaComando(split[0], parametri);
                 } else {
                     if (!partitaIniziata()) {
                         throw new PartitaNonIniziataException();
@@ -137,15 +144,17 @@ public final class GestioneComandi {
     }
 
     /**
-     * Esegue il comando specificato.
+     * Esegue il comando specificato, passandogli i parametri.
      *
-     * @param comando nome del comando da eseguire
+     * @param comando   nome del comando da eseguire
+     * @param parametri parametri da passare al comando
      */
-    public static void chiamaComando(final String comando) throws ComandoNonEsistenteException {
+    public static void chiamaComando(final String comando, final String[] parametri)
+            throws ComandoNonEsistenteException, InputNonFormattatoException {
         Comando c = ConfigurazioniInterfaccia.getComando(comando.substring(1).toLowerCase());
 
         if (c != null) {
-            c.esegui();
+            c.esegui(parametri);
         } else {
             throw new ComandoNonEsistenteException(comando);
         }
@@ -161,7 +170,11 @@ class Esci extends Comando {
         return "Chiude il programma";
     }
 
-    void esegui() {
+    void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0) {
+            throw new InputNonFormattatoException();
+        }
+
         if (GestioneComandi.partitaIniziata()) {
             System.out.println("Attenzione: se esci abbandonerai la partita in corso");
         }
@@ -186,7 +199,11 @@ class Facile extends Comando {
         return "imposta la difficoltà facile";
     }
 
-    public void esegui() {
+    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0) {
+            throw new InputNonFormattatoException();
+        }
+
         try {
             GestioneComandi.setLivello("facile");
         } catch (PartitaGiaIniziataException e) {
@@ -204,7 +221,11 @@ class Medio extends Comando {
         return "imposta la difficoltà media";
     }
 
-    public void esegui() {
+    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0) {
+            throw new InputNonFormattatoException();
+        }
+
         try {
             GestioneComandi.setLivello("medio");
         } catch (PartitaGiaIniziataException e) {
@@ -222,7 +243,11 @@ class Difficile extends Comando {
         return "imposta la difficoltà difficile";
     }
 
-    public void esegui() {
+    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0) {
+            throw new InputNonFormattatoException();
+        }
+
         try {
             GestioneComandi.setLivello("difficile");
         } catch (PartitaGiaIniziataException e) {
@@ -240,7 +265,11 @@ class MostraLivello extends Comando {
         return "Mostra il livello di difficoltà impostato e il corrispondente numero massimo di tentativi falliti";
     }
 
-    void esegui() {
+    void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0) {
+            throw new InputNonFormattatoException();
+        }
+
         Grafica.mostraLivello(GestioneComandi.getLivello());
     }
 }
@@ -254,7 +283,11 @@ class Gioca extends Comando {
         return "Inizia una nuova partita";
     }
 
-    void esegui() {
+    void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0) {
+            throw new InputNonFormattatoException();
+        }
+
         try {
             GestioneComandi.inizializzaPartita();
             GestioneComandi.getPartita().posizionaNavi();
@@ -277,7 +310,11 @@ class MostraNavi extends Comando {
         return "Mostra le navi presenti nella griglia";
     }
 
-    void esegui() {
+    void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0) {
+            throw new InputNonFormattatoException();
+        }
+
         Grafica.stampaNavi();
     }
 }
@@ -292,7 +329,11 @@ class SvelaGriglia extends Comando {
         return "Svela la griglia di gioco";
     }
 
-    public void esegui() {
+    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0) {
+            throw new InputNonFormattatoException();
+        }
+
         if (!GestioneComandi.partitaIniziata()) {
             System.out.println("Non c'è nessuna partita in corso");
             return;
@@ -320,7 +361,11 @@ class Help extends Comando {
         return "Mostra l'elenco dei comandi utilizzabili";
     }
 
-    public void esegui() {
+    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0) {
+            throw new InputNonFormattatoException();
+        }
+
         Grafica.stampaHelp();
     }
 }
@@ -338,7 +383,11 @@ class Standard extends Comando {
         return "Imposta la dimensione della griglia a 10x10 (default)";
     }
 
-    public void esegui() {
+    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0) {
+            throw new InputNonFormattatoException();
+        }
+
         if (GestioneComandi.partitaIniziata()) {
             System.out.println("Non puoi cambiare la dimensione della griglia durante una partita");
             return;
@@ -364,7 +413,11 @@ class Large extends Comando {
         return "Imposta la dimensione della griglia a 18x18";
     }
 
-    public void esegui() {
+    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0) {
+            throw new InputNonFormattatoException();
+        }
+
         if (GestioneComandi.partitaIniziata()) {
             System.out.println("Non puoi cambiare la dimensione della griglia durante una partita");
             return;
@@ -390,7 +443,11 @@ class ExtraLarge extends Comando {
         return "Imposta la dimensione della griglia a 26x26";
     }
 
-    public void esegui() {
+    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0) {
+            throw new InputNonFormattatoException();
+        }
+
         if (GestioneComandi.partitaIniziata()) {
             System.out.println("Non puoi cambiare la dimensione della griglia durante una partita");
             return;
@@ -418,7 +475,11 @@ class Abbandona extends Comando {
         return "Abbandona la partita in corso";
     }
 
-    public void esegui() {
+    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0) {
+            throw new InputNonFormattatoException();
+        }
+
         if (!GestioneComandi.partitaIniziata()) {
             System.out.println("Non c'è nessuna partita in corso");
             return;
