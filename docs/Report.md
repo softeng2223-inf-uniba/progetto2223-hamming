@@ -363,3 +363,9 @@ Nonostante ci siano stati problemi di tempo derivati dai vari impegni dei partec
 **Partecipanti:**
 
 **Obiettivo dello Sprint**:
+
+Cosa **è andato bene**:
+
+Cosa **può essere migliorato**:
+
+Cosa **non è andato bene**:
