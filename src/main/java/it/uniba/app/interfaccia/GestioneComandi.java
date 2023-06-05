@@ -364,7 +364,7 @@ class Help extends Comando {
         if (parametri.length > 0){
             throw new InputNonFormattatoException();
         }
-        
+
         Grafica.stampaHelp();
     }
 }
@@ -382,7 +382,11 @@ class Standard extends Comando {
         return "Imposta la dimensione della griglia a 10x10 (default)";
     }
 
-    public void esegui(String[] parametri) {
+    public void esegui(String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0) {
+            throw new InputNonFormattatoException();
+        }
+
         if (GestioneComandi.partitaIniziata()) {
             System.out.println("Non puoi cambiare la dimensione della griglia durante una partita");
             return;
