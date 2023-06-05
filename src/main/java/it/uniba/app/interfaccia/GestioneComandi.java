@@ -107,7 +107,15 @@ public final class GestioneComandi {
             try {
                 String input = leggiInput();
                 if (eComando(input)) {
-                    chiamaComando(input);
+                    String[] split = input.split(" ");
+                    if (split.length > 2) {
+                        throw new InputNonFormattatoException(input);
+                    }
+                    String[] parametri = new String[split.length - 1];
+                    if (split.length > 1) {
+                        parametri = Arrays.copyOfRange(split, 1, split.length);
+                    }
+                    chiamaComando(split[0], parametri);
                 } else {
                     if (!partitaIniziata()) {
                         throw new PartitaNonIniziataException();
@@ -165,7 +173,7 @@ class Esci extends Comando {
         return "Chiude il programma";
     }
   
-    void esegui() {
+    void esegui(String[] parametri) {
         if (GestioneComandi.partitaIniziata()) {
             System.out.println("Attenzione: se esci abbandonerai la partita in corso");
         }
@@ -342,7 +350,7 @@ class Standard extends Comando {
         return "Imposta la dimensione della griglia a 10x10 (default)";
     }
 
-    public void esegui() {
+    public void esegui(String[] parametri) {
         if (GestioneComandi.partitaIniziata()) {
             System.out.println("Non puoi cambiare la dimensione della griglia durante una partita");
             return;
@@ -368,7 +376,7 @@ class Large extends Comando {
         return "Imposta la dimensione della griglia a 18x18";
     }
 
-    public void esegui() {
+    public void esegui(String[] parametri) {
         if (GestioneComandi.partitaIniziata()) {
             System.out.println("Non puoi cambiare la dimensione della griglia durante una partita");
             return;
@@ -394,7 +402,7 @@ class ExtraLarge extends Comando {
         return "Imposta la dimensione della griglia a 26x26";
     }
 
-    public void esegui() {
+    public void esegui(String[] parametri) {
         if (GestioneComandi.partitaIniziata()) {
             System.out.println("Non puoi cambiare la dimensione della griglia durante una partita");
             return;
@@ -422,7 +430,7 @@ class Abbandona extends Comando {
         return "Abbandona la partita in corso";
     }
 
-    public void esegui() {
+    public void esegui(String[] parametri) {
         if (!GestioneComandi.partitaIniziata()) {
             System.out.println("Non c'è nessuna partita in corso");
             return;
