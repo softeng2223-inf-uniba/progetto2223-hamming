@@ -405,3 +405,51 @@ class ExtraLarge extends Comando {
         System.out.println("Dimensione della griglia impostata a 26x26");
     }
 }
+
+/**
+ * Classe rappresentante il comando /abbandona, che
+ * chiede conferma all'utente:
+ * se la conferma è positiva, l’applicazione risponde visualizzando
+ * sulla griglia la posizione di tutte le navi e si predispone a ricevere nuovi comandi;
+ * se la conferma è negativa, l'applicazione si predispone a ricevere nuovi tentativi o comandi.
+ */
+class Abbandona extends Comando {
+    Abbandona() {
+        super("abbandona", "gioco");
+    }
+
+    public String getDescrizione() {
+        return "Abbandona la partita in corso";
+    }
+
+    public void esegui() {
+        if (!GestioneComandi.partitaIniziata()) {
+            System.out.println("Non c'è nessuna partita in corso");
+            return;
+        }
+
+        String input;
+        while (true) {
+            System.out.println("Conferma l'abbandono della partita(s/n): ");
+            input = Util.getString();
+            if ("s".equals(input) || "n".equals(input)) {
+                break;
+            }
+            System.out.println("Inserire solo s o n");
+        }
+
+        if ("s".equals(input)) {
+            System.out.println("Abbandono della partita...");
+            try {
+                Grafica.svelaGrigliaNavi(GestioneComandi.getPartita().getGriglia());
+            } catch (CloneNotSupportedException e) {
+                System.out.println("Impossibile svelare la griglia: clonazione di griglia fallita");
+            }
+
+            GestioneComandi.terminaPartita();
+            System.out.println("Partita abbandonata");
+        } else {
+            System.out.println("Abbandono della partita annullato");
+        }
+    }
+}
