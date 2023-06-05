@@ -169,8 +169,11 @@ class Esci extends Comando {
     String getDescrizione() {
         return "Chiude il programma";
     }
-  
-    void esegui(String[] parametri) {
+    void esegui(String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0){
+            throw new InputNonFormattatoException();
+        }
+
         if (GestioneComandi.partitaIniziata()) {
             System.out.println("Attenzione: se esci abbandonerai la partita in corso");
         }
