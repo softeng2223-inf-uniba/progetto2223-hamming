@@ -285,6 +285,17 @@ Utilizzando il comando /svelagriglia il gioco risponde visualizzando, una grigli
 
 
 ![comando_svelagriglia.png](img/comando_svelagriglia.png)
+
+
+#### Comando /abbandona
+Quando il giocatore usa il comando /abbandona, il gioco chiede conferma all'utente:
+
+- se la conferma è positiva, il gioco svela la posizione di tutte le navi e si predispone a ricevere nuovi comandi;
+- altrimenti, il gioco si predispone a ricevere nuovi tentativi o comandi senza abbandonare la partita.
+
+
+![comando_abbandona.png](img/comando_abbandona.png)
+
 ### Introduzione di gioco
 La **battaglia navale** è un gioco, in questo caso a giocatore singolo, il cui **obiettivo** è quello di **affondare tutte le navi** che sono posizionate su una griglia 10x10 nascosta al giocatore con le righe numerate da 1 a 10 e le colonne numerate da A a J.
 ### Regole

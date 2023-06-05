@@ -26,6 +26,10 @@ public final class ConfigurazioniInterfaccia {
             put("mostranavi", new MostraNavi());
             put("svelagriglia", new SvelaGriglia());
             put("help", new Help());
+            put("standard", new Standard());
+            put("large", new Large());
+            put("extralarge", new ExtraLarge());
+            put("abbandona", new Abbandona());
         }
     };
 
@@ -47,13 +51,29 @@ public final class ConfigurazioniInterfaccia {
     }
 
     //SEZIONE NAVI
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_MAGENTA = "\u001B[35m";
+    public static final String SIMBOLO_DEFAULT = "X"; //"\u25A0";
+
+    /**
+     * Restituisce il simbolo di default delle navi.
+     *
+     * @return simbolo di default delle navi
+     */
+    public static String getSimboloDefault() {
+        return SIMBOLO_DEFAULT;
+    }
+
     private static final LinkedHashMap<String, String> SIMBOLI_NAVI = new LinkedHashMap<String, String>();
 
     static {
-        SIMBOLI_NAVI.put("portaerei", "P");
-        SIMBOLI_NAVI.put("corazzata", "C");
-        SIMBOLI_NAVI.put("incrociatore", "I");
-        SIMBOLI_NAVI.put("cacciatorpediniere", "T");
+        SIMBOLI_NAVI.put("portaerei", ANSI_RED + SIMBOLO_DEFAULT + ANSI_RESET);
+        SIMBOLI_NAVI.put("corazzata", ANSI_GREEN + SIMBOLO_DEFAULT + ANSI_RESET);
+        SIMBOLI_NAVI.put("incrociatore", ANSI_CYAN + SIMBOLO_DEFAULT + ANSI_RESET);
+        SIMBOLI_NAVI.put("cacciatorpediniere", ANSI_MAGENTA + SIMBOLO_DEFAULT + ANSI_RESET);
     }
 
     /**

@@ -3,8 +3,9 @@ package it.uniba.app.interfaccia;
 import java.util.Arrays;
 
 import it.uniba.app.exceptions.ComandoNonEsistenteException;
-import it.uniba.app.exceptions.ComandoNonFormattatoException;
+import it.uniba.app.exceptions.InputNonFormattatoException;
 import it.uniba.app.exceptions.PartitaGiaIniziataException;
+import it.uniba.app.exceptions.PartitaNonIniziataException;
 import it.uniba.app.gioco.Configurazioni;
 import it.uniba.app.gioco.Partita;
 import it.uniba.app.util.Util;
@@ -49,6 +50,13 @@ public final class GestioneComandi {
     }
 
     /**
+     * Metodo che termina la partita.
+     */
+    public static void terminaPartita() {
+        partita = null;
+    }
+
+    /**
      * Restituisce il livello di difficoltà impostato.
      */
     public static String getLivello() {
@@ -81,23 +89,33 @@ public final class GestioneComandi {
     }
 
     /**
+     * restituisce true se input è un comando altrimenti false.
+     *
+     * @param input input da controllare
+     * @return true se input è un comando altrimenti false
+     */
+    static boolean eComando(final String input) {
+        return input.startsWith("/");
+    }
+
+    /**
      * Ciclo principale del menu.
      */
     public static void mainLoop() {
         continua = true;
         while (continua) {
             try {
-                String input = leggiComando();
-                    String[] split = input.split(" ");
-                    if (split.length > 2) {
-                        throw new ComandoNonFormattatoException(input);
+                String input = leggiInput();
+                if (eComando(input)) {
+                    chiamaComando(input);
+                } else {
+                    if (!partitaIniziata()) {
+                        throw new PartitaNonIniziataException();
                     }
-                    String[] parametri = new String[split.length - 1];
-                    if (split.length > 1) {
-                        parametri = Arrays.copyOfRange(split, 1, split.length);
-                    }
-                    chiamaComando(split[0], parametri);
-            } catch (ComandoNonEsistenteException | ComandoNonFormattatoException e) {
+                    //attacco ancora da implementare
+                    System.out.println("Attacco non ancora implementato");
+                }
+            } catch (ComandoNonEsistenteException | InputNonFormattatoException | PartitaNonIniziataException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -106,16 +124,16 @@ public final class GestioneComandi {
     /**
      * Legge un comando da tastiera.
      */
-    public static String leggiComando() throws ComandoNonFormattatoException {
-        System.out.println("\nInserisci un comando: ");
+    public static String leggiInput() throws InputNonFormattatoException {
+        String comandoRegex = "^[A-z]-[0-9]{1,2}$";
+
+        System.out.println(partitaIniziata() ? "\nInserisci un comando o un attacco: " : "\nInserisci un comando: ");
         System.out.print("> ");
 
         String input = Util.getString();
-
-        if (!input.startsWith("/")) {
-            throw new ComandoNonFormattatoException(input);
+        if (!eComando(input) && !input.matches(comandoRegex)) {
+            throw new InputNonFormattatoException(input);
         }
-
         input = input.toLowerCase();
         return input;
     }
@@ -146,19 +164,15 @@ class Esci extends Comando {
     String getDescrizione() {
         return "Chiude il programma";
     }
-
-    void esegui(final String[] parametri) {
-        String input;
-        while (true) {
-            System.out.print("Conferma l'uscita dal programma(s/n): ");
-            input = Util.getString();
-            if ("s".equals(input) || "n".equals(input)) {
-                break;
-            }
-            System.out.println("Inserire solo s o n");
+  
+    void esegui() {
+        if (GestioneComandi.partitaIniziata()) {
+            System.out.println("Attenzione: se esci abbandonerai la partita in corso");
         }
 
-        if ("s".equals(input)) {
+        boolean conferma = Util.chiediConferma("Conferma l'uscita dal programma(s/n): ");
+
+        if (conferma) {
             System.out.println("Uscita dal programma");
             GestioneComandi.setContinua(false);
         } else {
@@ -312,5 +326,122 @@ class Help extends Comando {
 
     public void esegui(final String[] parametri) {
         Grafica.stampaHelp();
+    }
+}
+
+/**
+ * Classe rappresentante il comando /standard, che
+ * imposta a 10x10 la dimensione della griglia (è il default).
+ */
+class Standard extends Comando {
+    Standard() {
+        super("standard", "difficolta");
+    }
+
+    public String getDescrizione() {
+        return "Imposta la dimensione della griglia a 10x10 (default)";
+    }
+
+    public void esegui() {
+        if (GestioneComandi.partitaIniziata()) {
+            System.out.println("Non puoi cambiare la dimensione della griglia durante una partita");
+            return;
+        }
+
+        Configurazioni.setRigheGriglia(Configurazioni.DIMENSIONI_GRIGLIA_STANDARD);
+        Configurazioni.setColonneGriglia(Configurazioni.DIMENSIONI_GRIGLIA_STANDARD);
+        System.out.println("Dimensione della griglia impostata a 10x10");
+    }
+}
+
+/**
+ * Classe rappresentante il comando /large, che
+ * imposta a 18x18 la dimensione della griglia.
+ */
+class Large extends Comando {
+
+    Large() {
+        super("large", "difficolta");
+    }
+
+    public String getDescrizione() {
+        return "Imposta la dimensione della griglia a 18x18";
+    }
+
+    public void esegui() {
+        if (GestioneComandi.partitaIniziata()) {
+            System.out.println("Non puoi cambiare la dimensione della griglia durante una partita");
+            return;
+        }
+
+        Configurazioni.setRigheGriglia(Configurazioni.DIMENSIONI_GRIGLIA_LARGE);
+        Configurazioni.setColonneGriglia(Configurazioni.DIMENSIONI_GRIGLIA_LARGE);
+        System.out.println("Dimensione della griglia impostata a 18x18");
+    }
+}
+
+/**
+ * Classe rappresentante il comando /extralarge, che
+ * imposta a 26x26 la dimensione della griglia.
+ */
+class ExtraLarge extends Comando {
+
+    ExtraLarge() {
+        super("extralarge", "difficolta");
+    }
+
+    public String getDescrizione() {
+        return "Imposta la dimensione della griglia a 26x26";
+    }
+
+    public void esegui() {
+        if (GestioneComandi.partitaIniziata()) {
+            System.out.println("Non puoi cambiare la dimensione della griglia durante una partita");
+            return;
+        }
+
+        Configurazioni.setRigheGriglia(Configurazioni.DIMENSIONI_GRIGLIA_EXTRA_LARGE);
+        Configurazioni.setColonneGriglia(Configurazioni.DIMENSIONI_GRIGLIA_EXTRA_LARGE);
+        System.out.println("Dimensione della griglia impostata a 26x26");
+    }
+}
+
+/**
+ * Classe rappresentante il comando /abbandona, che
+ * chiede conferma all'utente:
+ * se la conferma è positiva, l’applicazione risponde visualizzando
+ * sulla griglia la posizione di tutte le navi e si predispone a ricevere nuovi comandi;
+ * se la conferma è negativa, l'applicazione si predispone a ricevere nuovi tentativi o comandi.
+ */
+class Abbandona extends Comando {
+    Abbandona() {
+        super("abbandona", "gioco");
+    }
+
+    public String getDescrizione() {
+        return "Abbandona la partita in corso";
+    }
+
+    public void esegui() {
+        if (!GestioneComandi.partitaIniziata()) {
+            System.out.println("Non c'è nessuna partita in corso");
+            return;
+        }
+
+        boolean conferma = Util.chiediConferma("Conferma l'abbandono della partita(s/n): ");
+
+        if (conferma) {
+            System.out.println("Abbandono della partita...");
+            try {
+                Grafica.svelaGrigliaNavi(GestioneComandi.getPartita().getGriglia());
+            } catch (CloneNotSupportedException e) {
+                System.out.println("Impossibile svelare la griglia: clonazione di griglia fallita");
+            }
+
+            GestioneComandi.terminaPartita();
+            System.out.println("Partita abbandonata");
+        } else {
+            System.out.println("Abbandono della partita annullato");
+        }
     }
 }
