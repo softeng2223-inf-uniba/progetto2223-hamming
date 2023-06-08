@@ -237,13 +237,32 @@ class Medio extends Comando {
         return "imposta la difficoltà media";
     }
 
-    public void esegui(final String[] parametri) throws InputNonFormattatoException {
-        if (parametri.length > 0) {
-            throw new InputNonFormattatoException();
+    public void esegui(final String[] parametri) throws InputNonFormattatoException, ParametriNonCorrettiException {
+        if (parametri.length > 1) {
+            throw new ParametriNonCorrettiException(
+                    "Troppi parametri per il comando. Utilizzo corretto: /medio [tentativi]");
+        }
+
+        if (parametri.length == 1) {
+            try {
+                int tentativi = Integer.parseInt(parametri[0]);
+                // controlla che il numero sia maggiore di 0
+                if (tentativi <= 0) {
+                    throw new ParametriNonCorrettiException(
+                            "Il parametro [tentativi] deve essere maggiore di 0. Utilizzo corretto: /medio [tentativi]");
+                }
+                Configurazioni.setTentativi(this.getNome(), tentativi);
+                System.out.println("Numero di tentativi massimi della difficoltà " + this.getNome() + " modificato a "
+                        + Configurazioni.getTentativi(this.getNome()));
+            } catch (NumberFormatException e) {
+                System.out.println(
+                        "Il parametro [tentativi] non è un numero intero. Utilizzo corretto: /medio [tentativi]");
+            }
+            return;
         }
 
         try {
-            GestioneComandi.setLivello("medio");
+            GestioneComandi.setLivello(this.getNome());
         } catch (PartitaGiaIniziataException e) {
             System.out.println(e.getMessage());
         }
