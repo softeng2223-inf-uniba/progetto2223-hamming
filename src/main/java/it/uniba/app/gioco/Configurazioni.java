@@ -52,10 +52,7 @@ public final class Configurazioni {
 
 
     //SEZIONE LIVELLI
-    private static final Map<String, Integer> CONFIGURAZIONE_LIVELLO = Map.of(
-      "facile", 50,
-      "medio", 30,
-      "difficile", 10);
+    private static final Map<String, Integer> CONFIGURAZIONE_LIVELLO = new LinkedHashMap<String, Integer>();
 
     private static final String LIVELLO_DEFAULT = "medio";
 
@@ -90,6 +87,10 @@ public final class Configurazioni {
     new LinkedHashMap<String, ConfigurazioneNave>();
 
     static {
+        CONFIGURAZIONE_LIVELLO.put("facile", 50);
+        CONFIGURAZIONE_LIVELLO.put("medio", 30);
+        CONFIGURAZIONE_LIVELLO.put("difficile", 10);
+
         CONFIGURAZIONE_NAVI.put("portaerei", PORTAEREI);
         CONFIGURAZIONE_NAVI.put("corazzata", CORAZZATA);
         CONFIGURAZIONE_NAVI.put("incrociatore", INCROCIATORE);
