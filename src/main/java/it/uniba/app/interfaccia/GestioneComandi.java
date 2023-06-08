@@ -56,8 +56,23 @@ public final class GestioneComandi {
     /**
      * Metodo che termina la partita.
      */
-    public static void terminaPartita() {
+    public static void cancellaPartita() {
         partita = null;
+    }
+
+    /**
+     * Metodo che svela la griglia con le navi posizionate e termina la partita.
+     * @param esito esito della partita
+     */
+    static void terminaPartita(final String esito) {
+        System.out.println("Abbandono della partita...\n");
+        try {
+            Grafica.svelaGrigliaNavi(GestioneComandi.getPartita().getGriglia());
+        } catch (CloneNotSupportedException e) {
+            System.out.println("Impossibile svelare la griglia: clonazione di griglia fallita");
+        }
+        System.out.println("\nPartita " + esito);
+        GestioneComandi.cancellaPartita();
     }
 
     /**
@@ -542,15 +557,7 @@ class Abbandona extends Comando {
         boolean conferma = Util.chiediConferma("Conferma l'abbandono della partita(s/n): ");
 
         if (conferma) {
-            System.out.println("Abbandono della partita...");
-            try {
-                Grafica.svelaGrigliaNavi(GestioneComandi.getPartita().getGriglia());
-            } catch (CloneNotSupportedException e) {
-                System.out.println("Impossibile svelare la griglia: clonazione di griglia fallita");
-            }
-
-            GestioneComandi.terminaPartita();
-            System.out.println("Partita abbandonata");
+            GestioneComandi.terminaPartita("abbandonata");
         } else {
             System.out.println("Abbandono della partita annullato");
         }
