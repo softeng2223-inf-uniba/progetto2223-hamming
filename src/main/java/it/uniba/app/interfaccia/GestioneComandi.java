@@ -535,3 +535,37 @@ class Abbandona extends Comando {
         }
     }
 }
+
+/**
+ * Classe rappresentante il comando /tempo, che
+ * imposta il tempo massimo di gioco in minuti.
+ */
+class Tempo extends Comando {
+    Tempo() {
+        super("tempo", "difficolta");
+    }
+
+    public String getDescrizione() {
+        return "Imposta il tempo massimo di gioco in minuti. Se impostato a 0, non ci sono limiti di tempo";
+    }
+
+    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length != 1) {
+            throw new InputNonFormattatoException();
+        }
+
+        if (GestioneComandi.partitaIniziata()) {
+            System.out.println("Non puoi cambiare il tempo di gioco durante una partita");
+            return;
+        }
+
+        int tempo = Integer.parseInt(parametri[0]);
+        if (tempo < 0) {
+            System.out.println("Il tempo di gioco deve essere maggiore o uguale a 0 (0 in caso di nessun limite)");
+            return;
+        }
+
+        GestioneComandi.setTempo(tempo);
+        System.out.println("Tempo di gioco impostato a: " + (tempo == 0 ? "nessun limite" : tempo + " minuti"));
+    }
+}
