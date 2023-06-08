@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import it.uniba.app.exceptions.ComandoNonEsistenteException;
 import it.uniba.app.exceptions.InputNonFormattatoException;
+import it.uniba.app.exceptions.ParametriNonCorrettiException;
 import it.uniba.app.exceptions.PartitaGiaIniziataException;
 import it.uniba.app.exceptions.PartitaNonIniziataException;
 import it.uniba.app.gioco.Configurazioni;
@@ -120,7 +121,7 @@ public final class GestioneComandi {
                     //attacco ancora da implementare
                     System.out.println("Attacco non ancora implementato");
                 }
-            } catch (ComandoNonEsistenteException | InputNonFormattatoException | PartitaNonIniziataException e) {
+            } catch (ComandoNonEsistenteException | InputNonFormattatoException | PartitaNonIniziataException | ParametriNonCorrettiException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -150,7 +151,7 @@ public final class GestioneComandi {
      * @param parametri parametri da passare al comando
      */
     public static void chiamaComando(final String comando, final String[] parametri)
-            throws ComandoNonEsistenteException, InputNonFormattatoException {
+            throws ComandoNonEsistenteException, InputNonFormattatoException, ParametriNonCorrettiException {
         Comando c = ConfigurazioniInterfaccia.getComando(comando.substring(1).toLowerCase());
 
         if (c != null) {
@@ -199,9 +200,9 @@ class Facile extends Comando {
         return "imposta la difficoltà facile";
     }
 
-    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+    public void esegui(final String[] parametri) throws ParametriNonCorrettiException {
         if (parametri.length > 1) {
-            throw new InputNonFormattatoException();
+            throw new ParametriNonCorrettiException("Troppi parametri per il comando. Utilizzo corretto: /facile [tentativi]");
         }
         
         if (parametri.length == 1) {
