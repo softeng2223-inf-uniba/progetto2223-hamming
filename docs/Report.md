@@ -378,6 +378,8 @@ Cosa **può essere migliorato**:
 - Ci sono stati dei ritardi per quanto riguarda l'inizio dello sprint da parte del gruppo, risultando in una mole di lavoro più ampia durante gli ultimi giorni prima della chiusura della consegna.
 
 Cosa **non è andato bene**:
+- La consegna è stata effettuata a solo 1h di anticipo dalla chiusura.
+- In generale dati i problemi di tempo riscontrati nello sprint non è stata prestata attenzione ad alcuni dettagli che nella revisione sono stati segnalati come difetti minori.
 
 Possibili azioni per la **correzione dei problemi**:
 
