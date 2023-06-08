@@ -17,6 +17,7 @@ import it.uniba.app.util.Util;
  */
 public final class GestioneComandi {
     static final float MILLISECONDI = 1000F;
+    static final int SECONDI = 60;
 
     private static Partita partita = null;
     private static Boolean continua = true;
@@ -161,7 +162,7 @@ public final class GestioneComandi {
      * @return true se il tempo è scaduto, false altrimenti
      */
     static boolean tempoScaduto() {
-        return tempoTrascorso() >= tempo;
+        return tempoTrascorso() >= tempo * SECONDI;
     }
 
     /**
@@ -183,8 +184,13 @@ public final class GestioneComandi {
                     if (!partitaIniziata()) {
                         throw new PartitaNonIniziataException();
                     }
-                    //attacco ancora da implementare
-                    System.out.println("Attacco non ancora implementato");
+                    if (tempoImpostato() && tempoScaduto()) {
+                        System.out.println("Tempo scaduto");
+                        GestioneComandi.terminaPartita("persa: tempo scaduto");
+                    } else {
+                        //attacco ancora da implementare
+                        System.out.println("Attacco non ancora implementato");
+                    }
                 }
             } catch (ComandoNonEsistenteException | InputNonFormattatoException | PartitaNonIniziataException e) {
                 System.out.println(e.getMessage());
