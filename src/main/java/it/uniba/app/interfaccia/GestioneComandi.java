@@ -200,8 +200,18 @@ class Facile extends Comando {
     }
 
     public void esegui(final String[] parametri) throws InputNonFormattatoException {
-        if (parametri.length > 0) {
+        if (parametri.length > 1) {
             throw new InputNonFormattatoException();
+        }
+        
+        if (parametri.length == 1) {
+            try {
+                int tentativi = Integer.parseInt(parametri[0]);
+                Configurazioni.setTentativi(this.getNome(), tentativi);
+                System.out.println("Numero di tentativi massimi della difficoltà " + this.getNome() + " modificato a " + Configurazioni.getTentativi(this.getNome()));
+            } catch (NumberFormatException e) {
+                System.out.println("Il parametro deve essere un numero");
+            }
         }
 
         try {
