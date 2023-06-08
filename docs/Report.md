@@ -367,7 +367,7 @@ Nonostante ci siano stati problemi di tempo derivati dai vari impegni dei partec
 - Valerio Di Maggio
 - Daniele Gentile
 
-**Obiettivo dello Sprint**:
+**Obiettivo dello Sprint**: implementare alcuni dei comandi utilizzabili a partita non iniziata come la possibiltà di scegliere la difficoltà, vedere quali tipologie di nave ci sono ed il loro numero nel tabellone di gioco, l'help dei comandi, e alcuni comandi utilizzabili a partita in corso, come la possibilità di vedere dove sono state posizionate le navi.
 
 Cosa **è andato bene**:
 
