@@ -125,6 +125,13 @@ public final class GestioneComandi {
     }
 
     /**
+     * Metodo che inizia il conteggio del tempo della partita.
+     */
+    static void avviaTempo() {
+        tempoInizio = System.currentTimeMillis();
+    }
+
+    /**
      * Ciclo principale del menu.
      */
     public static void mainLoop() {
