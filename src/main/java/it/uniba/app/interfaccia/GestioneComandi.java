@@ -16,6 +16,8 @@ import it.uniba.app.util.Util;
  * @author Gruppo Hamming
  */
 public final class GestioneComandi {
+    static final float MILLISECONDI = 1000F;
+
     private static Partita partita = null;
     private static Boolean continua = true;
     private static String livello = Configurazioni.getLivelloDefault();
@@ -129,6 +131,14 @@ public final class GestioneComandi {
      */
     static void avviaTempo() {
         tempoInizio = System.currentTimeMillis();
+    }
+
+    /**
+     * Metodo che restituisce il tempo trascorso dall'inizio della partita.
+     * @return tempo trascorso dall'inizio della partita
+     */
+    static float tempoTrascorso() {
+        return (System.currentTimeMillis() - tempoInizio) / MILLISECONDI;
     }
 
     /**
