@@ -121,7 +121,8 @@ public final class GestioneComandi {
                     //attacco ancora da implementare
                     System.out.println("Attacco non ancora implementato");
                 }
-            } catch (ComandoNonEsistenteException | InputNonFormattatoException | PartitaNonIniziataException | ParametriNonCorrettiException e) {
+            } catch (ComandoNonEsistenteException | InputNonFormattatoException
+            | PartitaNonIniziataException | ParametriNonCorrettiException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -202,24 +203,30 @@ class Facile extends Comando {
 
     public void esegui(final String[] parametri) throws ParametriNonCorrettiException {
         if (parametri.length > 1) {
-            throw new ParametriNonCorrettiException("Troppi parametri per il comando. Utilizzo corretto: /facile [tentativi]");
+            throw new ParametriNonCorrettiException(
+                "Troppi parametri per il comando. Utilizzo corretto: /facile [tentativi]");
         }
-        
+
         if (parametri.length == 1) {
             try {
                 if (GestioneComandi.partitaIniziata()) {
                     throw new PartitaGiaIniziataException(
-                        "Non puoi cambiare il numero di tentativi massimi di una difficoltà durante una partita");
+                            "Non puoi cambiare il numero di tentativi"
+                                    + " massimi di una difficoltà durante una partita");
                 }
                 int tentativi = Integer.parseInt(parametri[0]);
                 //controlla che il numero sia maggiore di 0
                 if (tentativi <= 0) {
-                    throw new ParametriNonCorrettiException("Il parametro [tentativi] deve essere maggiore di 0. Utilizzo corretto: /facile [tentativi]");
+                    throw new ParametriNonCorrettiException(
+                            "Il parametro [tentativi] deve essere maggiore di 0."
+                                    + " Utilizzo corretto: /facile [tentativi]");
                 }
                 Configurazioni.setTentativi(this.getNome(), tentativi);
-                System.out.println("Numero di tentativi massimi della difficoltà " + this.getNome() + " modificato a " + Configurazioni.getTentativi(this.getNome()));
+                System.out.println("Numero di tentativi massimi della difficoltà "
+                + this.getNome() + " modificato a " + Configurazioni.getTentativi(this.getNome()));
             } catch (NumberFormatException e) {
-                System.out.println("Il parametro [tentativi] non è un numero intero. Utilizzo corretto: /facile [tentativi]");
+                System.out.println(
+                    "Il parametro [tentativi] non è un numero intero. Utilizzo corretto: /facile [tentativi]");
             } catch (PartitaGiaIniziataException e) {
                 System.out.println(e.getMessage());
             }
@@ -253,17 +260,19 @@ class Medio extends Comando {
             try {
                 if (GestioneComandi.partitaIniziata()) {
                     throw new PartitaGiaIniziataException(
-                            "Non puoi cambiare il numero di tentativi massimi di una difficoltà durante una partita");
+                            "Non puoi cambiare il numero di tentativi"
+                                + " massimi di una difficoltà durante una partita");
                 }
                 int tentativi = Integer.parseInt(parametri[0]);
                 // controlla che il numero sia maggiore di 0
                 if (tentativi <= 0) {
                     throw new ParametriNonCorrettiException(
-                            "Il parametro [tentativi] deve essere maggiore di 0. Utilizzo corretto: /medio [tentativi]");
+                            "Il parametro [tentativi] deve essere maggiore di 0."
+                                + " Utilizzo corretto: /medio [tentativi]");
                 }
                 Configurazioni.setTentativi(this.getNome(), tentativi);
-                System.out.println("Numero di tentativi massimi della difficoltà " + this.getNome() + " modificato a "
-                        + Configurazioni.getTentativi(this.getNome()));
+                System.out.println("Numero di tentativi massimi della difficoltà "
+                + this.getNome() + " modificato a " + Configurazioni.getTentativi(this.getNome()));
             } catch (NumberFormatException e) {
                 System.out.println(
                         "Il parametro [tentativi] non è un numero intero. Utilizzo corretto: /medio [tentativi]");
@@ -300,17 +309,19 @@ class Difficile extends Comando {
             try {
                 if (GestioneComandi.partitaIniziata()) {
                     throw new PartitaGiaIniziataException(
-                            "Non puoi cambiare il numero di tentativi massimi di una difficoltà durante una partita");
+                            "Non puoi cambiare il numero di tentativi"
+                                + " massimi di una difficoltà durante una partita");
                 }
                 int tentativi = Integer.parseInt(parametri[0]);
                 // controlla che il numero sia maggiore di 0
                 if (tentativi <= 0) {
                     throw new ParametriNonCorrettiException(
-                            "Il parametro [tentativi] deve essere maggiore di 0. Utilizzo corretto: /difficile [tentativi]");
+                            "Il parametro [tentativi] deve essere maggiore di 0."
+                                    + " Utilizzo corretto: /difficile [tentativi]");
                 }
                 Configurazioni.setTentativi(this.getNome(), tentativi);
-                System.out.println("Numero di tentativi massimi della difficoltà " + this.getNome() + " modificato a "
-                        + Configurazioni.getTentativi(this.getNome()));
+                System.out.println("Numero di tentativi massimi della difficoltà "
+                + this.getNome() + " modificato a " + Configurazioni.getTentativi(this.getNome()));
             } catch (NumberFormatException e) {
                 System.out.println(
                         "Il parametro [tentativi] non è un numero intero. Utilizzo corretto: /difficile [tentativi]");
