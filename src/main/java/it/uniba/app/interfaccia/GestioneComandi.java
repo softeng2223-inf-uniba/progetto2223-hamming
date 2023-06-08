@@ -142,6 +142,14 @@ public final class GestioneComandi {
     }
 
     /**
+     * Metodo che restituisce true se il tempo è scaduto, false altrimenti.
+     * @return true se il tempo è scaduto, false altrimenti
+     */
+    static boolean tempoScaduto() {
+        return tempoTrascorso() >= tempo;
+    }
+
+    /**
      * Ciclo principale del menu.
      */
     public static void mainLoop() {
