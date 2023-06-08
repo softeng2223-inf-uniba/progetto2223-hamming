@@ -101,6 +101,22 @@ public final class GestioneComandi {
     }
 
     /**
+     * Metodo che restituisce il tempo impostato per la partita.
+     * @return tempo impostato per la partita
+     */
+    static int getTempo() {
+        return tempo;
+    }
+
+    /**
+     * Metodo che imposta il tempo per la partita.
+     * @param minuti tempo in minuti da impostare per la partita
+     */
+    static void setTempo(final int minuti) {
+        tempo = minuti;
+    }
+
+    /**
      * Ciclo principale del menu.
      */
     public static void mainLoop() {
