@@ -382,5 +382,7 @@ Cosa **non è andato bene**:
 - In generale dati i problemi di tempo riscontrati nello sprint non è stata prestata attenzione ad alcuni dettagli che nella revisione sono stati segnalati come difetti minori.
 
 Possibili azioni per la **correzione dei problemi**:
+- Iniziare quanto prima l'assegnazione delle prime user story ai membri del gruppo.
+- Rispettare delle scadenze per quanto riguarda degli aspetti essenziali per proseguire nello sviluppo del programma evitando dei conflitti che possano causare più problemi del dovuto.
 
 **Conclusioni**:
