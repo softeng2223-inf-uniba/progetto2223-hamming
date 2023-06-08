@@ -326,6 +326,9 @@ class Gioca extends Comando {
             GestioneComandi.getPartita().posizionaNavi();
             System.out.println("Nuova partita iniziata\n");
             Grafica.stampaGrigliaColpita(GestioneComandi.getPartita().getGriglia());
+            if (GestioneComandi.tempoImpostato()) {
+                GestioneComandi.avviaTempo();
+            }
         } catch (PartitaGiaIniziataException e) {
             System.out.println(e.getMessage());
         } catch (CloneNotSupportedException e) {
