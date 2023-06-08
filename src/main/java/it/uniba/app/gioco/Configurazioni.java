@@ -56,6 +56,20 @@ public final class Configurazioni {
 
     private static final String LIVELLO_DEFAULT = "medio";
 
+
+    /**
+     * Modifica il numero di tentativi di un livello di difficoltà.
+     * @param livello livello di difficoltà
+     * @param tentativi numero di tentativi
+     */
+    public static void setTentativi(final String livello, final int tentativi) {
+        if (!CONFIGURAZIONE_LIVELLO.containsKey(livello)) {
+            throw new LivelloNonEsistenteException("Livello " + livello + " non esiste");
+        }
+        CONFIGURAZIONE_LIVELLO.put(livello, tentativi);
+    }
+
+
     /**
      * Restituisce il numero di tentativi di un livello di difficoltà.
      *
@@ -85,7 +99,6 @@ public final class Configurazioni {
 
     private static final Map<String, ConfigurazioneNave> CONFIGURAZIONE_NAVI =
     new LinkedHashMap<String, ConfigurazioneNave>();
-
 
     /**
      * Restituisce la lunghezza di una tipologia di navi.
