@@ -361,6 +361,8 @@ Nonostante ci siano stati problemi di tempo derivati dai vari impegni dei partec
 ### 9.2 Sprint 1
 **Data:** 3 Maggio 2023 - 19 Maggio 2023 -- **Revisione**: 31 Maggio 2023
 
+![Modello Retrospettiva "Arrabbiato, Triste, Felice"](img/sprint1WhiteBoard.png)
+
 **Partecipanti:**
 - Marzia Capuano
 - Fabio Cirullo
