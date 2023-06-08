@@ -375,6 +375,7 @@ Cosa **è andato bene**:
 - Non sono stati segnalati difetti maggiori nella Revisione dello sprint.
 
 Cosa **può essere migliorato**:
+- Ci sono stati dei ritardi per quanto riguarda l'inizio dello sprint da parte del gruppo, risultando in una mole di lavoro più ampia durante gli ultimi giorni prima della chiusura della consegna.
 
 Cosa **non è andato bene**:
 
