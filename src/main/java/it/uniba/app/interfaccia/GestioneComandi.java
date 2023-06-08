@@ -208,15 +208,20 @@ class Facile extends Comando {
         if (parametri.length == 1) {
             try {
                 int tentativi = Integer.parseInt(parametri[0]);
+                //controlla che il numero sia maggiore di 0
+                if (tentativi <= 0) {
+                    throw new ParametriNonCorrettiException("Il parametro [tentativi] deve essere maggiore di 0. Utilizzo corretto: /facile [tentativi]");
+                }
                 Configurazioni.setTentativi(this.getNome(), tentativi);
                 System.out.println("Numero di tentativi massimi della difficoltà " + this.getNome() + " modificato a " + Configurazioni.getTentativi(this.getNome()));
             } catch (NumberFormatException e) {
-                System.out.println("Il parametro deve essere un numero");
+                System.out.println("Il parametro [tentativi] non è un numero intero. Utilizzo corretto: /facile [tentativi]");
             }
+            return;
         }
 
         try {
-            GestioneComandi.setLivello("facile");
+            GestioneComandi.setLivello(this.getNome());
         } catch (PartitaGiaIniziataException e) {
             System.out.println(e.getMessage());
         }
