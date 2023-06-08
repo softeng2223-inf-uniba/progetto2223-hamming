@@ -361,6 +361,11 @@ Nonostante ci siano stati problemi di tempo derivati dai vari impegni dei partec
 **Data:** 3 Maggio 2023 - 19 Maggio 2023 -- **Revisione**: 31 Maggio 2023
 
 **Partecipanti:**
+- Marzia Capuano
+- Fabio Cirullo
+- Simone Columpsi
+- Valerio Di Maggio
+- Daniele Gentile
 
 **Obiettivo dello Sprint**:
 
