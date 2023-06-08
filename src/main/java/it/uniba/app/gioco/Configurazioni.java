@@ -86,16 +86,6 @@ public final class Configurazioni {
     private static final Map<String, ConfigurazioneNave> CONFIGURAZIONE_NAVI =
     new LinkedHashMap<String, ConfigurazioneNave>();
 
-    static {
-        CONFIGURAZIONE_LIVELLO.put("facile", 50);
-        CONFIGURAZIONE_LIVELLO.put("medio", 30);
-        CONFIGURAZIONE_LIVELLO.put("difficile", 10);
-
-        CONFIGURAZIONE_NAVI.put("portaerei", PORTAEREI);
-        CONFIGURAZIONE_NAVI.put("corazzata", CORAZZATA);
-        CONFIGURAZIONE_NAVI.put("incrociatore", INCROCIATORE);
-        CONFIGURAZIONE_NAVI.put("cacciatorpediniere", CACCIATORPEDINIERE);
-    }
 
     /**
      * Restituisce la lunghezza di una tipologia di navi.
@@ -127,6 +117,18 @@ public final class Configurazioni {
      */
     public static Set<String> getTipologieNavi() {
         return CONFIGURAZIONE_NAVI.keySet();
+    }
+
+    // SEZIONE INIZIALIZZAZIONE CONFIGURAZIONI LIVELLI E NAVI
+    static {
+        CONFIGURAZIONE_LIVELLO.put("facile", 50);
+        CONFIGURAZIONE_LIVELLO.put("medio", 30);
+        CONFIGURAZIONE_LIVELLO.put("difficile", 10);
+
+        CONFIGURAZIONE_NAVI.put("portaerei", PORTAEREI);
+        CONFIGURAZIONE_NAVI.put("corazzata", CORAZZATA);
+        CONFIGURAZIONE_NAVI.put("incrociatore", INCROCIATORE);
+        CONFIGURAZIONE_NAVI.put("cacciatorpediniere", CACCIATORPEDINIERE);
     }
 }
 
