@@ -7,7 +7,8 @@
     - [3.2 Requisiti non funzionali](#32-requisiti-non-funzionali)
 - [7. Manuale Utente](#7-manuale-utente)
 - [9. Analisi retrospettiva](#9-analisi-retrospettiva)
-    - [9.1 Sprint 0](#91-sprint-0)         
+    - [9.1 Sprint 0](#91-sprint-0)
+    - [9.2 Sprint 1](#92-sprint-1)
 
 
 
@@ -367,3 +368,37 @@ Possibili azioni per la **correzione dei problemi**:
 
 **Conclusioni:**
 Nonostante ci siano stati problemi di tempo derivati dai vari impegni dei partecipanti del team, e qualche problema fortunatamente risolto grazie all'aiuto del docente e dei dottorandi, lo **Sprint 0** è finito senza intoppi, con un progetto consegnato in tempo e senza difetti maggiori. Bisogna lavorare di più sull'organizzazione del tempo per evitare di trovarsi a lavorare molto durante le ultime giornate prima della consegna.
+
+### 9.2 Sprint 1
+**Data:** 3 Maggio 2023 - 19 Maggio 2023 -- **Revisione**: 31 Maggio 2023
+
+![Modello Retrospettiva "Arrabbiato, Triste, Felice"](img/sprint1WhiteBoard.png)
+
+**Partecipanti:**
+- Marzia Capuano
+- Fabio Cirullo
+- Simone Columpsi
+- Valerio Di Maggio
+- Daniele Gentile
+
+**Obiettivo dello Sprint**: implementare alcuni dei comandi utilizzabili a partita non iniziata come la possibiltà di scegliere la difficoltà, vedere quali tipologie di nave ci sono ed il loro numero nel tabellone di gioco, l'help dei comandi, e alcuni comandi utilizzabili a partita in corso, come la possibilità di vedere dove sono state posizionate le navi.
+
+Cosa **è andato bene**:
+- Il team ha consegnato in tempo ciò che era stato richiesto di sviluppare.
+- Nessuno del team si è rifiutato di aiutare chi ne aveva bisogno, fornendo consigli su come poter risolvere un determinato problema.
+- Non sono stati segnalati difetti maggiori nella Revisione dello sprint.
+
+Cosa **può essere migliorato**:
+- Ci sono stati dei ritardi per quanto riguarda l'inizio dello sprint da parte del gruppo, risultando in una mole di lavoro più ampia durante gli ultimi giorni prima della chiusura della consegna.
+
+Cosa **non è andato bene**:
+- La consegna è stata effettuata a solo 1h di anticipo dalla chiusura.
+- In generale dati i problemi di tempo riscontrati nello sprint non è stata prestata attenzione ad alcuni dettagli che nella revisione sono stati segnalati come difetti minori.
+
+Possibili azioni per la **correzione dei problemi**:
+- Iniziare quanto prima l'assegnazione delle prime user story ai membri del gruppo.
+- Rispettare delle scadenze per quanto riguarda degli aspetti essenziali per proseguire nello sviluppo del programma evitando dei conflitti che possano causare più problemi del dovuto.
+
+**Conclusioni**:
+Non sono stati fatti degli effettivi miglioramenti per quanto rigurda la gestione del tempo a disposizione da parte del team, fortunatamente però è stato consegnato tutto in tempo, anche se con qualche difetto riscontrato successivamente nella revisione. Il team si è mostrato quindi più disponibile per lo sprint 2 ad iniziare il prima possibile per poter diminuire la mole di lavoro giornaliera al minimo.
+Il team è comunque soddisfatto di non aver ricevuto riscontri su dei difetti maggiori.
