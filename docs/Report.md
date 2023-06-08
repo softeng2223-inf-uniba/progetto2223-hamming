@@ -8,7 +8,7 @@
 - [7. Manuale Utente](#7-manuale-utente)
 - [9. Analisi retrospettiva](#9-analisi-retrospettiva)
     - [9.1 Sprint 0](#91-sprint-0)
-    - [9.1 Sprint 1](#92-sprint-1)
+    - [9.2 Sprint 1](#92-sprint-1)
 
 
 
@@ -390,4 +390,4 @@ Possibili azioni per la **correzione dei problemi**:
 
 **Conclusioni**:
 Non sono stati fatti degli effettivi miglioramenti per quanto rigurda la gestione del tempo a disposizione da parte del team, fortunatamente però è stato consegnato tutto in tempo, anche se con qualche difetto riscontrato successivamente nella revisione. Il team si è mostrato quindi più disponibile per lo sprint 2 ad iniziare il prima possibile per poter diminuire la mole di lavoro giornaliera al minimo.
-Il team è comunque soddisfatto di non aver ricevuto rscontri su dei difetti maggiori.
+Il team è comunque soddisfatto di non aver ricevuto riscontri su dei difetti maggiori.
