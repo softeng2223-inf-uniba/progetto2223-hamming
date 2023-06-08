@@ -117,6 +117,14 @@ public final class GestioneComandi {
     }
 
     /**
+     * Metodo che restituisce true se il tempo è stato impostato, false altrimenti.
+     * @return true se il tempo è stato impostato, false altrimenti
+     */
+    static boolean tempoImpostato() {
+        return tempo != 0;
+    }
+
+    /**
      * Ciclo principale del menu.
      */
     public static void mainLoop() {
