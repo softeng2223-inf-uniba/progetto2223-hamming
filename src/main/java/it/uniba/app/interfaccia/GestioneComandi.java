@@ -19,6 +19,8 @@ public final class GestioneComandi {
     private static Partita partita = null;
     private static Boolean continua = true;
     private static String livello = Configurazioni.getLivelloDefault();
+    private static int tempo = 0;
+    private static long tempoInizio = 0;
 
     private GestioneComandi() {
     }
