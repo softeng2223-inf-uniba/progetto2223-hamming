@@ -16,9 +16,14 @@ import it.uniba.app.util.Util;
  * @author Gruppo Hamming
  */
 public final class GestioneComandi {
+    static final float MILLISECONDI = 1000F;
+    static final int SECONDI = 60;
+
     private static Partita partita = null;
     private static Boolean continua = true;
     private static String livello = Configurazioni.getLivelloDefault();
+    private static int tempo = 0;
+    private static long tempoInizio = 0;
 
     private GestioneComandi() {
     }
@@ -52,8 +57,23 @@ public final class GestioneComandi {
     /**
      * Metodo che termina la partita.
      */
-    public static void terminaPartita() {
+    public static void cancellaPartita() {
         partita = null;
+    }
+
+    /**
+     * Metodo che svela la griglia con le navi posizionate e termina la partita.
+     * @param esito esito della partita
+     */
+    static void terminaPartita(final String esito) {
+        System.out.println("Abbandono della partita...\n");
+        try {
+            Grafica.svelaGrigliaNavi(GestioneComandi.getPartita().getGriglia());
+        } catch (CloneNotSupportedException e) {
+            System.out.println("Impossibile svelare la griglia: clonazione di griglia fallita");
+        }
+        System.out.println("\nPartita " + esito);
+        GestioneComandi.cancellaPartita();
     }
 
     /**
@@ -99,6 +119,53 @@ public final class GestioneComandi {
     }
 
     /**
+     * Metodo che restituisce il tempo impostato per la partita.
+     * @return tempo impostato per la partita
+     */
+    static int getTempo() {
+        return tempo;
+    }
+
+    /**
+     * Metodo che imposta il tempo per la partita.
+     * @param minuti tempo in minuti da impostare per la partita
+     */
+    static void setTempo(final int minuti) {
+        tempo = minuti;
+    }
+
+    /**
+     * Metodo che restituisce true se il tempo è stato impostato, false altrimenti.
+     * @return true se il tempo è stato impostato, false altrimenti
+     */
+    static boolean tempoImpostato() {
+        return tempo != 0;
+    }
+
+    /**
+     * Metodo che inizia il conteggio del tempo della partita.
+     */
+    static void avviaTempo() {
+        tempoInizio = System.currentTimeMillis();
+    }
+
+    /**
+     * Metodo che restituisce il tempo trascorso dall'inizio della partita.
+     * @return tempo trascorso dall'inizio della partita
+     */
+    static float tempoTrascorso() {
+        return (System.currentTimeMillis() - tempoInizio) / MILLISECONDI;
+    }
+
+    /**
+     * Metodo che restituisce true se il tempo è scaduto, false altrimenti.
+     * @return true se il tempo è scaduto, false altrimenti
+     */
+    static boolean tempoScaduto() {
+        return tempoTrascorso() >= tempo * SECONDI;
+    }
+
+    /**
      * Ciclo principale del menu.
      */
     public static void mainLoop() {
@@ -117,8 +184,13 @@ public final class GestioneComandi {
                     if (!partitaIniziata()) {
                         throw new PartitaNonIniziataException();
                     }
-                    //attacco ancora da implementare
-                    System.out.println("Attacco non ancora implementato");
+                    if (tempoImpostato() && tempoScaduto()) {
+                        System.out.println("Tempo scaduto");
+                        GestioneComandi.terminaPartita("persa: tempo scaduto");
+                    } else {
+                        //attacco ancora da implementare
+                        System.out.println("Attacco non ancora implementato");
+                    }
                 }
             } catch (ComandoNonEsistenteException | InputNonFormattatoException | PartitaNonIniziataException e) {
                 System.out.println(e.getMessage());
@@ -293,6 +365,9 @@ class Gioca extends Comando {
             GestioneComandi.getPartita().posizionaNavi();
             System.out.println("Nuova partita iniziata\n");
             Grafica.stampaGrigliaColpita(GestioneComandi.getPartita().getGriglia());
+            if (GestioneComandi.tempoImpostato()) {
+                GestioneComandi.avviaTempo();
+            }
         } catch (PartitaGiaIniziataException e) {
             System.out.println(e.getMessage());
         } catch (CloneNotSupportedException e) {
@@ -488,17 +563,43 @@ class Abbandona extends Comando {
         boolean conferma = Util.chiediConferma("Conferma l'abbandono della partita(s/n): ");
 
         if (conferma) {
-            System.out.println("Abbandono della partita...");
-            try {
-                Grafica.svelaGrigliaNavi(GestioneComandi.getPartita().getGriglia());
-            } catch (CloneNotSupportedException e) {
-                System.out.println("Impossibile svelare la griglia: clonazione di griglia fallita");
-            }
-
-            GestioneComandi.terminaPartita();
-            System.out.println("Partita abbandonata");
+            GestioneComandi.terminaPartita("abbandonata");
         } else {
             System.out.println("Abbandono della partita annullato");
         }
+    }
+}
+
+/**
+ * Classe rappresentante il comando /tempo, che
+ * imposta il tempo massimo di gioco in minuti.
+ */
+class Tempo extends Comando {
+    Tempo() {
+        super("tempo", "difficolta");
+    }
+
+    public String getDescrizione() {
+        return "Imposta il tempo massimo di gioco in minuti. Se impostato a 0, non ci sono limiti di tempo";
+    }
+
+    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length != 1) {
+            throw new InputNonFormattatoException();
+        }
+
+        if (GestioneComandi.partitaIniziata()) {
+            System.out.println("Non puoi cambiare il tempo di gioco durante una partita");
+            return;
+        }
+
+        int tempo = Integer.parseInt(parametri[0]);
+        if (tempo < 0) {
+            System.out.println("Il tempo di gioco deve essere maggiore o uguale a 0 (0 in caso di nessun limite)");
+            return;
+        }
+
+        GestioneComandi.setTempo(tempo);
+        System.out.println("Tempo di gioco impostato a: " + (tempo == 0 ? "nessun limite" : tempo + " minuti"));
     }
 }

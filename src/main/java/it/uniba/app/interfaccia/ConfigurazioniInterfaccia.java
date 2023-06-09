@@ -30,6 +30,7 @@ public final class ConfigurazioniInterfaccia {
             put("large", new Large());
             put("extralarge", new ExtraLarge());
             put("abbandona", new Abbandona());
+            put("tempo", new Tempo());
         }
     };
 
