@@ -351,11 +351,11 @@ Nella fase conclusiva è stata condotta una riunione, svolta dopo la consegna di
 
 #### Strumenti utilizzati
 Durante la fase di sviluppo del progetto è stato utilizzato il sistema di versionamento Git, in particolare il modello di branching GitHub Flow.
-Per ognuno dei tre sprint è stato creato un milestone, chiamato con il nome del relativo sprint, a cui sono stati assegnati tutti gli issue, le pull request e la project board associati allo sprint in corso.
+Per ognuno dei tre sprint è stato creato un milestone, chiamato con il nome del relativo sprint, a cui sono stati assegnati tutti gli issue e la project board associati allo sprint in corso.
 
 La project board di ogni sprint prevedeva le seguenti colonne:
-- **ToDo**: relativa agli incarichi assegnati, ma il cui lavoro non è ancora iniziato;
-- **InProgress**, per le attività in corso di svolgimento;
+- **To Do**: relativa agli incarichi assegnati, ma il cui lavoro non è ancora iniziato;
+- **In Progress**, per le attività in corso di svolgimento;
 - **Review**, per le attività completate e in attesa di revisione prima del merge;
 - **Ready**, per le attività completate e pronte per essere integrate nel branch principale;
 - **Dona**, relativa alle modifiche revisionate dal Product Owner.
