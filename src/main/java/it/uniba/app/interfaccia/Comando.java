@@ -1,5 +1,7 @@
 package it.uniba.app.interfaccia;
 
+import it.uniba.app.exceptions.InputNonFormattatoException;
+
 /**
  * Classe che rappresenta un comando di gioco.
  */
@@ -12,7 +14,7 @@ public abstract class Comando {
         this.categoria = categoriaParam;
     }
 
-    abstract void esegui();
+    abstract void esegui(String[] parametri) throws InputNonFormattatoException;
 
     abstract String getDescrizione();
 

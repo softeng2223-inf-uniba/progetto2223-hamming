@@ -1,6 +1,7 @@
 package it.uniba.app;
 
 import it.uniba.app.exceptions.ComandoNonEsistenteException;
+import it.uniba.app.exceptions.InputNonFormattatoException;
 import it.uniba.app.interfaccia.GestioneComandi;
 
 /**
@@ -25,8 +26,8 @@ public final class App {
     public static void main(final String[] args) {
         if (args.length == 1 && ("--help".equals(args[0]) || "-h".equals(args[0]))) {
             try {
-                GestioneComandi.chiamaComando("help");
-            } catch (ComandoNonEsistenteException e) {
+                GestioneComandi.chiamaComando("/help", new String[0]);
+            } catch (ComandoNonEsistenteException | InputNonFormattatoException e) {
                 System.out.println(e.getMessage());
             }
         }

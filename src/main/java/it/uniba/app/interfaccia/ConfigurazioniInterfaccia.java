@@ -29,6 +29,8 @@ public final class ConfigurazioniInterfaccia {
             put("standard", new Standard());
             put("large", new Large());
             put("extralarge", new ExtraLarge());
+            put("abbandona", new Abbandona());
+            put("tempo", new Tempo());
         }
     };
 

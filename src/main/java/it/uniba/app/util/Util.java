@@ -60,4 +60,21 @@ public final class Util {
         }
         return suggestedString;
     }
+
+    /**
+     * Metodo che stampa il messaggio in input e chiede all'utente
+     * una risposta in formato s/n, che viene restituita come booleano.
+     */
+    public static boolean chiediConferma(final String messaggio) {
+        String input;
+        while (true) {
+            System.out.print(messaggio);
+            input = Util.getString();
+            if ("s".equals(input) || "n".equals(input)) {
+                break;
+            }
+            System.out.println("Inserire solo s o n");
+        }
+        return "s".equals(input);
+    }
 }
