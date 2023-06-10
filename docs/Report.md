@@ -363,6 +363,11 @@ La project board di ogni sprint prevedeva le seguenti colonne:
 
 ![projectBoard.png](img%2FprojectBoard.png)
 
+I requisti funzionali sono stati assegnati a uno o più membri del gruppo, con una data di scadenza specificata. Nel caso di compiti assegnati a più persone è stata lascaita liberà
+di autogestione per la suddivisione del lavoro. Successivamente, sono stati aperti gli issue relativi a ciascun compito assegnato.
+
+
+
 ## 9. Analisi retrospettiva
 
 ### 9.1 Sprint 0
