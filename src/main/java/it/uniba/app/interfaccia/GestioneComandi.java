@@ -158,6 +158,14 @@ public final class GestioneComandi {
     }
 
     /**
+     * Metodo che restituisce il tempo rimasto per la partita.
+     * @return tempo rimasto per la partita
+     */
+    static float tempoRimasto() {
+        return tempo * SECONDI - tempoTrascorso();
+    }
+
+    /**
      * Metodo che restituisce true se il tempo è scaduto, false altrimenti.
      * @return true se il tempo è scaduto, false altrimenti
      */
