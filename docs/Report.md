@@ -360,6 +360,9 @@ La project board di ogni sprint prevedeva le seguenti colonne:
 - **Ready**, per le attività completate e pronte per essere integrate nel branch principale;
 - **Dona**, relativa alle modifiche revisionate dal Product Owner.
 
+
+![projectBoard.png](img%2FprojectBoard.png)
+
 ## 9. Analisi retrospettiva
 
 ### 9.1 Sprint 0
