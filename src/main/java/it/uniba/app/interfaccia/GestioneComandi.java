@@ -653,9 +653,14 @@ class MostraTempo extends Comando {
             return;
         }
 
-        System.out.println("Tempo trascorso: "
-        + GestioneComandi.getMinuti(GestioneComandi.tempoTrascorso()) + " minuti");
-        System.out.println("Tempo rimanente: "
-        + GestioneComandi.getMinuti(GestioneComandi.tempoRimasto()) + " minuti");
+        if (!GestioneComandi.tempoScaduto()) {
+            System.out.println("Tempo trascorso: "
+            + GestioneComandi.getMinuti(GestioneComandi.tempoTrascorso()) + " minuti");
+            System.out.println("Tempo rimanente: "
+            + GestioneComandi.getMinuti(GestioneComandi.tempoRimasto()) + " minuti");
+        } else {
+            System.out.println("Tempo scaduto");
+            GestioneComandi.terminaPartita("persa: tempo scaduto");
+        }
     }
 }
