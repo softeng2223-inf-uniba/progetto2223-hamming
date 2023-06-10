@@ -32,6 +32,7 @@ public final class ConfigurazioniInterfaccia {
             put("abbandona", new Abbandona());
             put("tempo", new Tempo());
             put("mostragriglia", new MostraGriglia());
+            put("mostratempo", new MostraTempo());
         }
     };
 

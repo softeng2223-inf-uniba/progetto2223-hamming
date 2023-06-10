@@ -3,6 +3,7 @@ package it.uniba.app;
 import it.uniba.app.exceptions.ComandoNonEsistenteException;
 import it.uniba.app.exceptions.InputNonFormattatoException;
 import it.uniba.app.exceptions.PartitaNonIniziataException;
+import it.uniba.app.exceptions.ParametriNonCorrettiException;
 import it.uniba.app.interfaccia.GestioneComandi;
 
 /**
@@ -28,7 +29,7 @@ public final class App {
         if (args.length == 1 && ("--help".equals(args[0]) || "-h".equals(args[0]))) {
             try {
                 GestioneComandi.chiamaComando("/help", new String[0]);
-            } catch (ComandoNonEsistenteException | InputNonFormattatoException | PartitaNonIniziataException e) {
+            } catch (ComandoNonEsistenteException | InputNonFormattatoException | PartitaNonIniziataException | ParametriNonCorrettiException e) {
                 System.out.println(e.getMessage());
             }
         }
