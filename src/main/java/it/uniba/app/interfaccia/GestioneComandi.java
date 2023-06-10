@@ -622,3 +622,40 @@ class Tempo extends Comando {
         System.out.println("Tempo di gioco impostato a: " + (tempo == 0 ? "nessun limite" : tempo + " minuti"));
     }
 }
+
+/**
+ * Classe rappresentante il comando /mostratempo, che
+ * mostra il tempo trascorso e il tempo rimanente di gioco.
+ */
+class MostraTempo extends Comando {
+    MostraTempo() {
+        super("mostratempo", "difficolta");
+    }
+
+    public String getDescrizione() {
+        return "Mostra il tempo rimanente di gioco";
+    }
+
+    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0) {
+            throw new InputNonFormattatoException();
+        }
+
+        if (!GestioneComandi.partitaIniziata()) {
+            System.out.println(GestioneComandi.tempoImpostato()
+            ? "La partita non è ancora iniziata.\nTempo di gioco impostato a " + GestioneComandi.getTempo() + " minuti"
+            : "Non è stato impostato nessun limite di tempo");
+            return;
+        }
+
+        if (!GestioneComandi.tempoImpostato()) {
+            System.out.println("Non è stato impostato nessun limite di tempo");
+            return;
+        }
+
+        System.out.println("Tempo trascorso: "
+        + GestioneComandi.getMinuti(GestioneComandi.tempoTrascorso()) + " minuti");
+        System.out.println("Tempo rimanente: "
+        + GestioneComandi.getMinuti(GestioneComandi.tempoRimasto()) + " minuti");
+    }
+}
