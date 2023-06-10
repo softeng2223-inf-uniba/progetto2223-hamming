@@ -331,11 +331,11 @@ I progetti Scrum fanno progressi in una serie di iterazioni dette sprint, non in
 In questo progetto precisamente il gruppo ha lavorato su 3 sprint: sprint0, sprint1, sprint2, per ognuno dei quali i requisiti sono stati: analizzati, progettati, realizzati e testati.
 Per l'organizzazione di lavoro il gruppo ha utilizzato varie piattaforme di comunicazione come: whatsapp, per fissare daily meeting o per avvisi extra di lavoro e discord utilizzato, come alternativa, per condurre daily meeting straordinari quando non vi era la possibilità di effettuarlo fisicamente.
 
-![img\immagineGruppoWhatsapp.png](img\immagineGruppoWhatsapp.png)
+![img\immagineGruppoWhatsapp.png](img/immagineGruppoWhatsapp.png)
 
 Inoltre, il gruppo si è impegnato a tenere circa tre daily meeting settimanali per analizzare le modifiche apportate da ciascun membro e valutare eventuali cambiamenti da apportare al progetto. In particolare, si è posta maggiore attenzione sull'individuazione degli aspetti che esigevano miglioramenti.
 Organizzazione daily meeting dello Sprint2:
-![docs\img\organizzazione_daily_meeting.png](img\organizzazione_daily_meeting.png)
+![docs\img\organizzazione_daily_meeting.png](img/organizzazione_daily_meeting.png)
 
 Al termine di ogni sprint, è stata condotta un'analisi retrospettiva tra i membri del gruppo. Questa sessione, di solito della durata di 15-30 minuti, ha fornito a ciascun membro l'opportunità di esprimere un feedback sul lavoro svolto, identificando ciò che è stato fatto correttamente e ciò che è necessario evitare per gli sprint successivi.
 
