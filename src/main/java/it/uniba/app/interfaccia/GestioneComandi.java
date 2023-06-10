@@ -180,7 +180,7 @@ public final class GestioneComandi {
      */
     static String getMinuti(final float secondi) {
         int min = (int) (secondi / SECONDI);
-        int sec = (int) secondi % SECONDI;
+        int sec = (int) Math.round(secondi % SECONDI);
         return min + ":" + (String.valueOf(sec).length() == 2 ? sec : "0" + sec);
     }
 
