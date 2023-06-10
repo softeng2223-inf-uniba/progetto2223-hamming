@@ -161,6 +161,51 @@ public final class GestioneComandi {
             throw new ComandoNonEsistenteException(comando);
         }
     }
+
+    /**
+     * Esegui parametrizzato dei comandi di difficoltà.
+     * 
+     * @param difficolta nome del comando da eseguire, che rappresenta la difficoltà.
+     * @param parametri parametri da passare al comando.
+     * @throws ParametriNonCorrettiException
+     * @throws PartitaGiaIniziataException
+     */
+    public static void eseguiDifficoltà(final String difficolta, final String[] parametri)
+            throws ParametriNonCorrettiException, PartitaGiaIniziataException {
+        if (parametri.length > 1) {
+            throw new ParametriNonCorrettiException(
+                    "Troppi parametri per il comando. Utilizzo corretto: /" + difficolta + " [tentativi]");
+        }
+        try {
+            if (parametri.length == 1) {
+                try {
+                    if (GestioneComandi.partitaIniziata()) {
+                        throw new PartitaGiaIniziataException(
+                                "Non puoi cambiare il numero di tentativi"
+                                        + " massimi di una difficoltà durante una partita");
+                    }
+                    int tentativi = Integer.parseInt(parametri[0]);
+                    // controlla che il numero sia maggiore di 0
+                    if (tentativi <= 0) {
+                        throw new ParametriNonCorrettiException(
+                                "Il parametro [tentativi] deve essere maggiore di 0."
+                                        + " Utilizzo corretto: /" + difficolta + " [tentativi]");
+                    }
+                    Configurazioni.setTentativi(difficolta, tentativi);
+                    System.out.println("Numero di tentativi massimi della difficoltà "
+                            + difficolta + " modificato a " + Configurazioni.getTentativi(difficolta));
+                } catch (NumberFormatException e) {
+                    System.out.println(
+                            "Il parametro [tentativi] non è un numero intero. Utilizzo corretto: /" + difficolta
+                                    + " [tentativi]");
+                }
+                return;
+            }
+            GestioneComandi.setLivello(difficolta);
+        } catch (PartitaGiaIniziataException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
 
 class Esci extends Comando {
