@@ -375,7 +375,10 @@ la revisione di un solo membro è stata sufficiente, mentre per modifiche più s
 per garantire maggiore cautela e sicurezza nella correttezza del lavoro svolto. In alcuni casi, la revisione ha richiesto ulteriori modifiche prima
 dell'approvazione delle pull request.
 
-
+Durante la realizzazione del progetto, come ambiente di sviluppo, è stato usato l'IDE Visual Studio Code insieme ad altri software:
+- Docker per l'utilizzo di container;
+- IntelliJ come IDE secondario;
+- Lucidchart per la creazione di diagrammi UML;
 
 ## 9. Analisi retrospettiva
 
