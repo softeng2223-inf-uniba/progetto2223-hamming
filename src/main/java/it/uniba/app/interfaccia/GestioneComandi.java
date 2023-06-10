@@ -159,11 +159,30 @@ public final class GestioneComandi {
     }
 
     /**
+     * Metodo che restituisce il tempo rimasto per la partita.
+     * @return tempo rimasto per la partita
+     */
+    static float tempoRimasto() {
+        return tempo * SECONDI - tempoTrascorso();
+    }
+
+    /**
      * Metodo che restituisce true se il tempo è scaduto, false altrimenti.
      * @return true se il tempo è scaduto, false altrimenti
      */
     static boolean tempoScaduto() {
         return tempoTrascorso() >= tempo * SECONDI;
+    }
+
+    /**
+     * Metodo che restituisce una stringa contenente i minuti e i secondi.
+     * @param secondi tempo in secondi
+     * @return stringa contenente i minuti e i secondi
+     */
+    static String getMinuti(final float secondi) {
+        int min = (int) (secondi / SECONDI);
+        int sec = (int) Math.round(secondi % SECONDI);
+        return min + ":" + (String.valueOf(sec).length() == 2 ? sec : "0" + sec);
     }
 
     /**
@@ -636,5 +655,47 @@ class Tempo extends Comando {
 
         GestioneComandi.setTempo(tempo);
         System.out.println("Tempo di gioco impostato a: " + (tempo == 0 ? "nessun limite" : tempo + " minuti"));
+    }
+}
+
+/**
+ * Classe rappresentante il comando /mostratempo, che
+ * mostra il tempo trascorso e il tempo rimanente di gioco.
+ */
+class MostraTempo extends Comando {
+    MostraTempo() {
+        super("mostratempo", "difficolta");
+    }
+
+    public String getDescrizione() {
+        return "Mostra il tempo rimanente di gioco";
+    }
+
+    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+        if (parametri.length > 0) {
+            throw new InputNonFormattatoException();
+        }
+
+        if (!GestioneComandi.partitaIniziata()) {
+            System.out.println(GestioneComandi.tempoImpostato()
+            ? "La partita non è ancora iniziata.\nTempo di gioco impostato a " + GestioneComandi.getTempo() + " minuti"
+            : "Non è stato impostato nessun limite di tempo");
+            return;
+        }
+
+        if (!GestioneComandi.tempoImpostato()) {
+            System.out.println("Non è stato impostato nessun limite di tempo");
+            return;
+        }
+
+        if (!GestioneComandi.tempoScaduto()) {
+            System.out.println("Tempo trascorso: "
+            + GestioneComandi.getMinuti(GestioneComandi.tempoTrascorso()) + " minuti");
+            System.out.println("Tempo rimanente: "
+            + GestioneComandi.getMinuti(GestioneComandi.tempoRimasto()) + " minuti");
+        } else {
+            System.out.println("Tempo scaduto");
+            GestioneComandi.terminaPartita("persa: tempo scaduto");
+        }
     }
 }
