@@ -369,6 +369,14 @@ di autogestione per la suddivisione del lavoro. Successivamente, sono stati aper
 Ogni membro ha creato un branch sul proprio repository locale, corrispondente agli issue assegnati, per lavorare in modo indipendente
 e mantenere le modifiche localmente prima di aggiornare il branch remoto.
 
+Dopo aver completato il proprio compito e inviato un pull request, è stato chiesto che almeno un membro del gruppo
+confermasse e approvasse le modifiche prima del merge e della cancellazione del branch. Di solito, per modifiche minori o che non avrebbero creato conflitti,
+la revisione di un solo membro è stata sufficiente, mentre per modifiche più significative si è cercato di ottenere più pareri 
+per garantire maggiore cautela e sicurezza nella correttezza del lavoro svolto. In alcuni casi, la revisione ha richiesto ulteriori modifiche prima
+dell'approvazione delle pull request.
+
+
+
 ## 9. Analisi retrospettiva
 
 ### 9.1 Sprint 0
