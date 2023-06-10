@@ -378,7 +378,8 @@ dell'approvazione delle pull request.
 Durante la realizzazione del progetto, come ambiente di sviluppo, è stato usato l'IDE Visual Studio Code insieme ad altri software:
 - Docker per l'utilizzo di container;
 - IntelliJ come IDE secondario;
-- Lucidchart e StarUML per la creazione di diagrammi UML.
+- Lucidchart e StarUML per la creazione di diagrammi UML;
+- Microsoft WhiteBoard per il modello Retrospettiva "Arrabbiato, Triste, Felice"
 
 ## 9. Analisi retrospettiva
 
