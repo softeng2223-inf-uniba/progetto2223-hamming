@@ -174,6 +174,17 @@ public final class GestioneComandi {
     }
 
     /**
+     * Metodo che restituisce una stringa contenente i minuti e i secondi.
+     * @param secondi tempo in secondi
+     * @return stringa contenente i minuti e i secondi
+     */
+    static String getMinuti(final float secondi) {
+        int min = (int) (secondi / SECONDI);
+        int sec = (int) secondi % SECONDI;
+        return min + ":" + (String.valueOf(sec).length() == 2 ? sec : "0" + sec);
+    }
+
+    /**
      * Ciclo principale del menu.
      */
     public static void mainLoop() {
