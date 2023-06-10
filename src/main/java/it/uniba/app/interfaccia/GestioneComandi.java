@@ -164,13 +164,13 @@ public final class GestioneComandi {
 
     /**
      * Esegui parametrizzato dei comandi di difficoltà.
-     * 
+     *
      * @param difficolta nome del comando da eseguire, che rappresenta la difficoltà.
      * @param parametri parametri da passare al comando.
      * @throws ParametriNonCorrettiException
      * @throws PartitaGiaIniziataException
      */
-    public static void eseguiDifficoltà(final String difficolta, final String[] parametri)
+    public static void eseguiDifficolta(final String difficolta, final String[] parametri)
             throws ParametriNonCorrettiException, PartitaGiaIniziataException {
         if (parametri.length > 1) {
             throw new ParametriNonCorrettiException(
@@ -248,7 +248,7 @@ class Facile extends Comando {
 
     public void esegui(final String[] parametri) {
         try {
-            GestioneComandi.eseguiDifficoltà(this.getNome(), parametri);
+            GestioneComandi.eseguiDifficolta(this.getNome(), parametri);
         } catch (PartitaGiaIniziataException | ParametriNonCorrettiException e) {
             System.out.println(e.getMessage());
         }
@@ -266,7 +266,7 @@ class Medio extends Comando {
 
     public void esegui(final String[] parametri) {
         try {
-            GestioneComandi.eseguiDifficoltà(this.getNome(), parametri);
+            GestioneComandi.eseguiDifficolta(this.getNome(), parametri);
         } catch (PartitaGiaIniziataException | ParametriNonCorrettiException e) {
             System.out.println(e.getMessage());
         }
@@ -284,7 +284,7 @@ class Difficile extends Comando {
 
     public void esegui(final String[] parametri) {
         try {
-            GestioneComandi.eseguiDifficoltà(this.getNome(), parametri);
+            GestioneComandi.eseguiDifficolta(this.getNome(), parametri);
         } catch (PartitaGiaIniziataException | ParametriNonCorrettiException e) {
             System.out.println(e.getMessage());
         }
