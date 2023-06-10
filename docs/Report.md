@@ -366,7 +366,8 @@ La project board di ogni sprint prevedeva le seguenti colonne:
 I requisti funzionali sono stati assegnati a uno o più membri del gruppo, con una data di scadenza specificata. Nel caso di compiti assegnati a più persone è stata lascaita liberà
 di autogestione per la suddivisione del lavoro. Successivamente, sono stati aperti gli issue relativi a ciascun compito assegnato.
 
-
+Ogni membro ha creato un branch sul proprio repository locale, corrispondente agli issue assegnati, per lavorare in modo indipendente
+e mantenere le modifiche localmente prima di aggiornare il branch remoto.
 
 ## 9. Analisi retrospettiva
 
