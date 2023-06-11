@@ -141,4 +141,14 @@ public class Partita {
         }
         return true;
     }
+
+    /**
+     * Metodo che controlla se i tentativi sono terminati.
+     *
+     * @return true se i tentativi sono terminati, false altrimenti
+     */
+
+    public boolean tentativiTerminati() {
+        return tentativiRimasti == 0;
+    }
 }
