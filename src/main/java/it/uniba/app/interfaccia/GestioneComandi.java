@@ -293,7 +293,7 @@ public final class GestioneComandi {
                 return;
             }
             GestioneComandi.setLivello(difficolta);
-            Configurazioni.deleteCustomTenativi();
+            Configurazioni.deleteCustomTentativi();
         } catch (PartitaGiaIniziataException e) {
             System.out.println(e.getMessage());
         }

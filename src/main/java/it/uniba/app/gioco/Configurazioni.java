@@ -96,7 +96,7 @@ public final class Configurazioni {
     /**
      * Elimina il livello di difficoltà custom.
      */
-    public static void deleteCustomTenativi() {
+    public static void deleteCustomTentativi() {
         if (!CONFIGURAZIONE_LIVELLO.containsKey("custom")) {
             CONFIGURAZIONE_LIVELLO.remove("custom");
         }
