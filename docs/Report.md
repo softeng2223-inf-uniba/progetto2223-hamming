@@ -351,7 +351,7 @@ Nella fase conclusiva è stata condotta una riunione, svolta dopo la consegna di
 
 #### Strumenti utilizzati
 Durante la fase di sviluppo del progetto è stato utilizzato il sistema di versionamento Git, in particolare il modello di branching GitHub Flow.
-Per ognuno dei tre sprint è stato creato un milestone, chiamato con il nome del relativo sprint, a cui sono stati assegnati tutti gli issue e la project board associati allo sprint in corso.
+Per ognuno dei tre sprint è stato creato un milestone, chiamato con il nome del relativo sprint, a cui sono state assegnate tutte le issues e la project board associati allo sprint in corso.
 
 La project board di ogni sprint prevedeva le seguenti colonne:
 - **To Do**: relativa agli incarichi assegnati, ma il cui lavoro non è ancora iniziato;
@@ -364,9 +364,9 @@ La project board di ogni sprint prevedeva le seguenti colonne:
 ![projectBoard.png](img%2FprojectBoard.png)
 
 I requisti funzionali sono stati assegnati a uno o più membri del gruppo, con una data di scadenza specificata. Nel caso di compiti assegnati a più persone è stata lasciata libertà
-di autogestione per la suddivisione del lavoro. Successivamente, sono stati aperti gli issue relativi a ciascun compito assegnato.
+di autogestione per la suddivisione del lavoro. Successivamente, sono state aperte le issue relative a ciascun compito assegnato.
 
-Ogni membro ha creato un branch sul proprio repository locale, corrispondente agli issue assegnati, per lavorare in modo indipendente
+Ogni membro ha creato un branch sul proprio repository locale, corrispondente alle issue assegnate, per lavorare in modo indipendente
 e mantenere le modifiche localmente prima di aggiornare il branch remoto.
 
 Dopo aver completato il proprio compito e inviato un pull request, è stato chiesto che almeno un membro del gruppo
