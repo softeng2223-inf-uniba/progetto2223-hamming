@@ -94,6 +94,15 @@ public final class Configurazioni {
     }
 
     /**
+     * Elimina il livello di difficoltà custom.
+     */
+    public static void deleteCustomTenativi() {
+        if (!CONFIGURAZIONE_LIVELLO.containsKey("custom")) {
+            CONFIGURAZIONE_LIVELLO.remove("custom");
+        }
+    }
+
+    /**
      * Restituisce il livello di default.
      * @return livello di default
      */
