@@ -1,6 +1,7 @@
 package it.uniba.app.interfaccia;
 
 import it.uniba.app.exceptions.InputNonFormattatoException;
+import it.uniba.app.exceptions.PartitaNonIniziataException;
 import it.uniba.app.exceptions.ParametriNonCorrettiException;
 
 /**
@@ -15,7 +16,7 @@ public abstract class Comando {
         this.categoria = categoriaParam;
     }
 
-    abstract void esegui(String[] parametri) throws InputNonFormattatoException, ParametriNonCorrettiException;
+    abstract void esegui(String[] parametri) throws InputNonFormattatoException, PartitaNonIniziataException, ParametriNonCorrettiException;
 
     abstract String getDescrizione();
 
