@@ -2,6 +2,9 @@ package it.uniba.app.gioco;
 
 import java.util.ArrayList;
 import java.util.Random;
+import it.uniba.app.exceptions.FuoriDallaGrigliaException;
+import it.uniba.app.exceptions.CellaGiaColpitaException;
+import it.uniba.app.interfaccia.Grafica;
 
 /**
  * Classe che rappresenta una partita di battaglia navale.
@@ -16,11 +19,13 @@ public class Partita {
 
     /**
      * Costruttore della classe Partita che inizializza il livello della partita.
+     *
      * @param livelloParam liveello della partita
      */
     public Partita(final String livelloParam) {
         this.livello = livelloParam;
         this.griglia = new Griglia();
+        tentativiRimasti = Configurazioni.getTentativi(livelloParam);
 
         for (String tipologia : Configurazioni.getTipologieNavi()) {
             for (int i = 0; i < Configurazioni.getNumeroNaviPerTipologia(tipologia); i++) {
@@ -33,6 +38,7 @@ public class Partita {
 
     /**
      * Metodo che restituisce il livello della partita.
+     *
      * @return
      */
     public String getLivello() {
@@ -41,6 +47,7 @@ public class Partita {
 
     /**
      * Metodo che restituisce il numero di tentativi rimasti.
+     *
      * @return
      */
     public int getTentativiRimasti() {
@@ -49,6 +56,7 @@ public class Partita {
 
     /**
      * Metodo che restituisce la griglia della partita.
+     *
      * @throws CloneNotSupportedException
      */
     public Griglia getGriglia() throws CloneNotSupportedException {
@@ -57,6 +65,7 @@ public class Partita {
 
     /**
      * Metodo che restituisce una nave dato l'indice.
+     *
      * @param indice indice della nave
      * @return
      */
@@ -65,8 +74,9 @@ public class Partita {
     }
 
     /**
-        Metodo che aggiunge una nave alla lista delle navi.
-        @param nave nave da aggiungere alla lista
+     * Metodo che aggiunge una nave alla lista delle navi.
+     *
+     * @param nave nave da aggiungere alla lista
      */
     public final void aggiungereNave(final Nave nave) {
         this.navi.add(nave);
@@ -95,5 +105,50 @@ public class Partita {
                 i++;
             }
         }
+    }
+
+    /**
+     * Metodo che attacca la cella selezionata e
+     * decrementa il numero di tentativi rimasti
+     * nel caso venga colpito il mare.
+     *
+     * @param riga    riga della griglia
+     * @param colonna colonna della griglia
+     */
+    public void attaccaGriglia(final int riga, final int colonna) {
+
+        try {
+            if (!griglia.attaccaCella(riga, colonna)) {
+                tentativiRimasti--;
+            }
+            Grafica.stampaGrigliaColpita(griglia);
+        } catch (FuoriDallaGrigliaException | CellaGiaColpitaException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Metodo che controlla se tutte le navi sono affondate.
+     *
+     * @return true se tutte le navi sono affondate, false altrimenti
+     */
+
+    public boolean naviAffondate() {
+        for (Nave nave : navi) {
+            if (!nave.eAffondata()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Metodo che controlla se i tentativi sono terminati.
+     *
+     * @return true se i tentativi sono terminati, false altrimenti
+     */
+
+    public boolean tentativiTerminati() {
+        return tentativiRimasti == 0;
     }
 }

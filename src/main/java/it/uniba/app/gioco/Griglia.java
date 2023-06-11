@@ -1,4 +1,6 @@
 package it.uniba.app.gioco;
+import it.uniba.app.exceptions.FuoriDallaGrigliaException;
+import it.uniba.app.exceptions.CellaGiaColpitaException;
 
 /**
  * Classe che rappresenta la griglia della battaglia navale.
@@ -9,7 +11,6 @@ public class Griglia implements Cloneable {
 
     /**
      * Costruttore della classe Griglia.
-     * @return
      */
     public Griglia() {
         celle = new Cella[Configurazioni.getRigheGriglia()][Configurazioni.getColonneGriglia()];
@@ -76,6 +77,27 @@ public class Griglia implements Cloneable {
         }
         return true;
     }
+
+    /**
+     * Metodo che attacca una cella della griglia.
+     * @param riga  riga della cella.
+     * @param colonna colonna della cella.
+     * @return true se è stata colpita una nave, false altrimenti.
+     * @throws FuoriDallaGrigliaException se le coordinate sono fuori dalla griglia.
+     * @throws CellaGiaColpitaException se la cella è già stata colpita.
+     */
+    public boolean attaccaCella(final int riga, final int colonna)
+            throws FuoriDallaGrigliaException, CellaGiaColpitaException {
+        if ((riga >= Configurazioni.getRigheGriglia() || riga < 0)
+                && (colonna >= Configurazioni.getColonneGriglia() || colonna < 0)) {
+            throw new FuoriDallaGrigliaException(riga, colonna);
+        }
+        if (celle[riga][colonna].eColpita()) {
+            throw new CellaGiaColpitaException(riga, colonna);
+        }
+        return celle[riga][colonna].attacca();
+    }
+
 
     /**
      * Metodo che clona la griglia.
