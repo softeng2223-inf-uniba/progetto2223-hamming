@@ -51,7 +51,7 @@ public class CellaPiena extends Cella {
      */
     public boolean attacca() {
         String stampa = "Colpita";
-        colpita = true;
+        setColpita();
         nave.colpisciNave();
         if (nave.eAffondata()) {
             stampa += " e affondata";

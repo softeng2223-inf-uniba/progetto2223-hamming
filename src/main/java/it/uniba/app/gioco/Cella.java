@@ -9,7 +9,7 @@ public class Cella implements Cloneable {
     /**
      * Attributo che indica se la cella è stata colpita o meno.
      */
-    protected boolean colpita;
+    private boolean colpita;
 
     /**
      * Costruttore della classe che initializza la cella come non colpita.
@@ -25,6 +25,14 @@ public class Cella implements Cloneable {
     public boolean eColpita() {
         return colpita;
     }
+
+    /**
+     * Metodo che imposta la cella come colpita.
+     */
+    protected void setColpita() {
+        colpita = true;
+    }
+
 
     /**
      * Metodo che indica se la cella è vuota (non contiene navi).
