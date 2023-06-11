@@ -9,7 +9,7 @@ public class Cella implements Cloneable {
     /**
      * Attributo che indica se la cella è stata colpita o meno.
      */
-    private boolean colpita;
+    protected boolean colpita;
 
     /**
      * Costruttore della classe che initializza la cella come non colpita.
@@ -53,7 +53,7 @@ public class Cella implements Cloneable {
     /**
      * Metodo che viene chiamato quando la cella viene attaccata.
      *
-     * @return true se la cella conteneva una nave quando è stata colpita.
+     * @return false perché la cella non conteneva nessuna nave quando è stata colpita.
      */
     public boolean attacca() {
         colpita = true;
