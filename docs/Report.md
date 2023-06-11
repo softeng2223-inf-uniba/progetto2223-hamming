@@ -297,6 +297,13 @@ Quando il giocatore usa il comando /abbandona, il gioco chiede conferma all'uten
 
 ![comando_abbandona.png](img/comando_abbandona.png)
 
+#### Comando /tentativi 
+Quando il giocatore usa il comando /tentativi \<numero\>, il gioco risponde "OK" e imposta il numero massimo di tentativi falliti al valore specificato dall'utente.
+- Se il numero dei parametri non è 1, il gioco risponde con "ERRORE: numero di parametri errato".
+- Se il valore specificato è minore di 1, il gioco risponde con "ERRORE: numero di tentativi non valido".
+- Se una partità è in corso il gioco risponde con "ERRORE: impossibile cambiare il numero di tentativi durante una partita".
+![comando_tentativi.png](img/comando_tentativi.png)
+
 ### Introduzione di gioco
 La **battaglia navale** è un gioco, in questo caso a giocatore singolo, il cui **obiettivo** è quello di **affondare tutte le navi** che sono posizionate su una griglia 10x10 nascosta al giocatore con le righe numerate da 1 a 10 e le colonne numerate da A a J.
 ### Regole

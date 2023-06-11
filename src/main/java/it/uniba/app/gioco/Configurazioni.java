@@ -86,6 +86,23 @@ public final class Configurazioni {
     }
 
     /**
+     * Crea un nuovo livello di difficoltà custom.
+     * @param tentativi numero di tentativi del livello custom.
+     */
+    public static void setCustomTentativi(final int tentativi) {
+        CONFIGURAZIONE_LIVELLO.put("custom", tentativi);
+    }
+
+    /**
+     * Elimina il livello di difficoltà custom.
+     */
+    public static void deleteCustomTentativi() {
+        if (!CONFIGURAZIONE_LIVELLO.containsKey("custom")) {
+            CONFIGURAZIONE_LIVELLO.remove("custom");
+        }
+    }
+
+    /**
      * Restituisce il livello di default.
      * @return livello di default
      */
