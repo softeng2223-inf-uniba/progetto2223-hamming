@@ -29,7 +29,8 @@ public final class App {
         if (args.length == 1 && ("--help".equals(args[0]) || "-h".equals(args[0]))) {
             try {
                 GestioneComandi.chiamaComando("/help", new String[0]);
-            } catch (ComandoNonEsistenteException | InputNonFormattatoException | PartitaNonIniziataException | ParametriNonCorrettiException e) {
+            } catch (ComandoNonEsistenteException | InputNonFormattatoException
+            | PartitaNonIniziataException | ParametriNonCorrettiException e) {
                 System.out.println(e.getMessage());
             }
         }

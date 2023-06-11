@@ -244,7 +244,8 @@ public final class GestioneComandi {
      * @param parametri parametri da passare al comando
      */
     public static void chiamaComando(final String comando, final String[] parametri)
-            throws ComandoNonEsistenteException, InputNonFormattatoException, PartitaNonIniziataException, ParametriNonCorrettiException {
+            throws ComandoNonEsistenteException, InputNonFormattatoException,
+            PartitaNonIniziataException, ParametriNonCorrettiException {
         Comando c = ConfigurazioniInterfaccia.getComando(comando.substring(1).toLowerCase());
 
         if (c != null) {

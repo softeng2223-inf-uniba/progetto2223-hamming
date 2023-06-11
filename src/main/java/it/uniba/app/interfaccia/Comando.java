@@ -16,7 +16,8 @@ public abstract class Comando {
         this.categoria = categoriaParam;
     }
 
-    abstract void esegui(String[] parametri) throws InputNonFormattatoException, PartitaNonIniziataException, ParametriNonCorrettiException;
+    abstract void esegui(String[] parametri) throws InputNonFormattatoException,
+    PartitaNonIniziataException, ParametriNonCorrettiException;
 
     abstract String getDescrizione();
 
