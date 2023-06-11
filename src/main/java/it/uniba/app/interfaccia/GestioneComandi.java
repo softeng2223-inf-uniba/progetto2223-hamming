@@ -8,6 +8,7 @@ import it.uniba.app.exceptions.ParametriNonCorrettiException;
 import it.uniba.app.exceptions.PartitaGiaIniziataException;
 import it.uniba.app.exceptions.PartitaNonIniziataException;
 import it.uniba.app.gioco.Configurazioni;
+import it.uniba.app.gioco.Griglia;
 import it.uniba.app.gioco.Partita;
 import it.uniba.app.util.Util;
 
@@ -243,7 +244,7 @@ public final class GestioneComandi {
      * @param parametri parametri da passare al comando
      */
     public static void chiamaComando(final String comando, final String[] parametri)
-            throws ComandoNonEsistenteException, InputNonFormattatoException, ParametriNonCorrettiException {
+            throws ComandoNonEsistenteException, InputNonFormattatoException, PartitaNonIniziataException, ParametriNonCorrettiException {
         Comando c = ConfigurazioniInterfaccia.getComando(comando.substring(1).toLowerCase());
 
         if (c != null) {
@@ -659,6 +660,41 @@ class Tempo extends Comando {
 }
 
 /**
+ * Al comando /mostragriglia
+ * l’applicazione risponde visualizzando, una griglia 10x10,
+ * con le righe numerate da 1 a 10 e le colonne numerate da A a J,
+ * con le navi affondate e le sole parti già colpite delle navi non affondate.
+ */
+class MostraGriglia extends Comando {
+    MostraGriglia() {
+        super("mostragriglia", "gioco");
+    }
+
+    public String getDescrizione() {
+        return "Mostra la griglia di gioco";
+    }
+
+    public void esegui(final String[] parametri) throws InputNonFormattatoException, PartitaNonIniziataException {
+        if (parametri.length > 0) {
+            throw new InputNonFormattatoException();
+        }
+
+        if (!GestioneComandi.partitaIniziata()) {
+            throw new PartitaNonIniziataException();
+        }
+
+        Griglia griglia;
+        try {
+            griglia = GestioneComandi.getPartita().getGriglia();
+        } catch (CloneNotSupportedException e) {
+            System.out.println("Impossibile svelare la griglia: clonazione di griglia fallita");
+            return;
+        }
+        Grafica.stampaGrigliaColpita(griglia);
+    }
+}
+
+/**
  * Classe rappresentante il comando /mostratempo, che
  * mostra il tempo trascorso e il tempo rimanente di gioco.
  */
@@ -699,3 +735,4 @@ class MostraTempo extends Comando {
         }
     }
 }
+  
