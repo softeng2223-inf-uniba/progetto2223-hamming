@@ -715,9 +715,10 @@ class Tentativi extends Comando {
         return "Imposta il numero massimo di tentativi falliti senza selezionare una difficoltà predefinita";
     }
 
-    public void esegui(final String[] parametri) throws InputNonFormattatoException , ParametriNonCorrettiException {
+    public void esegui(final String[] parametri) throws InputNonFormattatoException, ParametriNonCorrettiException {
         if (parametri.length != 1) {
-            throw new ParametriNonCorrettiException("Numero di parametri errato. Utilizzo corretto: /tentativi <num_tentativi>");
+            throw new ParametriNonCorrettiException("Numero di parametri errato."
+            + " Utilizzo corretto: /tentativi <num_tentativi>");
         }
         if (GestioneComandi.partitaIniziata()) {
             System.out.println("Non puoi cambiare il numero di tentativi massimi durante una partita");
