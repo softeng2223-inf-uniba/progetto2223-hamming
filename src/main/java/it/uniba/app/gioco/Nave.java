@@ -61,7 +61,7 @@ public class Nave implements Cloneable {
     /**
      * Metodo che decrementa il numero di celle rimanenti per affondare la nave.
      */
-    public void colpisciNave(){
+    public void colpisciNave() {
         celleRimanenti--;
     }
 }
