@@ -52,12 +52,25 @@ public final class Configurazioni {
 
 
     //SEZIONE LIVELLI
-    private static final Map<String, Integer> CONFIGURAZIONE_LIVELLO = Map.of(
-      "facile", 50,
-      "medio", 30,
-      "difficile", 10);
-
+    private static final Map<String, Integer> CONFIGURAZIONE_LIVELLO = new LinkedHashMap<String, Integer>();
+    private static final Integer LIVELLO_FACILE = 50;
+    private static final Integer LIVELLO_MEDIO = 30;
+    private static final Integer LIVELLO_DIFFICILE = 10;
     private static final String LIVELLO_DEFAULT = "medio";
+
+
+    /**
+     * Modifica il numero di tentativi di un livello di difficoltà.
+     * @param livello livello di difficoltà
+     * @param tentativi numero di tentativi
+     */
+    public static void setTentativi(final String livello, final int tentativi) {
+        if (!CONFIGURAZIONE_LIVELLO.containsKey(livello)) {
+            throw new LivelloNonEsistenteException("Livello " + livello + " non esiste");
+        }
+        CONFIGURAZIONE_LIVELLO.put(livello, tentativi);
+    }
+
 
     /**
      * Restituisce il numero di tentativi di un livello di difficoltà.
@@ -70,6 +83,23 @@ public final class Configurazioni {
             throw new LivelloNonEsistenteException("Livello " + livello + " non esiste");
         }
         return CONFIGURAZIONE_LIVELLO.get(livello);
+    }
+
+    /**
+     * Crea un nuovo livello di difficoltà custom.
+     * @param tentativi numero di tentativi del livello custom.
+     */
+    public static void setCustomTentativi(final int tentativi) {
+        CONFIGURAZIONE_LIVELLO.put("custom", tentativi);
+    }
+
+    /**
+     * Elimina il livello di difficoltà custom.
+     */
+    public static void deleteCustomTentativi() {
+        if (!CONFIGURAZIONE_LIVELLO.containsKey("custom")) {
+            CONFIGURAZIONE_LIVELLO.remove("custom");
+        }
     }
 
     /**
@@ -88,13 +118,6 @@ public final class Configurazioni {
 
     private static final Map<String, ConfigurazioneNave> CONFIGURAZIONE_NAVI =
     new LinkedHashMap<String, ConfigurazioneNave>();
-
-    static {
-        CONFIGURAZIONE_NAVI.put("portaerei", PORTAEREI);
-        CONFIGURAZIONE_NAVI.put("corazzata", CORAZZATA);
-        CONFIGURAZIONE_NAVI.put("incrociatore", INCROCIATORE);
-        CONFIGURAZIONE_NAVI.put("cacciatorpediniere", CACCIATORPEDINIERE);
-    }
 
     /**
      * Restituisce la lunghezza di una tipologia di navi.
@@ -126,6 +149,18 @@ public final class Configurazioni {
      */
     public static Set<String> getTipologieNavi() {
         return CONFIGURAZIONE_NAVI.keySet();
+    }
+
+    // SEZIONE INIZIALIZZAZIONE CONFIGURAZIONI LIVELLI E NAVI
+    static {
+        CONFIGURAZIONE_LIVELLO.put("facile", LIVELLO_FACILE);
+        CONFIGURAZIONE_LIVELLO.put("medio", LIVELLO_MEDIO);
+        CONFIGURAZIONE_LIVELLO.put("difficile", LIVELLO_DIFFICILE);
+
+        CONFIGURAZIONE_NAVI.put("portaerei", PORTAEREI);
+        CONFIGURAZIONE_NAVI.put("corazzata", CORAZZATA);
+        CONFIGURAZIONE_NAVI.put("incrociatore", INCROCIATORE);
+        CONFIGURAZIONE_NAVI.put("cacciatorpediniere", CACCIATORPEDINIERE);
     }
 }
 
