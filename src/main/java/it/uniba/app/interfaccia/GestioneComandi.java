@@ -235,6 +235,18 @@ public final class GestioneComandi {
     }
 
     /**
+     * Metodo che attacca la cella specificata dall'input dell'utente.
+     * @param attacco input dell'utente
+     */
+
+    public static void attacco(final String attacco) {
+        String[] cella = attacco.split("-"); // b-4 -> [b, 4]
+        int colonna = cella[0].charAt(0) - 'a'; // b -> 1 // e -> 4
+        int riga = Integer.parseInt(cella[1]) - 1; // "4" -> (4 - 1) = 3
+        partita.attaccaGriglia(riga, colonna);
+    }
+
+    /**
      * Esegui parametrizzato dei comandi di difficoltà.
      *
      * @param difficolta nome del comando da eseguire, che rappresenta la difficoltà.
