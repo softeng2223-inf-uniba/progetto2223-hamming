@@ -187,10 +187,15 @@ public final class GestioneComandi {
                     }
                     if (tempoImpostato() && tempoScaduto()) {
                         System.out.println("Tempo scaduto");
-                        GestioneComandi.terminaPartita("persa: tempo scaduto");
+                        terminaPartita("persa: tempo scaduto");
                     } else {
-                        //attacco ancora da implementare
-                        System.out.println("Attacco non ancora implementato");
+                        attacco(input);
+                        if (partita.NaviAffondate()) {
+                            terminaPartita("Vinta!");
+                        } else if (partita.tentativiTerminati()) {
+                            System.out.println("Tentativi terminati");
+                            terminaPartita("persa: hai terminato i tentativi disponibili");
+                        }
                     }
                 }
             } catch (ComandoNonEsistenteException | InputNonFormattatoException
