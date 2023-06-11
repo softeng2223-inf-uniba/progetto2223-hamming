@@ -108,7 +108,7 @@ public class Partita {
      * @param riga riga della griglia
      * @param colonna colonna della griglia
      */
-    public void attaccaGriglia(int riga, int colonna) {
+    public void attaccaGriglia(final int riga, final int colonna) {
 
         try {
             if (!griglia.attaccaCella(riga, colonna)) {

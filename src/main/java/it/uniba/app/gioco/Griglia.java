@@ -86,7 +86,8 @@ public class Griglia implements Cloneable {
      * @throws FuoriDallaGrigliaException se le coordinate sono fuori dalla griglia.
      * @throws CellaGiaColpitaException se la cella è già stata colpita.
      */
-    public boolean attaccaCella(int riga, int colonna) throws FuoriDallaGrigliaException, CellaGiaColpitaException {
+    public boolean attaccaCella(final int riga, final int colonna)
+            throws FuoriDallaGrigliaException, CellaGiaColpitaException {
         if ((riga >= Configurazioni.getRigheGriglia() || riga < 0)
                 && (colonna >= Configurazioni.getColonneGriglia() || colonna < 0)) {
             throw new FuoriDallaGrigliaException(riga, colonna);
