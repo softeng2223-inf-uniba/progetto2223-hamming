@@ -49,4 +49,15 @@ public class Cella implements Cloneable {
     public Cella clone() throws CloneNotSupportedException {
         return (Cella) super.clone();
     }
+
+    /**
+     * Metodo che viene chiamato quando la cella viene attaccata.
+     *
+     * @return true se la cella conteneva una nave quando è stata colpita.
+     */
+    public boolean attacca() {
+        colpita = true;
+        System.out.println("Acqua . . .");
+        return false;
+    }
 }
