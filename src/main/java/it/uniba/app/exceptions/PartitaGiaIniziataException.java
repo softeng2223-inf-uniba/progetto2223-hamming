@@ -6,7 +6,7 @@ package it.uniba.app.exceptions;
  *
  * @author Gruppo Hamming
  */
-public class PartitaGiaIniziataException extends Exception {
+public class PartitaGiaIniziataException extends ComandiException {
     /**
      * Costruttore di default.
      *

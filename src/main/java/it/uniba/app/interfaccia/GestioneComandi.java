@@ -2,6 +2,7 @@ package it.uniba.app.interfaccia;
 
 import java.util.Arrays;
 
+import it.uniba.app.exceptions.ComandiException;
 import it.uniba.app.exceptions.ComandoNonEsistenteException;
 import it.uniba.app.exceptions.InputNonFormattatoException;
 import it.uniba.app.exceptions.ParametriNonCorrettiException;
@@ -47,7 +48,7 @@ public final class GestioneComandi {
     /**
      * Metodo che inizializza la partita.
      *
-     * @throws PartitaGiaIniziataException
+     * @throws PartitaGiaIniziataException non si può inizializzare una partita se è già in corso
      */
     public static void inizializzaPartita() throws PartitaGiaIniziataException {
         if (partita != null) {
@@ -111,7 +112,7 @@ public final class GestioneComandi {
     }
 
     /**
-     * restituisce true se input è un comando altrimenti false.
+     * Restituisce true se input è un comando altrimenti false.
      *
      * @param input input da controllare
      * @return true se input è un comando altrimenti false
@@ -182,7 +183,7 @@ public final class GestioneComandi {
      */
     static String getMinuti(final float secondi) {
         int min = (int) (secondi / SECONDI);
-        int sec = (int) Math.round(secondi % SECONDI);
+        int sec = Math.round(secondi % SECONDI);
         return min + ":" + (String.valueOf(sec).length() == 2 ? sec : "0" + sec);
     }
 
@@ -218,8 +219,7 @@ public final class GestioneComandi {
                         }
                     }
                 }
-            } catch (ComandoNonEsistenteException | InputNonFormattatoException
-            | PartitaNonIniziataException | ParametriNonCorrettiException e) {
+            } catch (ComandiException | ComandoNonEsistenteException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -249,8 +249,7 @@ public final class GestioneComandi {
      * @param parametri parametri da passare al comando
      */
     public static void chiamaComando(final String comando, final String[] parametri)
-            throws ComandoNonEsistenteException, InputNonFormattatoException,
-            PartitaNonIniziataException, ParametriNonCorrettiException {
+            throws ComandiException, ComandoNonEsistenteException {
         Comando c = ConfigurazioniInterfaccia.getComando(comando.substring(1).toLowerCase());
 
         if (c != null) {
@@ -277,8 +276,8 @@ public final class GestioneComandi {
      *
      * @param difficolta nome del comando da eseguire, che rappresenta la difficoltà.
      * @param parametri parametri da passare al comando.
-     * @throws ParametriNonCorrettiException
-     * @throws PartitaGiaIniziataException
+     * @throws ParametriNonCorrettiException i parametri sono più di uno
+     * @throws PartitaGiaIniziataException non si può inizializzare una partita se è già in corso
      */
     public static void eseguiDifficolta(final String difficolta, final String[] parametri)
             throws ParametriNonCorrettiException, PartitaGiaIniziataException {
@@ -295,7 +294,7 @@ public final class GestioneComandi {
                                         + " massimi di una difficoltà durante una partita");
                     }
                     int tentativi = Integer.parseInt(parametri[0]);
-                    // controlla che il numero sia maggiore di 0
+                    // controlla che il numero sia maggiore di zero
                     if (tentativi <= 0) {
                         throw new ParametriNonCorrettiException(
                                 "Il parametro [tentativi] deve essere maggiore di 0."
@@ -478,14 +477,13 @@ class SvelaGriglia extends Comando {
         return "Svela la griglia di gioco";
     }
 
-    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+    public void esegui(final String[] parametri) throws InputNonFormattatoException, PartitaNonIniziataException {
         if (parametri.length > 0) {
             throw new InputNonFormattatoException();
         }
 
         if (!GestioneComandi.partitaIniziata()) {
-            System.out.println("Non c'è nessuna partita in corso");
-            return;
+            throw new PartitaNonIniziataException();
         }
 
         try {
@@ -532,14 +530,13 @@ class Standard extends Comando {
         return "Imposta la dimensione della griglia a 10x10 (default)";
     }
 
-    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+    public void esegui(final String[] parametri) throws InputNonFormattatoException, PartitaNonIniziataException {
         if (parametri.length > 0) {
             throw new InputNonFormattatoException();
         }
 
         if (GestioneComandi.partitaIniziata()) {
-            System.out.println("Non puoi cambiare la dimensione della griglia durante una partita");
-            return;
+            throw new PartitaNonIniziataException();
         }
 
         Configurazioni.setRigheGriglia(Configurazioni.DIMENSIONI_GRIGLIA_STANDARD);
@@ -562,14 +559,13 @@ class Large extends Comando {
         return "Imposta la dimensione della griglia a 18x18";
     }
 
-    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+    public void esegui(final String[] parametri) throws InputNonFormattatoException, PartitaGiaIniziataException {
         if (parametri.length > 0) {
             throw new InputNonFormattatoException();
         }
 
         if (GestioneComandi.partitaIniziata()) {
-            System.out.println("Non puoi cambiare la dimensione della griglia durante una partita");
-            return;
+            throw new PartitaGiaIniziataException("Non puoi cambiare la dimensione della griglia durante una partita");
         }
 
         Configurazioni.setRigheGriglia(Configurazioni.DIMENSIONI_GRIGLIA_LARGE);
@@ -592,14 +588,13 @@ class ExtraLarge extends Comando {
         return "Imposta la dimensione della griglia a 26x26";
     }
 
-    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+    public void esegui(final String[] parametri) throws InputNonFormattatoException, PartitaGiaIniziataException {
         if (parametri.length > 0) {
             throw new InputNonFormattatoException();
         }
 
         if (GestioneComandi.partitaIniziata()) {
-            System.out.println("Non puoi cambiare la dimensione della griglia durante una partita");
-            return;
+            throw new PartitaGiaIniziataException("Non puoi cambiare la dimensione della griglia durante una partita");
         }
 
         Configurazioni.setRigheGriglia(Configurazioni.DIMENSIONI_GRIGLIA_EXTRA_LARGE);
@@ -624,14 +619,13 @@ class Abbandona extends Comando {
         return "Abbandona la partita in corso";
     }
 
-    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+    public void esegui(final String[] parametri) throws InputNonFormattatoException, PartitaNonIniziataException {
         if (parametri.length > 0) {
             throw new InputNonFormattatoException();
         }
 
         if (!GestioneComandi.partitaIniziata()) {
-            System.out.println("Non c'è nessuna partita in corso");
-            return;
+            throw new PartitaNonIniziataException();
         }
 
         boolean conferma = Util.chiediConferma("Conferma l'abbandono della partita(s/n): ");
@@ -657,14 +651,13 @@ class Tempo extends Comando {
         return "Imposta il tempo massimo di gioco in minuti. Se impostato a 0, non ci sono limiti di tempo";
     }
 
-    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+    public void esegui(final String[] parametri) throws InputNonFormattatoException, PartitaGiaIniziataException {
         if (parametri.length != 1) {
             throw new InputNonFormattatoException();
         }
 
         if (GestioneComandi.partitaIniziata()) {
-            System.out.println("Non puoi cambiare il tempo di gioco durante una partita");
-            return;
+            throw new PartitaGiaIniziataException("Non puoi cambiare il tempo di gioco durante una partita");
         }
 
         int tempo = Integer.parseInt(parametri[0]);
@@ -769,14 +762,14 @@ class Tentativi extends Comando {
         return "Imposta il numero massimo di tentativi falliti senza selezionare una difficoltà predefinita";
     }
 
-    public void esegui(final String[] parametri) throws InputNonFormattatoException, ParametriNonCorrettiException {
+    public void esegui(final String[] parametri) throws ParametriNonCorrettiException, PartitaGiaIniziataException {
         if (parametri.length != 1) {
             throw new ParametriNonCorrettiException("Numero di parametri errato."
             + " Utilizzo corretto: /tentativi <num_tentativi>");
         }
         if (GestioneComandi.partitaIniziata()) {
-            System.out.println("Non puoi cambiare il numero di tentativi massimi durante una partita");
-            return;
+            throw new PartitaGiaIniziataException("Non puoi cambiare il numero "
+                    + "di tentativi massimi durante una partita");
         }
         int tentativi = Integer.parseInt(parametri[0]);
         if (tentativi <= 0) {
