@@ -358,7 +358,7 @@ La project board di ogni sprint prevedeva le seguenti colonne:
 - **In Progress**, per le attività in corso di svolgimento;
 - **Review**, per le attività completate e in attesa di revisione prima del merge;
 - **Ready**, per le attività completate e pronte per essere integrate nel branch principale;
-- **Dona**, relativa alle modifiche revisionate dal Product Owner.
+- **Done**, relativa alle modifiche revisionate dal Product Owner.
 
 
 ![projectBoard.png](img%2FprojectBoard.png)
