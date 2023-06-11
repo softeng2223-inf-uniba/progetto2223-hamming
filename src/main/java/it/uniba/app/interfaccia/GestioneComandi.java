@@ -700,3 +700,40 @@ class MostraTempo extends Comando {
         }
     }
 }
+
+/**
+ * Classe rappresentante il comando /tentativi, che
+ * imposta il numero massimo di tentativi falliti senza selezionare
+ * una difficoltà predefinita.
+ */
+class Tentativi extends Comando {
+    Tentativi() {
+        super("tentativi", "difficolta");
+    }
+
+    public String getDescrizione() {
+        return "Imposta il numero massimo di tentativi falliti senza selezionare una difficoltà predefinita";
+    }
+
+    public void esegui(final String[] parametri) throws InputNonFormattatoException , ParametriNonCorrettiException {
+        if (parametri.length != 1) {
+            throw new ParametriNonCorrettiException("Numero di parametri errato. Utilizzo corretto: /tentativi <num_tentativi>");
+        }
+        if (GestioneComandi.partitaIniziata()) {
+            System.out.println("Non puoi cambiare il numero di tentativi massimi durante una partita");
+            return;
+        }
+        int tentativi = Integer.parseInt(parametri[0]);
+        if (tentativi <= 0) {
+            System.out.println("Il numero di tentativi massimi deve essere maggiore di 0");
+            return;
+        }
+        try {
+            Configurazioni.setCustomTentativi(tentativi);
+            GestioneComandi.setLivello("custom");
+        } catch (PartitaGiaIniziataException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("Numero di tentativi massimi impostato a " + tentativi);
+    }
+}
