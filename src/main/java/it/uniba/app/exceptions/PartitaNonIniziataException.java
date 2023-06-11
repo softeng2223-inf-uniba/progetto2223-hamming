@@ -5,7 +5,7 @@ package it.uniba.app.exceptions;
  *
  * @author Gruppo Hamming
  */
-public class PartitaNonIniziataException extends Exception {
+public class PartitaNonIniziataException extends ComandiException {
     /**
      * Costruttore senza parametri.
      */
