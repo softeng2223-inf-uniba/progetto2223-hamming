@@ -19,11 +19,13 @@ public class Partita {
 
     /**
      * Costruttore della classe Partita che inizializza il livello della partita.
+     *
      * @param livelloParam liveello della partita
      */
     public Partita(final String livelloParam) {
         this.livello = livelloParam;
         this.griglia = new Griglia();
+        tentativiRimasti = Configurazioni.getTentativi(livelloParam);
 
         for (String tipologia : Configurazioni.getTipologieNavi()) {
             for (int i = 0; i < Configurazioni.getNumeroNaviPerTipologia(tipologia); i++) {
@@ -36,6 +38,7 @@ public class Partita {
 
     /**
      * Metodo che restituisce il livello della partita.
+     *
      * @return
      */
     public String getLivello() {
@@ -44,6 +47,7 @@ public class Partita {
 
     /**
      * Metodo che restituisce il numero di tentativi rimasti.
+     *
      * @return
      */
     public int getTentativiRimasti() {
@@ -52,6 +56,7 @@ public class Partita {
 
     /**
      * Metodo che restituisce la griglia della partita.
+     *
      * @throws CloneNotSupportedException
      */
     public Griglia getGriglia() throws CloneNotSupportedException {
@@ -60,6 +65,7 @@ public class Partita {
 
     /**
      * Metodo che restituisce una nave dato l'indice.
+     *
      * @param indice indice della nave
      * @return
      */
@@ -68,8 +74,9 @@ public class Partita {
     }
 
     /**
-        Metodo che aggiunge una nave alla lista delle navi.
-        @param nave nave da aggiungere alla lista
+     * Metodo che aggiunge una nave alla lista delle navi.
+     *
+     * @param nave nave da aggiungere alla lista
      */
     public final void aggiungereNave(final Nave nave) {
         this.navi.add(nave);
@@ -105,7 +112,7 @@ public class Partita {
      * decrementa il numero di tentativi rimasti
      * nel caso venga colpito il mare.
      *
-     * @param riga riga della griglia
+     * @param riga    riga della griglia
      * @param colonna colonna della griglia
      */
     public void attaccaGriglia(final int riga, final int colonna) {
@@ -118,5 +125,20 @@ public class Partita {
         } catch (FuoriDallaGrigliaException | CellaGiaColpitaException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    /**
+     * Metodo che controlla se tutte le navi sono affondate.
+     *
+     * @return true se tutte le navi sono affondate, false altrimenti
+     */
+
+    public boolean NaviAffondate() {
+        for (Nave nave : navi) {
+            if (!nave.eAffondata()) {
+                return false;
+            }
+        }
+        return true;
     }
 }
