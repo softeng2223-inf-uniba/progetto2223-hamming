@@ -6,6 +6,7 @@
     - [3.1 Requisiti funzionali](#31-requisiti-funzionali)
     - [3.2 Requisiti non funzionali](#32-requisiti-non-funzionali)
 - [7. Manuale Utente](#7-manuale-utente)
+- [8. Processo di sviluppo e organizzazione del lavoro](#8-Processo-di-sviluppo-e-organizzazione-del-lavoro)
 - [9. Analisi retrospettiva](#9-analisi-retrospettiva)
     - [9.1 Sprint 0](#91-sprint-0)
     - [9.2 Sprint 1](#92-sprint-1)
@@ -342,6 +343,62 @@ Windows:
 Dopo aver eseguito il comando ```docker pull``` copiandolo da GitHub Packages, il comando Docker da usare per eseguire il container contenente l'applicazione è:
 ```docker run --rm -it ghcr.io/softeng2223-inf-uniba/battleship-hamming:latest```
 
+## 8. Processo di sviluppo e organizzazione del lavoro
+Il gruppo Hamming, durante lo svolgimento delle consegne ha perseguito una strategia precisa nell'organizzazione e nella divisione del lavoro, tale framework di gestione è denominato "Scrum".
+#### Organizzazione del lavoro
+I progetti Scrum fanno progressi in una serie di iterazioni dette sprint, non interrompibili, con una durata, in questo caso, di 2 settimane. 
+In questo progetto precisamente il gruppo ha lavorato su 3 sprint: sprint0, sprint1, sprint2, per ognuno dei quali i requisiti sono stati: analizzati, progettati, realizzati e testati.
+Per l'organizzazione di lavoro il gruppo ha utilizzato varie piattaforme di comunicazione come: whatsapp, per fissare daily meeting o per avvisi extra di lavoro e discord utilizzato, come alternativa, per condurre daily meeting straordinari quando non vi era la possibilità di effettuarlo fisicamente.
+
+![img\immagineGruppoWhatsapp.png](img/immagineGruppoWhatsapp.png)
+
+Inoltre, il gruppo si è impegnato a tenere circa tre daily meeting settimanali per analizzare le modifiche apportate da ciascun membro e valutare eventuali cambiamenti da apportare al progetto. In particolare, si è posta maggiore attenzione sull'individuazione degli aspetti che esigevano miglioramenti.
+Organizzazione daily meeting dello Sprint2:
+![docs\img\organizzazione_daily_meeting.png](img/organizzazione_daily_meeting.png)
+
+Al termine di ogni sprint, è stata condotta un'analisi retrospettiva tra i membri del gruppo. Questa sessione, di solito della durata di 15-30 minuti, ha fornito a ciascun membro l'opportunità di esprimere un feedback sul lavoro svolto, identificando ciò che è stato fatto correttamente e ciò che è necessario evitare per gli sprint successivi.
+
+#### Processo di sviluppo
+##### Fase iniziale
+Per ogni sprint, è stata assegnata una lista di user story, ciascuna delle quali rappresenta un lavoro distinto necessario per il completamento del progetto. Queste user story sono state stabilite dal Product Owner, ovvero il responsabile esclusivo della gestione del Product Backlog. Il Product Owner prende decisioni riguardo all'accettazione o al rifiuto dei risultati del lavoro del team di sviluppo e stabilisce la data di scadenza di ciascuno sprint.
+
+##### Fase intermedia
+Il gruppo ha implementato le user story selezionate dal product backlog per lo sprint. Ogni user story è stata assegnata a uno o due membri del team di sviluppo, la cui gestione è dipesa da loro.   
+
+##### Fase finale
+Nella fase conclusiva è stata condotta una riunione, svolta dopo la consegna di ogni sprint. La sua finalità principale è stata quella di ottenere il feedback dal product owner.
+
+#### Strumenti utilizzati
+Durante la fase di sviluppo del progetto è stato utilizzato il sistema di versionamento Git, in particolare il modello di branching GitHub Flow.
+Per ognuno dei tre sprint è stato creato una milestone, chiamato con il nome del relativo sprint, a cui sono state assegnate tutte le issues e la project board associati allo sprint in corso.
+
+La project board di ogni sprint prevedeva le seguenti colonne:
+- **To Do**: relativa agli incarichi assegnati, ma il cui lavoro non è ancora iniziato;
+- **In Progress**, per le attività in corso di svolgimento;
+- **Review**, per le attività completate e in attesa di revisione prima del merge;
+- **Ready**, per le attività completate e pronte per essere integrate nel branch principale;
+- **Done**, relativa alle modifiche revisionate dal Product Owner.
+
+
+![projectBoard.png](img%2FprojectBoard.png)
+
+I requisti funzionali sono stati assegnati a uno o più membri del gruppo, con una data di scadenza specificata. Nel caso di compiti assegnati a più persone è stata lasciata libertà
+di autogestione per la suddivisione del lavoro. Successivamente, sono state aperte le issue relative a ciascun compito assegnato.
+
+Ogni membro ha creato un branch sul proprio repository locale, corrispondente alle issue assegnate, per lavorare in modo indipendente
+e mantenere le modifiche localmente prima di aggiornare il branch remoto.
+
+Dopo aver completato il proprio compito e inviato una pull request, è stato chiesto che almeno un membro del gruppo
+confermasse e approvasse le modifiche prima del merge e della cancellazione del branch. Di solito, per modifiche minori o che non avrebbero creato conflitti,
+la revisione di un solo membro è stata sufficiente, mentre per modifiche più significative si è cercato di ottenere più pareri 
+per garantire maggiore cautela e sicurezza nella correttezza del lavoro svolto. In alcuni casi, la revisione ha richiesto ulteriori modifiche prima
+dell'approvazione delle pull request.
+
+Durante la realizzazione del progetto, come ambiente di sviluppo, è stato usato l'IDE Visual Studio Code insieme ad altri software:
+- Docker per l'utilizzo di container;
+- IntelliJ come IDE secondario;
+- Lucidchart e StarUML per la creazione di diagrammi UML;
+- Microsoft WhiteBoard per il modello Retrospettiva "Arrabbiato, Triste, Felice"
 
 ## 9. Analisi retrospettiva
 
