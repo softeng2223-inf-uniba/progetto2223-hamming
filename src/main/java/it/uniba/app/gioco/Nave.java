@@ -57,4 +57,11 @@ public class Nave implements Cloneable {
     public Nave clone() throws CloneNotSupportedException {
         return (Nave) super.clone();
     }
+
+    /**
+     * Metodo che decrementa il numero di celle rimanenti per affondare la nave.
+     */
+    public void colpisciNave(){
+        celleRimanenti--;
+    }
 }
