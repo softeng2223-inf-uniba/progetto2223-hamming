@@ -207,10 +207,15 @@ public final class GestioneComandi {
                     }
                     if (tempoImpostato() && tempoScaduto()) {
                         System.out.println("Tempo scaduto");
-                        GestioneComandi.terminaPartita("persa: tempo scaduto");
+                        terminaPartita("persa: tempo scaduto");
                     } else {
-                        //attacco ancora da implementare
-                        System.out.println("Attacco non ancora implementato");
+                        attacco(input);
+                        if (partita.naviAffondate()) {
+                            terminaPartita("Vinta!");
+                        } else if (partita.tentativiTerminati()) {
+                            System.out.println("Tentativi terminati");
+                            terminaPartita("persa: hai terminato i tentativi disponibili");
+                        }
                     }
                 }
             } catch (ComandoNonEsistenteException | InputNonFormattatoException
@@ -253,6 +258,18 @@ public final class GestioneComandi {
         } else {
             throw new ComandoNonEsistenteException(comando);
         }
+    }
+
+    /**
+     * Metodo che attacca la cella specificata dall'input dell'utente.
+     * @param attacco input dell'utente
+     */
+
+    public static void attacco(final String attacco) {
+        String[] cella = attacco.split("-"); // b-4 -> [b, 4]
+        int colonna = cella[0].charAt(0) - 'a'; // b -> 1 // e -> 4
+        int riga = Integer.parseInt(cella[1]) - 1; // "4" -> (4 - 1) = 3
+        partita.attaccaGriglia(riga, colonna);
     }
 
     /**

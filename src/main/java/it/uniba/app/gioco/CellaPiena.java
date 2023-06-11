@@ -43,4 +43,20 @@ public class CellaPiena extends Cella {
         cellaPienaClone.nave = this.nave.clone();
         return cellaPienaClone;
     }
+
+    /**
+     * Metodo che viene chiamato quando la cella con una nave viene attaccata.
+     *
+     * @return true se la cella conteneva una nave quando è stata colpita.
+     */
+    public boolean attacca() {
+        String stampa = "Colpita";
+        setColpita();
+        nave.colpisciNave();
+        if (nave.eAffondata()) {
+            stampa += " e affondata";
+        }
+        System.out.println(stampa + "!");
+        return true;
+    }
 }

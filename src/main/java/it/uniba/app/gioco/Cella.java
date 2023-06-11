@@ -27,6 +27,14 @@ public class Cella implements Cloneable {
     }
 
     /**
+     * Metodo che imposta la cella come colpita.
+     */
+    protected void setColpita() {
+        colpita = true;
+    }
+
+
+    /**
      * Metodo che indica se la cella è vuota (non contiene navi).
      * @return true
      */
@@ -48,5 +56,16 @@ public class Cella implements Cloneable {
      */
     public Cella clone() throws CloneNotSupportedException {
         return (Cella) super.clone();
+    }
+
+    /**
+     * Metodo che viene chiamato quando la cella viene attaccata.
+     *
+     * @return false perché la cella non conteneva nessuna nave quando è stata colpita.
+     */
+    public boolean attacca() {
+        colpita = true;
+        System.out.println("Acqua . . .");
+        return false;
     }
 }
