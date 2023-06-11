@@ -190,7 +190,7 @@ public final class GestioneComandi {
                         terminaPartita("persa: tempo scaduto");
                     } else {
                         attacco(input);
-                        if (partita.NaviAffondate()) {
+                        if (partita.naviAffondate()) {
                             terminaPartita("Vinta!");
                         } else if (partita.tentativiTerminati()) {
                             System.out.println("Tentativi terminati");

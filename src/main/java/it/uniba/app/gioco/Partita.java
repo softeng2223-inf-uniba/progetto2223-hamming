@@ -133,7 +133,7 @@ public class Partita {
      * @return true se tutte le navi sono affondate, false altrimenti
      */
 
-    public boolean NaviAffondate() {
+    public boolean naviAffondate() {
         for (Nave nave : navi) {
             if (!nave.eAffondata()) {
                 return false;
