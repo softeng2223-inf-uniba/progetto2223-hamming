@@ -2,6 +2,9 @@ package it.uniba.app.gioco;
 
 import java.util.ArrayList;
 import java.util.Random;
+import it.uniba.app.exceptions.FuoriDallaGrigliaException;
+import it.uniba.app.exceptions.CellaGiaColpitaException;
+import it.uniba.app.interfaccia.Grafica;
 
 /**
  * Classe che rappresenta una partita di battaglia navale.
@@ -94,6 +97,26 @@ public class Partita {
             } else {
                 i++;
             }
+        }
+    }
+
+    /**
+     * Metodo che attacca la cella selezionata e
+     * decrementa il numero di tentativi rimasti
+     * nel caso venga colpito il mare.
+     *
+     * @param riga riga della griglia
+     * @param colonna colonna della griglia
+     */
+    public void attaccaGriglia(int riga, int colonna) {
+
+        try {
+            if (!griglia.attaccaCella(riga, colonna)) {
+                tentativiRimasti--;
+            }
+            Grafica.stampaGrigliaColpita(griglia);
+        } catch (FuoriDallaGrigliaException | CellaGiaColpitaException e) {
+            System.out.println(e.getMessage());
         }
     }
 }
