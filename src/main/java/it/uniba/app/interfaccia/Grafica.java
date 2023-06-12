@@ -249,4 +249,27 @@ public final class Grafica {
         Grafica.svelaGrigliaNavi(griglia);
         System.out.println("\nPartita " + esito);
     }
+
+    /**
+     * Metodo che stampa un messaggio a video.
+     */
+    public static void stampaMessaggio(final String messaggio) {
+        System.out.println(messaggio);
+    }
+
+    /**
+     * Metodo che stampa un messaggio di errore a video.
+     */
+    public static void stampaErrore(final String messaggio) {
+        System.out.println(ConfigurazioniInterfaccia.ANSI_RED
+                + "ERRORE: " + messaggio + ConfigurazioniInterfaccia.ANSI_RESET);
+    }
+
+    /**
+     * Metodo che stampa un messaggio di warning a video.
+     */
+    public static void stampaWarning(final String messaggio) {
+        System.out.println(ConfigurazioniInterfaccia.ANSI_YELLOW
+                + "ATTENZIONE: " + messaggio + ConfigurazioniInterfaccia.ANSI_RESET);
+    }
 }
