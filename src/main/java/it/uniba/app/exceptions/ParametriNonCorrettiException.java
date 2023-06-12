@@ -5,7 +5,7 @@ package it.uniba.app.exceptions;
  *
  * @author Gruppo Hamming
  */
-public class ParametriNonCorrettiException extends Exception {
+public class ParametriNonCorrettiException extends ComandiException {
 
     /**
      * Costruttore con parametri. Chiama il costruttore della superclasse e passa il messaggio di errore.
