@@ -9,7 +9,6 @@ import it.uniba.app.exceptions.ParametriNonCorrettiException;
 import it.uniba.app.exceptions.PartitaGiaIniziataException;
 import it.uniba.app.exceptions.PartitaNonIniziataException;
 import it.uniba.app.gioco.Configurazioni;
-import it.uniba.app.gioco.Griglia;
 import it.uniba.app.gioco.Partita;
 
 /**
@@ -66,7 +65,7 @@ public final class GestioneComandi {
 
     /**
      * Metodo che svela la griglia con le navi posizionate e termina la partita.
-     * 
+     *
      * @param esito esito della partita
      */
     static void terminaPartita(final String esito) {
@@ -122,7 +121,7 @@ public final class GestioneComandi {
 
     /**
      * Metodo che restituisce il tempo impostato per la partita.
-     * 
+     *
      * @return tempo impostato per la partita
      */
     static int getTempo() {
@@ -131,7 +130,7 @@ public final class GestioneComandi {
 
     /**
      * Metodo che imposta il tempo per la partita.
-     * 
+     *
      * @param minuti tempo in minuti da impostare per la partita
      */
     static void setTempo(final int minuti) {
@@ -140,7 +139,7 @@ public final class GestioneComandi {
 
     /**
      * Metodo che restituisce true se il tempo è stato impostato, false altrimenti.
-     * 
+     *
      * @return true se il tempo è stato impostato, false altrimenti
      */
     static boolean tempoImpostato() {
@@ -156,7 +155,7 @@ public final class GestioneComandi {
 
     /**
      * Metodo che restituisce il tempo trascorso dall'inizio della partita.
-     * 
+     *
      * @return tempo trascorso dall'inizio della partita
      */
     static float tempoTrascorso() {
@@ -165,7 +164,7 @@ public final class GestioneComandi {
 
     /**
      * Metodo che restituisce il tempo rimasto per la partita.
-     * 
+     *
      * @return tempo rimasto per la partita
      */
     static float tempoRimasto() {
@@ -174,7 +173,7 @@ public final class GestioneComandi {
 
     /**
      * Metodo che restituisce true se il tempo è scaduto, false altrimenti.
-     * 
+     *
      * @return true se il tempo è scaduto, false altrimenti
      */
     static boolean tempoScaduto() {
@@ -183,7 +182,7 @@ public final class GestioneComandi {
 
     /**
      * Metodo che restituisce una stringa contenente i minuti e i secondi.
-     * 
+     *
      * @param secondi tempo in secondi
      * @return stringa contenente i minuti e i secondi
      */
@@ -267,7 +266,7 @@ public final class GestioneComandi {
 
     /**
      * Metodo che attacca la cella specificata dall'input dell'utente.
-     * 
+     *
      * @param attacco input dell'utente
      */
 
@@ -342,16 +341,16 @@ class Esci extends Comando {
         }
 
         if (GestioneComandi.partitaIniziata()) {
-            System.out.println("Attenzione: se esci abbandonerai la partita in corso");
+            Grafica.stampaMessaggio("Attenzione: se esci abbandonerai la partita in corso");
         }
 
         boolean conferma = Grafica.chiediConferma("Conferma l'uscita dal programma(s/n): ");
 
         if (conferma) {
-            System.out.println("Uscita dal programma");
+            Grafica.stampaMessaggio("Uscita dal programma");
             GestioneComandi.setContinua(false);
         } else {
-            System.out.println("Uscita annullata");
+            Grafica.stampaMessaggio("Uscita annullata");
         }
     }
 }
@@ -369,7 +368,7 @@ class Facile extends Comando {
         try {
             GestioneComandi.eseguiDifficolta(this.getNome(), parametri);
         } catch (PartitaGiaIniziataException | ParametriNonCorrettiException e) {
-            System.out.println(e.getMessage());
+            Grafica.stampaWarning(e.getMessage());
         }
     }
 }
@@ -387,7 +386,7 @@ class Medio extends Comando {
         try {
             GestioneComandi.eseguiDifficolta(this.getNome(), parametri);
         } catch (PartitaGiaIniziataException | ParametriNonCorrettiException e) {
-            System.out.println(e.getMessage());
+            Grafica.stampaWarning(e.getMessage());
         }
     }
 }
@@ -405,7 +404,7 @@ class Difficile extends Comando {
         try {
             GestioneComandi.eseguiDifficolta(this.getNome(), parametri);
         } catch (PartitaGiaIniziataException | ParametriNonCorrettiException e) {
-            System.out.println(e.getMessage());
+            Grafica.stampaWarning(e.getMessage());
         }
     }
 }
@@ -445,15 +444,15 @@ class Gioca extends Comando {
         try {
             GestioneComandi.inizializzaPartita();
             GestioneComandi.getPartita().posizionaNavi();
-            System.out.println("Nuova partita iniziata\n");
-            Grafica.stampaGrigliaColpita(GestioneComandi.getPartita().getGriglia());
+            Grafica.stampaMessaggio("Nuova partita iniziata\n");
             if (GestioneComandi.tempoImpostato()) {
                 GestioneComandi.avviaTempo();
             }
+            Grafica.stampaGrigliaColpita(GestioneComandi.getPartita().getGriglia());
         } catch (PartitaGiaIniziataException e) {
-            System.out.println(e.getMessage());
+            Grafica.stampaWarning(e.getMessage());
         } catch (CloneNotSupportedException e) {
-            System.out.println("Clone non supportato");
+            Grafica.stampaErrore("Impossibile stampare la griglia: clonazione di griglia fallita");
         }
     }
 }
@@ -497,7 +496,7 @@ class SvelaGriglia extends Comando {
         try {
             Grafica.svelaGrigliaNavi(GestioneComandi.getPartita().getGriglia());
         } catch (CloneNotSupportedException e) {
-            System.out.println("Impossibile svelare la griglia: clonazione di griglia fallita");
+            Grafica.stampaErrore("Impossibile svelare la griglia: clonazione di griglia fallita");
         }
     }
 }
@@ -549,7 +548,7 @@ class Standard extends Comando {
 
         Configurazioni.setRigheGriglia(Configurazioni.DIMENSIONI_GRIGLIA_STANDARD);
         Configurazioni.setColonneGriglia(Configurazioni.DIMENSIONI_GRIGLIA_STANDARD);
-        System.out.println("Dimensione della griglia impostata a 10x10");
+        Grafica.stampaMessaggio("Dimensione della griglia impostata a 10x10");
     }
 }
 
@@ -578,7 +577,7 @@ class Large extends Comando {
 
         Configurazioni.setRigheGriglia(Configurazioni.DIMENSIONI_GRIGLIA_LARGE);
         Configurazioni.setColonneGriglia(Configurazioni.DIMENSIONI_GRIGLIA_LARGE);
-        System.out.println("Dimensione della griglia impostata a 18x18");
+        Grafica.stampaMessaggio("Dimensione della griglia impostata a 18x18");
     }
 }
 
@@ -607,7 +606,7 @@ class ExtraLarge extends Comando {
 
         Configurazioni.setRigheGriglia(Configurazioni.DIMENSIONI_GRIGLIA_EXTRA_LARGE);
         Configurazioni.setColonneGriglia(Configurazioni.DIMENSIONI_GRIGLIA_EXTRA_LARGE);
-        System.out.println("Dimensione della griglia impostata a 26x26");
+        Grafica.stampaMessaggio("Dimensione della griglia impostata a 26x26");
     }
 }
 
@@ -643,7 +642,7 @@ class Abbandona extends Comando {
         if (conferma) {
             GestioneComandi.terminaPartita("abbandonata");
         } else {
-            System.out.println("Abbandono della partita annullato");
+            Grafica.stampaMessaggio("Abbandono della partita annullato");
         }
     }
 }
@@ -672,12 +671,14 @@ class Tempo extends Comando {
 
         int tempo = Integer.parseInt(parametri[0]);
         if (tempo < 0) {
-            System.out.println("Il tempo di gioco deve essere maggiore o uguale a 0 (0 in caso di nessun limite)");
+            Grafica.stampaWarning(
+                "Il tempo di gioco deve essere maggiore o uguale a 0 (0 in caso di nessun limite)");
             return;
         }
 
         GestioneComandi.setTempo(tempo);
-        System.out.println("Tempo di gioco impostato a: " + (tempo == 0 ? "nessun limite" : tempo + " minuti"));
+        Grafica.stampaMessaggio(
+            "Tempo di gioco impostato a: " + (tempo == 0 ? "nessun limite" : tempo + " minuti"));
     }
 }
 
@@ -705,14 +706,11 @@ class MostraGriglia extends Comando {
             throw new PartitaNonIniziataException();
         }
 
-        Griglia griglia;
         try {
-            griglia = GestioneComandi.getPartita().getGriglia();
+            Grafica.stampaGrigliaColpita(GestioneComandi.getPartita().getGriglia());
         } catch (CloneNotSupportedException e) {
-            System.out.println("Impossibile svelare la griglia: clonazione di griglia fallita");
-            return;
+            Grafica.stampaErrore("Impossibile svelare la griglia: clonazione di griglia fallita");
         }
-        Grafica.stampaGrigliaColpita(griglia);
     }
 }
 
@@ -735,7 +733,7 @@ class MostraTempo extends Comando {
         }
 
         if (!GestioneComandi.partitaIniziata()) {
-            System.out.println(GestioneComandi.tempoImpostato()
+            Grafica.stampaMessaggio(GestioneComandi.tempoImpostato()
                     ? "La partita non è ancora iniziata.\nTempo di gioco impostato a " + GestioneComandi.getTempo()
                             + " minuti"
                     : "Non è stato impostato nessun limite di tempo");
@@ -743,17 +741,16 @@ class MostraTempo extends Comando {
         }
 
         if (!GestioneComandi.tempoImpostato()) {
-            System.out.println("Non è stato impostato nessun limite di tempo");
+            Grafica.stampaWarning("Non è stato impostato nessun limite di tempo");
             return;
         }
 
         if (!GestioneComandi.tempoScaduto()) {
-            System.out.println("Tempo trascorso: "
+            Grafica.stampaMessaggio("Tempo trascorso: "
                     + GestioneComandi.getMinuti(GestioneComandi.tempoTrascorso()) + " minuti");
-            System.out.println("Tempo rimanente: "
+            Grafica.stampaMessaggio("Tempo rimanente: "
                     + GestioneComandi.getMinuti(GestioneComandi.tempoRimasto()) + " minuti");
         } else {
-            System.out.println("Tempo scaduto");
             GestioneComandi.terminaPartita("persa: tempo scaduto");
         }
     }
@@ -784,15 +781,15 @@ class Tentativi extends Comando {
         }
         int tentativi = Integer.parseInt(parametri[0]);
         if (tentativi <= 0) {
-            System.out.println("Il numero di tentativi massimi deve essere maggiore di 0");
+            Grafica.stampaWarning("Il numero di tentativi massimi deve essere maggiore di 0");
             return;
         }
         try {
             Configurazioni.setCustomTentativi(tentativi);
             GestioneComandi.setLivello("custom");
         } catch (PartitaGiaIniziataException e) {
-            System.out.println(e.getMessage());
+            Grafica.stampaWarning(e.getMessage());
         }
-        System.out.println("Numero di tentativi massimi impostato a " + tentativi);
+        Grafica.stampaMessaggio("Numero di tentativi massimi impostato a " + tentativi);
     }
 }
