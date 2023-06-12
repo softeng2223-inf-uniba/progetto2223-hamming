@@ -2,13 +2,16 @@ package it.uniba.app.interfaccia;
 
 import java.util.Arrays;
 
+import it.uniba.app.exceptions.CellaGiaColpitaException;
 import it.uniba.app.exceptions.ComandiException;
 import it.uniba.app.exceptions.ComandoNonEsistenteException;
+import it.uniba.app.exceptions.FuoriDallaGrigliaException;
 import it.uniba.app.exceptions.InputNonFormattatoException;
 import it.uniba.app.exceptions.ParametriNonCorrettiException;
 import it.uniba.app.exceptions.PartitaGiaIniziataException;
 import it.uniba.app.exceptions.PartitaNonIniziataException;
 import it.uniba.app.gioco.Configurazioni;
+import it.uniba.app.gioco.EsitoColpo;
 import it.uniba.app.gioco.Partita;
 
 /**
@@ -225,18 +228,37 @@ public final class GestioneComandi {
         if (tempoImpostato() && tempoScaduto()) {
             Grafica.stampaMessaggio("Tempo scaduto");
             terminaPartita("persa: tempo scaduto");
-        } else {
-            String[] cella = attacco.split("-"); // b-4 -> [b, 4]
-            int colonna = cella[0].charAt(0) - 'a'; // b -> 1 // e -> 4
-            int riga = Integer.parseInt(cella[1]) - 1; // "4" -> (4 - 1) = 3
-            partita.attaccaGriglia(riga, colonna);
+            return;
+        }
 
-            if (partita.naviAffondate()) {
-                terminaPartita("Vinta!");
-            } else if (partita.tentativiTerminati()) {
-                Grafica.stampaMessaggio("Tentativi terminati");
-                terminaPartita("persa: hai terminato i tentativi disponibili");
+        String[] cella = attacco.split("-");
+        int colonna = cella[0].charAt(0) - 'a';
+        int riga = Integer.parseInt(cella[1]) - 1;
+        try {
+            EsitoColpo esito = partita.attaccaGriglia(riga, colonna);
+            Grafica.stampaGrigliaColpita(partita.getGriglia());
+            switch(esito) {
+                case ACQUA:
+                    Grafica.stampaMessaggio("Acqua...");
+                    break;
+                case COLPITO:
+                    Grafica.stampaMessaggio("Colpito!");
+                    break;
+                case AFFONDATO:
+                    Grafica.stampaMessaggio("Colpito e Affondato!");
+                    break;
             }
+        } catch (FuoriDallaGrigliaException | CellaGiaColpitaException e) {
+            Grafica.stampaWarning(e.getMessage());
+        } catch (CloneNotSupportedException e) {
+            Grafica.stampaErrore(e.getMessage());
+        }
+
+        if (partita.naviAffondate()) {
+            terminaPartita("vinta!");
+        } else if (partita.tentativiTerminati()) {
+            Grafica.stampaMessaggio("Tentativi terminati");
+            terminaPartita("persa: hai terminato i tentativi disponibili");
         }
     }
 
