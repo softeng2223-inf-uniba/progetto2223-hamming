@@ -1,5 +1,7 @@
 package it.uniba.app.interfaccia;
 
+import java.util.Scanner;
+
 import it.uniba.app.exceptions.LivelloNonEsistenteException;
 import it.uniba.app.gioco.Cella;
 import it.uniba.app.gioco.Configurazioni;
@@ -11,8 +13,40 @@ import it.uniba.app.gioco.Griglia;
  * @author Gruppo Hamming
  */
 public final class Grafica {
+    private static Scanner scan = new Scanner(System.in, "UTF-8");
+
     private Grafica() {
     }
+
+    // INPUT
+
+    /**
+     * Metodo che resttuisce la stringa inserita dall'utente.
+     * 
+     * @return input dell'utente
+     */
+    public static String getString() {
+        return scan.nextLine();
+    }
+
+    /**
+     * Metodo che stampa il messaggio in input e chiede all'utente
+     * una risposta in formato s/n, che viene restituita come booleano.
+     */
+    public static boolean chiediConferma(final String messaggio) {
+        String input;
+        while (true) {
+            System.out.print(messaggio);
+            input = getString();
+            if ("s".equals(input) || "n".equals(input)) {
+                break;
+            }
+            System.out.println("Inserire solo s o n");
+        }
+        return "s".equals(input);
+    }
+
+    // OUTPUT
 
     /**
      * Stampa il livello di difficoltà attuale.
@@ -86,22 +120,22 @@ public final class Grafica {
 
         final int margine = 3;
 
-        String[] lettereColonne = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
-                "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+        String[] lettereColonne = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
+                "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
 
-        //     A   B   C   D   E   F   G   H   I   J
+        // A B C D E F G H I J
         StringBuilder riga = new StringBuilder(" ".repeat(margine + 2));
         for (int i = 0; i < colonne; i++) {
             riga.append(lettereColonne[i]).append("   ");
         }
         System.out.println(riga);
 
-        //   +---+---+---+---+---+---+---+---+---+---+
+        // +---+---+---+---+---+---+---+---+---+---+
         String divisore = " ".repeat(margine) + "+---".repeat(colonne) + "+";
         System.out.println(divisore);
 
         for (int i = 0; i < righe; i++) {
-            //1  |   |   |   |   |   |   |   |   |   |   |
+            // 1 | | | | | | | | | | |
             riga = new StringBuilder(Integer.toString(i + 1));
             riga.append(" ".repeat(margine - riga.length()));
             for (int y = 0; y < colonne; y++) {
@@ -156,24 +190,24 @@ public final class Grafica {
 
         final int margine = 3;
 
-        String[] lettereColonne = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
-                "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+        String[] lettereColonne = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
+                "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
 
         System.out.println("Posizione delle navi:\n");
 
-        //     A   B   C   D   E   F   G   H   I   J
+        // A B C D E F G H I J
         StringBuilder riga = new StringBuilder(" ".repeat(margine + 2));
         for (int i = 0; i < colonne; i++) {
             riga.append(lettereColonne[i]).append("   ");
         }
         System.out.println(riga);
 
-        //   +---+---+---+---+---+---+---+---+---+---+
+        // +---+---+---+---+---+---+---+---+---+---+
         String divisore = " ".repeat(margine) + "+---".repeat(colonne) + "+";
         System.out.println(divisore);
 
         for (int i = 0; i < righe; i++) {
-            //1  |   |   |   |   |   |   |   |   |   |   |
+            // 1 | | | | | | | | | | |
             riga = new StringBuilder(Integer.toString(i + 1));
             riga.append(" ".repeat(margine - riga.length()));
             for (int y = 0; y < colonne; y++) {
