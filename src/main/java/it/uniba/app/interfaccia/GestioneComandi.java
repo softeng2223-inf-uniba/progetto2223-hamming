@@ -215,16 +215,30 @@ public final class GestioneComandi {
     }
 
     /**
-     * Metodo che attacca la cella specificata dall'input dell'utente.
+     * Metodo che attacca la cella specificata dall'input dell'utente e controlla se la partita è terminata.
      *
      * @param attacco input dell'utente
      */
+    public static void attacco(final String attacco) throws PartitaNonIniziataException {
+        if (!partitaIniziata()) {
+            throw new PartitaNonIniziataException();
+        }
+        if (tempoImpostato() && tempoScaduto()) {
+            Grafica.stampaMessaggio("Tempo scaduto");
+            terminaPartita("persa: tempo scaduto");
+        } else {
+            String[] cella = attacco.split("-"); // b-4 -> [b, 4]
+            int colonna = cella[0].charAt(0) - 'a'; // b -> 1 // e -> 4
+            int riga = Integer.parseInt(cella[1]) - 1; // "4" -> (4 - 1) = 3
+            partita.attaccaGriglia(riga, colonna);
 
-    public static void attacco(final String attacco) {
-        String[] cella = attacco.split("-"); // b-4 -> [b, 4]
-        int colonna = cella[0].charAt(0) - 'a'; // b -> 1 // e -> 4
-        int riga = Integer.parseInt(cella[1]) - 1; // "4" -> (4 - 1) = 3
-        partita.attaccaGriglia(riga, colonna);
+            if (partita.naviAffondate()) {
+                terminaPartita("Vinta!");
+            } else if (partita.tentativiTerminati()) {
+                Grafica.stampaMessaggio("Tentativi terminati");
+                terminaPartita("persa: hai terminato i tentativi disponibili");
+            }
+        }
     }
 
     /**

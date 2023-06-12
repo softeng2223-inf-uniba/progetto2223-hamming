@@ -3,7 +3,6 @@ package it.uniba.app;
 import it.uniba.app.exceptions.ComandiException;
 import it.uniba.app.exceptions.ComandoNonEsistenteException;
 import it.uniba.app.exceptions.InputNonFormattatoException;
-import it.uniba.app.exceptions.PartitaNonIniziataException;
 import it.uniba.app.interfaccia.GestioneComandi;
 import it.uniba.app.interfaccia.Grafica;
 
@@ -48,24 +47,10 @@ public final class App {
                 if (GestioneComandi.eComando(input)) {
                     GestioneComandi.chiamaComando(input);
                 } else {
-                    if (!GestioneComandi.partitaIniziata()) {
-                        throw new PartitaNonIniziataException();
-                    }
-                    if (GestioneComandi.tempoImpostato() && GestioneComandi.tempoScaduto()) {
-                        Grafica.stampaMessaggio("Tempo scaduto");
-                        GestioneComandi.terminaPartita("persa: tempo scaduto");
-                    } else {
-                        GestioneComandi.attacco(input);
-                        if (GestioneComandi.getPartita().naviAffondate()) {
-                            GestioneComandi.terminaPartita("Vinta!");
-                        } else if (GestioneComandi.getPartita().tentativiTerminati()) {
-                            Grafica.stampaMessaggio("Tentativi terminati");
-                            GestioneComandi.terminaPartita("persa: hai terminato i tentativi disponibili");
-                        }
-                    }
+                    GestioneComandi.attacco(input);
                 }
             } catch (ComandiException | ComandoNonEsistenteException e) {
-                System.out.println(e.getMessage());
+                Grafica.stampaWarning(e.getMessage());
             }
         }
     }
