@@ -3,9 +3,7 @@ package it.uniba.app.gioco;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Classe di test per la classe Cella.
@@ -109,10 +107,37 @@ class PartitaTest {
         String livello = "facile";
         Partita partita = new Partita(livello);
         int tentativiRimasti = partita.getTentativiRimasti();
+
         partita.posizionaNavi();
-        partita.attaccaGriglia(0, 0);
+        int[] posNave = trovaCellaConNave(partita);
+        assertNotNull(posNave, "Non è stata trovata alcuna cella piena");
+
+        partita.attaccaGriglia(posNave[0], posNave[1]);
         assertEquals(tentativiRimasti, partita.getTentativiRimasti(),
                 "L'attacco di una cella con nave varia il numero di tentativi rimasti");
+    }
+
+
+    /**
+     * Trova le coordinate di una cella occupata da una nave
+     * @param partita partita in cui cercare la cella
+     */
+    private int[] trovaCellaConNave(Partita partita) {
+        Griglia griglia;
+        try {
+            griglia = partita.getGriglia();
+        } catch (CloneNotSupportedException e) {
+            fail("Clonazione della griglia non supportata");
+            return null;
+        }
+        for (int i = 0; i < Configurazioni.getRigheGriglia(); i++) {
+            for (int j = 0; j < Configurazioni.getColonneGriglia(); j++) {
+                if (!griglia.getCella(i, j).eVuota()) {
+                    return new int[]{i, j};
+                }
+            }
+        }
+        return null;
     }
 
 
