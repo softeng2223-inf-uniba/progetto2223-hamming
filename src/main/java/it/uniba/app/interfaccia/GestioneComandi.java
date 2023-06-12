@@ -70,13 +70,11 @@ public final class GestioneComandi {
      * @param esito esito della partita
      */
     static void terminaPartita(final String esito) {
-        System.out.println("Abbandono della partita...\n");
         try {
-            Grafica.svelaGrigliaNavi(GestioneComandi.getPartita().getGriglia());
+            Grafica.stampaFinePartita(esito, GestioneComandi.getPartita().getGriglia());
         } catch (CloneNotSupportedException e) {
             System.out.println("Impossibile svelare la griglia: clonazione di griglia fallita");
         }
-        System.out.println("\nPartita " + esito);
         GestioneComandi.cancellaPartita();
     }
 
