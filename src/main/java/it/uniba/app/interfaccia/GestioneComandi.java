@@ -1,7 +1,5 @@
 package it.uniba.app.interfaccia;
 
-import java.util.Arrays;
-
 import it.uniba.app.exceptions.ComandiException;
 import it.uniba.app.exceptions.ComandoNonEsistenteException;
 import it.uniba.app.exceptions.InputNonFormattatoException;
@@ -68,7 +66,7 @@ public final class GestioneComandi {
      *
      * @param esito esito della partita
      */
-    static void terminaPartita(final String esito) {
+    public static void terminaPartita(final String esito) {
         try {
             Grafica.stampaFinePartita(esito, GestioneComandi.getPartita().getGriglia());
         } catch (CloneNotSupportedException e) {
@@ -115,7 +113,7 @@ public final class GestioneComandi {
      * @param input input da controllare
      * @return true se input è un comando altrimenti false
      */
-    static boolean eComando(final String input) {
+    public static boolean eComando(final String input) {
         return input.startsWith("/");
     }
 
@@ -142,7 +140,7 @@ public final class GestioneComandi {
      *
      * @return true se il tempo è stato impostato, false altrimenti
      */
-    static boolean tempoImpostato() {
+    public static boolean tempoImpostato() {
         return tempo != 0;
     }
 
@@ -176,7 +174,7 @@ public final class GestioneComandi {
      *
      * @return true se il tempo è scaduto, false altrimenti
      */
-    static boolean tempoScaduto() {
+    public static boolean tempoScaduto() {
         return tempoTrascorso() >= tempo * SECONDI;
     }
 
@@ -190,61 +188,6 @@ public final class GestioneComandi {
         int min = (int) (secondi / SECONDI);
         int sec = Math.round(secondi % SECONDI);
         return min + ":" + (String.valueOf(sec).length() == 2 ? sec : "0" + sec);
-    }
-
-    /**
-     * Ciclo principale del menu.
-     */
-    public static void mainLoop() {
-        continua = true;
-        while (continua) {
-            try {
-                String input = leggiInput();
-                if (eComando(input)) {
-                    String[] split = input.split(" ");
-                    String[] parametri = new String[split.length - 1];
-                    if (split.length > 1) {
-                        parametri = Arrays.copyOfRange(split, 1, split.length);
-                    }
-                    chiamaComando(split[0], parametri);
-                } else {
-                    if (!partitaIniziata()) {
-                        throw new PartitaNonIniziataException();
-                    }
-                    if (tempoImpostato() && tempoScaduto()) {
-                        Grafica.stampaMessaggio("Tempo scaduto");
-                        terminaPartita("persa: tempo scaduto");
-                    } else {
-                        attacco(input);
-                        if (partita.naviAffondate()) {
-                            terminaPartita("Vinta!");
-                        } else if (partita.tentativiTerminati()) {
-                            Grafica.stampaMessaggio("Tentativi terminati");
-                            terminaPartita("persa: hai terminato i tentativi disponibili");
-                        }
-                    }
-                }
-            } catch (ComandiException | ComandoNonEsistenteException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-    }
-
-    /**
-     * Legge un comando da tastiera.
-     */
-    public static String leggiInput() throws InputNonFormattatoException {
-        String comandoRegex = "^[A-z]-[0-9]{1,2}$";
-
-        System.out.println(partitaIniziata() ? "\nInserisci un comando o un attacco: " : "\nInserisci un comando: ");
-        System.out.print("> ");
-
-        String input = Grafica.getString();
-        if (!eComando(input) && !input.matches(comandoRegex)) {
-            throw new InputNonFormattatoException(input);
-        }
-        input = input.toLowerCase();
-        return input;
     }
 
     /**
