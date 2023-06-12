@@ -6,7 +6,12 @@ import it.uniba.app.exceptions.FuoriDallaGrigliaException;
 import it.uniba.app.exceptions.CellaGiaColpitaException;
 
 /**
+ * <<Entity>>
  * Classe che rappresenta una partita di battaglia navale.
+ * La partita è composta da una griglia e da un insieme di navi.
+ * La partita ha un livello di difficoltà, un numero di tentativi
+ * falliti massimo e un tempo (se impostato dal giocatore).
+ *
  * @author Gruppo Hamming
  */
 public class Partita {

@@ -1,8 +1,10 @@
 package it.uniba.app.gioco;
 
 /**
+ * <<Entity>>
  * Classe che rappresenta una cella della griglia di gioco
  * in cui è presente una nave.
+ *
  * @author Gruppo Hamming
  */
 public class CellaPiena extends Cella {

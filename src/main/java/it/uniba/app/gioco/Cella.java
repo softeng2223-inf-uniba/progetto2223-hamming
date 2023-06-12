@@ -1,8 +1,11 @@
 package it.uniba.app.gioco;
 
 /**
+ * <<Entity>>
  * Classe che rappresenta una cella della griglia di gioco.
+ * Di base una cella è vuota e non contiene navi.
  * Una cella può essere colpita o meno.
+ *
  * @author Gruppo Hamming
  */
 public class Cella implements Cloneable {

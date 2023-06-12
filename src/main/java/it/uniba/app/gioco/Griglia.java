@@ -3,7 +3,12 @@ import it.uniba.app.exceptions.FuoriDallaGrigliaException;
 import it.uniba.app.exceptions.CellaGiaColpitaException;
 
 /**
+ * <<Entity>>
  * Classe che rappresenta la griglia della battaglia navale.
+ * La grandezza è determinata dal giocatore.
+ * Le colonne sono rappresentate da lettere e le righe da numeri.
+ * E' una composizione di celle e su di essa possono essere posizionate le navi.
+ *
  * @author Gruppo Hamming
 */
 public class Griglia implements Cloneable {
