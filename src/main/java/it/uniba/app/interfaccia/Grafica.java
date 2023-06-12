@@ -240,4 +240,13 @@ public final class Grafica {
         }
         System.out.print(utility + "\n" + gioco + "\n" + difficolta + "\n");
     }
+
+    /**
+     * Metodo che stampa il messaggio di fine partita.
+     */
+    public static void stampaFinePartita(final String esito, final Griglia griglia) {
+        System.out.println("Abbandono della partita...\n");
+        Grafica.svelaGrigliaNavi(griglia);
+        System.out.println("\nPartita " + esito);
+    }
 }
