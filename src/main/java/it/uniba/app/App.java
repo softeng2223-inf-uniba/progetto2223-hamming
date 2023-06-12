@@ -7,7 +7,10 @@ import it.uniba.app.interfaccia.GestioneComandi;
 import it.uniba.app.interfaccia.Grafica;
 
 /**
+ * <<Boundary>>
  * Main class of the application.
+ * Gestisce il loop principale dell'applicazione leggendo l'input dell'utente
+ * classificandolo in comando o attacco e richiamando i metodi opportuni.
  */
 public final class App {
 
