@@ -49,14 +49,12 @@ public class CellaPiena extends Cella {
      *
      * @return true se la cella conteneva una nave quando è stata colpita.
      */
-    public boolean attacca() {
-        String stampa = "Colpita";
+    public EsitoColpo attacca() {
         setColpita();
         nave.colpisciNave();
         if (nave.eAffondata()) {
-            stampa += " e affondata";
+            return EsitoColpo.AFFONDATO;
         }
-        System.out.println(stampa + "!");
-        return true;
+        return EsitoColpo.COLPITO;
     }
 }
