@@ -15,7 +15,10 @@ import it.uniba.app.gioco.EsitoColpo;
 import it.uniba.app.gioco.Partita;
 
 /**
- * Classe che gestisce i comandi inseriti dall'utente e li esegue.
+ * <<Control>>
+ * Classe che gestisce i comandi e gli attacchi inseriti dall'utente e li esegue controllando
+ * anche quando termina la partita.
+ * Gestisce la partita tenendo conto del livello di difficoltà impostato e del tempo.
  *
  * @author Gruppo Hamming
  */
@@ -237,7 +240,7 @@ public final class GestioneComandi {
         try {
             EsitoColpo esito = partita.attaccaGriglia(riga, colonna);
             Grafica.stampaGrigliaColpita(partita.getGriglia());
-            switch(esito) {
+            switch (esito) {
                 case ACQUA:
                     Grafica.stampaMessaggio("Acqua...");
                     break;
@@ -246,6 +249,8 @@ public final class GestioneComandi {
                     break;
                 case AFFONDATO:
                     Grafica.stampaMessaggio("Colpito e Affondato!");
+                    break;
+                default:
                     break;
             }
         } catch (FuoriDallaGrigliaException | CellaGiaColpitaException e) {
@@ -311,6 +316,11 @@ public final class GestioneComandi {
     }
 }
 
+/**
+ * <<Control>>
+ * Classe che rappresenta il comando "/esci".
+ * Chiude l'applicazione dopo aver chiesto conferma all'utente.
+ */
 class Esci extends Comando {
     Esci() {
         super("esci", "utility");
@@ -340,6 +350,12 @@ class Esci extends Comando {
     }
 }
 
+/**
+ * <<Control>>
+ * Classe che rappresenta il comando "/facile".
+ * Imposta la difficoltà facile se viene eseguita senza parametri altrimenti
+ * imposta il numero di tentativi massimi della difficoltà facile.
+ */
 class Facile extends Comando {
     Facile() {
         super("facile", "difficolta");
@@ -358,6 +374,12 @@ class Facile extends Comando {
     }
 }
 
+/**
+ * <<Control>>
+ * Classe che rappresenta il comando "/medio".
+ * Imposta la difficoltà medio se viene eseguita senza parametri altrimenti
+ * imposta il numero di tentativi massimi della difficoltà medio.
+ */
 class Medio extends Comando {
     Medio() {
         super("medio", "difficolta");
@@ -376,6 +398,12 @@ class Medio extends Comando {
     }
 }
 
+/**
+ * <<Control>>
+ * Classe che rappresenta il comando "/difficile".
+ * Imposta la difficoltà difficile se viene eseguita senza parametri altrimenti
+ * imposta il numero di tentativi massimi della difficoltà difficile.
+ */
 class Difficile extends Comando {
     Difficile() {
         super("difficile", "difficolta");
@@ -394,6 +422,11 @@ class Difficile extends Comando {
     }
 }
 
+/**
+ * <<Control>>
+ * Classe che rappresenta il comando "/mostralivello".
+ * Mostra il livello di difficoltà impostato e il corrispondente numero massimo di tentativi falliti.
+ */
 class MostraLivello extends Comando {
     MostraLivello() {
         super("mostraLivello", "utility");
@@ -412,6 +445,13 @@ class MostraLivello extends Comando {
     }
 }
 
+/**
+ * <<Control>>
+ * Classe che rappresenta il comando "/gioca".
+ * Inizia una nuova partita posizionando le navi sulla griglia e
+ * stampando inizialmente la griglia vuota.
+ * Se impostato avvia il tempo.
+ */
 class Gioca extends Comando {
     Gioca() {
         super("gioca", "gioco");
@@ -442,6 +482,11 @@ class Gioca extends Comando {
     }
 }
 
+/**
+ * <<Control>>
+ * Classe che rappresenta il comando "/mostranavi".
+ * Mostra le navi presenti nella griglia indicandone il numero di esemplari.
+ */
 class MostraNavi extends Comando {
     MostraNavi() {
         super("mostraNavi", "utility");
@@ -460,6 +505,11 @@ class MostraNavi extends Comando {
     }
 }
 
+/**
+ * <<Control>>
+ * Classe che rappresenta il comando "/svelagriglia".
+ * Svela la griglia di gioco mostrando le posizioni di tutte le navi.
+ */
 class SvelaGriglia extends Comando {
     SvelaGriglia() {
         super("svelaGriglia", "utility");
@@ -487,9 +537,9 @@ class SvelaGriglia extends Comando {
 }
 
 /**
+ * <<Control>>
  * Classe che rappresenta il comando /help.
- *
- * @author Gruppo Hamming
+ * Mostra l'elenco dei comandi utilizzabili suddivisi per categoria.
  */
 class Help extends Comando {
     Help() {
@@ -510,8 +560,9 @@ class Help extends Comando {
 }
 
 /**
- * Classe rappresentante il comando /standard, che
- * imposta a 10x10 la dimensione della griglia (è il default).
+ * <<Control>>
+ * Classe che rappresenta il comando /standard.
+ * Imposta a 10x10 la dimensione della griglia (è il default).
  */
 class Standard extends Comando {
     Standard() {
@@ -538,8 +589,9 @@ class Standard extends Comando {
 }
 
 /**
- * Classe rappresentante il comando /large, che
- * imposta a 18x18 la dimensione della griglia.
+ * <<Control>>
+ * Classe che rappresenta il comando /large.
+ * Imposta a 18x18 la dimensione della griglia.
  */
 class Large extends Comando {
 
@@ -567,8 +619,9 @@ class Large extends Comando {
 }
 
 /**
- * Classe rappresentante il comando /extralarge, che
- * imposta a 26x26 la dimensione della griglia.
+ * <<Control>>
+ * Classe che rappresenta il comando /extralarge.
+ * Imposta a 26x26 la dimensione della griglia.
  */
 class ExtraLarge extends Comando {
 
@@ -596,11 +649,12 @@ class ExtraLarge extends Comando {
 }
 
 /**
- * Classe rappresentante il comando /abbandona, che
- * chiede conferma all'utente:
- * se la conferma è positiva, l’applicazione risponde visualizzando
- * sulla griglia la posizione di tutte le navi e si predispone a ricevere nuovi
- * comandi;
+ * <<Control>>
+ * Classe che rappresenta il comando /abbandona.
+ * Abbandona la partita in corso dopo aver chiesto conferma all'utente:
+ * se la conferma è positiva, l’applicazione risponde terminando la partita,
+ * visualizzando sulla griglia la posizione di tutte le navi e si predispone
+ * a ricevere nuovi comandi;
  * se la conferma è negativa, l'applicazione si predispone a ricevere nuovi
  * tentativi o comandi.
  */
@@ -633,8 +687,9 @@ class Abbandona extends Comando {
 }
 
 /**
- * Classe rappresentante il comando /tempo, che
- * imposta il tempo massimo di gioco in minuti.
+ * <<Control>>
+ * Classe che rappresenta il comando /tempo.
+ * Imposta il tempo massimo di gioco in minuti (0 se non ci sono limiti di tempo).
  */
 class Tempo extends Comando {
     Tempo() {
@@ -668,9 +723,9 @@ class Tempo extends Comando {
 }
 
 /**
- * Al comando /mostragriglia
- * l’applicazione risponde visualizzando, una griglia 10x10,
- * con le righe numerate da 1 a 10 e le colonne numerate da A a J,
+ * <<Control>>
+ * Classe che rappresenta il comando /mostragriglia.
+ * Mostra la griglia di gioco con le righe numerate da 1 a 10 e le colonne numerate da A a J,
  * con le navi affondate e le sole parti già colpite delle navi non affondate.
  */
 class MostraGriglia extends Comando {
@@ -700,8 +755,9 @@ class MostraGriglia extends Comando {
 }
 
 /**
- * Classe rappresentante il comando /mostratempo, che
- * mostra il tempo trascorso e il tempo rimanente di gioco.
+ * <<Control>>
+ * Classe che rappresenta il comando /mostratempo.
+ * Mostra il tempo trascorso e il tempo rimanente di gioco se impostato precedentemente.
  */
 class MostraTempo extends Comando {
     MostraTempo() {
@@ -742,9 +798,10 @@ class MostraTempo extends Comando {
 }
 
 /**
- * Classe rappresentante il comando /tentativi, che
- * imposta il numero massimo di tentativi falliti senza selezionare
- * una difficoltà predefinita.
+ * <<Control>>
+ * Classe che rappresenta il comando /tentativi.
+ * Imposta il numero massimo di tentativi falliti senza selezionare
+ * una difficoltà predefinita, ma creando una difficoltà personalizzata.
  */
 class Tentativi extends Comando {
     Tentativi() {

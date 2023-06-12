@@ -3,7 +3,11 @@ package it.uniba.app.interfaccia;
 import it.uniba.app.exceptions.ComandiException;
 
 /**
+ * <<Control>>
  * Classe che rappresenta un comando di gioco.
+ * Il comando è rappresentato da un nome e una categoria.
+ *
+ * @author Gruppo Hamming
  */
 public abstract class Comando {
     private String nome;

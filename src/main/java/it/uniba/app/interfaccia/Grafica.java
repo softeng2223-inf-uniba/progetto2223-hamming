@@ -8,6 +8,7 @@ import it.uniba.app.gioco.Configurazioni;
 import it.uniba.app.gioco.Griglia;
 
 /**
+ * <<Boundary>>
  * Classe che gestisce la grafica, l'interfaccia utente e la stampa a video.
  *
  * @author Gruppo Hamming
