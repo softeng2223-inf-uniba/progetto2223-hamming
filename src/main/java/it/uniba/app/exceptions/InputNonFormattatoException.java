@@ -5,7 +5,7 @@ package it.uniba.app.exceptions;
  *
  * @author Gruppo Hamming
  */
-public class InputNonFormattatoException extends Exception {
+public class InputNonFormattatoException extends ComandiException {
     /**
      * Costruttore senza parametri.
      */
