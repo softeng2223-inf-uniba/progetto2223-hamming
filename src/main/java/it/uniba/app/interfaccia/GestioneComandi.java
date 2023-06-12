@@ -73,7 +73,7 @@ public final class GestioneComandi {
         try {
             Grafica.stampaFinePartita(esito, GestioneComandi.getPartita().getGriglia());
         } catch (CloneNotSupportedException e) {
-            System.out.println("Impossibile svelare la griglia: clonazione di griglia fallita");
+            Grafica.stampaErrore("Impossibile svelare la griglia: clonazione di griglia fallita");
         }
         GestioneComandi.cancellaPartita();
     }
@@ -93,7 +93,7 @@ public final class GestioneComandi {
             throw new PartitaGiaIniziataException("Non puoi cambiare difficoltà durante una partita");
         }
         livello = livelloParam;
-        System.out.println("La difficoltà è stata cambiata.");
+        Grafica.stampaMessaggio("La difficoltà è stata cambiata.");
     }
 
     /**
@@ -213,14 +213,14 @@ public final class GestioneComandi {
                         throw new PartitaNonIniziataException();
                     }
                     if (tempoImpostato() && tempoScaduto()) {
-                        System.out.println("Tempo scaduto");
+                        Grafica.stampaMessaggio("Tempo scaduto");
                         terminaPartita("persa: tempo scaduto");
                     } else {
                         attacco(input);
                         if (partita.naviAffondate()) {
                             terminaPartita("Vinta!");
                         } else if (partita.tentativiTerminati()) {
-                            System.out.println("Tentativi terminati");
+                            Grafica.stampaMessaggio("Tentativi terminati");
                             terminaPartita("persa: hai terminato i tentativi disponibili");
                         }
                     }
@@ -310,10 +310,10 @@ public final class GestioneComandi {
                                         + " Utilizzo corretto: /" + difficolta + " [tentativi]");
                     }
                     Configurazioni.setTentativi(difficolta, tentativi);
-                    System.out.println("Numero di tentativi massimi della difficoltà "
+                    Grafica.stampaMessaggio("Numero di tentativi massimi della difficoltà "
                             + difficolta + " modificato a " + Configurazioni.getTentativi(difficolta));
                 } catch (NumberFormatException e) {
-                    System.out.println(
+                    throw new ParametriNonCorrettiException(
                             "Il parametro [tentativi] non è un numero intero. Utilizzo corretto: /" + difficolta
                                     + " [tentativi]");
                 }
@@ -322,7 +322,7 @@ public final class GestioneComandi {
             GestioneComandi.setLivello(difficolta);
             Configurazioni.deleteCustomTentativi();
         } catch (PartitaGiaIniziataException e) {
-            System.out.println(e.getMessage());
+            Grafica.stampaWarning(e.getMessage());
         }
     }
 }
