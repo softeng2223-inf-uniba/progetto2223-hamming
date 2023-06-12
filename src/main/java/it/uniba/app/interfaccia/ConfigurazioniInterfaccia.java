@@ -7,7 +7,7 @@ import it.uniba.app.exceptions.TipologiaNonEsistenteException;
 
 /**
  * Classe che contiene le configurazioni dell'interfaccia del gioco.
- * 
+ *
  * @author Gruppo Hamming
  */
 public final class ConfigurazioniInterfaccia {
@@ -51,7 +51,7 @@ public final class ConfigurazioniInterfaccia {
 
     /**
      * Metodo che restituisce la mappa dei comandi.
-     * 
+     *
      * @return mappa dei comandi
      */
     public static Map<String, Comando> getComandi() {

@@ -22,7 +22,7 @@ public final class Grafica {
 
     /**
      * Metodo che resttuisce la stringa inserita dall'utente.
-     * 
+     *
      * @return input dell'utente
      */
     public static String getString() {
@@ -120,8 +120,8 @@ public final class Grafica {
 
         final int margine = 3;
 
-        String[] lettereColonne = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
-                "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+        String[] lettereColonne = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
+                "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
 
         // A B C D E F G H I J
         StringBuilder riga = new StringBuilder(" ".repeat(margine + 2));
@@ -190,8 +190,8 @@ public final class Grafica {
 
         final int margine = 3;
 
-        String[] lettereColonne = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
-                "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+        String[] lettereColonne = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
+                "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
 
         System.out.println("Posizione delle navi:\n");
 
