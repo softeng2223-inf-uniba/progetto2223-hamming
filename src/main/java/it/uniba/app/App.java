@@ -61,7 +61,8 @@ public final class App {
     public static String leggiInput() throws InputNonFormattatoException {
         String comandoRegex = "^[A-z]-[0-9]{1,2}$";
 
-        System.out.println(GestioneComandi.partitaIniziata() ? "\nInserisci un comando o un attacco: " : "\nInserisci un comando: ");
+        System.out.println(GestioneComandi.partitaIniziata()
+        ? "\nInserisci un comando o un attacco: " : "\nInserisci un comando: ");
         System.out.print("> ");
 
         String input = Grafica.getString();

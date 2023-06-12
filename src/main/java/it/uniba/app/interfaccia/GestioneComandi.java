@@ -195,8 +195,7 @@ public final class GestioneComandi {
     /**
      * Esegue il comando specificato, passandogli i parametri.
      *
-     * @param comando   nome del comando da eseguire
-     * @param parametri parametri da passare al comando
+     * @param input input dell'utente
      */
     public static void chiamaComando(final String input)
             throws ComandiException, ComandoNonEsistenteException {
