@@ -1,0 +1,56 @@
+package it.uniba.app.gioco;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+/**
+ * Classe di test per la classe Nave.
+ * {@link Nave}
+ */
+class NaveTest {
+    /**
+     * Test sulla tipologia di inizializzazione della nave.
+     * {@link Nave#Nave(String)}
+     */
+    @Test
+    @DisplayName("La tipologia della nave corrisponde a quella passata al costruttore")
+    void testGetTipologia() {
+        String tipologia = "cacciatorpediniere";
+        final Nave nave = new Nave(tipologia);
+        assertEquals(nave.getTipologia(), tipologia, "La tipologia della nave non viene inizializzata correttamente");
+    }
+
+    /**
+     * Test sulla lunghezza della nave.
+     * {@link Nave#getLunghezza()}
+     */
+    @Test
+    @DisplayName("La lunghezza della nave è coerente con la tipologia")
+    void testGetLunghezza() {
+        String tipologia = "cacciatorpediniere";
+        final Nave nave = new Nave(tipologia);
+        assertEquals(nave.getLunghezza(), Configurazioni.getLunghezzaNavi(tipologia),
+                "La lunghezza della nave è diversa rispetto alla tipologia");
+    }
+
+    /**
+     * Test sulle celle rimanenti della nave.
+     * Verifica che il numero di celle rimanenti sia uguale alla lunghezza della nave,
+     * non essendo stata colpita.
+     * {@link Nave#getCelleRimanenti()}
+     */
+    @Test
+    @DisplayName("Il numero di celle di una nave non colpita corrisponde a quella della lunghezza della nave")
+    void testGetCelleRimanenti() {
+        String tipologia = "cacciatorpediniere";
+        final Nave nave = new Nave(tipologia);
+        assertEquals(nave.getCelleRimanenti(), Configurazioni.getLunghezzaNavi(tipologia),
+                "Il numero di celle rimanenti di una nave non viene inizializzato correttamente");
+    }
+
+
+    // test su colpisci e affonda TODO
+
+}
