@@ -1,7 +1,5 @@
 package it.uniba.app;
 
-import java.util.Arrays;
-
 import it.uniba.app.exceptions.ComandiException;
 import it.uniba.app.exceptions.ComandoNonEsistenteException;
 import it.uniba.app.exceptions.InputNonFormattatoException;
@@ -31,7 +29,7 @@ public final class App {
     public static void main(final String[] args) {
         if (args.length == 1 && ("--help".equals(args[0]) || "-h".equals(args[0]))) {
             try {
-                GestioneComandi.chiamaComando("/help", new String[0]);
+                GestioneComandi.chiamaComando("/help");
             } catch (ComandiException | ComandoNonEsistenteException e) {
                 System.out.println(e.getMessage());
             }
@@ -48,12 +46,7 @@ public final class App {
             try {
                 String input = leggiInput();
                 if (GestioneComandi.eComando(input)) {
-                    String[] split = input.split(" ");
-                    String[] parametri = new String[split.length - 1];
-                    if (split.length > 1) {
-                        parametri = Arrays.copyOfRange(split, 1, split.length);
-                    }
-                    GestioneComandi.chiamaComando(split[0], parametri);
+                    GestioneComandi.chiamaComando(input);
                 } else {
                     if (!GestioneComandi.partitaIniziata()) {
                         throw new PartitaNonIniziataException();

@@ -1,5 +1,7 @@
 package it.uniba.app.interfaccia;
 
+import java.util.Arrays;
+
 import it.uniba.app.exceptions.ComandiException;
 import it.uniba.app.exceptions.ComandoNonEsistenteException;
 import it.uniba.app.exceptions.InputNonFormattatoException;
@@ -196,14 +198,19 @@ public final class GestioneComandi {
      * @param comando   nome del comando da eseguire
      * @param parametri parametri da passare al comando
      */
-    public static void chiamaComando(final String comando, final String[] parametri)
+    public static void chiamaComando(final String input)
             throws ComandiException, ComandoNonEsistenteException {
-        Comando c = ConfigurazioniInterfaccia.getComando(comando.substring(1).toLowerCase());
+        String[] split = input.split(" ");
+        String[] parametri = new String[split.length - 1];
+        if (split.length > 1) {
+            parametri = Arrays.copyOfRange(split, 1, split.length);
+        }
+        Comando c = ConfigurazioniInterfaccia.getComando(split[0].substring(1).toLowerCase());
 
         if (c != null) {
             c.esegui(parametri);
         } else {
-            throw new ComandoNonEsistenteException(comando);
+            throw new ComandoNonEsistenteException(split[0]);
         }
     }
 
