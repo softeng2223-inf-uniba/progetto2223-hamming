@@ -11,7 +11,6 @@ import it.uniba.app.exceptions.PartitaNonIniziataException;
 import it.uniba.app.gioco.Configurazioni;
 import it.uniba.app.gioco.Griglia;
 import it.uniba.app.gioco.Partita;
-import it.uniba.app.util.Util;
 
 /**
  * Classe che gestisce i comandi inseriti dall'utente e li esegue.
@@ -48,7 +47,8 @@ public final class GestioneComandi {
     /**
      * Metodo che inizializza la partita.
      *
-     * @throws PartitaGiaIniziataException non si può inizializzare una partita se è già in corso
+     * @throws PartitaGiaIniziataException non si può inizializzare una partita se è
+     *                                     già in corso
      */
     public static void inizializzaPartita() throws PartitaGiaIniziataException {
         if (partita != null) {
@@ -66,6 +66,7 @@ public final class GestioneComandi {
 
     /**
      * Metodo che svela la griglia con le navi posizionate e termina la partita.
+     * 
      * @param esito esito della partita
      */
     static void terminaPartita(final String esito) {
@@ -123,6 +124,7 @@ public final class GestioneComandi {
 
     /**
      * Metodo che restituisce il tempo impostato per la partita.
+     * 
      * @return tempo impostato per la partita
      */
     static int getTempo() {
@@ -131,6 +133,7 @@ public final class GestioneComandi {
 
     /**
      * Metodo che imposta il tempo per la partita.
+     * 
      * @param minuti tempo in minuti da impostare per la partita
      */
     static void setTempo(final int minuti) {
@@ -139,6 +142,7 @@ public final class GestioneComandi {
 
     /**
      * Metodo che restituisce true se il tempo è stato impostato, false altrimenti.
+     * 
      * @return true se il tempo è stato impostato, false altrimenti
      */
     static boolean tempoImpostato() {
@@ -154,6 +158,7 @@ public final class GestioneComandi {
 
     /**
      * Metodo che restituisce il tempo trascorso dall'inizio della partita.
+     * 
      * @return tempo trascorso dall'inizio della partita
      */
     static float tempoTrascorso() {
@@ -162,6 +167,7 @@ public final class GestioneComandi {
 
     /**
      * Metodo che restituisce il tempo rimasto per la partita.
+     * 
      * @return tempo rimasto per la partita
      */
     static float tempoRimasto() {
@@ -170,6 +176,7 @@ public final class GestioneComandi {
 
     /**
      * Metodo che restituisce true se il tempo è scaduto, false altrimenti.
+     * 
      * @return true se il tempo è scaduto, false altrimenti
      */
     static boolean tempoScaduto() {
@@ -178,6 +185,7 @@ public final class GestioneComandi {
 
     /**
      * Metodo che restituisce una stringa contenente i minuti e i secondi.
+     * 
      * @param secondi tempo in secondi
      * @return stringa contenente i minuti e i secondi
      */
@@ -234,7 +242,7 @@ public final class GestioneComandi {
         System.out.println(partitaIniziata() ? "\nInserisci un comando o un attacco: " : "\nInserisci un comando: ");
         System.out.print("> ");
 
-        String input = Util.getString();
+        String input = Grafica.getString();
         if (!eComando(input) && !input.matches(comandoRegex)) {
             throw new InputNonFormattatoException(input);
         }
@@ -261,6 +269,7 @@ public final class GestioneComandi {
 
     /**
      * Metodo che attacca la cella specificata dall'input dell'utente.
+     * 
      * @param attacco input dell'utente
      */
 
@@ -274,10 +283,12 @@ public final class GestioneComandi {
     /**
      * Esegui parametrizzato dei comandi di difficoltà.
      *
-     * @param difficolta nome del comando da eseguire, che rappresenta la difficoltà.
-     * @param parametri parametri da passare al comando.
+     * @param difficolta nome del comando da eseguire, che rappresenta la
+     *                   difficoltà.
+     * @param parametri  parametri da passare al comando.
      * @throws ParametriNonCorrettiException i parametri sono più di uno
-     * @throws PartitaGiaIniziataException non si può inizializzare una partita se è già in corso
+     * @throws PartitaGiaIniziataException   non si può inizializzare una partita se
+     *                                       è già in corso
      */
     public static void eseguiDifficolta(final String difficolta, final String[] parametri)
             throws ParametriNonCorrettiException, PartitaGiaIniziataException {
@@ -336,7 +347,7 @@ class Esci extends Comando {
             System.out.println("Attenzione: se esci abbandonerai la partita in corso");
         }
 
-        boolean conferma = Util.chiediConferma("Conferma l'uscita dal programma(s/n): ");
+        boolean conferma = Grafica.chiediConferma("Conferma l'uscita dal programma(s/n): ");
 
         if (conferma) {
             System.out.println("Uscita dal programma");
@@ -466,7 +477,6 @@ class MostraNavi extends Comando {
         Grafica.stampaNavi();
     }
 }
-
 
 class SvelaGriglia extends Comando {
     SvelaGriglia() {
@@ -607,8 +617,10 @@ class ExtraLarge extends Comando {
  * Classe rappresentante il comando /abbandona, che
  * chiede conferma all'utente:
  * se la conferma è positiva, l’applicazione risponde visualizzando
- * sulla griglia la posizione di tutte le navi e si predispone a ricevere nuovi comandi;
- * se la conferma è negativa, l'applicazione si predispone a ricevere nuovi tentativi o comandi.
+ * sulla griglia la posizione di tutte le navi e si predispone a ricevere nuovi
+ * comandi;
+ * se la conferma è negativa, l'applicazione si predispone a ricevere nuovi
+ * tentativi o comandi.
  */
 class Abbandona extends Comando {
     Abbandona() {
@@ -628,7 +640,7 @@ class Abbandona extends Comando {
             throw new PartitaNonIniziataException();
         }
 
-        boolean conferma = Util.chiediConferma("Conferma l'abbandono della partita(s/n): ");
+        boolean conferma = Grafica.chiediConferma("Conferma l'abbandono della partita(s/n): ");
 
         if (conferma) {
             GestioneComandi.terminaPartita("abbandonata");
@@ -726,8 +738,9 @@ class MostraTempo extends Comando {
 
         if (!GestioneComandi.partitaIniziata()) {
             System.out.println(GestioneComandi.tempoImpostato()
-            ? "La partita non è ancora iniziata.\nTempo di gioco impostato a " + GestioneComandi.getTempo() + " minuti"
-            : "Non è stato impostato nessun limite di tempo");
+                    ? "La partita non è ancora iniziata.\nTempo di gioco impostato a " + GestioneComandi.getTempo()
+                            + " minuti"
+                    : "Non è stato impostato nessun limite di tempo");
             return;
         }
 
@@ -738,9 +751,9 @@ class MostraTempo extends Comando {
 
         if (!GestioneComandi.tempoScaduto()) {
             System.out.println("Tempo trascorso: "
-            + GestioneComandi.getMinuti(GestioneComandi.tempoTrascorso()) + " minuti");
+                    + GestioneComandi.getMinuti(GestioneComandi.tempoTrascorso()) + " minuti");
             System.out.println("Tempo rimanente: "
-            + GestioneComandi.getMinuti(GestioneComandi.tempoRimasto()) + " minuti");
+                    + GestioneComandi.getMinuti(GestioneComandi.tempoRimasto()) + " minuti");
         } else {
             System.out.println("Tempo scaduto");
             GestioneComandi.terminaPartita("persa: tempo scaduto");
@@ -765,7 +778,7 @@ class Tentativi extends Comando {
     public void esegui(final String[] parametri) throws ParametriNonCorrettiException, PartitaGiaIniziataException {
         if (parametri.length != 1) {
             throw new ParametriNonCorrettiException("Numero di parametri errato."
-            + " Utilizzo corretto: /tentativi <num_tentativi>");
+                    + " Utilizzo corretto: /tentativi <num_tentativi>");
         }
         if (GestioneComandi.partitaIniziata()) {
             throw new PartitaGiaIniziataException("Non puoi cambiare il numero "
