@@ -266,54 +266,6 @@ public final class GestioneComandi {
             terminaPartita("persa: hai terminato i tentativi disponibili");
         }
     }
-
-    /**
-     * Esegui parametrizzato dei comandi di difficoltà.
-     *
-     * @param difficolta nome del comando da eseguire, che rappresenta la
-     *                   difficoltà.
-     * @param parametri  parametri da passare al comando.
-     * @throws ParametriNonCorrettiException i parametri sono più di uno
-     * @throws PartitaGiaIniziataException   non si può inizializzare una partita se
-     *                                       è già in corso
-     */
-    public static void eseguiDifficolta(final String difficolta, final String[] parametri)
-            throws ParametriNonCorrettiException, PartitaGiaIniziataException {
-        if (parametri.length > 1) {
-            throw new ParametriNonCorrettiException(
-                    "Troppi parametri per il comando. Utilizzo corretto: /" + difficolta + " [tentativi]");
-        }
-        try {
-            if (parametri.length == 1) {
-                try {
-                    if (GestioneComandi.partitaIniziata()) {
-                        throw new PartitaGiaIniziataException(
-                                "Non puoi cambiare il numero di tentativi"
-                                        + " massimi di una difficoltà durante una partita");
-                    }
-                    int tentativi = Integer.parseInt(parametri[0]);
-                    // controlla che il numero sia maggiore di zero
-                    if (tentativi <= 0) {
-                        throw new ParametriNonCorrettiException(
-                                "Il parametro [tentativi] deve essere maggiore di 0."
-                                        + " Utilizzo corretto: /" + difficolta + " [tentativi]");
-                    }
-                    Configurazioni.setTentativi(difficolta, tentativi);
-                    Grafica.stampaMessaggio("Numero di tentativi massimi della difficoltà "
-                            + difficolta + " modificato a " + Configurazioni.getTentativi(difficolta));
-                } catch (NumberFormatException e) {
-                    throw new ParametriNonCorrettiException(
-                            "Il parametro [tentativi] non è un numero intero. Utilizzo corretto: /" + difficolta
-                                    + " [tentativi]");
-                }
-                return;
-            }
-            GestioneComandi.setLivello(difficolta);
-            Configurazioni.deleteCustomTentativi();
-        } catch (PartitaGiaIniziataException e) {
-            Grafica.stampaWarning(e.getMessage());
-        }
-    }
 }
 
 /**
@@ -352,25 +304,74 @@ class Esci extends Comando {
 
 /**
  * <<Control>>
+ * Classe generale per i comandi per il cambio di difficoltà.
+ * Attraverso cambiaDifficolta, imposta la difficoltà passata in input
+ * se viene eseguita senza parametri altrimenti
+ * imposta il numero di tentativi massimi della difficoltà passata in input.
+ */
+abstract class CambioDifficolta extends Comando {
+    CambioDifficolta(final String nome, final String categoria) {
+        super(nome, categoria);
+    }
+
+    /**
+     * Esegui parametrizzato dei comandi di difficoltà.
+     *
+     * @param difficolta nome del comando da eseguire, che rappresenta la difficoltà.
+     * @param parametri  parametri da passare al comando.
+     * @throws ParametriNonCorrettiException i parametri sono più di uno
+     * @throws PartitaGiaIniziataException   non si può inizializzare una partita se è già in corso
+     */
+    void cambiaDifficolta(final String difficolta, final String[] parametri)
+            throws ParametriNonCorrettiException, PartitaGiaIniziataException {
+        if (parametri.length > 1) {
+            throw new ParametriNonCorrettiException("Troppi parametri per il comando. "
+                    + "Utilizzo corretto: /" + difficolta + " [tentativi]");
+        }
+        if (parametri.length == 1) {
+            if (GestioneComandi.partitaIniziata()) {
+                throw new PartitaGiaIniziataException("Non puoi cambiare il numero di tentativi"
+                        + " massimi di una difficoltà durante una partita");
+            }
+            int tentativi;
+            try {
+                tentativi = Integer.parseInt(parametri[0]);
+            } catch (NumberFormatException e) {
+                throw new ParametriNonCorrettiException("Il parametro [tentativi] non è un numero intero. "
+                        + "Utilizzo corretto: /" + difficolta + " [tentativi]");
+            }
+            // controlla che il numero sia maggiore di zero
+            if (tentativi <= 0) {
+                throw new ParametriNonCorrettiException("Il parametro [tentativi] deve essere maggiore di 0."
+                        + " Utilizzo corretto: /" + difficolta + " [tentativi]");
+            }
+            Configurazioni.setTentativi(difficolta, tentativi);
+            Grafica.stampaMessaggio("Numero di tentativi massimi della difficoltà "
+                    + difficolta + " modificato a " + Configurazioni.getTentativi(difficolta));
+            return;
+        }
+        GestioneComandi.setLivello(difficolta);
+        Configurazioni.deleteCustomTentativi();
+    }
+}
+
+/**
+ * <<Control>>
  * Classe che rappresenta il comando "/facile".
  * Imposta la difficoltà facile se viene eseguita senza parametri altrimenti
  * imposta il numero di tentativi massimi della difficoltà facile.
  */
-class Facile extends Comando {
+class Facile extends CambioDifficolta {
     Facile() {
         super("facile", "difficolta");
     }
 
     public String getDescrizione() {
-        return "imposta la difficoltà facile";
+        return "Imposta la difficoltà facile";
     }
 
-    public void esegui(final String[] parametri) {
-        try {
-            GestioneComandi.eseguiDifficolta(this.getNome(), parametri);
-        } catch (PartitaGiaIniziataException | ParametriNonCorrettiException e) {
-            Grafica.stampaWarning(e.getMessage());
-        }
+    public void esegui(final String[] parametri) throws ParametriNonCorrettiException, PartitaGiaIniziataException {
+        cambiaDifficolta(this.getNome(), parametri);
     }
 }
 
@@ -380,21 +381,17 @@ class Facile extends Comando {
  * Imposta la difficoltà medio se viene eseguita senza parametri altrimenti
  * imposta il numero di tentativi massimi della difficoltà medio.
  */
-class Medio extends Comando {
+class Medio extends CambioDifficolta {
     Medio() {
         super("medio", "difficolta");
     }
 
     public String getDescrizione() {
-        return "imposta la difficoltà media";
+        return "Imposta la difficoltà media";
     }
 
-    public void esegui(final String[] parametri) {
-        try {
-            GestioneComandi.eseguiDifficolta(this.getNome(), parametri);
-        } catch (PartitaGiaIniziataException | ParametriNonCorrettiException e) {
-            Grafica.stampaWarning(e.getMessage());
-        }
+    public void esegui(final String[] parametri) throws ParametriNonCorrettiException, PartitaGiaIniziataException {
+        cambiaDifficolta(this.getNome(), parametri);
     }
 }
 
@@ -404,21 +401,17 @@ class Medio extends Comando {
  * Imposta la difficoltà difficile se viene eseguita senza parametri altrimenti
  * imposta il numero di tentativi massimi della difficoltà difficile.
  */
-class Difficile extends Comando {
+class Difficile extends CambioDifficolta {
     Difficile() {
         super("difficile", "difficolta");
     }
 
     public String getDescrizione() {
-        return "imposta la difficoltà difficile";
+        return "Imposta la difficoltà difficile";
     }
 
-    public void esegui(final String[] parametri) {
-        try {
-            GestioneComandi.eseguiDifficolta(this.getNome(), parametri);
-        } catch (PartitaGiaIniziataException | ParametriNonCorrettiException e) {
-            Grafica.stampaWarning(e.getMessage());
-        }
+    public void esegui(final String[] parametri) throws ParametriNonCorrettiException, PartitaGiaIniziataException {
+        cambiaDifficolta(this.getNome(), parametri);
     }
 }
 
@@ -561,10 +554,39 @@ class Help extends Comando {
 
 /**
  * <<Control>>
+ * Classe generale per i comandi che cambiano la taglia della griglia.
+ * Attraverso il metodo cambiaTagliaGriglia() cambia la dimensione della griglia.
+ */
+abstract class CambioTagliaGriglia extends Comando {
+    CambioTagliaGriglia(final String nome, final String categoria) {
+        super(nome, categoria);
+    }
+
+    void cambiaTagliaGriglia(final int tagliaGriglia, final String[] parametri)
+            throws PartitaGiaIniziataException, ParametriNonCorrettiException {
+        if (parametri.length > 0) {
+            throw new ParametriNonCorrettiException("Numero di parametri errato."
+                    + " Utilizzo corretto: /" + getNome());
+        }
+
+        if (GestioneComandi.partitaIniziata()) {
+            throw new PartitaGiaIniziataException();
+        }
+
+
+        Configurazioni.setRigheGriglia(tagliaGriglia);
+        Configurazioni.setColonneGriglia(tagliaGriglia);
+        Grafica.stampaMessaggio("Dimensione della griglia impostata a " + tagliaGriglia + "x" + tagliaGriglia);
+
+    }
+}
+
+/**
+ * <<Control>>
  * Classe che rappresenta il comando /standard.
  * Imposta a 10x10 la dimensione della griglia (è il default).
  */
-class Standard extends Comando {
+class Standard extends CambioTagliaGriglia {
     Standard() {
         super("standard", "difficolta");
     }
@@ -573,18 +595,8 @@ class Standard extends Comando {
         return "Imposta la dimensione della griglia a 10x10 (default)";
     }
 
-    public void esegui(final String[] parametri) throws InputNonFormattatoException, PartitaNonIniziataException {
-        if (parametri.length > 0) {
-            throw new InputNonFormattatoException();
-        }
-
-        if (GestioneComandi.partitaIniziata()) {
-            throw new PartitaNonIniziataException();
-        }
-
-        Configurazioni.setRigheGriglia(Configurazioni.DIMENSIONI_GRIGLIA_STANDARD);
-        Configurazioni.setColonneGriglia(Configurazioni.DIMENSIONI_GRIGLIA_STANDARD);
-        Grafica.stampaMessaggio("Dimensione della griglia impostata a 10x10");
+    public void esegui(final String[] parametri) throws ParametriNonCorrettiException, PartitaGiaIniziataException {
+        cambiaTagliaGriglia(Configurazioni.DIMENSIONI_GRIGLIA_STANDARD, parametri);
     }
 }
 
@@ -593,7 +605,7 @@ class Standard extends Comando {
  * Classe che rappresenta il comando /large.
  * Imposta a 18x18 la dimensione della griglia.
  */
-class Large extends Comando {
+class Large extends CambioTagliaGriglia {
 
     Large() {
         super("large", "difficolta");
@@ -603,18 +615,8 @@ class Large extends Comando {
         return "Imposta la dimensione della griglia a 18x18";
     }
 
-    public void esegui(final String[] parametri) throws InputNonFormattatoException, PartitaGiaIniziataException {
-        if (parametri.length > 0) {
-            throw new InputNonFormattatoException();
-        }
-
-        if (GestioneComandi.partitaIniziata()) {
-            throw new PartitaGiaIniziataException("Non puoi cambiare la dimensione della griglia durante una partita");
-        }
-
-        Configurazioni.setRigheGriglia(Configurazioni.DIMENSIONI_GRIGLIA_LARGE);
-        Configurazioni.setColonneGriglia(Configurazioni.DIMENSIONI_GRIGLIA_LARGE);
-        Grafica.stampaMessaggio("Dimensione della griglia impostata a 18x18");
+    public void esegui(final String[] parametri) throws PartitaGiaIniziataException, ParametriNonCorrettiException {
+        cambiaTagliaGriglia(Configurazioni.DIMENSIONI_GRIGLIA_LARGE, parametri);
     }
 }
 
@@ -623,7 +625,7 @@ class Large extends Comando {
  * Classe che rappresenta il comando /extralarge.
  * Imposta a 26x26 la dimensione della griglia.
  */
-class ExtraLarge extends Comando {
+class ExtraLarge extends CambioTagliaGriglia {
 
     ExtraLarge() {
         super("extralarge", "difficolta");
@@ -633,18 +635,8 @@ class ExtraLarge extends Comando {
         return "Imposta la dimensione della griglia a 26x26";
     }
 
-    public void esegui(final String[] parametri) throws InputNonFormattatoException, PartitaGiaIniziataException {
-        if (parametri.length > 0) {
-            throw new InputNonFormattatoException();
-        }
-
-        if (GestioneComandi.partitaIniziata()) {
-            throw new PartitaGiaIniziataException("Non puoi cambiare la dimensione della griglia durante una partita");
-        }
-
-        Configurazioni.setRigheGriglia(Configurazioni.DIMENSIONI_GRIGLIA_EXTRA_LARGE);
-        Configurazioni.setColonneGriglia(Configurazioni.DIMENSIONI_GRIGLIA_EXTRA_LARGE);
-        Grafica.stampaMessaggio("Dimensione della griglia impostata a 26x26");
+    public void esegui(final String[] parametri) throws PartitaGiaIniziataException, ParametriNonCorrettiException {
+        cambiaTagliaGriglia(Configurazioni.DIMENSIONI_GRIGLIA_STANDARD, parametri);
     }
 }
 
@@ -703,7 +695,7 @@ class Tempo extends Comando {
     public void esegui(final String[] parametri) throws ParametriNonCorrettiException, PartitaGiaIniziataException {
         if (parametri.length != 1) {
             throw new ParametriNonCorrettiException("Numero di parametri errato."
-            + " Utilizzo corretto: /tempo <tempo>");
+                    + " Utilizzo corretto: /tempo <tempo>");
         }
 
         if (GestioneComandi.partitaIniziata()) {
@@ -713,14 +705,14 @@ class Tempo extends Comando {
             int tempo = Integer.parseInt(parametri[0]);
             if (tempo < 0) {
                 throw new ParametriNonCorrettiException("Il tempo di gioco deve essere maggiore o"
-                + "uguale a 0 (0 in caso di nessun limite)");
+                        + "uguale a 0 (0 in caso di nessun limite)");
             }
             GestioneComandi.setTempo(tempo);
             Grafica.stampaMessaggio(
-              "Tempo di gioco impostato a: " + (tempo == 0 ? "nessun limite" : tempo + " minuti"));
+                    "Tempo di gioco impostato a: " + (tempo == 0 ? "nessun limite" : tempo + " minuti"));
         } catch (NumberFormatException e) {
             throw new ParametriNonCorrettiException("Il parametro <tempo> non è un numero intero."
-            + "Utilizzo corretto: /tempo <tempo>");
+                    + "Utilizzo corretto: /tempo <tempo>");
         }
     }
 }
@@ -779,7 +771,7 @@ class MostraTempo extends Comando {
         if (!GestioneComandi.partitaIniziata()) {
             Grafica.stampaMessaggio(GestioneComandi.tempoImpostato()
                     ? "La partita non è ancora iniziata.\nTempo di gioco impostato a " + GestioneComandi.getTempo()
-                            + " minuti"
+                    + " minuti"
                     : "Non è stato impostato nessun limite di tempo");
             return;
         }
@@ -828,7 +820,7 @@ class Tentativi extends Comando {
             int tentativi = Integer.parseInt(parametri[0]);
             if (tentativi <= 0) {
                 throw new ParametriNonCorrettiException("Il numero di tentativi massimi deve essere maggiore di 0."
-                + "Utilizzo corretto: /tentativi <num_tentativi>");
+                        + "Utilizzo corretto: /tentativi <num_tentativi>");
             }
             try {
                 Configurazioni.setCustomTentativi(tentativi);
@@ -839,7 +831,7 @@ class Tentativi extends Comando {
             Grafica.stampaMessaggio("Numero di tentativi massimi impostato a " + tentativi);
         } catch (NumberFormatException e) {
             throw new ParametriNonCorrettiException("Il parametro <num_tentativi> non è un numero intero."
-            + "Utilizzo corretto: /tentativi <num_tentativi>");
+                    + "Utilizzo corretto: /tentativi <num_tentativi>");
         }
     }
 }
