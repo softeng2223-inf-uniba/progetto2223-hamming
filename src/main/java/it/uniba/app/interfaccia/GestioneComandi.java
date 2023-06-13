@@ -554,6 +554,35 @@ class Help extends Comando {
 
 /**
  * <<Control>>
+ * Classe generale per i comandi che cambiano la taglia della griglia.
+ * Attraverso il metodo cambiaTagliaGriglia() cambia la dimensione della griglia.
+ */
+abstract class CambioTagliaGriglia extends Comando {
+    CambioTagliaGriglia(final String nome, final String categoria) {
+        super(nome, categoria);
+    }
+
+    void cambiaTagliaGriglia(final int tagliaGriglia, final String[] parametri)
+            throws PartitaGiaIniziataException, ParametriNonCorrettiException {
+        if (parametri.length > 0) {
+            throw new ParametriNonCorrettiException("Numero di parametri errato."
+                    + " Utilizzo corretto: /" + getNome());
+        }
+
+        if (GestioneComandi.partitaIniziata()) {
+            throw new PartitaGiaIniziataException();
+        }
+
+
+        Configurazioni.setRigheGriglia(tagliaGriglia);
+        Configurazioni.setColonneGriglia(tagliaGriglia);
+        Grafica.stampaMessaggio("Dimensione della griglia impostata a " + tagliaGriglia + "x" + tagliaGriglia);
+
+    }
+}
+
+/**
+ * <<Control>>
  * Classe che rappresenta il comando /standard.
  * Imposta a 10x10 la dimensione della griglia (è il default).
  */
