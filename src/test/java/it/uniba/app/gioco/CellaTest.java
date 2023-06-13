@@ -60,10 +60,4 @@ class CellaTest {
         cella.attacca();
         assertTrue(cella.eColpita(), "L'attacco su una cella non piena non la rende colpita");
     }
-
-    // TODO test su attacco su cella gia colpita...
-
-
-
-
 }
