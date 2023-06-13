@@ -182,6 +182,9 @@ public final class GestioneComandi {
      * @return true se il tempo è scaduto, false altrimenti
      */
     public static boolean tempoScaduto() {
+        if(!tempoImpostato()) {
+            return false;
+        }
         return tempoTrascorso() >= tempo * SECONDI;
     }
 
@@ -228,8 +231,8 @@ public final class GestioneComandi {
             throw new PartitaNonIniziataException();
         }
         if (tempoImpostato() && tempoScaduto()) {
-                Grafica.stampaMessaggio("Tempo scaduto");
-                terminaPartita("persa: tempo scaduto");
+            Grafica.stampaMessaggio("Tempo scaduto");
+            terminaPartita("persa: tempo scaduto");
             return;
         }
 
@@ -783,7 +786,7 @@ class MostraTempo extends Comando {
             Grafica.stampaMessaggio("Tempo trascorso: "
                     + GestioneComandi.getMinuti(GestioneComandi.tempoTrascorso()) + " minuti");
             if (!GestioneComandi.tempoImpostato()) {
-                Grafica.stampaWarning("Tempo rimanente: nessun limite di tempo");
+                Grafica.stampaMessaggio("Tempo rimanente: nessun limite di tempo");
             } else {
                 Grafica.stampaMessaggio("Tempo rimanente: "
                         + GestioneComandi.getMinuti(GestioneComandi.tempoRimasto()) + " minuti");
