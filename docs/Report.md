@@ -385,27 +385,30 @@ Il comando visualizza il risultato dell'attacco sulla griglia di gioco, il numer
 
 
 ### Introduzione di gioco
-La **battaglia navale** è un gioco, in questo caso a giocatore singolo, il cui **obiettivo** è quello di **affondare tutte le navi** che sono posizionate su una griglia 10x10 nascosta al giocatore con le righe numerate da 1 a 10 e le colonne numerate da A a J.
+La **battaglia navale** è un gioco, in questo caso a giocatore singolo, il cui **obiettivo** è quello di **affondare tutte le navi** che sono posizionate su una griglia nascosta al giocatore con le righe rappresentate da numeri e le colonne rappresentate da lettere.
 ### Regole
-Prima di iniziare, il giocatore può impostare un **livello di gioco**: **facile**, **medio** o **difficile**; Ognuno di questi livelli ha un numero massimo di tentativi falliti, il livello facile offre un numero di tentativi falliti pari a 50, il livello medio ne offre 30 e il livello difficile ne offre 10.
+Prima di iniziare, il giocatore può scegliere un livello di difficoltà, modificare il numero di tentativi falliti massimi per ogni difficoltà o impostare personalmente il numero di tentativi falliti massimi.
+Inoltre è possibile scegliere tra tre grandezze diverse di griglia: standard 10x10, large 18x18 o extralarge 26x26.
+Infine il giocatore può scegliere di impostare un tempo limite di gioco con il quale giocare oppure farlo senza un limite di tempo.
 ### Fase iniziale
 Le navi saranno posizionate segretamente sulla griglia in maniera casuale dal programma. Ogni nave può essere posizionata orizzontalmente o verticalmente, non in diagonale. Inoltre le navi possono toccarsi, ma non possono occupare le stesse celle. La posizione delle navi non potrà essere modificata dopo l'inizio del gioco.
 #### Tipi di nave
-Le tipologie di navi si distinguono in base alla dimensione: 
-- Cacciatorpediniere 	⊠⊠ 		esemplari: 4 
+Le tipologie di navi si distinguono in base alla dimensione:
+- Portaerei  		<span style="color:red"> X X X X X </span>	esemplari: 1
 
-- Incrociatore 		⊠⊠⊠ 	esemplari: 3  
+- Corazzata 		<span style="color:green"> X X X X </span>X X X esemplari: 2
 
-- Corazzata 		⊠⊠⊠⊠ 	esemplari: 2  
+- Incrociatore 		<span style="color:cyan"> X X X </span>	esemplari: 3
 
-- Portaerei  		⊠⊠⊠⊠⊠ 	esemplari: 1 
+- Cacciatorpediniere 	<span style="color:magenta"> X X </span> esemplari: 4 
+
 
 ### Fase di gioco
 Dopo aver selezionato il livello di gioco e posizionato le navi, il giocatore sceglie una cella identificata da una lettera e un numero sulla griglia in cui il colpo sarà lanciato.
 Il giocatore ha a disposizione 1 colpo per tentativo.
-Il programma controlla se, nella cella scelta sulla griglia dal giocatore, è stata posizionata una nave e in tal caso si visualizzerà il simbolo: x, altrimenti se la cella non contiene una nave si visualizzerà il simbolo: ~ che indica la cella vuota. Quando la nave viene affondata il simbolo varia per ogni tipo di nave.
+Il programma controlla se, nella cella scelta sulla griglia dal giocatore, è stata posizionata una nave e in tal caso si visualizzerà il simbolo: "X", altrimenti se la cella non contiene una nave si visualizzerà il simbolo: "~" che indica la cella vuota. Quando la nave viene affondata il simbolo "X" viene colorato per ogni tipo di nave.
 ### Fase finale
-In conclusione il gioco termina con una vittoria, quando il giocatore affonda tutte le navi, oppure con una sconfitta, quando il giocatore termina il numero massimo di tentativi falliti.
+In conclusione il gioco termina con una vittoria, quando il giocatore affonda tutte le navi, oppure con una sconfitta, quando il giocatore termina il numero massimo di tentativi falliti o, se impostato un tempo limite, quando questo risulta esaurito.
 <br>
 ### Esecuzione dell'applicazione
 Il container docker dell'app deve essere eseguito da terminali che supportano Unicode con encoding UTF-8 o UTF-16.
