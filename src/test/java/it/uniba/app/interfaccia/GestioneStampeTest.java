@@ -55,4 +55,45 @@ class GestioneStampeTest {
     }
 
 
+    /**
+     * Test di stampaGrigliaColpita.
+     * Il test intercetta lo standard output e verifica che sia stata
+     * stampata una griglia vuota.
+     * {@link GestioneStampe#stampaGrigliaColpita(Griglia)}
+     */
+    @Test
+    @DisplayName("La griglia 10x10 vuota viene stampata correttamente")
+    void testStampaGrigliaColpita() {
+        String expectedOutput = """
+                     A   B   C   D   E   F   G   H   I   J  \s
+                   +---+---+---+---+---+---+---+---+---+---+
+                1  |   |   |   |   |   |   |   |   |   |   |
+                   +---+---+---+---+---+---+---+---+---+---+
+                2  |   |   |   |   |   |   |   |   |   |   |
+                   +---+---+---+---+---+---+---+---+---+---+
+                3  |   |   |   |   |   |   |   |   |   |   |
+                   +---+---+---+---+---+---+---+---+---+---+
+                4  |   |   |   |   |   |   |   |   |   |   |
+                   +---+---+---+---+---+---+---+---+---+---+
+                5  |   |   |   |   |   |   |   |   |   |   |
+                   +---+---+---+---+---+---+---+---+---+---+
+                6  |   |   |   |   |   |   |   |   |   |   |
+                   +---+---+---+---+---+---+---+---+---+---+
+                7  |   |   |   |   |   |   |   |   |   |   |
+                   +---+---+---+---+---+---+---+---+---+---+
+                8  |   |   |   |   |   |   |   |   |   |   |
+                   +---+---+---+---+---+---+---+---+---+---+
+                9  |   |   |   |   |   |   |   |   |   |   |
+                   +---+---+---+---+---+---+---+---+---+---+
+                10 |   |   |   |   |   |   |   |   |   |   |
+                   +---+---+---+---+---+---+---+---+---+---+
+
+                """;
+        Griglia griglia = new Griglia();
+        GestioneStampe.stampaGrigliaColpita(griglia);
+        String actualOutput = outputStream.toString(StandardCharsets.UTF_8);
+        actualOutput = actualOutput.replaceAll("\r", ""); // rende compatibile il test con Windows
+        assertEquals(expectedOutput, actualOutput, "La griglia vuota non è stampata correttamente");
+    }
+
 }
