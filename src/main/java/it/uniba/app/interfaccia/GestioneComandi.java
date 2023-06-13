@@ -284,7 +284,7 @@ class Esci extends Comando {
 
     void esegui(final String[] parametri) throws ParametriNonCorrettiException {
         if (parametri.length > 0) {
-            throw new ParametriNonCorrettiException("Il numero di parametri è errato. Utilizzo corretto: /esci");
+            throw new ParametriNonCorrettiException("Troppo parametri per il comando. Utilizzo corretto: /esci");
         }
 
         if (GestioneComandi.partitaIniziata()) {
