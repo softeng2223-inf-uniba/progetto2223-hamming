@@ -771,17 +771,22 @@ class Tentativi extends Comando {
             throw new PartitaGiaIniziataException("Non puoi cambiare il numero "
                     + "di tentativi massimi durante una partita");
         }
-        int tentativi = Integer.parseInt(parametri[0]);
-        if (tentativi <= 0) {
-            System.out.println("Il numero di tentativi massimi deve essere maggiore di 0");
-            return;
-        }
         try {
-            Configurazioni.setCustomTentativi(tentativi);
-            GestioneComandi.setLivello("custom");
-        } catch (PartitaGiaIniziataException e) {
-            System.out.println(e.getMessage());
+            int tentativi = Integer.parseInt(parametri[0]);
+            if (tentativi <= 0) {
+                System.out.println("Il numero di tentativi massimi deve essere maggiore di 0");
+                return;
+            }
+            try {
+                Configurazioni.setCustomTentativi(tentativi);
+                GestioneComandi.setLivello("custom");
+            } catch (PartitaGiaIniziataException e) {
+                System.out.println(e.getMessage());
+            }
+            System.out.println("Numero di tentativi massimi impostato a " + tentativi);
+        } catch (NumberFormatException e) {
+            System.out.println("Il parametro <num_tentativi> non è un numero intero. Utilizzo corretto: /tentativi <num_tentativi>");
         }
-        System.out.println("Numero di tentativi massimi impostato a " + tentativi);
+        
     }
 }
