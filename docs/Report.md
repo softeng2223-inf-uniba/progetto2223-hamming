@@ -374,6 +374,12 @@ Se una partita è in corso il giocatore può utilizzare il comando /mostratentat
 
 ![comando_mostratentativi.png](img/comando_mostratentativi.png)
 
+#### Comando di attacco
+Il giocatore può utilizzare il comando di attacco per colpire una cella della griglia di gioco.
+Il comando è formattato secondo lo standard: [lettera]-[numero] (es: A-1, B-2, ecc...).
+
+![comando_attacco.png](img/comando_attacco.png)
+
 
 ### Introduzione di gioco
 La **battaglia navale** è un gioco, in questo caso a giocatore singolo, il cui **obiettivo** è quello di **affondare tutte le navi** che sono posizionate su una griglia 10x10 nascosta al giocatore con le righe numerate da 1 a 10 e le colonne numerate da A a J.
