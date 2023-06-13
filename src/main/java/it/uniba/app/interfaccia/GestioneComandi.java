@@ -228,8 +228,8 @@ public final class GestioneComandi {
             throw new PartitaNonIniziataException();
         }
         if (tempoImpostato() && tempoScaduto()) {
-            Grafica.stampaMessaggio("Tempo scaduto");
-            terminaPartita("persa: tempo scaduto");
+                Grafica.stampaMessaggio("Tempo scaduto");
+                terminaPartita("persa: tempo scaduto");
             return;
         }
 
@@ -252,6 +252,9 @@ public final class GestioneComandi {
                 default:
                     break;
             }
+            Grafica.stampaMessaggio("Tentativi effettuati: " + GestioneComandi.getPartita().getTentativiEffettuati());
+            Grafica.stampaMessaggio("Tempo trascorso: "
+                    + GestioneComandi.getMinuti(GestioneComandi.tempoTrascorso()) + " minuti");
         } catch (FuoriDallaGrigliaException | CellaGiaColpitaException e) {
             Grafica.stampaWarning(e.getMessage());
         } catch (CloneNotSupportedException e) {
@@ -463,9 +466,7 @@ class Gioca extends Comando {
             GestioneComandi.inizializzaPartita();
             GestioneComandi.getPartita().posizionaNavi();
             Grafica.stampaMessaggio("Nuova partita iniziata\n");
-            if (GestioneComandi.tempoImpostato()) {
-                GestioneComandi.avviaTempo();
-            }
+            GestioneComandi.avviaTempo();
             GestioneStampe.stampaGrigliaColpita(GestioneComandi.getPartita().getGriglia());
         } catch (PartitaGiaIniziataException e) {
             Grafica.stampaWarning(e.getMessage());
