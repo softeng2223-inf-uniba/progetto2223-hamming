@@ -46,12 +46,12 @@ class CellaPienaTest {
      * {@link CellaPiena#attacca()}
      */
     @Test
-    @DisplayName("L'attacco su una cella piena indica che è stata colpita una nave")
+    @DisplayName("L'attacco su una cella con nave integra indica che è stata colpita una nave")
     void testAttaccoSuCellaPiena() {
         String tipologia = "cacciatorpediniere";
         Nave nave = new Nave(tipologia);
         CellaPiena cella = new CellaPiena(nave);
-        assertTrue(cella.attacca(), "L'attacco su una cella con una nave indica "
+        assertEquals(EsitoColpo.COLPITO, cella.attacca(), "L'attacco su una cella con una nave integra indica "
                 + "che non è stata colpita una nave");
     }
 

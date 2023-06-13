@@ -1,9 +1,9 @@
 package it.uniba.app.gioco;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -45,7 +45,7 @@ class CellaTest {
     @DisplayName("L'attacco su una cella senza nave indica che è non è stata colpita alcuna nave")
     void testAttaccoSuCellaVuota() {
         Cella cella = new Cella();
-        assertFalse(cella.attacca(), "L'attacco su una cella senza nave ha colpito una nave");
+        assertEquals(EsitoColpo.ACQUA, cella.attacca(), "L'attacco su una cella senza nave ha colpito una nave");
     }
 
     /**
