@@ -651,9 +651,10 @@ class Tempo extends Comando {
         return "Imposta il tempo massimo di gioco in minuti. Se impostato a 0, non ci sono limiti di tempo";
     }
 
-    public void esegui(final String[] parametri) throws InputNonFormattatoException, PartitaGiaIniziataException {
+    public void esegui(final String[] parametri) throws ParametriNonCorrettiException, PartitaGiaIniziataException {
         if (parametri.length != 1) {
-            throw new InputNonFormattatoException();
+            throw new ParametriNonCorrettiException("Numero di parametri errato."
+            + " Utilizzo corretto: /tempo <tempo>");
         }
 
         if (GestioneComandi.partitaIniziata()) {
@@ -662,13 +663,14 @@ class Tempo extends Comando {
         try {
             int tempo = Integer.parseInt(parametri[0]);
             if (tempo < 0) {
-                System.out.println("Il tempo di gioco deve essere maggiore o uguale a 0 (0 in caso di nessun limite)");
-                return;
+                throw new ParametriNonCorrettiException("Il tempo di gioco deve essere maggiore o"
+                + "uguale a 0 (0 in caso di nessun limite)");
             }
             GestioneComandi.setTempo(tempo);
             System.out.println("Tempo di gioco impostato a: " + (tempo == 0 ? "nessun limite" : tempo + " minuti"));
         } catch (NumberFormatException e) {
-            System.out.println("Il parametro <tempo> non è un numero intero. Utilizzo corretto: /tempo <tempo>");
+            throw new ParametriNonCorrettiException("Il parametro <tempo> non è un numero intero."
+            + "Utilizzo corretto: /tempo <tempo>");
         }
     }
 }
