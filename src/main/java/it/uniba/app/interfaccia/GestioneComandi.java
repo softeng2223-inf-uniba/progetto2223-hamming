@@ -6,7 +6,6 @@ import it.uniba.app.exceptions.CellaGiaColpitaException;
 import it.uniba.app.exceptions.ComandiException;
 import it.uniba.app.exceptions.ComandoNonEsistenteException;
 import it.uniba.app.exceptions.FuoriDallaGrigliaException;
-import it.uniba.app.exceptions.InputNonFormattatoException;
 import it.uniba.app.exceptions.ParametriNonCorrettiException;
 import it.uniba.app.exceptions.PartitaGiaIniziataException;
 import it.uniba.app.exceptions.PartitaNonIniziataException;
@@ -282,9 +281,9 @@ class Esci extends Comando {
         return "Chiude il programma";
     }
 
-    void esegui(final String[] parametri) throws InputNonFormattatoException {
+    void esegui(final String[] parametri) throws ParametriNonCorrettiException {
         if (parametri.length > 0) {
-            throw new InputNonFormattatoException();
+            throw new ParametriNonCorrettiException("Troppo parametri per il comando. Utilizzo corretto: /esci");
         }
 
         if (GestioneComandi.partitaIniziata()) {
@@ -429,9 +428,10 @@ class MostraLivello extends Comando {
         return "Mostra il livello di difficoltà impostato e il corrispondente numero massimo di tentativi falliti";
     }
 
-    void esegui(final String[] parametri) throws InputNonFormattatoException {
+    void esegui(final String[] parametri) throws ParametriNonCorrettiException {
         if (parametri.length > 0) {
-            throw new InputNonFormattatoException();
+            throw new ParametriNonCorrettiException("Troppo parametri per il comando."
+            + " Utilizzo corretto: /mostralivello");
         }
 
         Grafica.mostraLivello(GestioneComandi.getLivello());
@@ -454,9 +454,9 @@ class Gioca extends Comando {
         return "Inizia una nuova partita";
     }
 
-    void esegui(final String[] parametri) throws InputNonFormattatoException {
+    void esegui(final String[] parametri) throws ParametriNonCorrettiException {
         if (parametri.length > 0) {
-            throw new InputNonFormattatoException();
+            throw new ParametriNonCorrettiException("Troppo parametri per il comando. Utilizzo corretto: /gioca");
         }
 
         try {
@@ -489,9 +489,9 @@ class MostraNavi extends Comando {
         return "Mostra le navi presenti nella griglia";
     }
 
-    void esegui(final String[] parametri) throws InputNonFormattatoException {
+    void esegui(final String[] parametri) throws ParametriNonCorrettiException {
         if (parametri.length > 0) {
-            throw new InputNonFormattatoException();
+            throw new ParametriNonCorrettiException("Troppo parametri per il comando. Utilizzo corretto: /mostranavi");
         }
 
         Grafica.stampaNavi();
@@ -512,9 +512,10 @@ class SvelaGriglia extends Comando {
         return "Svela la griglia di gioco";
     }
 
-    public void esegui(final String[] parametri) throws InputNonFormattatoException, PartitaNonIniziataException {
+    public void esegui(final String[] parametri) throws ParametriNonCorrettiException, PartitaNonIniziataException {
         if (parametri.length > 0) {
-            throw new InputNonFormattatoException();
+            throw new ParametriNonCorrettiException("Troppo parametri per il comando."
+            + " Utilizzo corretto: /svelagriglia");
         }
 
         if (!GestioneComandi.partitaIniziata()) {
@@ -543,9 +544,9 @@ class Help extends Comando {
         return "Mostra l'elenco dei comandi utilizzabili";
     }
 
-    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+    public void esegui(final String[] parametri) throws ParametriNonCorrettiException {
         if (parametri.length > 0) {
-            throw new InputNonFormattatoException();
+            throw new ParametriNonCorrettiException("Troppo parametri per il comando. Utilizzo corretto: /help");
         }
 
         Grafica.stampaHelp();
@@ -659,9 +660,9 @@ class Abbandona extends Comando {
         return "Abbandona la partita in corso";
     }
 
-    public void esegui(final String[] parametri) throws InputNonFormattatoException, PartitaNonIniziataException {
+    public void esegui(final String[] parametri) throws ParametriNonCorrettiException, PartitaNonIniziataException {
         if (parametri.length > 0) {
-            throw new InputNonFormattatoException();
+            throw new ParametriNonCorrettiException("Troppo parametri per il comando. Utilizzo corretto: /abbandona");
         }
 
         if (!GestioneComandi.partitaIniziata()) {
@@ -732,9 +733,10 @@ class MostraGriglia extends Comando {
         return "Mostra la griglia di gioco";
     }
 
-    public void esegui(final String[] parametri) throws InputNonFormattatoException, PartitaNonIniziataException {
+    public void esegui(final String[] parametri) throws ParametriNonCorrettiException, PartitaNonIniziataException {
         if (parametri.length > 0) {
-            throw new InputNonFormattatoException();
+            throw new ParametriNonCorrettiException("Troppi parametri per il comando."
+            + " Utilizzo corretto: /mostragriglia");
         }
 
         if (!GestioneComandi.partitaIniziata()) {
@@ -763,9 +765,9 @@ class MostraTempo extends Comando {
         return "Mostra il tempo rimanente di gioco";
     }
 
-    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+    public void esegui(final String[] parametri) throws ParametriNonCorrettiException {
         if (parametri.length > 0) {
-            throw new InputNonFormattatoException();
+            throw new ParametriNonCorrettiException("Troppo parametri per il comando. Utilizzo corretto: /mostratempo");
         }
 
         if (!GestioneComandi.partitaIniziata()) {
