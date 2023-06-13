@@ -344,6 +344,12 @@ Il giocatore può utilizzare il comando /extralarge per impostare la grandezza d
 ![comando_extralarge.png](img/comando_extralarge.png)
 
 
+## Comando /mostragriglia
+Il giocatore può utilizzare il comando /mostragriglia per visualizzare la griglia di gioco nel quale si possono vedere le navi colpite, le navi affondate e i colpi andati in mare.
+
+![comando_mostragriglia.png](img/comando_mostragriglia.png)
+
+
 ### Introduzione di gioco
 La **battaglia navale** è un gioco, in questo caso a giocatore singolo, il cui **obiettivo** è quello di **affondare tutte le navi** che sono posizionate su una griglia 10x10 nascosta al giocatore con le righe numerate da 1 a 10 e le colonne numerate da A a J.
 ### Regole
