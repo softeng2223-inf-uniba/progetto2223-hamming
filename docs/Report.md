@@ -346,6 +346,9 @@ Il giocatore può utilizzare il comando /extralarge per impostare la grandezza d
 
 ## Comando /mostragriglia
 Il giocatore può utilizzare il comando /mostragriglia per visualizzare la griglia di gioco nel quale si possono vedere le navi colpite, le navi affondate e i colpi andati in mare.
+Se la nave è affondata risulterà colorata con il colore che identifica la tipologia di nave.
+Se la nave non è affondata invece risulterà del colore di base del testo del terminale utilizzato.
+Se il colpo è andato in mare la casella sarà occupata dal simbolo ~.
 
 ![comando_mostragriglia.png](img/comando_mostragriglia.png)
 
