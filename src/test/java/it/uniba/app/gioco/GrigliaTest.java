@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 /**
  * Classe di test per la classe Griglia.
@@ -35,12 +34,12 @@ class GrigliaTest {
      * {@link Griglia#posizionaNave(Nave, int, int, boolean)}
      */
     @Test
-    @DisplayName("Una nave viene inserita nella posizione A-1 in orizzontale")
+    @DisplayName("Una nave viene inserita in A-1 in orizzontale")
     void testPosizionaNave() {
         String tipologia = "cacciatorpediniere";
         final Griglia griglia = new Griglia();
         Nave nave = new Nave(tipologia);
-        assumeTrue(griglia.posizionaNave(nave, 0, 0, true), "Non si è riusciti a posizionare la nave");
+        griglia.posizionaNave(nave, 0, 0, true);
         for (int i = 0; i < nave.getLunghezza(); i++) {
             assertEquals(griglia.getCella(0, i).getNave(), nave,
                     "La nave non è stata inserita nella posizione corretta");
@@ -53,7 +52,7 @@ class GrigliaTest {
      * {@link Griglia#posizionaNave(Nave, int, int, boolean)}
      */
     @Test
-    @DisplayName("Una nave non viene inserita nella posizione C-10 in verticale (fuori dalla griglia)")
+    @DisplayName("Una nave non viene inserita in C-10 in verticale (fuori dalla griglia)")
     void testPosizionaNaveFuoriGriglia() {
         String tipologia = "cacciatorpediniere";
         final int riga = 9;
@@ -76,7 +75,7 @@ class GrigliaTest {
         String tipologia = "cacciatorpediniere";
         final Griglia griglia = new Griglia();
         Nave nave = new Nave(tipologia);
-        assumeTrue(griglia.posizionaNave(nave, 0, 0, true), "Non si è riusciti a posizionare la nave");
+        griglia.posizionaNave(nave, 0, 0, true);
         assertFalse(griglia.posizionaNave(nave, 0, 0, true), "La nave è stata inserita su una cella già occupata");
     }
 
