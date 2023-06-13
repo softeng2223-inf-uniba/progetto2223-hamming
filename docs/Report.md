@@ -333,6 +333,10 @@ Il giocatore può utilizzare il comando /standard per impostare la grandezza del
 ![comando_standard.png](img/comando_standard.png)
 
 
+#### Comando /large
+Il giocatore può utilizzare il comando /large per impostare la grandezza della griglia a 18x18.
+
+![comando_large.png](img/comando_large.png)
 
 
 ### Introduzione di gioco
