@@ -35,6 +35,7 @@ public final class ConfigurazioniInterfaccia {
             put("mostragriglia", new MostraGriglia());
             put("mostratempo", new MostraTempo());
             put("tentativi", new Tentativi());
+            put("mostratentativi", new MostraTentativi());
         }
     };
 
@@ -65,7 +66,7 @@ public final class ConfigurazioniInterfaccia {
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_MAGENTA = "\u001B[35m";
     public static final String ANSI_YELLOW = "\u001B[33m";
-    public static final String SIMBOLO_DEFAULT = "X"; // "\u25A0";
+    public static final String SIMBOLO_DEFAULT = "X";
 
     /**
      * Restituisce il simbolo di default delle navi.
