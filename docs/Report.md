@@ -377,7 +377,7 @@ Se una partita è in corso il giocatore può utilizzare il comando /mostratentat
 ![comando_mostratentativi.png](img/comando_mostratentativi.png)
 
 #### Comando di attacco
-Il giocatore può utilizzare il comando di attacco per colpire una cella della griglia di gioco.
+Il giocatore può utilizzare il comando di attacco per colpire una cella non colpita della griglia di gioco.
 Il comando è formattato secondo lo standard: [lettera]-[numero] (es: A-1, B-2, ecc...).
 Il comando visualizza il risultato dell'attacco sulla griglia di gioco, il numero di tentativi già effettuati e il tempo trascorso di gioco.
 
