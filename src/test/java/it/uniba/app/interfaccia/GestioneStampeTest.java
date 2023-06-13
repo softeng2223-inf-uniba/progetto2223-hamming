@@ -1,6 +1,5 @@
 package it.uniba.app.interfaccia;
 
-import it.uniba.app.exceptions.LivelloNonEsistenteException;
 import it.uniba.app.gioco.Griglia;
 import it.uniba.app.gioco.Nave;
 import org.junit.jupiter.api.AfterAll;
@@ -14,7 +13,6 @@ import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 /**
@@ -101,8 +99,6 @@ class GestioneStampeTest {
      * Il test intercetta lo standard output e verifica che sia stata
      * stampata una griglia con delle navi usando regex per
      * riconoscere i simboli delle navi.
-     * Porre al centro di ogni cella il carattere . per riconoscere il simbolo della nave
-     * <p>
      * {@link GestioneStampe#svelaGrigliaNavi(Griglia)}
      */
     @Test
