@@ -338,6 +338,11 @@ Il giocatore può utilizzare il comando /large per impostare la grandezza della 
 
 ![comando_large.png](img/comando_large.png)
 
+#### Comando /extralarge
+Il giocatore può utilizzare il comando /extralarge per impostare la grandezza della griglia a 26x26.
+
+![comando_extralarge.png](img/comando_extralarge.png)
+
 
 ### Introduzione di gioco
 La **battaglia navale** è un gioco, in questo caso a giocatore singolo, il cui **obiettivo** è quello di **affondare tutte le navi** che sono posizionate su una griglia 10x10 nascosta al giocatore con le righe numerate da 1 a 10 e le colonne numerate da A a J.
