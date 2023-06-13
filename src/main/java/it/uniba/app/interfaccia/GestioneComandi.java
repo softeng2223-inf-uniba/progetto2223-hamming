@@ -779,16 +779,15 @@ class MostraTempo extends Comando {
             return;
         }
 
-        if (!GestioneComandi.tempoImpostato()) {
-            Grafica.stampaWarning("Non è stato impostato nessun limite di tempo");
-            return;
-        }
-
         if (!GestioneComandi.tempoScaduto()) {
             Grafica.stampaMessaggio("Tempo trascorso: "
                     + GestioneComandi.getMinuti(GestioneComandi.tempoTrascorso()) + " minuti");
-            Grafica.stampaMessaggio("Tempo rimanente: "
-                    + GestioneComandi.getMinuti(GestioneComandi.tempoRimasto()) + " minuti");
+            if (!GestioneComandi.tempoImpostato()) {
+                Grafica.stampaWarning("Tempo rimanente: nessun limite di tempo");
+            } else {
+                Grafica.stampaMessaggio("Tempo rimanente: "
+                        + GestioneComandi.getMinuti(GestioneComandi.tempoRimasto()) + " minuti");
+            }
         } else {
             GestioneComandi.terminaPartita("persa: tempo scaduto");
         }
