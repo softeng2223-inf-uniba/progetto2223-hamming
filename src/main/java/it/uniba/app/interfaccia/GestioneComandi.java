@@ -429,9 +429,9 @@ class MostraLivello extends Comando {
         return "Mostra il livello di difficoltà impostato e il corrispondente numero massimo di tentativi falliti";
     }
 
-    void esegui(final String[] parametri) throws InputNonFormattatoException {
+    void esegui(final String[] parametri) throws ParametriNonCorrettiException {
         if (parametri.length > 0) {
-            throw new InputNonFormattatoException();
+            throw new ParametriNonCorrettiException("Troppo parametri per il comando. Utilizzo corretto: /mostraLivello");
         }
 
         Grafica.mostraLivello(GestioneComandi.getLivello());
