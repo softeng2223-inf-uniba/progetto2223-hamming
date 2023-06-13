@@ -304,7 +304,7 @@ public final class GestioneComandi {
                     System.out.println("Numero di tentativi massimi della difficoltà "
                             + difficolta + " modificato a " + Configurazioni.getTentativi(difficolta));
                 } catch (NumberFormatException e) {
-                    System.out.println(
+                    throw new ParametriNonCorrettiException(
                             "Il parametro [tentativi] non è un numero intero. Utilizzo corretto: /" + difficolta
                                     + " [tentativi]");
                 }
