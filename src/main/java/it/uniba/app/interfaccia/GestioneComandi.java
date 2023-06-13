@@ -778,8 +778,8 @@ class Tentativi extends Comando {
         try {
             int tentativi = Integer.parseInt(parametri[0]);
             if (tentativi <= 0) {
-                System.out.println("Il numero di tentativi massimi deve essere maggiore di 0");
-                return;
+                throw new ParametriNonCorrettiException("Il numero di tentativi massimi deve essere maggiore di 0."
+                + "Utilizzo corretto: /tentativi <num_tentativi>");
             }
             try {
                 Configurazioni.setCustomTentativi(tentativi);
@@ -789,7 +789,7 @@ class Tentativi extends Comando {
             }
             System.out.println("Numero di tentativi massimi impostato a " + tentativi);
         } catch (NumberFormatException e) {
-            System.out.println("Il parametro <num_tentativi> non è un numero intero."
+            throw new ParametriNonCorrettiException("Il parametro <num_tentativi> non è un numero intero."
             + "Utilizzo corretto: /tentativi <num_tentativi>");
         }
     }
