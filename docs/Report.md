@@ -235,32 +235,47 @@ Si utilizza per visualizzare l'elenco dei comandi disponibili, uno per riga, per
 - esci
 - ...
 - per esempio:
-
-
-
 ![comando_help.png](img/comando_help.png)
+
 #### Comando /esci
 Per chiudere il gioco, il giocatore, può utilizzare il comando /esci. L'applicazione richiederà una conferma per procedere. Se il giocatore conferma la chiusura, l'applicazione si chiuderà e il controllo verrà restituito al sistema operativo. Se il giocatore nega la chiusura, l'applicazione sarà pronta a ricevere nuovi tentativi o comandi.
-
-
 ![comando_esci.png](img/comando_esci.png)
+
 ### Impostazione del livello di gioco
-Il giocatore, prima dell'inizio della partita, può decidere tra tre livelli di gioco: facile, medio, difficile. Per poter scegliere il livello si utilizza un comando che varia in base al livello, per esempio se il giocatore vuole impostare il livello facile, dovrà utilizzare il comando /facile. 
+Il giocatore, prima dell'inizio della partita, può decidere con quale difficoltà giocare, oppure può impostare una difficoltà personalizzata. Le tre difficoltà disponibili sono: facile, medio e difficile. Per selezionare la difficoltà si usa il comando /facile, /medio o /difficile.
+Di default la difficoltà è impostata a medio.
+È possibile modificare il numero massimo di tentativi falliti per ogni difficoltà utilizzando i comandi /facile [numero], /medio [numero] o /difficile [numero].
+È possibile inoltre tramite il comando /tentativi \<numero\> impostare il numero massimo di tentativi falliti senza specificarne la difficoltà.
+
 ##### Comando /facile
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti a 50.
-
-
 ![comando_facile.png](img/comando_facile.png)
+
+#### Comando /facile [numero]
+Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti della difficoltà facile al valore specificato dall'utente.
+![comando_facile_param.png](img/comando_facile_param.png)
+
+
 ##### Comando /medio 
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti a 30.
-
-
 ![comando_medio.png](img/comando_medio.png)
+
+##### Comando /medio [numero]
+Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti della difficoltà medio al valore specificato dall'utente.
+![comando_medio_param.png](img/comando_medio_param.png)
+
 ##### Comando /difficile
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti a 10.
-
-
 ![comando_difficile.png](img/comando_difficile.png)
+
+#### Comando /difficile [numero]
+Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti della difficoltà difficile al valore specificato dall'utente.
+![comando_difficile_param.png](img/comando_difficile_param.png)
+
+#### Comando /tentativi \<numero\>
+Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti al valore specificato dall'utente creando una nuova difficotlà temporanea personalizzata.
+![comando_tentativi.png](img/comando_tentativi.png)
+
 #### Comando /mostralivello
 Il giocatore può visualizzare il livello di gioco corrente e il numero massimo di tentativi falliti utilizzando il comando /mostralivello. Il gioco risponderà mostrando queste informazioni.
 
