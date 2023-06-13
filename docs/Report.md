@@ -353,6 +353,16 @@ Se il colpo è andato in mare la casella sarà occupata dal simbolo "~".
 ![comando_mostragriglia.png](img/comando_mostragriglia.png)
 
 
+#### Comando /tempo \<numero\>
+Il giocatore può usare il comando /tempo per impostare il tempo massimo di gioco.
+Il tempo massimo di gioco è impostato di default a: nessun limite.
+Per impostare il tempo massimo a nessun limite bisogna passare come parametro il valore 0.
+
+![comando_tempo_numero.png](img/comando_tempo_numero.png)
+
+![comando_tempo_no_limite.png](img/comando_tempo_no_limite.png)
+
+
 ### Introduzione di gioco
 La **battaglia navale** è un gioco, in questo caso a giocatore singolo, il cui **obiettivo** è quello di **affondare tutte le navi** che sono posizionate su una griglia 10x10 nascosta al giocatore con le righe numerate da 1 a 10 e le colonne numerate da A a J.
 ### Regole
