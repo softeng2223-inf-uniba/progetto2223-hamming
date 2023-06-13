@@ -190,22 +190,23 @@ public final class Grafica {
         int colonne = Configurazioni.getColonneGriglia();
 
         final int margine = 3;
+        String stampa = "";
 
         String[] lettereColonne = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
                 "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
 
-        System.out.println("Posizione delle navi:\n");
+        stampa += "Posizione delle navi:\n\n";
 
         // A B C D E F G H I J
         StringBuilder riga = new StringBuilder(" ".repeat(margine + 2));
         for (int i = 0; i < colonne; i++) {
             riga.append(lettereColonne[i]).append("   ");
         }
-        System.out.println(riga);
+        stampa += riga + "\n";
 
         // +---+---+---+---+---+---+---+---+---+---+
         String divisore = " ".repeat(margine) + "+---".repeat(colonne) + "+";
-        System.out.println(divisore);
+        stampa += divisore + "\n";
 
         for (int i = 0; i < righe; i++) {
             // 1 | | | | | | | | | | |
@@ -215,10 +216,11 @@ public final class Grafica {
                 riga.append("| ").append(getSimboloCellaSvelata(griglia.getCella(i, y))).append(" ");
             }
             riga.append("|");
-            System.out.println(riga);
-
-            System.out.println(divisore);
+            stampa += riga + "\n";
+            stampa += divisore + "\n";
         }
+
+        Grafica.stampaMessaggio(stampa);
     }
 
     /**
