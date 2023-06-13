@@ -363,6 +363,18 @@ Per impostare il tempo massimo a nessun limite bisogna passare come parametro il
 ![comando_tempo_no_limite.png](img/comando_tempo_no_limite.png)
 
 
+#### Comando /mostratempo
+Se una partita è in corso il giocatore può utilizzare il comando /mostratempo per visualizzare il tempo trascorso di gioco e, se precedentemente impostato il tempo massimo di gioco, verrà mostrato anche il tempo rimanente.
+
+![comando_mostratempo.png](img/comando_mostratempo.png)
+
+
+#### Comando /mostratentativi
+Se una partita è in corso il giocatore può utilizzare il comando /mostratentativi per visualizzare il numero di tentativi falliti effettuati, il numero di tentativi falliti e il numero di tentativi massimi da poter fallire.
+
+![comando_mostratentativi.png](img/comando_mostratentativi.png)
+
+
 ### Introduzione di gioco
 La **battaglia navale** è un gioco, in questo caso a giocatore singolo, il cui **obiettivo** è quello di **affondare tutte le navi** che sono posizionate su una griglia 10x10 nascosta al giocatore con le righe numerate da 1 a 10 e le colonne numerate da A a J.
 ### Regole
