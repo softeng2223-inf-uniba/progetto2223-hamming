@@ -306,15 +306,11 @@ Per conoscere i tipi di nave presenti nel gioco e il numero di esemplari da affo
 
 #### Comando /gioca
 Per iniziare una nuova partita, il giocatore può utilizzare il comando /gioca. Se non è in corso alcuna partita, il gioco imposterà casualmente le navi in posizione orizzontale o verticale, mostrerà la griglia vuota e sarà pronta a ricevere il primo tentativo del giocatore o altri comandi.
-
-- Se non è stato impostato alcun livello di gioco, bisogna impostarlo tra i tre disponibili e la situazione sarà questa:
-
-
-![comando_gioca.png](img/comando_gioca.png)
-- Se invece il livello di gioco è stato impostato la situazione sarà questa:
-
+Inoltre il gioco registrerà il tempo di inizio della partita per calcolare il tempo trascorso di gioco dopo ogni attacco.
 
 ![comando_gioca.png](img/comando_gioca1.png)
+
+
 #### Comando /svelagriglia
 Utilizzando il comando /svelagriglia il gioco risponde visualizzando, una griglia 10 x 10, con le righe numerate da 1 a 10 e le colonne numerate da A a J, e tutte le navi posizionate.
 
