@@ -1,21 +1,14 @@
 package it.uniba.app.util;
 
-import java.util.Scanner;
-
 import it.uniba.app.interfaccia.ConfigurazioniInterfaccia;
 
 /**
  * Classe di utilità contenente dei metodi generici utili per l'applicazione.
  */
 public final class Util {
-    private static Scanner scan = new Scanner(System.in, "UTF-8");
 
-    private Util() { }
-
-    public static String getString() {
-        return scan.nextLine();
+    private Util() {
     }
-
 
     /**
      * Metodo che calcola la distanza di Levenshtein tra due stringhe.
@@ -59,22 +52,5 @@ public final class Util {
             }
         }
         return suggestedString;
-    }
-
-    /**
-     * Metodo che stampa il messaggio in input e chiede all'utente
-     * una risposta in formato s/n, che viene restituita come booleano.
-     */
-    public static boolean chiediConferma(final String messaggio) {
-        String input;
-        while (true) {
-            System.out.print(messaggio);
-            input = Util.getString();
-            if ("s".equals(input) || "n".equals(input)) {
-                break;
-            }
-            System.out.println("Inserire solo s o n");
-        }
-        return "s".equals(input);
     }
 }

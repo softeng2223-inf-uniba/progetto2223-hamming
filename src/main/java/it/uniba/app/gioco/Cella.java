@@ -1,8 +1,11 @@
 package it.uniba.app.gioco;
 
 /**
+ * <<Entity>>
  * Classe che rappresenta una cella della griglia di gioco.
+ * Di base una cella è vuota e non contiene navi.
  * Una cella può essere colpita o meno.
+ *
  * @author Gruppo Hamming
  */
 public class Cella implements Cloneable {
@@ -60,12 +63,11 @@ public class Cella implements Cloneable {
 
     /**
      * Metodo che viene chiamato quando la cella viene attaccata.
-     *
-     * @return false perché la cella non conteneva nessuna nave quando è stata colpita.
+     * Restituisce sempre EsitoColpo.ACQUA.
+     * @return EsitoColpo.ACQUA
      */
-    public boolean attacca() {
-        colpita = true;
-        System.out.println("Acqua . . .");
-        return false;
+    public EsitoColpo attacca() {
+        setColpita();
+        return EsitoColpo.ACQUA;
     }
 }

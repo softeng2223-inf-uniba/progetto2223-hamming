@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.Random;
 import it.uniba.app.exceptions.FuoriDallaGrigliaException;
 import it.uniba.app.exceptions.CellaGiaColpitaException;
-import it.uniba.app.interfaccia.Grafica;
 
 /**
+ * <<Entity>>
  * Classe che rappresenta una partita di battaglia navale.
+ * La partita è composta da una griglia e da un insieme di navi.
+ * La partita ha un livello di difficoltà, un numero di tentativi
+ * falliti massimo e un tempo (se impostato dal giocatore).
+ *
  * @author Gruppo Hamming
  */
 public class Partita {
@@ -20,7 +24,7 @@ public class Partita {
     /**
      * Costruttore della classe Partita che inizializza il livello della partita.
      *
-     * @param livelloParam liveello della partita
+     * @param livelloParam livello della partita
      */
     public Partita(final String livelloParam) {
         this.livello = livelloParam;
@@ -115,16 +119,13 @@ public class Partita {
      * @param riga    riga della griglia
      * @param colonna colonna della griglia
      */
-    public void attaccaGriglia(final int riga, final int colonna) {
-
-        try {
-            if (!griglia.attaccaCella(riga, colonna)) {
-                tentativiRimasti--;
-            }
-            Grafica.stampaGrigliaColpita(griglia);
-        } catch (FuoriDallaGrigliaException | CellaGiaColpitaException e) {
-            System.out.println(e.getMessage());
+    public EsitoColpo attaccaGriglia(final int riga, final int colonna)
+            throws FuoriDallaGrigliaException, CellaGiaColpitaException {
+        EsitoColpo esito = griglia.attaccaCella(riga, colonna);
+        if (esito == EsitoColpo.ACQUA) {
+            tentativiRimasti--;
         }
+        return esito;
     }
 
     /**
