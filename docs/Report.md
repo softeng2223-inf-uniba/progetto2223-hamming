@@ -428,7 +428,7 @@ La project board di ogni sprint prevedeva le seguenti colonne:
 - **Done**, relativa alle modifiche revisionate dal Product Owner.
 
 
-![projectBoard.png](img%2FprojectBoard.png)
+![projectBoard.png](img/projectBoard.png)
 
 I requisti funzionali sono stati assegnati a uno o più membri del gruppo, con una data di scadenza specificata. Nel caso di compiti assegnati a più persone è stata lasciata libertà
 di autogestione per la suddivisione del lavoro. Successivamente, sono state aperte le issue relative a ciascun compito assegnato.
