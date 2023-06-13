@@ -368,11 +368,20 @@ Se una partita è in corso il giocatore può utilizzare il comando /mostratempo 
 
 ![comando_mostratempo.png](img/comando_mostratempo.png)
 
+![comando_mostratempo.png](img/comando_mostratempo_no_limite.png)
+
 
 #### Comando /mostratentativi
 Se una partita è in corso il giocatore può utilizzare il comando /mostratentativi per visualizzare il numero di tentativi falliti effettuati, il numero di tentativi falliti e il numero di tentativi massimi da poter fallire.
 
 ![comando_mostratentativi.png](img/comando_mostratentativi.png)
+
+#### Comando di attacco
+Il giocatore può utilizzare il comando di attacco per colpire una cella della griglia di gioco.
+Il comando è formattato secondo lo standard: [lettera]-[numero] (es: A-1, B-2, ecc...).
+Il comando visualizza il risultato dell'attacco sulla griglia di gioco, il numero di tentativi già effettuati e il tempo trascorso di gioco.
+
+![comando_attacco.png](img/comando_attacco.png)
 
 
 ### Introduzione di gioco
