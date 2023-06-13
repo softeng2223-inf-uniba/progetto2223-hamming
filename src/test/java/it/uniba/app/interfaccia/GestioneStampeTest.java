@@ -96,4 +96,54 @@ class GestioneStampeTest {
         assertEquals(expectedOutput, actualOutput, "La griglia vuota non è stampata correttamente");
     }
 
+    /**
+     * Test di svelaGrigliaNavi.
+     * Il test intercetta lo standard output e verifica che sia stata
+     * stampata una griglia con delle navi usando regex per
+     * riconoscere i simboli delle navi.
+     * Porre al centro di ogni cella il carattere . per riconoscere il simbolo della nave
+     * <p>
+     * {@link GestioneStampe#svelaGrigliaNavi(Griglia)}
+     */
+    @Test
+    @DisplayName("La griglia 10x10 con delle navi viene svelata correttamente")
+    void testSvelaGrigliaNavi() {
+        String expectedOutput = """
+                Posizione delle navi:
+
+                     A   B   C   D   E   F   G   H   I   J  \s
+                   +---+---+---+---+---+---+---+---+---+---+
+                1  | X | X |   |   |   |   |   |   |   |   |
+                   +---+---+---+---+---+---+---+---+---+---+
+                2  |   |   |   |   |   |   |   |   |   |   |
+                   +---+---+---+---+---+---+---+---+---+---+
+                3  |   |   |   |   |   |   |   |   |   |   |
+                   +---+---+---+---+---+---+---+---+---+---+
+                4  |   |   |   |   |   |   |   |   |   |   |
+                   +---+---+---+---+---+---+---+---+---+---+
+                5  |   |   |   |   |   |   |   |   |   |   |
+                   +---+---+---+---+---+---+---+---+---+---+
+                6  |   | X |   |   |   |   |   |   |   |   |
+                   +---+---+---+---+---+---+---+---+---+---+
+                7  |   | X |   |   |   |   |   |   |   |   |
+                   +---+---+---+---+---+---+---+---+---+---+
+                8  |   | X |   |   |   |   |   |   |   |   |
+                   +---+---+---+---+---+---+---+---+---+---+
+                9  |   | X |   |   |   |   |   |   |   |   |
+                   +---+---+---+---+---+---+---+---+---+---+
+                10 |   | X |   |   |   |   |   |   |   |   |
+                   +---+---+---+---+---+---+---+---+---+---+
+
+                """;
+        Griglia griglia = new Griglia();
+        Nave nave1 = new Nave("cacciatorpediniere");
+        Nave nave2 = new Nave("portaerei");
+        griglia.posizionaNave(nave1, 0, 0, true);
+        griglia.posizionaNave(nave2, 5, 1, false);
+        GestioneStampe.svelaGrigliaNavi(griglia);
+        String actualOutput = outputStream.toString(StandardCharsets.UTF_8);
+        actualOutput = actualOutput.replaceAll("\r", ""); // rende compatibile il test con Windows
+        actualOutput = actualOutput.replaceAll("\\u001B\\[\\d{1,2}m", ""); // rimuove i colori
+        assertEquals(expectedOutput, actualOutput, "La griglia vuota non è stampata correttamente");
+    }
 }
