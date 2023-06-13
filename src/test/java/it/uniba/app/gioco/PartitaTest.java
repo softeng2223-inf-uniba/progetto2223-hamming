@@ -1,9 +1,14 @@
 package it.uniba.app.gioco;
 
+import it.uniba.app.exceptions.CellaGiaColpitaException;
+import it.uniba.app.exceptions.FuoriDallaGrigliaException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * Classe di test per la classe Cella.
@@ -110,19 +115,20 @@ class PartitaTest {
 
         partita.posizionaNavi();
         int[] posNave = trovaCellaConNave(partita);
-        assertNotNull(posNave, "Non è stata trovata alcuna cella piena");
+        if (posNave == null) {
+            fail("Non è stata trovata alcuna cella piena");
+        }
 
         partita.attaccaGriglia(posNave[0], posNave[1]);
         assertEquals(tentativiRimasti, partita.getTentativiRimasti(),
                 "L'attacco di una cella con nave varia il numero di tentativi rimasti");
     }
 
-
     /**
-     * Trova le coordinate di una cella occupata da una nave
-     * @param partita partita in cui cercare la cella
+     * Trova le coordinate di una cella occupata da una nave.
+     * @param partita partita in cui cercare la cella.
      */
-    private int[] trovaCellaConNave(Partita partita) {
+    private int[] trovaCellaConNave(final Partita partita) {
         Griglia griglia;
         try {
             griglia = partita.getGriglia();
@@ -160,18 +166,38 @@ class PartitaTest {
         }
     }
 
-    /* TODO
+    /**
      * Test sull'attacco di una cella.
      * In particolare, verifica che sia lanciata un'eccezione quando
      * si attacca una cella già colpita.
      * {@link Partita#attaccaGriglia(int, int)}
      */
+    @Test
+    @DisplayName("L'attacco di una cella già colpita lancia un'eccezione")
+    void testAttaccoCellaColpita() {
+        String livello = "facile";
+        Partita partita = new Partita(livello);
+        partita.attaccaGriglia(0, 0);
+        assertThrows(CellaGiaColpitaException.class, () -> partita.attaccaGriglia(0, 0),
+                "L'attacco di una cella già colpita non lancia un'eccezione");
+    }
 
-    /* TODO
+
+    /**
      * Test sull'attacco di una cella.
      * In particolare, verifica che sia lanciata un'eccezione quando
      * si attacca fuori dalla griglia.
+     * {@link Partita#attaccaGriglia(int, int)}
      */
+    @Test
+    @DisplayName("L'attacco di una cella fuori dalla griglia lancia un'eccezione")
+    void testAttaccoCellaFuoriGriglia() {
+        String livello = "facile";
+        final int colonnaFuoriGriglia = 10;
+        Partita partita = new Partita(livello);
+        assertThrows(FuoriDallaGrigliaException.class, () -> partita.attaccaGriglia(0, colonnaFuoriGriglia),
+                "L'attacco di una cella fuori dalla griglia non lancia un'eccezione");
+    }
 
 
 }
