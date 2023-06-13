@@ -512,9 +512,9 @@ class SvelaGriglia extends Comando {
         return "Svela la griglia di gioco";
     }
 
-    public void esegui(final String[] parametri) throws InputNonFormattatoException, PartitaNonIniziataException {
+    public void esegui(final String[] parametri) throws ParametriNonCorrettiException, PartitaNonIniziataException {
         if (parametri.length > 0) {
-            throw new InputNonFormattatoException();
+            throw new ParametriNonCorrettiException("Troppo parametri per il comando. Utilizzo corretto: /svelagriglia");
         }
 
         if (!GestioneComandi.partitaIniziata()) {
