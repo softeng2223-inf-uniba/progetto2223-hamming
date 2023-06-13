@@ -543,9 +543,9 @@ class Help extends Comando {
         return "Mostra l'elenco dei comandi utilizzabili";
     }
 
-    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+    public void esegui(final String[] parametri) throws ParametriNonCorrettiException {
         if (parametri.length > 0) {
-            throw new InputNonFormattatoException();
+            throw new ParametriNonCorrettiException("Troppo parametri per il comando. Utilizzo corretto: /help");
         }
 
         Grafica.stampaHelp();
