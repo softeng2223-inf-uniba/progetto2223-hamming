@@ -82,4 +82,20 @@ class NaveTest {
         assertTrue(nave.eAffondata(), "La nave non risulta affondata dopo aver colpito tutte le sue celle");
     }
 
+    /**
+     * Test sull'attacco a una nave affondata.
+     * {@link Nave#colpisciNave()}
+     */
+    @Test
+    @DisplayName("L'attacco su una nave affondata non diminuisce il numero di celle rimanenti")
+    void testColpisciNaveAffondata() {
+        String tipologia = "cacciatorpediniere";
+        final Nave nave = new Nave(tipologia);
+        for (int i = 0; i < Configurazioni.getLunghezzaNavi(tipologia); i++) {
+            nave.colpisciNave();
+        }
+        nave.colpisciNave();
+        assertEquals(nave.getCelleRimanenti(), 0,
+                "L'attacco su una nave affondata diminuisce il numero di celle rimanenti");
+    }
 }
