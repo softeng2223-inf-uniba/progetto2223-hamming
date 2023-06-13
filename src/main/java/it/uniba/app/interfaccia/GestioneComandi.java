@@ -6,7 +6,6 @@ import it.uniba.app.exceptions.CellaGiaColpitaException;
 import it.uniba.app.exceptions.ComandiException;
 import it.uniba.app.exceptions.ComandoNonEsistenteException;
 import it.uniba.app.exceptions.FuoriDallaGrigliaException;
-import it.uniba.app.exceptions.InputNonFormattatoException;
 import it.uniba.app.exceptions.ParametriNonCorrettiException;
 import it.uniba.app.exceptions.PartitaGiaIniziataException;
 import it.uniba.app.exceptions.PartitaNonIniziataException;
