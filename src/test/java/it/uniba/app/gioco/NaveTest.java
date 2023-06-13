@@ -66,5 +66,20 @@ class NaveTest {
                 "L'attacco su una nave non diminuisce il numero di celle rimanenti");
     }
 
+    /**
+     * Test sull'affondamento di una nave.
+     * Si verifica che l'attacco abbia diminuito di uno il numero di celle rimanenti.
+     * {@link Nave#colpisciNave()}
+     */
+    @Test
+    @DisplayName("L'attacco su tutte le celle di una nave la fa affondare")
+    void testEAffondata() {
+        String tipologia = "incrociatore";
+        final Nave nave = new Nave(tipologia);
+        for (int i = 0; i < Configurazioni.getLunghezzaNavi(tipologia); i++) {
+            nave.colpisciNave();
+        }
+        assertTrue(nave.eAffondata(), "La nave non risulta affondata dopo aver colpito tutte le sue celle");
+    }
 
 }
