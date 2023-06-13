@@ -641,7 +641,7 @@ class ExtraLarge extends CambioTagliaGriglia {
     }
 
     public void esegui(final String[] parametri) throws PartitaGiaIniziataException, ParametriNonCorrettiException {
-        cambiaTagliaGriglia(Configurazioni.DIMENSIONI_GRIGLIA_STANDARD, parametri);
+        cambiaTagliaGriglia(Configurazioni.DIMENSIONI_GRIGLIA_EXTRA_LARGE, parametri);
     }
 }
 
