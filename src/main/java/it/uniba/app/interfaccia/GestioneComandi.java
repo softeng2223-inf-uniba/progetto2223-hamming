@@ -361,21 +361,17 @@ abstract class CambioDifficolta extends Comando {
  * Imposta la difficoltà facile se viene eseguita senza parametri altrimenti
  * imposta il numero di tentativi massimi della difficoltà facile.
  */
-class Facile extends Comando {
+class Facile extends CambioDifficolta {
     Facile() {
         super("facile", "difficolta");
     }
 
     public String getDescrizione() {
-        return "imposta la difficoltà facile";
+        return "Imposta la difficoltà facile";
     }
 
-    public void esegui(final String[] parametri) {
-        try {
-            GestioneComandi.eseguiDifficolta(this.getNome(), parametri);
-        } catch (PartitaGiaIniziataException | ParametriNonCorrettiException e) {
-            Grafica.stampaWarning(e.getMessage());
-        }
+    public void esegui(final String[] parametri) throws ParametriNonCorrettiException, PartitaGiaIniziataException {
+        cambiaDifficolta(this.getNome(), parametri);
     }
 }
 
@@ -385,21 +381,17 @@ class Facile extends Comando {
  * Imposta la difficoltà medio se viene eseguita senza parametri altrimenti
  * imposta il numero di tentativi massimi della difficoltà medio.
  */
-class Medio extends Comando {
+class Medio extends CambioDifficolta {
     Medio() {
         super("medio", "difficolta");
     }
 
     public String getDescrizione() {
-        return "imposta la difficoltà media";
+        return "Imposta la difficoltà media";
     }
 
-    public void esegui(final String[] parametri) {
-        try {
-            GestioneComandi.eseguiDifficolta(this.getNome(), parametri);
-        } catch (PartitaGiaIniziataException | ParametriNonCorrettiException e) {
-            Grafica.stampaWarning(e.getMessage());
-        }
+    public void esegui(final String[] parametri) throws ParametriNonCorrettiException, PartitaGiaIniziataException {
+        cambiaDifficolta(this.getNome(), parametri);
     }
 }
 
@@ -409,21 +401,17 @@ class Medio extends Comando {
  * Imposta la difficoltà difficile se viene eseguita senza parametri altrimenti
  * imposta il numero di tentativi massimi della difficoltà difficile.
  */
-class Difficile extends Comando {
+class Difficile extends CambioDifficolta {
     Difficile() {
         super("difficile", "difficolta");
     }
 
     public String getDescrizione() {
-        return "imposta la difficoltà difficile";
+        return "Imposta la difficoltà difficile";
     }
 
-    public void esegui(final String[] parametri) {
-        try {
-            GestioneComandi.eseguiDifficolta(this.getNome(), parametri);
-        } catch (PartitaGiaIniziataException | ParametriNonCorrettiException e) {
-            Grafica.stampaWarning(e.getMessage());
-        }
+    public void esegui(final String[] parametri) throws ParametriNonCorrettiException, PartitaGiaIniziataException {
+        cambiaDifficolta(this.getNome(), parametri);
     }
 }
 
