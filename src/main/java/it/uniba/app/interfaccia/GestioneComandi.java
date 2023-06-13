@@ -763,9 +763,9 @@ class MostraTempo extends Comando {
         return "Mostra il tempo rimanente di gioco";
     }
 
-    public void esegui(final String[] parametri) throws InputNonFormattatoException {
+    public void esegui(final String[] parametri) throws ParametriNonCorrettiException {
         if (parametri.length > 0) {
-            throw new InputNonFormattatoException();
+            throw new ParametriNonCorrettiException("Troppo parametri per il comando. Utilizzo corretto: /mostratempo");
         }
 
         if (!GestioneComandi.partitaIniziata()) {
