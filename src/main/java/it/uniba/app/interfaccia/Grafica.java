@@ -1,9 +1,10 @@
 package it.uniba.app.interfaccia;
 
-import java.util.Scanner;
-
 import it.uniba.app.exceptions.LivelloNonEsistenteException;
 import it.uniba.app.gioco.Configurazioni;
+
+import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 
 /**
  * <<Boundary>>
@@ -12,7 +13,7 @@ import it.uniba.app.gioco.Configurazioni;
  * @author Gruppo Hamming
  */
 public final class Grafica {
-    private static Scanner scan = new Scanner(System.in, "UTF-8");
+    private static Scanner scan = new Scanner(System.in, StandardCharsets.UTF_8);
 
     private Grafica() {
     }
@@ -137,4 +138,14 @@ public final class Grafica {
         System.out.println(ConfigurazioniInterfaccia.ANSI_YELLOW
                 + "ATTENZIONE: " + messaggio + ConfigurazioniInterfaccia.ANSI_RESET);
     }
+
+    /**
+     * Metodo che ridefinisce lo scanner per aggiornare lo stream di input.
+     * Viene richiamato ogni volta si vuole simulare l'input dell'utente.
+     * Usato solo per fini di test.
+     */
+    public static void aggiornaScanner() {
+        scan = new Scanner(System.in, StandardCharsets.UTF_8);
+    }
+
 }
