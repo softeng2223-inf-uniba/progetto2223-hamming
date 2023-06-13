@@ -1,7 +1,11 @@
 package it.uniba.app.gioco;
 
 /**
- * Classe che rappresenta una nave della griglia di gioco.
+ * <<Entity>>
+ * Classe che rappresenta una nave presente sulla griglia di gioco.
+ * La nave ha una propria categoria e lunghezza.
+ * Può essere colpita e affondata.
+ *
  * @author Gruppo Hamming
  */
 public class Nave implements Cloneable {

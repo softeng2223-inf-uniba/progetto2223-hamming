@@ -3,7 +3,12 @@ import it.uniba.app.exceptions.FuoriDallaGrigliaException;
 import it.uniba.app.exceptions.CellaGiaColpitaException;
 
 /**
+ * <<Entity>>
  * Classe che rappresenta la griglia della battaglia navale.
+ * La grandezza è determinata dal giocatore.
+ * Le colonne sono rappresentate da lettere e le righe da numeri.
+ * E' una composizione di celle e su di essa possono essere posizionate le navi.
+ *
  * @author Gruppo Hamming
 */
 public class Griglia implements Cloneable {
@@ -86,10 +91,10 @@ public class Griglia implements Cloneable {
      * @throws FuoriDallaGrigliaException se le coordinate sono fuori dalla griglia.
      * @throws CellaGiaColpitaException se la cella è già stata colpita.
      */
-    public boolean attaccaCella(final int riga, final int colonna)
+    public EsitoColpo attaccaCella(final int riga, final int colonna)
             throws FuoriDallaGrigliaException, CellaGiaColpitaException {
         if ((riga >= Configurazioni.getRigheGriglia() || riga < 0)
-                && (colonna >= Configurazioni.getColonneGriglia() || colonna < 0)) {
+                || (colonna >= Configurazioni.getColonneGriglia() || colonna < 0)) {
             throw new FuoriDallaGrigliaException(riga, colonna);
         }
         if (celle[riga][colonna].eColpita()) {

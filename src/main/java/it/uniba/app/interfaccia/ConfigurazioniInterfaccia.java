@@ -7,6 +7,7 @@ import it.uniba.app.exceptions.TipologiaNonEsistenteException;
 
 /**
  * Classe che contiene le configurazioni dell'interfaccia del gioco.
+ *
  * @author Gruppo Hamming
  */
 public final class ConfigurazioniInterfaccia {
@@ -14,7 +15,7 @@ public final class ConfigurazioniInterfaccia {
     private ConfigurazioniInterfaccia() {
     }
 
-    //SEZIONE COMANDI
+    // SEZIONE COMANDI
     private static final Map<String, Comando> COMANDI = new LinkedHashMap<String, Comando>() {
         {
             put("esci", new Esci());
@@ -38,9 +39,11 @@ public final class ConfigurazioniInterfaccia {
     };
 
     /**
-     * Metodo che restituisce l'oggetto comando associato alla stringa (chiave) passata come parametro.
+     * Metodo che restituisce l'oggetto comando associato alla stringa (chiave)
+     * passata come parametro.
      *
-     * @param comando stringa che rappresenta il comando (chiave della LinkedHashMap)
+     * @param comando stringa che rappresenta il comando (chiave della
+     *                LinkedHashMap)
      */
     public static Comando getComando(final String comando) {
         return COMANDI.get(comando);
@@ -48,19 +51,21 @@ public final class ConfigurazioniInterfaccia {
 
     /**
      * Metodo che restituisce la mappa dei comandi.
+     *
      * @return mappa dei comandi
      */
     public static Map<String, Comando> getComandi() {
         return new LinkedHashMap<>(COMANDI);
     }
 
-    //SEZIONE NAVI
+    // SEZIONE NAVI
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_MAGENTA = "\u001B[35m";
-    public static final String SIMBOLO_DEFAULT = "X"; //"\u25A0";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String SIMBOLO_DEFAULT = "X"; // "\u25A0";
 
     /**
      * Restituisce il simbolo di default delle navi.
