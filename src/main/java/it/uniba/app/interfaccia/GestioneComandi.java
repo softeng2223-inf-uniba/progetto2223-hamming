@@ -431,7 +431,7 @@ class MostraLivello extends Comando {
 
     void esegui(final String[] parametri) throws ParametriNonCorrettiException {
         if (parametri.length > 0) {
-            throw new ParametriNonCorrettiException("Troppo parametri per il comando. Utilizzo corretto: /mostraLivello");
+            throw new ParametriNonCorrettiException("Troppo parametri per il comando. Utilizzo corretto: /mostralivello");
         }
 
         Grafica.mostraLivello(GestioneComandi.getLivello());
@@ -489,9 +489,9 @@ class MostraNavi extends Comando {
         return "Mostra le navi presenti nella griglia";
     }
 
-    void esegui(final String[] parametri) throws InputNonFormattatoException {
+    void esegui(final String[] parametri) throws ParametriNonCorrettiException {
         if (parametri.length > 0) {
-            throw new InputNonFormattatoException();
+            throw new ParametriNonCorrettiException("Troppo parametri per il comando. Utilizzo corretto: /mostranavi");
         }
 
         Grafica.stampaNavi();
