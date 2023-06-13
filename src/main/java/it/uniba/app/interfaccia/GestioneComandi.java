@@ -430,7 +430,8 @@ class MostraLivello extends Comando {
 
     void esegui(final String[] parametri) throws ParametriNonCorrettiException {
         if (parametri.length > 0) {
-            throw new ParametriNonCorrettiException("Troppo parametri per il comando. Utilizzo corretto: /mostralivello");
+            throw new ParametriNonCorrettiException("Troppo parametri per il comando."
+            + " Utilizzo corretto: /mostralivello");
         }
 
         Grafica.mostraLivello(GestioneComandi.getLivello());
@@ -513,7 +514,8 @@ class SvelaGriglia extends Comando {
 
     public void esegui(final String[] parametri) throws ParametriNonCorrettiException, PartitaNonIniziataException {
         if (parametri.length > 0) {
-            throw new ParametriNonCorrettiException("Troppo parametri per il comando. Utilizzo corretto: /svelagriglia");
+            throw new ParametriNonCorrettiException("Troppo parametri per il comando."
+            + " Utilizzo corretto: /svelagriglia");
         }
 
         if (!GestioneComandi.partitaIniziata()) {
@@ -733,7 +735,8 @@ class MostraGriglia extends Comando {
 
     public void esegui(final String[] parametri) throws ParametriNonCorrettiException, PartitaNonIniziataException {
         if (parametri.length > 0) {
-            throw new ParametriNonCorrettiException("Troppi parametri per il comando. Utilizzo corretto: /mostragriglia");
+            throw new ParametriNonCorrettiException("Troppi parametri per il comando."
+            + " Utilizzo corretto: /mostragriglia");
         }
 
         if (!GestioneComandi.partitaIniziata()) {
