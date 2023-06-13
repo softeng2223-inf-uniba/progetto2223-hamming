@@ -787,8 +787,8 @@ class Tentativi extends Comando {
             }
             System.out.println("Numero di tentativi massimi impostato a " + tentativi);
         } catch (NumberFormatException e) {
-            System.out.println("Il parametro <num_tentativi> non è un numero intero. Utilizzo corretto: /tentativi <num_tentativi>");
+            System.out.println("Il parametro <num_tentativi> non è un numero intero."
+            + "Utilizzo corretto: /tentativi <num_tentativi>");
         }
-        
     }
 }
