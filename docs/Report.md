@@ -313,7 +313,7 @@ Inoltre il gioco registrerà il tempo di inizio della partita per calcolare il t
 
 #### Comando /svelagriglia
 Utilizzando il comando /svelagriglia il gioco risponde visualizzando, una griglia 10 x 10, con le righe numerate da 1 a 10 e le colonne numerate da A a J, e tutte le navi posizionate.
-
+La griglia può variare di dimensione in base alla scelta del giocatore prima di iniziare la partita.
 
 ![comando_svelagriglia.png](img/comando_svelagriglia.png)
 
@@ -324,8 +324,16 @@ Quando il giocatore usa il comando /abbandona, il gioco chiede conferma all'uten
 - se la conferma è positiva, il gioco svela la posizione di tutte le navi e si predispone a ricevere nuovi comandi;
 - altrimenti, il gioco si predispone a ricevere nuovi tentativi o comandi senza abbandonare la partita.
 
-
 ![comando_abbandona.png](img/comando_abbandona.png)
+
+
+#### Comando /standard
+Il giocatore può utilizzare il comando /standard per impostare la grandezza della griglia a 10x10.
+
+![comando_standard.png](img/comando_standard.png)
+
+
+
 
 ### Introduzione di gioco
 La **battaglia navale** è un gioco, in questo caso a giocatore singolo, il cui **obiettivo** è quello di **affondare tutte le navi** che sono posizionate su una griglia 10x10 nascosta al giocatore con le righe numerate da 1 a 10 e le colonne numerate da A a J.
