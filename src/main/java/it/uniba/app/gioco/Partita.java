@@ -17,6 +17,7 @@ import it.uniba.app.exceptions.CellaGiaColpitaException;
 public class Partita {
     private final String livello;
     private int tentativiRimasti;
+    private int tentativiEffettuati;
     private ArrayList<Nave> navi = new ArrayList<Nave>();
     private Griglia griglia;
     private Random random = new Random();
@@ -56,6 +57,15 @@ public class Partita {
      */
     public int getTentativiRimasti() {
         return tentativiRimasti;
+    }
+
+    /**
+     * Metodo che restituisce il numero di tentativi effettuati.
+     *
+     * @return
+     */
+    public int getTentativiEffettuati() {
+        return tentativiEffettuati;
     }
 
     /**
@@ -125,6 +135,7 @@ public class Partita {
         if (esito == EsitoColpo.ACQUA) {
             tentativiRimasti--;
         }
+        tentativiEffettuati++;
         return esito;
     }
 
