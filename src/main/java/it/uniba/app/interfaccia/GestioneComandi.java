@@ -282,9 +282,9 @@ class Esci extends Comando {
         return "Chiude il programma";
     }
 
-    void esegui(final String[] parametri) throws InputNonFormattatoException {
+    void esegui(final String[] parametri) throws ParametriNonCorrettiException {
         if (parametri.length > 0) {
-            throw new InputNonFormattatoException();
+            throw new ParametriNonCorrettiException("Il numero di parametri è errato. Utilizzo corretto: /esci");
         }
 
         if (GestioneComandi.partitaIniziata()) {
