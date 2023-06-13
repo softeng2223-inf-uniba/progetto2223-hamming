@@ -835,3 +835,36 @@ class Tentativi extends Comando {
         }
     }
 }
+
+/* Al comando /mostratentativi
+ * l’applicazione risponde visualizzando il numero di tentativi già effettuati,
+ * il numero di tentativi falliti e il numero massimo di tentativi falliti
+ */
+class MostraTentativi extends Comando {
+    MostraTentativi() {
+        super("mostratentativi", "gioco");
+    }
+
+    public String getDescrizione() {
+        return "Mostra il numero di tentativi già effettuati,"
+                + "il numero di tentativi falliti e il numero massimo di tentativi falliti";
+    }
+
+    public void esegui(final String[] parametri) throws ParametriNonCorrettiException, PartitaNonIniziataException {
+        if (parametri.length > 0) {
+            throw new ParametriNonCorrettiException("Troppi parametri per il comando."
+                    + " Utilizzo corretto: /mostratentativi");
+        }
+
+        if (!GestioneComandi.partitaIniziata()) {
+            throw new PartitaNonIniziataException();
+        }
+
+        Grafica.stampaMessaggio("Tentativi effettuati: " + GestioneComandi.getPartita().getTentativiEffettuati());
+        Grafica.stampaMessaggio("Tentativi falliti: "
+        + (Configurazioni.getTentativi(GestioneComandi.getPartita().getLivello())
+        - GestioneComandi.getPartita().getTentativiRimasti()));
+        Grafica.stampaMessaggio("Tentativi massimi: "
+        + Configurazioni.getTentativi(GestioneComandi.getPartita().getLivello()));
+    }
+}
