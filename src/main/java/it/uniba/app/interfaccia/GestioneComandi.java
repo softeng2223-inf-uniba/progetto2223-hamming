@@ -76,7 +76,7 @@ public final class GestioneComandi {
      */
     public static void terminaPartita(final String esito) {
         try {
-            Grafica.stampaFinePartita(esito, GestioneComandi.getPartita().getGriglia());
+            GestioneStampe.stampaFinePartita(esito, GestioneComandi.getPartita().getGriglia());
         } catch (CloneNotSupportedException e) {
             Grafica.stampaErrore("Impossibile svelare la griglia: clonazione di griglia fallita");
         }
@@ -239,7 +239,7 @@ public final class GestioneComandi {
         int riga = Integer.parseInt(cella[1]) - 1;
         try {
             EsitoColpo esito = partita.attaccaGriglia(riga, colonna);
-            Grafica.stampaGrigliaColpita(partita.getGriglia());
+            GestioneStampe.stampaGrigliaColpita(partita.getGriglia());
             switch (esito) {
                 case ACQUA:
                     Grafica.stampaMessaggio("Acqua...");
@@ -473,7 +473,7 @@ class Gioca extends Comando {
             if (GestioneComandi.tempoImpostato()) {
                 GestioneComandi.avviaTempo();
             }
-            Grafica.stampaGrigliaColpita(GestioneComandi.getPartita().getGriglia());
+            GestioneStampe.stampaGrigliaColpita(GestioneComandi.getPartita().getGriglia());
         } catch (PartitaGiaIniziataException e) {
             Grafica.stampaWarning(e.getMessage());
         } catch (CloneNotSupportedException e) {
@@ -529,7 +529,7 @@ class SvelaGriglia extends Comando {
         }
 
         try {
-            Grafica.svelaGrigliaNavi(GestioneComandi.getPartita().getGriglia());
+            GestioneStampe.svelaGrigliaNavi(GestioneComandi.getPartita().getGriglia());
         } catch (CloneNotSupportedException e) {
             Grafica.stampaErrore("Impossibile svelare la griglia: clonazione di griglia fallita");
         }
@@ -747,7 +747,7 @@ class MostraGriglia extends Comando {
         }
 
         try {
-            Grafica.stampaGrigliaColpita(GestioneComandi.getPartita().getGriglia());
+            GestioneStampe.stampaGrigliaColpita(GestioneComandi.getPartita().getGriglia());
         } catch (CloneNotSupportedException e) {
             Grafica.stampaErrore("Impossibile svelare la griglia: clonazione di griglia fallita");
         }
