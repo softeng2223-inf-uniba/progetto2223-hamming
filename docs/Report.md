@@ -235,6 +235,7 @@ Si utilizza per visualizzare l'elenco dei comandi disponibili, uno per riga, per
 - esci
 - ...
 - per esempio:
+
 ![comando_help.png](img/comando_help.png)
 
 #### Comando /esci
