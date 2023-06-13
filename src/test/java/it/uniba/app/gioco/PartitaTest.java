@@ -95,7 +95,11 @@ class PartitaTest {
         String livello = "facile";
         Partita partita = new Partita(livello);
         int tentativiRimasti = partita.getTentativiRimasti();
-        partita.attaccaGriglia(0, 0);
+        try {
+            partita.attaccaGriglia(0, 0);
+        } catch (FuoriDallaGrigliaException | CellaGiaColpitaException e) {
+            fail("L'attacco di una cella vuota non dovrebbe sollevare eccezioni");
+        }
         assertEquals(tentativiRimasti - 1, partita.getTentativiRimasti(),
                 "L'attacco di una cella vuota non decrementa di uno il numero di tentativi rimasti");
     }
@@ -115,17 +119,20 @@ class PartitaTest {
 
         partita.posizionaNavi();
         int[] posNave = trovaCellaConNave(partita);
-        if (posNave == null) {
-            fail("Non è stata trovata alcuna cella piena");
+
+        try {
+            partita.attaccaGriglia(posNave[0], posNave[1]);
+        } catch (FuoriDallaGrigliaException | CellaGiaColpitaException e) {
+            fail("L'attacco di una cella vuota non dovrebbe sollevare eccezioni");
         }
 
-        partita.attaccaGriglia(posNave[0], posNave[1]);
         assertEquals(tentativiRimasti, partita.getTentativiRimasti(),
                 "L'attacco di una cella con nave varia il numero di tentativi rimasti");
     }
 
     /**
      * Trova le coordinate di una cella occupata da una nave.
+     *
      * @param partita partita in cui cercare la cella.
      */
     private int[] trovaCellaConNave(final Partita partita) {
@@ -134,7 +141,7 @@ class PartitaTest {
             griglia = partita.getGriglia();
         } catch (CloneNotSupportedException e) {
             fail("Clonazione della griglia non supportata");
-            return null;
+            return new int[]{0, 0};
         }
         for (int i = 0; i < Configurazioni.getRigheGriglia(); i++) {
             for (int j = 0; j < Configurazioni.getColonneGriglia(); j++) {
@@ -143,11 +150,11 @@ class PartitaTest {
                 }
             }
         }
-        return null;
+        return new int[]{0, 0};
     }
 
 
-    /**  TODO Utile come test o già fatto in cella? Se utile da fare anche in griglia?
+    /**
      * Test sull'attacco di una cella.
      * In particolare, verifica che una cella diventi colpita.
      * {@link Partita#attaccaGriglia(int, int)}
@@ -157,13 +164,20 @@ class PartitaTest {
     void testAttaccoColpisceCella() {
         String livello = "facile";
         Partita partita = new Partita(livello);
-        partita.attaccaGriglia(0, 0);
         try {
-            assertTrue(partita.getGriglia().getCella(0, 0).eColpita(),
-                    "L'attacco da partita di una cella non la rende colpita");
+            partita.attaccaGriglia(0, 0);
+        } catch (FuoriDallaGrigliaException | CellaGiaColpitaException e) {
+            fail("L'attacco di una cella vuota non dovrebbe sollevare eccezioni");
+        }
+
+        boolean colpita = false;
+        try {
+            colpita = partita.getGriglia().getCella(0, 0).eColpita();
         } catch (CloneNotSupportedException e) {
             fail("Clonazione della griglia non supportata");
         }
+
+        assertTrue(colpita, "L'attacco da partita di una cella non la rende colpita");
     }
 
     /**
@@ -177,7 +191,11 @@ class PartitaTest {
     void testAttaccoCellaColpita() {
         String livello = "facile";
         Partita partita = new Partita(livello);
-        partita.attaccaGriglia(0, 0);
+        try {
+            partita.attaccaGriglia(0, 0);
+        } catch (FuoriDallaGrigliaException | CellaGiaColpitaException e) {
+            fail("L'attacco di una cella vuota non dovrebbe sollevare eccezioni");
+        }
         assertThrows(CellaGiaColpitaException.class, () -> partita.attaccaGriglia(0, 0),
                 "L'attacco di una cella già colpita non lancia un'eccezione");
     }
