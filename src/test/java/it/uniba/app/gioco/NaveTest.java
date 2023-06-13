@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Classe di test per la classe Nave.
@@ -42,7 +43,7 @@ class NaveTest {
      * {@link Nave#getCelleRimanenti()}
      */
     @Test
-    @DisplayName("Il numero di celle di una nave non colpita corrisponde a quella della lunghezza della nave")
+    @DisplayName("Il numero di celle di una nave non colpita corrisponde a quello della lunghezza della nave")
     void testGetCelleRimanenti() {
         String tipologia = "cacciatorpediniere";
         final Nave nave = new Nave(tipologia);
@@ -50,7 +51,20 @@ class NaveTest {
                 "Il numero di celle rimanenti di una nave non viene inizializzato correttamente");
     }
 
+    /**
+     * Test sull'attacco su una nave.
+     * Si verifica che l'attacco abbia diminuito di uno il numero di celle rimanenti.
+     * {@link Nave#colpisciNave()}
+     */
+    @Test
+    @DisplayName("L'attacco su una nave diminuisce di uno il numero di celle rimanenti")
+    void testColpisciNave() {
+        String tipologia = "incrociatore";
+        final Nave nave = new Nave(tipologia);
+        nave.colpisciNave();
+        assertEquals(nave.getCelleRimanenti(), Configurazioni.getLunghezzaNavi(tipologia) - 1,
+                "L'attacco su una nave non diminuisce il numero di celle rimanenti");
+    }
 
-    // test su colpisci e affonda TODO
 
 }
