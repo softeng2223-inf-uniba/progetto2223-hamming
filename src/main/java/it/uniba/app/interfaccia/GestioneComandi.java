@@ -266,54 +266,6 @@ public final class GestioneComandi {
             terminaPartita("persa: hai terminato i tentativi disponibili");
         }
     }
-
-    /**
-     * Esegui parametrizzato dei comandi di difficoltà.
-     *
-     * @param difficolta nome del comando da eseguire, che rappresenta la
-     *                   difficoltà.
-     * @param parametri  parametri da passare al comando.
-     * @throws ParametriNonCorrettiException i parametri sono più di uno
-     * @throws PartitaGiaIniziataException   non si può inizializzare una partita se
-     *                                       è già in corso
-     */
-    public static void eseguiDifficolta(final String difficolta, final String[] parametri)
-            throws ParametriNonCorrettiException, PartitaGiaIniziataException {
-        if (parametri.length > 1) {
-            throw new ParametriNonCorrettiException(
-                    "Troppi parametri per il comando. Utilizzo corretto: /" + difficolta + " [tentativi]");
-        }
-        try {
-            if (parametri.length == 1) {
-                try {
-                    if (GestioneComandi.partitaIniziata()) {
-                        throw new PartitaGiaIniziataException(
-                                "Non puoi cambiare il numero di tentativi"
-                                        + " massimi di una difficoltà durante una partita");
-                    }
-                    int tentativi = Integer.parseInt(parametri[0]);
-                    // controlla che il numero sia maggiore di zero
-                    if (tentativi <= 0) {
-                        throw new ParametriNonCorrettiException(
-                                "Il parametro [tentativi] deve essere maggiore di 0."
-                                        + " Utilizzo corretto: /" + difficolta + " [tentativi]");
-                    }
-                    Configurazioni.setTentativi(difficolta, tentativi);
-                    Grafica.stampaMessaggio("Numero di tentativi massimi della difficoltà "
-                            + difficolta + " modificato a " + Configurazioni.getTentativi(difficolta));
-                } catch (NumberFormatException e) {
-                    throw new ParametriNonCorrettiException(
-                            "Il parametro [tentativi] non è un numero intero. Utilizzo corretto: /" + difficolta
-                                    + " [tentativi]");
-                }
-                return;
-            }
-            GestioneComandi.setLivello(difficolta);
-            Configurazioni.deleteCustomTentativi();
-        } catch (PartitaGiaIniziataException e) {
-            Grafica.stampaWarning(e.getMessage());
-        }
-    }
 }
 
 /**
@@ -347,6 +299,59 @@ class Esci extends Comando {
         } else {
             Grafica.stampaMessaggio("Uscita annullata");
         }
+    }
+}
+
+/**
+ * <<Control>>
+ * Classe generale per i comandi per il cambio di difficoltà.
+ * Attraverso cambiaDifficolta, imposta la difficoltà passata in input
+ * se viene eseguita senza parametri altrimenti
+ * imposta il numero di tentativi massimi della difficoltà passata in input.
+ */
+abstract class CambioDifficolta extends Comando {
+    CambioDifficolta(final String nome, final String categoria) {
+        super(nome, categoria);
+    }
+
+    /**
+     * Esegui parametrizzato dei comandi di difficoltà.
+     *
+     * @param difficolta nome del comando da eseguire, che rappresenta la difficoltà.
+     * @param parametri  parametri da passare al comando.
+     * @throws ParametriNonCorrettiException i parametri sono più di uno
+     * @throws PartitaGiaIniziataException   non si può inizializzare una partita se è già in corso
+     */
+    void cambiaDifficolta(final String difficolta, final String[] parametri)
+            throws ParametriNonCorrettiException, PartitaGiaIniziataException {
+        if (parametri.length > 1) {
+            throw new ParametriNonCorrettiException("Troppi parametri per il comando. "
+                    + "Utilizzo corretto: /" + difficolta + " [tentativi]");
+        }
+        if (parametri.length == 1) {
+            if (GestioneComandi.partitaIniziata()) {
+                throw new PartitaGiaIniziataException("Non puoi cambiare il numero di tentativi"
+                        + " massimi di una difficoltà durante una partita");
+            }
+            int tentativi;
+            try {
+                tentativi = Integer.parseInt(parametri[0]);
+            } catch (NumberFormatException e) {
+                throw new ParametriNonCorrettiException("Il parametro [tentativi] non è un numero intero. "
+                        + "Utilizzo corretto: /" + difficolta + " [tentativi]");
+            }
+            // controlla che il numero sia maggiore di zero
+            if (tentativi <= 0) {
+                throw new ParametriNonCorrettiException("Il parametro [tentativi] deve essere maggiore di 0."
+                        + " Utilizzo corretto: /" + difficolta + " [tentativi]");
+            }
+            Configurazioni.setTentativi(difficolta, tentativi);
+            Grafica.stampaMessaggio("Numero di tentativi massimi della difficoltà "
+                    + difficolta + " modificato a " + Configurazioni.getTentativi(difficolta));
+            return;
+        }
+        GestioneComandi.setLivello(difficolta);
+        Configurazioni.deleteCustomTentativi();
     }
 }
 
