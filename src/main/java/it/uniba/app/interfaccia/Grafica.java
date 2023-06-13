@@ -125,15 +125,16 @@ public final class Grafica {
                 "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
 
         // A B C D E F G H I J
+        String stampa = "";
         StringBuilder riga = new StringBuilder(" ".repeat(margine + 2));
         for (int i = 0; i < colonne; i++) {
             riga.append(lettereColonne[i]).append("   ");
         }
-        System.out.println(riga);
+        stampa += riga + "\n";
 
         // +---+---+---+---+---+---+---+---+---+---+
         String divisore = " ".repeat(margine) + "+---".repeat(colonne) + "+";
-        System.out.println(divisore);
+        stampa += divisore + "\n";
 
         for (int i = 0; i < righe; i++) {
             // 1 | | | | | | | | | | |
@@ -143,10 +144,11 @@ public final class Grafica {
                 riga.append("| ").append(getSimboloCella(griglia.getCella(i, y))).append(" ");
             }
             riga.append("|");
-            System.out.println(riga);
-
-            System.out.println(divisore);
+            stampa += riga + "\n";
+            stampa += divisore + "\n";
         }
+
+        Grafica.stampaMessaggio(stampa);
     }
 
     /**
