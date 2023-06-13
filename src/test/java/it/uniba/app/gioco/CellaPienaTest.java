@@ -41,22 +41,6 @@ class CellaPienaTest {
 
     /**
      * Test sull'attacco su una cella piena.
-     * Si verifica che l'attacco sia andato a buon fine e indica
-     * che è stata colpita una nave.
-     * {@link CellaPiena#attacca()}
-     */
-    @Test
-    @DisplayName("L'attacco su una cella con nave integra indica che è stata colpita una nave")
-    void testAttaccoSuCellaPiena() {
-        String tipologia = "cacciatorpediniere";
-        Nave nave = new Nave(tipologia);
-        CellaPiena cella = new CellaPiena(nave);
-        assertEquals(EsitoColpo.COLPITO, cella.attacca(), "L'attacco su una cella con una nave integra indica "
-                + "che non è stata colpita una nave");
-    }
-
-    /**
-     * Test sull'attacco su una cella piena.
      * Si verifica che l'attacco abbia modificato lo stato della cella.
      * {@link CellaPiena#attacca()}
      */
@@ -87,6 +71,38 @@ class CellaPienaTest {
                 "L'attacco su una cella piena non colpisce la nave");
     }
 
-    // todo test su attacco su cella già colpita, nave affondata, ecc.
+    /**
+     * Test sull'attacco su una cella piena.
+     * Si verifica che l'attacco sia andato a buon fine e indica
+     * che è stata colpita una nave.
+     * {@link CellaPiena#attacca()}
+     */
+    @Test
+    @DisplayName("L'attacco su una cella con nave integra indica che è stata colpita una nave")
+    void testAttaccoSuCellaPiena() {
+        String tipologia = "cacciatorpediniere";
+        Nave nave = new Nave(tipologia);
+        CellaPiena cella = new CellaPiena(nave);
+        assertEquals(EsitoColpo.COLPITO, cella.attacca(), "L'attacco su una cella con una nave integra indica "
+                + "che non è stata colpita una nave");
+    }
 
+    /**
+     * Test sull'attacco su una cella con nave con una cella rimanente.
+     * Si verifica che l'attacco sia andato a buon fine e indica
+     * che la nave sia affondata.
+     * {@link CellaPiena#attacca()}
+     */
+    @Test
+    @DisplayName("L'attacco sull'ultima cella di una nave indica che la nave è affondata")
+    void testAttaccoSuCellaPienaAffondata() {
+        String tipologia = "cacciatorpediniere";
+        Nave nave = new Nave(tipologia);
+        while (nave.getCelleRimanenti() > 1) {
+            nave.colpisciNave();
+        }
+        CellaPiena cella = new CellaPiena(nave);
+        assertEquals(EsitoColpo.AFFONDATO, cella.attacca(), "L'attacco sull'ultima cella di una nave "
+                + "indica che la nave non è affondata");
+    }
 }
