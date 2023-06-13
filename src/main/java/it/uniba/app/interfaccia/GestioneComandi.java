@@ -836,9 +836,10 @@ class Tentativi extends Comando {
     }
 }
 
-/* Al comando /mostratentativi
+/**
+ * Al comando /mostratentativi
  * l’applicazione risponde visualizzando il numero di tentativi già effettuati,
- * il numero di tentativi falliti e il numero massimo di tentativi falliti
+ * il numero di tentativi falliti e il numero massimo di tentativi falliti.
  */
 class MostraTentativi extends Comando {
     MostraTentativi() {
