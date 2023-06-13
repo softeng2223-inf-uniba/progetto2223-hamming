@@ -659,15 +659,17 @@ class Tempo extends Comando {
         if (GestioneComandi.partitaIniziata()) {
             throw new PartitaGiaIniziataException("Non puoi cambiare il tempo di gioco durante una partita");
         }
-
-        int tempo = Integer.parseInt(parametri[0]);
-        if (tempo < 0) {
-            System.out.println("Il tempo di gioco deve essere maggiore o uguale a 0 (0 in caso di nessun limite)");
-            return;
+        try {
+            int tempo = Integer.parseInt(parametri[0]);
+            if (tempo < 0) {
+                System.out.println("Il tempo di gioco deve essere maggiore o uguale a 0 (0 in caso di nessun limite)");
+                return;
+            }
+            GestioneComandi.setTempo(tempo);
+            System.out.println("Tempo di gioco impostato a: " + (tempo == 0 ? "nessun limite" : tempo + " minuti"));
+        } catch (NumberFormatException e) {
+            System.out.println("Il parametro <tempo> non è un numero intero. Utilizzo corretto: /tempo <tempo>");
         }
-
-        GestioneComandi.setTempo(tempo);
-        System.out.println("Tempo di gioco impostato a: " + (tempo == 0 ? "nessun limite" : tempo + " minuti"));
     }
 }
 
