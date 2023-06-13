@@ -133,9 +133,13 @@ class GestioneStampeTest {
                 """;
         Griglia griglia = new Griglia();
         Nave nave1 = new Nave("cacciatorpediniere");
+        final int r1 = 0;
+        final int c1 = 0;
         Nave nave2 = new Nave("portaerei");
-        griglia.posizionaNave(nave1, 0, 0, true);
-        griglia.posizionaNave(nave2, 5, 1, false);
+        final int r2 = 5;
+        final int c2 = 1;
+        griglia.posizionaNave(nave1, r1, c1, true);
+        griglia.posizionaNave(nave2, r2, c2, false);
         GestioneStampe.svelaGrigliaNavi(griglia);
         String actualOutput = outputStream.toString(StandardCharsets.UTF_8);
         actualOutput = actualOutput.replaceAll("\r", ""); // rende compatibile il test con Windows
