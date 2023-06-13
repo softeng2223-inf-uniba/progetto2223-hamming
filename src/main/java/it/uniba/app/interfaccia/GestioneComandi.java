@@ -732,9 +732,9 @@ class MostraGriglia extends Comando {
         return "Mostra la griglia di gioco";
     }
 
-    public void esegui(final String[] parametri) throws InputNonFormattatoException, PartitaNonIniziataException {
+    public void esegui(final String[] parametri) throws ParametriNonCorrettiException, PartitaNonIniziataException {
         if (parametri.length > 0) {
-            throw new InputNonFormattatoException();
+            throw new ParametriNonCorrettiException("Troppi parametri per il comando. Utilizzo corretto: /mostragriglia");
         }
 
         if (!GestioneComandi.partitaIniziata()) {
