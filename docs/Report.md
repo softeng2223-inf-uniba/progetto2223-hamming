@@ -255,6 +255,7 @@ Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi fallit
 
 #### Comando /facile [numero]
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti della difficoltà facile al valore specificato dall'utente.
+Il comando non imposta la difficoltà corrente a facile.
 
 ![comando_facile_param.png](img/comando_facile_param.png)
 
@@ -267,6 +268,7 @@ Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi fallit
 
 ##### Comando /medio [numero]
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti della difficoltà medio al valore specificato dall'utente.
+Il comando non imposta la difficoltà corrente a medio.
 
 ![comando_medio_param.png](img/comando_medio_param.png)
 
@@ -279,6 +281,7 @@ Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi fallit
 
 #### Comando /difficile [numero]
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti della difficoltà difficile al valore specificato dall'utente.
+Il comando non imposta la difficoltà corrente a difficile.
 
 ![comando_difficile_param.png](img/comando_difficile_param.png)
 
@@ -292,13 +295,15 @@ Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi fallit
 #### Comando /mostralivello
 Il giocatore può visualizzare il livello di gioco corrente e il numero massimo di tentativi falliti utilizzando il comando /mostralivello. Il gioco risponderà mostrando queste informazioni.
 
-
 ![comando_mostralivello.png](img/comando_mostralivello.png)
+
+
 #### Comando /mostranavi
 Per conoscere i tipi di nave presenti nel gioco e il numero di esemplari da affondare per ciascun tipo, il giocatore può utilizzare il comando /mostranavi.
 
-
 ![comando_mostranavi.png](img/comando_mostranavi.png)
+
+
 #### Comando /gioca
 Per iniziare una nuova partita, il giocatore può utilizzare il comando /gioca. Se non è in corso alcuna partita, il gioco imposterà casualmente le navi in posizione orizzontale o verticale, mostrerà la griglia vuota e sarà pronta a ricevere il primo tentativo del giocatore o altri comandi.
 
