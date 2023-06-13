@@ -249,32 +249,45 @@ Di default la difficoltà è impostata a medio.
 
 ##### Comando /facile
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti a 50.
+
 ![comando_facile.png](img/comando_facile.png)
+
 
 #### Comando /facile [numero]
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti della difficoltà facile al valore specificato dall'utente.
+
 ![comando_facile_param.png](img/comando_facile_param.png)
 
 
 ##### Comando /medio 
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti a 30.
+
 ![comando_medio.png](img/comando_medio.png)
+
 
 ##### Comando /medio [numero]
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti della difficoltà medio al valore specificato dall'utente.
+
 ![comando_medio_param.png](img/comando_medio_param.png)
+
 
 ##### Comando /difficile
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti a 10.
+
 ![comando_difficile.png](img/comando_difficile.png)
+
 
 #### Comando /difficile [numero]
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti della difficoltà difficile al valore specificato dall'utente.
+
 ![comando_difficile_param.png](img/comando_difficile_param.png)
+
 
 #### Comando /tentativi \<numero\>
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti al valore specificato dall'utente creando una nuova difficotlà temporanea personalizzata.
+
 ![comando_tentativi.png](img/comando_tentativi.png)
+
 
 #### Comando /mostralivello
 Il giocatore può visualizzare il livello di gioco corrente e il numero massimo di tentativi falliti utilizzando il comando /mostralivello. Il gioco risponderà mostrando queste informazioni.
