@@ -95,6 +95,9 @@ public final class GestioneComandi {
      * Imposta il livello di difficoltà.
      */
     public static void setLivello(final String livelloParam) throws PartitaGiaIniziataException {
+        if (!Configurazioni.esisteLivello(livelloParam)) {
+            throw new LivelloNonEsistenteException("Il livello inserito non esiste");
+        }
         if (partita != null) {
             throw new PartitaGiaIniziataException("Non puoi cambiare difficoltà durante una partita");
         }
@@ -324,7 +327,7 @@ abstract class CambioDifficolta extends Comando {
      * @throws ParametriNonCorrettiException i parametri sono più di uno
      * @throws PartitaGiaIniziataException   non si può inizializzare una partita se è già in corso
      */
-    void cambiaDifficolta(final String difficolta, final String[] parametri)
+    static void cambiaDifficolta(final String difficolta, final String[] parametri)
             throws ParametriNonCorrettiException, PartitaGiaIniziataException {
         if (parametri.length > 1) {
             throw new ParametriNonCorrettiException("Troppi parametri per il comando. "
@@ -457,7 +460,7 @@ class Gioca extends Comando {
         return "Inizia una nuova partita";
     }
 
-    void esegui(final String[] parametri) throws ParametriNonCorrettiException {
+    void esegui(final String[] parametri) throws ParametriNonCorrettiException, PartitaGiaIniziataException {
         if (parametri.length > 0) {
             throw new ParametriNonCorrettiException("Troppo parametri per il comando. Utilizzo corretto: /gioca");
         }
@@ -570,7 +573,7 @@ abstract class CambioTagliaGriglia extends Comando {
         }
 
         if (GestioneComandi.partitaIniziata()) {
-            throw new PartitaGiaIniziataException();
+            throw new PartitaGiaIniziataException("Non puoi cambiare la taglia della griglia durante una partita");
         }
 
         Configurazioni.setRigheGriglia(tagliaGriglia);
@@ -699,19 +702,20 @@ class Tempo extends Comando {
         if (GestioneComandi.partitaIniziata()) {
             throw new PartitaGiaIniziataException("Non puoi cambiare il tempo di gioco durante una partita");
         }
+        int tempo;
         try {
-            int tempo = Integer.parseInt(parametri[0]);
-            if (tempo < 0) {
-                throw new ParametriNonCorrettiException("Il tempo di gioco deve essere maggiore o"
-                        + "uguale a 0 (0 in caso di nessun limite)");
-            }
-            GestioneComandi.setTempo(tempo);
-            Grafica.stampaMessaggio(
-                    "Tempo di gioco impostato a: " + (tempo == 0 ? "nessun limite" : tempo + " minuti"));
+            tempo = Integer.parseInt(parametri[0]);
         } catch (NumberFormatException e) {
             throw new ParametriNonCorrettiException("Il parametro <tempo> non è un numero intero."
                     + "Utilizzo corretto: /tempo <tempo>");
         }
+        if (tempo < 0) {
+            throw new ParametriNonCorrettiException("Il tempo di gioco deve essere maggiore o"
+                    + "uguale a 0 (0 in caso di nessun limite)");
+        }
+        GestioneComandi.setTempo(tempo);
+        Grafica.stampaMessaggio(
+                "Tempo di gioco impostato a: " + (tempo == 0 ? "nessun limite" : tempo + " minuti"));
     }
 }
 
