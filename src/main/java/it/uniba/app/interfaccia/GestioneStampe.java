@@ -5,6 +5,7 @@ import it.uniba.app.gioco.Configurazioni;
 import it.uniba.app.gioco.Griglia;
 
 /**
+ * <<Control>>
  * Classe che gestisce le stampe a schermo.
  * Si occupa delle stampe che riguardano la griglia di gioco.
  *
