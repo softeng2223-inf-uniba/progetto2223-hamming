@@ -5,6 +5,7 @@
 - [3. Requisiti specifici](#3-requisiti-specifici)
     - [3.1 Requisiti funzionali](#31-requisiti-funzionali)
     - [3.2 Requisiti non funzionali](#32-requisiti-non-funzionali)
+- [4. System Design](#4-system-design)
 - [5. OO Design](#5-oo-design)
     - [5.1 Diagrammi delle classi e di sequenza](#51-diagrammi-delle-classi-e-di-sequenza)
     - [5.2 Analisi delle decisioni prese con riferimento ai principi di OO design](#52-analisi-delle-decisioni-prese-con-riferimento-ai-principi-di-oo-design)
@@ -325,6 +326,65 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
 - **RNF4**: Il gioco deve essere sviluppato in maniera tale da garantire l'aggiunta di nuove funzionalità o miglioramenti senza modificare l'intero codice. (Manutenibilità)<br /><br />
 - **RNF5**: Il gioco deve garantire prestazioni ottime in termini di utilizzo di memoria e latenza. (Efficienza)<br /><br />
 
+## 4. System Design
+
+### Stile architetturale
+Rispettando la tassonomia ECB(Entity-Control-Boundary), è stato deciso di adottare lo stile architetturale MVP(Model-View-Presenter), essendo questi due stili molto simili.
+Le classi del progetto sono quindi suddivise in base alla propria responsabilità.
+
+#### Model
+ - Cella
+ - CellaPiena
+ - Nave
+ - Griglia
+ - Partita
+
+#### Presenter
+ - Comando
+ - GestioneComandi e i comandi:
+   - Esci
+   - Facile
+   - Medio
+   - Difficile
+   - MostraLivello
+   - Gioca
+   - MostraNavi
+   - SvelaGriglia
+   - Help
+   - Standard
+   - Large
+   - ExtraLarge
+   - Abbandona
+   - Tempo
+   - MostraGriglia
+   - MostraTempo
+   - Tentativi
+   - MostraTentativi
+   - CambioTagliaGriglia
+   - CambioDifficolta
+ - GestioneStampe
+
+#### View
+ - Grafica
+ - App
+
+### Diagramma dei package
+
+![diagramma_dei_package.png](../drawings/diagramma_dei_package.png) <br /><br />
+
+### Commento delle decisioni prese con riferimento ai requisiti non funzionali
+
+L'applicazione offre un'interfaccia utente intuitiva e facile da usare grazie all'uso dei colori per rappresentare le navi: in particolare, appena colpita, la nave appare bianca e, quando viene affondata, diventa del colore della tipologia di nave a cui appartiene.
+
+Nel caso di operazioni non consentite, se si riscontra un errore viene stampato un messaggio in rosso, mentre per un avviso viene stampato un messaggio in giallo.
+
+Inoltre, nell'help, ogni comando è seguito da una descrizione che ne spiega la funzione. Se viene inserito un comando inesistente dal giocatore, l'applicazione propone un comando simile all'input, mentre se si inseriscono parametri del comando non corretti, verrà stampato un avvertimento sul metodo di utilizzo del comando inserito.
+
+L'applicazione è stata sviluppata in modo da risultare affidabile e non provocare interruzioni o crash: sono state create diverse eccezioni per ogni tipo di errore. In questo modo, nel codice, vengono controllate tutte le situazioni che possono causare errore, gestendolo nella maniera più opportuna.
+
+Grazie al rispetto della tassonomia ECB viene garantita la manutenibilità del codice. Ogni classe possiede un proprio compito ed è il più possibile separata dalle altre. In questo modo si garantisce anche una separazione tra classi che gestiscono l'interfaccia utente e classi che rappresentano concetti principali dell'applicazione.
+
+Infine il gioco offre prestazioni ottime, soprattutto in termini di utilizzo di memoria. Si è evitato di creare attributi che avrebbero assunto troppi valori nulli: per esempio, si è scelto di utilizzare l'attributo nave solo nella classe CellaPiena e non in Cella dato che quest'ultima rappresenta solo celle vuote (non occupate da navi).
 
 ## 5. OO Design
 
