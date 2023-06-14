@@ -383,6 +383,24 @@ Sono stati creati i casi di test per le seguenti classi:
   - **ExtraLarge**;
   - **Tempo**;
   - **Tentativi**.
+
+### Numero di casi di test
+
+Sono stati creati 78 casi di test per testare le classi del programma.
+
+
+### Note
+
+- Per i comandi di cambio della difficoltà, ovvero /facile, /medio e /difficile, a causa della ripetizione nel codice dei casi di test,
+  è stata creata una classe di test astratta, DifficoltaTest, che contiene i casi di test comuni a tutti e tre i comandi. Questa classe di test è estesa dalle classi di test per i singoli comandi.
+
+  Una metodologia analoga è stata applicata per testare i comandi di modifica della taglia della griglia, ovvero /standard, /large e /extralarge, creando la classe TagliaGrigliaTest.
+
+- È stato deciso di non testare i comandi di stampa, come /help e /mostratentativi, in quanto non modificano lo stato del gioco.
+
+
+
+
 ## 7. Manuale utente
 Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
 ### Comandi Disponibili
