@@ -641,17 +641,14 @@ class DifficileTest extends DifficoltaTest {
  * {@link CambioTagliaGriglia}
  */
 abstract class TagliaGrigliaTest extends SimulaStdIOStream {
-    private final int tagliaGriglia;
     private final Comando comando;
 
     /**
      * Test sul comando di cambio taglia griglia.
      *
-     * @param tagliaGrigliaParam taglia della griglia
      * @param comandoParam       comando da testare
      */
-    TagliaGrigliaTest(final int tagliaGrigliaParam, final Comando comandoParam) {
-        tagliaGriglia = tagliaGrigliaParam;
+    TagliaGrigliaTest(final Comando comandoParam) {
         comando = comandoParam;
     }
 
@@ -684,7 +681,7 @@ abstract class TagliaGrigliaTest extends SimulaStdIOStream {
  */
 class StandardTest extends TagliaGrigliaTest {
     StandardTest() {
-        super(Configurazioni.DIMENSIONI_GRIGLIA_STANDARD, new Standard());
+        super(new Standard());
     }
 
     /**
@@ -711,7 +708,7 @@ class StandardTest extends TagliaGrigliaTest {
  */
 class LargeTest extends TagliaGrigliaTest {
     LargeTest() {
-        super(Configurazioni.DIMENSIONI_GRIGLIA_LARGE, new Large());
+        super(new Large());
     }
 
     /**
@@ -739,7 +736,7 @@ class LargeTest extends TagliaGrigliaTest {
  */
 class ExtraLargeTest extends TagliaGrigliaTest {
     ExtraLargeTest() {
-        super(Configurazioni.DIMENSIONI_GRIGLIA_EXTRA_LARGE, new ExtraLarge());
+        super(new ExtraLarge());
     }
 
     /**
