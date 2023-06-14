@@ -318,7 +318,7 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
     Dopo aver eseguito il comando docker pull copiandolo da GitHub Packages, il comando Docker da usare per eseguire il container contenente l'applicazione è:
 
     ```console
-    docker run --rm -it ghcr.io/softeng2223-inf-uniba/battleship-base2223:latest
+    docker run --rm -it ghcr.io/softeng2223-inf-uniba/battleship-hamming:latest
     ```
     <br />
 - **RNF2**: Il gioco deve offrire un'interfaccia utente intuitiva e facile da usare. (Usabilità)<br /><br />
@@ -329,7 +329,7 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
 ## 4. System Design
 
 ### Stile architetturale
-Rispettando la tassonomia ECB(Entity-Control-Boundary), è stato deciso di adottare lo stile architetturale MVP(Model-View-Presenter), essendo questi due stili molto simili.
+Rispettando la tassonomia ECB (Entity-Control-Boundary), è stato deciso di adottare lo stile architetturale MVP (Model-View-Presenter), essendo questi due stili molto simili.
 Le classi del progetto sono quindi suddivise in base alla propria responsabilità.
 
 #### Model
@@ -367,6 +367,15 @@ Le classi del progetto sono quindi suddivise in base alla propria responsabilit�
 #### View
  - Grafica
  - App
+
+#### Classi escluse
+Sono classi che non hanno una responsabilità diretta nell’interazione con l'utente, nell’elaborazione della logica dell'applicazione o nella rappresentazione dei dati.
+ - Tutte le eccezioni
+ - Configurazioni
+ - ConfigurazioniInterfaccia
+ - EsitoColpo
+ - Util
+
 
 ### Diagramma dei package
 
@@ -603,7 +612,7 @@ Sono stati creati **78** casi di test per testare le classi del programma.
 
 ## 7. Manuale utente
 Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
-### Comandi Disponibili
+### Azioni disponibili
 Il giocatore può utilizzare una serie di comandi utili per impostare e avere informazioni relative al gioco.
 #### Comando /help
 Si utilizza per visualizzare l'elenco dei comandi disponibili, uno per riga, per esempio:
@@ -620,7 +629,7 @@ Per chiudere il gioco, il giocatore, può utilizzare il comando /esci. L'applica
 
 ![comando_esci.png](img/comando_esci.png)
 
-### Impostazione del livello di gioco
+#### Impostazione del livello di gioco
 Il giocatore, prima dell'inizio della partita, può decidere con quale difficoltà giocare, oppure può impostare una difficoltà personalizzata. Le tre difficoltà disponibili sono: facile, medio e difficile. Per selezionare la difficoltà si usa il comando /facile, /medio o /difficile.
 Di default la difficoltà è impostata a medio.
 È possibile modificare il numero massimo di tentativi falliti per ogni difficoltà utilizzando i comandi /facile [numero], /medio [numero] o /difficile [numero].
@@ -633,7 +642,7 @@ Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi fallit
 ![comando_facile.png](img/comando_facile.png)
 
 
-#### Comando /facile [numero]
+##### Comando /facile [numero]
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti della difficoltà facile al valore specificato dall'utente.
 Il comando non imposta la difficoltà corrente a facile.
 
@@ -659,14 +668,14 @@ Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi fallit
 ![comando_difficile.png](img/comando_difficile.png)
 
 
-#### Comando /difficile [numero]
+##### Comando /difficile [numero]
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti della difficoltà difficile al valore specificato dall'utente.
 Il comando non imposta la difficoltà corrente a difficile.
 
 ![comando_difficile_param.png](img/comando_difficile_param.png)
 
 
-#### Comando /tentativi \<numero\>
+##### Comando /tentativi \<numero\>
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti al valore specificato dall'utente creando una nuova difficotlà temporanea personalizzata.
 
 ![comando_tentativi.png](img/comando_tentativi.png)
@@ -756,9 +765,9 @@ Se una partita è in corso il giocatore può utilizzare il comando /mostratentat
 
 ![comando_mostratentativi.png](img/comando_mostratentativi.png)
 
-#### Comando di attacco
-Il giocatore può utilizzare il comando di attacco per colpire una cella non colpita della griglia di gioco.
-Il comando è formattato secondo lo standard: [lettera]-[numero] (es: A-1, B-2, ecc...).
+#### Attacco
+Il giocatore può utilizzare l'attacco per colpire una cella non colpita della griglia di gioco.
+Il comando è formattato secondo lo standard: **[lettera]-[numero]** (es: A-1, B-12, ecc...).
 Il comando visualizza il risultato dell'attacco sulla griglia di gioco, il numero di tentativi già effettuati e il tempo trascorso di gioco.
 
 ![comando_attacco.png](img/comando_attacco.png)
