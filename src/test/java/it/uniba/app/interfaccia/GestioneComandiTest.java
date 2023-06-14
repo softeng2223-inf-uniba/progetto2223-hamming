@@ -300,3 +300,70 @@ class AbbandonaTest extends SimulaStdIOStream {
 
 }
 
+/**
+ * Classe di test per il comando /tempo.
+ * {@link Tempo}
+ */
+class TempoTest extends SimulaStdIOStream {
+    /**
+     * Termina la partita.
+     */
+    @AfterEach
+    public void tearDown() {
+        GestioneComandi.cancellaPartita();
+    }
+
+    /**
+     * Test sul comando /tempo.
+     * Imposta un limite di tempo di 20 minuti.
+     * {@link Tempo#esegui(String[])}
+     */
+    @Test
+    @DisplayName("/tempo 20 imposta un limite di tempo pari a 20 minuti")
+    void testTempo() {
+        final int limiteTempo = 20;
+        Tempo tempo = new Tempo();
+        ComandiUtil.eseguiComando(tempo, new String[]{Integer.toString(limiteTempo)});
+        assertEquals(limiteTempo, GestioneComandi.getTempo(), "/tempo non imposta correttamente il limite di tempo");
+    }
+
+    /**
+     * Test sul comando /tempo con parametro 0.
+     * Il comando dovrebbe disattivare il limite di tempo.
+     * {@link Tempo#esegui(String[])}
+     */
+    @Test
+    @DisplayName("/tempo 0 disattiva il limite di tempo")
+    void testTempoParametroZero() {
+        final int limiteTempo = 0;
+        Tempo tempo = new Tempo();
+        ComandiUtil.eseguiComando(tempo, new String[]{Integer.toString(limiteTempo)});
+        assertFalse(GestioneComandi.tempoImpostato(), "/tempo con parametro 0 non disattiva il limite di tempo");
+    }
+
+    /**
+     * Test sul comando /tempo con parametro non valido.
+     * Il comando non dovrebbe modificare il limite di tempo.
+     * {@link Tempo#esegui(String[])}
+     */
+    @Test
+    @DisplayName("/tempo parametroInvalido non modifica il limite di tempo")
+    void testTempoParametroNonValido() {
+        Tempo tempo = new Tempo();
+        assertThrows(ParametriNonCorrettiException.class, () -> tempo.esegui(new String[]{"parametroInvalido"}));
+    }
+
+    /**
+     * Test sul comando /tempo a partita iniziata.
+     * Il comando non dovrebbe modificare il limite di tempo.
+     * {@link Tempo#esegui(String[])}
+     */
+    @Test
+    @DisplayName("/tempo non modifica il limite di tempo a partita iniziata")
+    void testTempoPartitaIniziata() {
+        Tempo tempo = new Tempo();
+        ComandiUtil.iniziaPartita();
+        assertThrows(PartitaGiaIniziataException.class, () -> tempo.esegui(new String[]{"20"}));
+    }
+}
+
