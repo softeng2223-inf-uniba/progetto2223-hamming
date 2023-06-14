@@ -5,6 +5,9 @@
 - [3. Requisiti specifici](#3-requisiti-specifici)
     - [3.1 Requisiti funzionali](#31-requisiti-funzionali)
     - [3.2 Requisiti non funzionali](#32-requisiti-non-funzionali)
+- [5. OO Design](#5-oo-design)
+    - [5.1 Diagrammi delle classi e di sequenza](#51-diagrammi-delle-classi-e-di-sequenza)
+    - [5.2 Analisi delle decisioni prese con riferimento ai principi di OO design](#52-analisi-delle-decisioni-prese-con-riferimento-ai-principi-di-oo-design)
 - [6. Riepilogo del test](#6-riepilogo-del-test)
 - [7. Manuale Utente](#7-manuale-utente)
 - [8. Processo di sviluppo e organizzazione del lavoro](#8-Processo-di-sviluppo-e-organizzazione-del-lavoro)
@@ -18,8 +21,8 @@
 
 ### Introduzione al progetto
 
-Il progetto del gioco della **battaglia navale** è stato avviato al fine di creare un'applicazione interattiva da terminale basata sul gioco da tavolo. 
-Il gioco della battaglia navale è un **gioco strategico** nel quale ogni giocatore cerca di individuare e affondare le navi nemiche posizionate su una griglia. 
+Il progetto del gioco della **battaglia navale** è stato avviato al fine di creare un'applicazione interattiva da terminale basata sul gioco da tavolo.
+Il gioco della battaglia navale è un **gioco strategico** nel quale ogni giocatore cerca di individuare e affondare le navi nemiche posizionate su una griglia.
 In questo progetto si considera una **versione a giocatore singolo** del gioco, in cui il giocatore attacca una griglia virtuale generata dall'applicazione.
 
 ### Scopi del progetto
@@ -47,7 +50,7 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
 - Marzia Capuano
 - Fabio Cirullo
 - Simone Columpsi
-- Valerio Di Maggio 
+- Valerio Di Maggio
 - Daniele Gentile
 
 <br>
@@ -63,7 +66,7 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
 
     - Attributi
         - **colpita**: boolean
-            
+
             Indica se la cella è stata colpita da un attacco del giocatore.
 <br><br>
 
@@ -80,7 +83,7 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
 - **Nave**
 
     Nave che occupa due o più celle piene sulla griglia.
-    
+
     - Attributi
 
         - **tipologia**: string
@@ -92,7 +95,7 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
             - cacciatorpediniere
 
         - **celleRimanenti**: int
-            
+
             Numero di celle non ancora colpite della nave.
 <br><br>
 
@@ -110,7 +113,7 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
             - difficile
 
         - **tentativiRimasti**: int
-                
+
             Numero di tentativi rimasti prima della sconfitta.
 <br><br>
 
@@ -123,7 +126,7 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
         - **nome**: string
 
             Nome del comando. Corrisponde alla stringa che l'utente deve inserire per eseguirlo.
-        
+
         - **categoria**: string
 
             Categoria a cui appartiene il comando.
@@ -308,7 +311,7 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
     Windows:
     - Powershell
     - Git Bash (in questo caso il comando Docker ha come prefisso winpty; es: winpty docker -it ...)
-    
+
     **Comando per l'esecuzione del container**
 
     Dopo aver eseguito il comando docker pull copiandolo da GitHub Packages, il comando Docker da usare per eseguire il container contenente l'applicazione è:
@@ -322,6 +325,140 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
 - **RNF4**: Il gioco deve essere sviluppato in maniera tale da garantire l'aggiunta di nuove funzionalità o miglioramenti senza modificare l'intero codice. (Manutenibilità)<br /><br />
 - **RNF5**: Il gioco deve garantire prestazioni ottime in termini di utilizzo di memoria e latenza. (Efficienza)<br /><br />
 
+
+## 5. OO Design
+
+### 5.1 Diagrammi delle classi e di sequenza
+Di seguito sono riportati i diagrammi delle classi e i diagrammi di sequenza per le user story considerate più importanti.
+Nei diagrammi sono state omesse alcune caratteristiche considerate
+non significative al fine di una maggiore comprensione.<br /><br />
+
+#### 5.1.1 Come giocatore voglio inziare una nuova partita
+**Diagramma delle classi**
+
+![diagramma_classi_gioca](../drawings/diagramma_classi_gioca.jpg)
+
+**Diagramma di sequenza**
+
+![diagramma_sequenza_gioca](../drawings/diagramma_sequenza_gioca.jpg)<br /><br />
+
+#### 5.1.2 Come giocatore voglio chiudere il gioco
+**Diagramma delle classi**
+
+![diagramma_classi_esci](../drawings/diagramma_classi_esci.jpg)
+
+**Diagramma di sequenza**
+
+![diagramma_sequenza_esci](../drawings/diagramma_sequenza_esci.jpg)<br /><br />
+
+#### 5.1.3 Come giocatore voglio mostrare l'help con elenco comandi
+**Diagramma delle classi**
+
+![diagramma_classi_help](../drawings/diagramma_classi_help.jpg)
+
+**Diagramma di sequenza**
+
+![diagramma_sequenza_help](../drawings/diagramma_sequenza_help.jpg)<br /><br />
+
+#### 5.1.4 Come giocatore voglio impostare il livello di gioco per variare il numero massimo di tentativi sbagliati
+**Diagramma delle classi**
+
+![diagramma_classi_facile](../drawings/diagramma_classi_facile.jpg)
+
+**Diagramma di sequenza**
+
+![diagramma_sequenza_facile](../drawings/diagramma_sequenza_facile.jpg)
+
+Sono stati omessi i diagrammi delle classi e di sequenza relativi ai comandi **/medio** e **/difficile** in quanto sono molto simili a quelli del comando **/facile**.<br /><br />
+
+#### 5.1.5 Come giocatore voglio svelare la griglia con le navi posizionate
+**Diagramma delle classi**
+
+![diagramma_classi_svelagriglia](../drawings/diagramma_classi_svelagriglia.jpg)
+
+**Diagramma di sequenza**
+
+![diagramma_sequenza_svelagriglia](../drawings/diagramma_sequenza_svelagriglia.jpg)
+
+Sono stati omessi i diagrammi delle classi e di sequenza della user story relativa al comando **/mostragriglia** in quanto sono molto simili a quelli del comando **/svelagriglia**<br /><br />
+
+#### 5.1.6 Come giocatore voglio abbandonare una partita
+**Diagramma delle classi**
+
+![diagramma_classi_abbandona](../drawings/diagramma_classi_abbandona.jpg)
+
+**Diagramma di sequenza**
+
+![diagramma_sequenza_abbandona](../drawings/diagramma_sequenza_abbandona.jpg)<br /><br />
+
+#### 5.1.7 Come giocatore voglio impostare il tempo di gioco
+**Diagramma delle classi**
+
+![diagramma_classi_tempo](../drawings/diagramma_classi_tempo.jpg)
+
+**Diagramma di sequenza**
+
+![diagramma_sequenza_tempo](../drawings/diagramma_sequenza_tempo.jpg)<br /><br />
+
+#### 5.1.8 Come giocatore voglio mostrare il tempo di gioco
+**Diagramma delle classi**
+
+![diagramma_classi_mostratempo](../drawings/diagramma_classi_mostratempo.jpg)
+
+**Diagramma di sequenza**
+
+![diagramma_sequenza_mostratempo](../drawings/diagramma_sequenza_mostratempo.jpg)<br /><br />
+
+#### 5.1.9 Come giocatore voglio impostare la taglia della griglia
+**Diagramma delle classi**
+
+![diagramma_classi_standard](../drawings/diagramma_classi_standard.jpg)
+
+**Diagramma di sequenza**
+
+![diagramma_sequenza_standard](../drawings/diagramma_sequenza_standard.jpg)
+
+Sono stati omessi i diagrammi delle classi e di sequenza relativi ai comandi **/large** e **/extralarge** in quanto sono molto simili a quelli del comando **/standard**.<br /><br />
+
+#### 5.1.10 Come giocatore voglio impostare direttamente il numero massimo di tentativi che si possono fallire
+**Diagramma delle classi**
+
+![diagramma_classi_tentativi](../drawings/diagramma_classi_tentativi.jpg)
+
+**Diagramma di sequenza**
+
+![diagramma_sequenza_tentativi](../drawings/diagramma_sequenza_tentativi.jpg)<br /><br />
+
+#### 5.1.11 Come giocatore voglio effettuare un tentativo per colpire una nave
+**Diagramma delle classi**
+
+![diagramma_classi_attacco](../drawings/diagramma_classi_attacco.jpg)
+
+**Diagramma di sequenza**
+
+![diagramma_sequenza_attacco](../drawings/diagramma_sequenza_attacco.jpg)<br /><br />
+
+### 5.2 Analisi delle decisioni prese con riferimento ai principi di OO design
+
+Ogni classe all'interno del codice implementa il principio di **information hiding**. Tutti gli attributi (e quindi lo stato delle classi) sono privati, cioè visibili ai soli metodi della classe. Per quanto riguarda i metodi, quelli necessari a classi in altri package sono stati resi pubblici, quelli utilizzati da classi dello stesso package hanno visibilità friendly, mentre il resto è rimasto privato.
+
+A ogni classe è stato associato un unico compito avendo così una responsabilità ben definita. Le classi diventano quindi di facile comprensione e modifica e, inoltre. Questo soddisfa il principio di **alta coesione**. In questo modo ogni classe viene modificata per non più di una ragione (**Single Responsibility** dei principi SOLID).
+Avendo compiti separati, le modifiche effettuate in una classe avranno poco impatto sulle altre classi: in questo modo viene rispettato il principio di **basso accoppiamento**. Non sono presenti infatti forti dipendenze tra i diversi componenti.
+
+Le classi di tipo **\<\<Boundary>>**, ovvero quelle che si occupano dell'interazione con l'utente, comunicano con le classi **\<\<Entity>>** solo attarverso specifiche classi **\<\<Control>>**. Viceversa, le classi **\<\<Entity>>**, rappresentando i concetti principali dell'applicazione, non hanno bisogno di interagire con la classi **\<\<Boundary>>**. In questo modo si garantisce una separazione tra la parte di codice relativa alla presentazione e il resto dell'applicazione. L'uso della tassonomia ECB garantisce così il principio di **presentazione separata**. In questo modo sarà possibile, in futuro, cambiare le parti grafiche dell'applicazione senza modificare il resto del codice.
+
+Anche l'ultimo principio, **Do Not Repeat Yourself**, è stato rispettato, eliminando le parti di codice ripetute. Per esempio, i comandi **/facile**, **/medio** e **/difficile**, essendo molto simili tra loro, sono diventati specializzazioni di un comando che racchiude le operazioni che hanno in comune. Stessa cosa è stata realizzata per i comandi **/standard**, **/large** e **/extralarge**.<br /><br />
+
+**ERRORI SPOTBUGS**
+
+L'errore che ha dato più problemi è il seguente:
+```console
+M V EI: it.uniba.app.gioco.Partita.getGriglia() may expose internal representation by returning Partita.griglia
+```
+
+Con questo errore, Spotbugs avvisa che, restituendo il riferimento all'oggetto **griglia** da un metodo della classe **Partita**, sarebbe stato possibile poi modificare la griglia involontariamente al di fuori dell'istanza di Partita. Lo stesso errore valeva anche per i riferimenti degli oggetti **Cella**, **CellaPiena** e **Nave**.
+
+Per risolvere l'errore è stata implementata l'interfaccia **Cloneable** nelle classi **Griglia**, **Cella** e **Nave** e restituendo nei metodi get, relativi a questi oggetti, il loro clone. E' stato possibile implementare questa soluzione in quanto si aveva la necessità di accedere alla griglia (così come alle celle e alle navi) dall'esterno dell'istanza di **Partita** solo per prendere informazioni e non per modificarle.
 
 
 ## 6. Riepilogo del test
@@ -404,7 +541,6 @@ Sono stati creati **78** casi di test per testare le classi del programma.
 ![screenshot_test.png](img/screenshot_test.png)
 
 
-
 ## 7. Manuale utente
 Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
 ### Comandi Disponibili
@@ -444,7 +580,7 @@ Il comando non imposta la difficoltà corrente a facile.
 ![comando_facile_param.png](img/comando_facile_param.png)
 
 
-##### Comando /medio 
+##### Comando /medio
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti a 30.
 
 ![comando_medio.png](img/comando_medio.png)
@@ -584,7 +720,7 @@ Le tipologie di navi si distinguono in base alla dimensione:
 
 - Incrociatore 		<span style="color:cyan"> X X X </span>	esemplari: 3
 
-- Cacciatorpediniere 	<span style="color:magenta"> X X </span> esemplari: 4 
+- Cacciatorpediniere 	<span style="color:magenta"> X X </span> esemplari: 4
 
 
 ### Fase di gioco
@@ -656,7 +792,7 @@ e mantenere le modifiche localmente prima di aggiornare il branch remoto.
 
 Dopo aver completato il proprio compito e inviato una pull request, è stato chiesto che almeno un membro del gruppo
 confermasse e approvasse le modifiche prima del merge e della cancellazione del branch. Di solito, per modifiche minori o che non avrebbero creato conflitti,
-la revisione di un solo membro è stata sufficiente, mentre per modifiche più significative si è cercato di ottenere più pareri 
+la revisione di un solo membro è stata sufficiente, mentre per modifiche più significative si è cercato di ottenere più pareri
 per garantire maggiore cautela e sicurezza nella correttezza del lavoro svolto. In alcuni casi, la revisione ha richiesto ulteriori modifiche prima
 dell'approvazione delle pull request.
 
