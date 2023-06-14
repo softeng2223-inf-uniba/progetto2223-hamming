@@ -230,36 +230,44 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
 ### 5.1 Diagrammi delle classi e di sequenza
 Di seguito sono riportati i diagrammi delle classi e i diagrammi di sequenza per le user story considerate più importanti.
 Nei diagrammi sono state omesse alcune caratteristiche considerate
-non significative al fine di una maggiore comprensione.
+non significative al fine di una maggiore comprensione.<br /><br />
 
 #### 5.1.1 Come giocatore voglio inziare una nuova partita
 **Diagramma delle classi**
 ![diagramma_classi_gioca.png](../drawings/diagramma_classi_gioca.jpg)
 
 **Diagramma di sequenza**
-![diagramma_sequenza_gioca.png](../drawings/diagramma_sequenza_gioca.jpg)
+![diagramma_sequenza_gioca.png](../drawings/diagramma_sequenza_gioca.jpg)<br /><br />
 
 #### 5.1.2 Come giocatore voglio chiudere il gioco
 **Diagramma delle classi**
 ![diagramma_classi_esci.png](../drawings/diagramma_classi_esci.jpg)
 
 **Diagramma di sequenza**
-![diagramma_sequenza_esci.png](../drawings/diagramma_sequenza_esci.jpg)
+![diagramma_sequenza_esci.png](../drawings/diagramma_sequenza_esci.jpg)<br /><br />
 
 #### 5.1.3 Come giocatore voglio mostrare l'help con elenco comandi
 **Diagramma delle classi**
 ![diagramma_classi_help.png](../drawings/diagramma_classi_help.jpg)
 
 **Diagramma di sequenza**
-![diagramma_sequenza_help.png](../drawings/diagramma_sequenza_help.jpg)
+![diagramma_sequenza_help.png](../drawings/diagramma_sequenza_help.jpg)<br /><br />
 
 #### 5.1.4 Come giocatore voglio impostare il livello di gioco per variare il numero massimo di tentativi sbagliati
+**Diagramma delle classi**
 ![diagramma_classi_facile.png](../drawings/diagramma_classi_facile.jpg)
 
 **Diagramma di sequenza**
 ![diagramma_sequenza_facile.png](../drawings/diagramma_sequenza_facile.jpg)
 
-Sono stati omessi i diagrammi delle classi e di sequenza relativi ai comandi **/medio** e **/difficile** in quanto sono molto simili al comando **/facile**.
+Sono stati omessi i diagrammi delle classi e di sequenza relativi ai comandi **/medio** e **/difficile** in quanto sono molto simili al comando **/facile**.<br /><br />
+
+#### 5.1.5 Come giocatore voglio svelare la griglia con le navi posizionate
+**Diagramma delle classi**
+![diagramma_classi_svelagriglia.png](../drawings/diagramma_classi_svelagriglia.jpg)
+
+**Diagramma di sequenza**
+![diagramma_sequenza_svelagriglia.png](../drawings/diagramma_sequenza_svelagriglia.jpg)<br /><br />
 
 
 ## 7. Manuale utente
