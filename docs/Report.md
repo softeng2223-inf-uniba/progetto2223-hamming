@@ -301,6 +301,13 @@ Sono stati omessi i diagrammi delle classi e di sequenza della user story relati
 
 Sono stati omessi i diagrammi delle classi e di sequenza relativi ai comandi **/large** e **/extralarge** in quanto sono molto simili a quelli del comando **/standard**.<br /><br />
 
+#### 5.1.10 Come giocatore voglio impostare direttamente il numero massimo di tentativi che si possono fallire
+**Diagramma delle classi**
+![diagramma_classi_tentativi.png](../drawings/diagramma_classi_tentativi.jpg)
+
+**Diagramma di sequenza**
+![diagramma_sequenza_tentativi.png](../drawings/diagramma_sequenza_tentativi.jpg)<br /><br />
+
 
 ## 7. Manuale utente
 Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
