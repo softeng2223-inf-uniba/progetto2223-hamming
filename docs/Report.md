@@ -236,55 +236,85 @@ Si utilizza per visualizzare l'elenco dei comandi disponibili, uno per riga, per
 - ...
 - per esempio:
 
-
-
 ![comando_help.png](img/comando_help.png)
+
 #### Comando /esci
 Per chiudere il gioco, il giocatore, può utilizzare il comando /esci. L'applicazione richiederà una conferma per procedere. Se il giocatore conferma la chiusura, l'applicazione si chiuderà e il controllo verrà restituito al sistema operativo. Se il giocatore nega la chiusura, l'applicazione sarà pronta a ricevere nuovi tentativi o comandi.
-
-
 ![comando_esci.png](img/comando_esci.png)
+
 ### Impostazione del livello di gioco
-Il giocatore, prima dell'inizio della partita, può decidere tra tre livelli di gioco: facile, medio, difficile. Per poter scegliere il livello si utilizza un comando che varia in base al livello, per esempio se il giocatore vuole impostare il livello facile, dovrà utilizzare il comando /facile. 
+Il giocatore, prima dell'inizio della partita, può decidere con quale difficoltà giocare, oppure può impostare una difficoltà personalizzata. Le tre difficoltà disponibili sono: facile, medio e difficile. Per selezionare la difficoltà si usa il comando /facile, /medio o /difficile.
+Di default la difficoltà è impostata a medio.
+È possibile modificare il numero massimo di tentativi falliti per ogni difficoltà utilizzando i comandi /facile [numero], /medio [numero] o /difficile [numero].
+È possibile inoltre tramite il comando /tentativi \<numero\> impostare il numero massimo di tentativi falliti senza specificarne la difficoltà.
+
 ##### Comando /facile
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti a 50.
 
-
 ![comando_facile.png](img/comando_facile.png)
+
+
+#### Comando /facile [numero]
+Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti della difficoltà facile al valore specificato dall'utente.
+Il comando non imposta la difficoltà corrente a facile.
+
+![comando_facile_param.png](img/comando_facile_param.png)
+
+
 ##### Comando /medio 
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti a 30.
 
-
 ![comando_medio.png](img/comando_medio.png)
+
+
+##### Comando /medio [numero]
+Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti della difficoltà medio al valore specificato dall'utente.
+Il comando non imposta la difficoltà corrente a medio.
+
+![comando_medio_param.png](img/comando_medio_param.png)
+
+
 ##### Comando /difficile
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti a 10.
 
-
 ![comando_difficile.png](img/comando_difficile.png)
+
+
+#### Comando /difficile [numero]
+Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti della difficoltà difficile al valore specificato dall'utente.
+Il comando non imposta la difficoltà corrente a difficile.
+
+![comando_difficile_param.png](img/comando_difficile_param.png)
+
+
+#### Comando /tentativi \<numero\>
+Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti al valore specificato dall'utente creando una nuova difficotlà temporanea personalizzata.
+
+![comando_tentativi.png](img/comando_tentativi.png)
+
+
 #### Comando /mostralivello
 Il giocatore può visualizzare il livello di gioco corrente e il numero massimo di tentativi falliti utilizzando il comando /mostralivello. Il gioco risponderà mostrando queste informazioni.
 
-
 ![comando_mostralivello.png](img/comando_mostralivello.png)
+
+
 #### Comando /mostranavi
 Per conoscere i tipi di nave presenti nel gioco e il numero di esemplari da affondare per ciascun tipo, il giocatore può utilizzare il comando /mostranavi.
 
-
 ![comando_mostranavi.png](img/comando_mostranavi.png)
+
+
 #### Comando /gioca
 Per iniziare una nuova partita, il giocatore può utilizzare il comando /gioca. Se non è in corso alcuna partita, il gioco imposterà casualmente le navi in posizione orizzontale o verticale, mostrerà la griglia vuota e sarà pronta a ricevere il primo tentativo del giocatore o altri comandi.
-
-- Se non è stato impostato alcun livello di gioco, bisogna impostarlo tra i tre disponibili e la situazione sarà questa:
-
+Inoltre il gioco registrerà il tempo di inizio della partita per calcolare il tempo trascorso di gioco dopo ogni attacco.
 
 ![comando_gioca.png](img/comando_gioca.png)
-- Se invece il livello di gioco è stato impostato la situazione sarà questa:
 
 
-![comando_gioca.png](img/comando_gioca1.png)
 #### Comando /svelagriglia
 Utilizzando il comando /svelagriglia il gioco risponde visualizzando, una griglia 10 x 10, con le righe numerate da 1 a 10 e le colonne numerate da A a J, e tutte le navi posizionate.
-
+La griglia può variare di dimensione in base alla scelta del giocatore prima di iniziare la partita.
 
 ![comando_svelagriglia.png](img/comando_svelagriglia.png)
 
@@ -295,38 +325,91 @@ Quando il giocatore usa il comando /abbandona, il gioco chiede conferma all'uten
 - se la conferma è positiva, il gioco svela la posizione di tutte le navi e si predispone a ricevere nuovi comandi;
 - altrimenti, il gioco si predispone a ricevere nuovi tentativi o comandi senza abbandonare la partita.
 
-
 ![comando_abbandona.png](img/comando_abbandona.png)
 
-#### Comando /tentativi 
-Quando il giocatore usa il comando /tentativi \<numero\>, il gioco risponde "OK" e imposta il numero massimo di tentativi falliti al valore specificato dall'utente.
-- Se il numero dei parametri non è 1, il gioco risponde con "ERRORE: numero di parametri errato".
-- Se il valore specificato è minore di 1, il gioco risponde con "ERRORE: numero di tentativi non valido".
-- Se una partità è in corso il gioco risponde con "ERRORE: impossibile cambiare il numero di tentativi durante una partita".
-![comando_tentativi.png](img/comando_tentativi.png)
+
+#### Comando /standard
+Il giocatore può utilizzare il comando /standard per impostare la grandezza della griglia a 10x10.
+
+![comando_standard.png](img/comando_standard.png)
+
+
+#### Comando /large
+Il giocatore può utilizzare il comando /large per impostare la grandezza della griglia a 18x18.
+
+![comando_large.png](img/comando_large.png)
+
+#### Comando /extralarge
+Il giocatore può utilizzare il comando /extralarge per impostare la grandezza della griglia a 26x26.
+
+![comando_extralarge.png](img/comando_extralarge.png)
+
+
+## Comando /mostragriglia
+Il giocatore può utilizzare il comando /mostragriglia per visualizzare la griglia di gioco nel quale si possono vedere le navi colpite, le navi affondate e i colpi andati in mare.
+Se la nave è affondata risulterà colorata con il colore che identifica la tipologia di nave.
+Se la nave non è affondata invece risulterà del colore di base del testo del terminale utilizzato.
+Se il colpo è andato in mare la casella sarà occupata dal simbolo "~".
+
+![comando_mostragriglia.png](img/comando_mostragriglia.png)
+
+
+#### Comando /tempo \<numero\>
+Il giocatore può usare il comando /tempo per impostare il tempo massimo di gioco.
+Il tempo massimo di gioco è impostato di default a: nessun limite.
+Per impostare il tempo massimo a nessun limite bisogna passare come parametro il valore 0.
+
+![comando_tempo_numero.png](img/comando_tempo_numero.png)
+
+![comando_tempo_no_limite.png](img/comando_tempo_no_limite.png)
+
+
+#### Comando /mostratempo
+Se una partita è in corso il giocatore può utilizzare il comando /mostratempo per visualizzare il tempo trascorso di gioco e, se precedentemente impostato il tempo massimo di gioco, verrà mostrato anche il tempo rimanente.
+
+![comando_mostratempo.png](img/comando_mostratempo.png)
+
+![comando_mostratempo.png](img/comando_mostratempo_no_limite.png)
+
+
+#### Comando /mostratentativi
+Se una partita è in corso il giocatore può utilizzare il comando /mostratentativi per visualizzare il numero di tentativi falliti effettuati, il numero di tentativi falliti e il numero di tentativi massimi da poter fallire.
+
+![comando_mostratentativi.png](img/comando_mostratentativi.png)
+
+#### Comando di attacco
+Il giocatore può utilizzare il comando di attacco per colpire una cella non colpita della griglia di gioco.
+Il comando è formattato secondo lo standard: [lettera]-[numero] (es: A-1, B-2, ecc...).
+Il comando visualizza il risultato dell'attacco sulla griglia di gioco, il numero di tentativi già effettuati e il tempo trascorso di gioco.
+
+![comando_attacco.png](img/comando_attacco.png)
+
 
 ### Introduzione di gioco
-La **battaglia navale** è un gioco, in questo caso a giocatore singolo, il cui **obiettivo** è quello di **affondare tutte le navi** che sono posizionate su una griglia 10x10 nascosta al giocatore con le righe numerate da 1 a 10 e le colonne numerate da A a J.
+La **battaglia navale** è un gioco, in questo caso a giocatore singolo, il cui **obiettivo** è quello di **affondare tutte le navi** che sono posizionate su una griglia nascosta al giocatore con le righe rappresentate da numeri e le colonne rappresentate da lettere.
 ### Regole
-Prima di iniziare, il giocatore può impostare un **livello di gioco**: **facile**, **medio** o **difficile**; Ognuno di questi livelli ha un numero massimo di tentativi falliti, il livello facile offre un numero di tentativi falliti pari a 50, il livello medio ne offre 30 e il livello difficile ne offre 10.
+Prima di iniziare, il giocatore può scegliere un livello di difficoltà, modificare il numero di tentativi falliti massimi per ogni difficoltà o impostare personalmente il numero di tentativi falliti massimi.
+Inoltre è possibile scegliere tra tre grandezze diverse di griglia: standard 10x10, large 18x18 o extralarge 26x26.
+Infine il giocatore può scegliere di impostare un tempo limite di gioco con il quale giocare oppure farlo senza un limite di tempo.
 ### Fase iniziale
 Le navi saranno posizionate segretamente sulla griglia in maniera casuale dal programma. Ogni nave può essere posizionata orizzontalmente o verticalmente, non in diagonale. Inoltre le navi possono toccarsi, ma non possono occupare le stesse celle. La posizione delle navi non potrà essere modificata dopo l'inizio del gioco.
 #### Tipi di nave
-Le tipologie di navi si distinguono in base alla dimensione: 
-- Cacciatorpediniere 	⊠⊠ 		esemplari: 4 
+Le tipologie di navi si distinguono in base alla dimensione:
+- Portaerei  		<span style="color:red"> X X X X X </span>	esemplari: 1
 
-- Incrociatore 		⊠⊠⊠ 	esemplari: 3  
+- Corazzata 		<span style="color:green"> X X X X </span>X X X esemplari: 2
 
-- Corazzata 		⊠⊠⊠⊠ 	esemplari: 2  
+- Incrociatore 		<span style="color:cyan"> X X X </span>	esemplari: 3
 
-- Portaerei  		⊠⊠⊠⊠⊠ 	esemplari: 1 
+- Cacciatorpediniere 	<span style="color:magenta"> X X </span> esemplari: 4 
+
 
 ### Fase di gioco
 Dopo aver selezionato il livello di gioco e posizionato le navi, il giocatore sceglie una cella identificata da una lettera e un numero sulla griglia in cui il colpo sarà lanciato.
 Il giocatore ha a disposizione 1 colpo per tentativo.
-Il programma controlla se, nella cella scelta sulla griglia dal giocatore, è stata posizionata una nave e in tal caso si visualizzerà il simbolo: x, altrimenti se la cella non contiene una nave si visualizzerà il simbolo: ~ che indica la cella vuota. Quando la nave viene affondata il simbolo varia per ogni tipo di nave.
+Il programma controlla se, nella cella scelta sulla griglia dal giocatore, è stata posizionata una nave e in tal caso si visualizzerà il simbolo: "X", altrimenti se la cella non contiene una nave si visualizzerà il simbolo: "~" che indica la cella vuota. Quando la nave viene affondata il simbolo "X" viene colorato per ogni tipo di nave.
 ### Fase finale
-In conclusione il gioco termina con una vittoria, quando il giocatore affonda tutte le navi, oppure con una sconfitta, quando il giocatore termina il numero massimo di tentativi falliti.
+In conclusione il gioco termina con una vittoria, quando il giocatore affonda tutte le navi, oppure con una sconfitta, quando il giocatore termina il numero massimo di tentativi falliti o, se impostato un tempo limite, quando questo risulta esaurito.
 <br>
 ### Esecuzione dell'applicazione
 Il container docker dell'app deve essere eseguito da terminali che supportano Unicode con encoding UTF-8 o UTF-16.
@@ -380,7 +463,7 @@ La project board di ogni sprint prevedeva le seguenti colonne:
 - **Done**, relativa alle modifiche revisionate dal Product Owner.
 
 
-![projectBoard.png](img%2FprojectBoard.png)
+![projectBoard.png](img/projectBoard.png)
 
 I requisti funzionali sono stati assegnati a uno o più membri del gruppo, con una data di scadenza specificata. Nel caso di compiti assegnati a più persone è stata lasciata libertà
 di autogestione per la suddivisione del lavoro. Successivamente, sono state aperte le issue relative a ciascun compito assegnato.

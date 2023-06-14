@@ -182,6 +182,9 @@ public final class GestioneComandi {
      * @return true se il tempo è scaduto, false altrimenti
      */
     public static boolean tempoScaduto() {
+        if(!tempoImpostato()) {
+            return false;
+        }
         return tempoTrascorso() >= tempo * SECONDI;
     }
 
@@ -252,6 +255,9 @@ public final class GestioneComandi {
                 default:
                     break;
             }
+            Grafica.stampaMessaggio("Tentativi effettuati: " + GestioneComandi.getPartita().getTentativiEffettuati());
+            Grafica.stampaMessaggio("Tempo trascorso: "
+                    + GestioneComandi.getMinuti(GestioneComandi.tempoTrascorso()) + " minuti");
         } catch (FuoriDallaGrigliaException | CellaGiaColpitaException e) {
             Grafica.stampaWarning(e.getMessage());
         } catch (CloneNotSupportedException e) {
@@ -463,9 +469,7 @@ class Gioca extends Comando {
             GestioneComandi.inizializzaPartita();
             GestioneComandi.getPartita().posizionaNavi();
             Grafica.stampaMessaggio("Nuova partita iniziata\n");
-            if (GestioneComandi.tempoImpostato()) {
-                GestioneComandi.avviaTempo();
-            }
+            GestioneComandi.avviaTempo();
             GestioneStampe.stampaGrigliaColpita(GestioneComandi.getPartita().getGriglia());
         } catch (PartitaGiaIniziataException e) {
             Grafica.stampaWarning(e.getMessage());
@@ -637,7 +641,7 @@ class ExtraLarge extends CambioTagliaGriglia {
     }
 
     public void esegui(final String[] parametri) throws PartitaGiaIniziataException, ParametriNonCorrettiException {
-        cambiaTagliaGriglia(Configurazioni.DIMENSIONI_GRIGLIA_STANDARD, parametri);
+        cambiaTagliaGriglia(Configurazioni.DIMENSIONI_GRIGLIA_EXTRA_LARGE, parametri);
     }
 }
 
@@ -778,16 +782,15 @@ class MostraTempo extends Comando {
             return;
         }
 
-        if (!GestioneComandi.tempoImpostato()) {
-            Grafica.stampaWarning("Non è stato impostato nessun limite di tempo");
-            return;
-        }
-
         if (!GestioneComandi.tempoScaduto()) {
             Grafica.stampaMessaggio("Tempo trascorso: "
                     + GestioneComandi.getMinuti(GestioneComandi.tempoTrascorso()) + " minuti");
-            Grafica.stampaMessaggio("Tempo rimanente: "
-                    + GestioneComandi.getMinuti(GestioneComandi.tempoRimasto()) + " minuti");
+            if (!GestioneComandi.tempoImpostato()) {
+                Grafica.stampaMessaggio("Tempo rimanente: nessun limite di tempo");
+            } else {
+                Grafica.stampaMessaggio("Tempo rimanente: "
+                        + GestioneComandi.getMinuti(GestioneComandi.tempoRimasto()) + " minuti");
+            }
         } else {
             GestioneComandi.terminaPartita("persa: tempo scaduto");
         }
