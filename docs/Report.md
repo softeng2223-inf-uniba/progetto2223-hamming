@@ -232,6 +232,13 @@ Di seguito sono riportati i diagrammi delle classi e i diagrammi di sequenza per
 Nei diagrammi sono state omesse alcune caratteristiche considerate
 non significative al fine di una maggiore comprensione.
 
+#### 5.1.1 Come giocatore voglio inziare una nuova partita
+**Diagramma delle classi**
+![diagramma_classi_gioca.png](../drawings/diagramma_classi_gioca.jpg)
+
+**Diagramma di sequenza**
+![diagramma_sequenza_gioca.png](../drawings/diagramma_sequenza_gioca.jpg)
+
 
 ## 7. Manuale utente
 Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
