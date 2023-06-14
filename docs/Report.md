@@ -401,6 +401,9 @@ Sono stati creati i casi di test per le seguenti classi:
 Sono stati creati **78** casi di test per testare le classi del programma.
 
 
+![screenshot_test.png](img/screenshot_test.png)
+
+
 
 ## 7. Manuale utente
 Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
