@@ -17,8 +17,8 @@
 
 ### Introduzione al progetto
 
-Il progetto del gioco della **battaglia navale** è stato avviato al fine di creare un'applicazione interattiva da terminale basata sul gioco da tavolo. 
-Il gioco della battaglia navale è un **gioco strategico** nel quale ogni giocatore cerca di individuare e affondare le navi nemiche posizionate su una griglia. 
+Il progetto del gioco della **battaglia navale** è stato avviato al fine di creare un'applicazione interattiva da terminale basata sul gioco da tavolo.
+Il gioco della battaglia navale è un **gioco strategico** nel quale ogni giocatore cerca di individuare e affondare le navi nemiche posizionate su una griglia.
 In questo progetto si considera una **versione a giocatore singolo** del gioco, in cui il giocatore attacca una griglia virtuale generata dall'applicazione.
 
 ### Scopi del progetto
@@ -46,7 +46,7 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
 - Marzia Capuano
 - Fabio Cirullo
 - Simone Columpsi
-- Valerio Di Maggio 
+- Valerio Di Maggio
 - Daniele Gentile
 
 <br>
@@ -62,7 +62,7 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
 
     - Attributi
         - **colpita**: boolean
-            
+
             Indica se la cella è stata colpita da un attacco del giocatore.
 <br><br>
 
@@ -79,7 +79,7 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
 - **Nave**
 
     Nave che occupa due o più celle piene sulla griglia.
-    
+
     - Attributi
 
         - **tipologia**: string
@@ -91,7 +91,7 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
             - cacciatorpediniere
 
         - **celleRimanenti**: int
-            
+
             Numero di celle non ancora colpite della nave.
 <br><br>
 
@@ -109,7 +109,7 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
             - difficile
 
         - **tentativiRimasti**: int
-                
+
             Numero di tentativi rimasti prima della sconfitta.
 <br><br>
 
@@ -122,7 +122,7 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
         - **nome**: string
 
             Nome del comando. Corrisponde alla stringa che l'utente deve inserire per eseguirlo.
-        
+
         - **categoria**: string
 
             Categoria a cui appartiene il comando.
@@ -210,7 +210,7 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
     Windows:
     - Powershell
     - Git Bash (in questo caso il comando Docker ha come prefisso winpty; es: winpty docker -it ...)
-    
+
     **Comando per l'esecuzione del container**
 
     Dopo aver eseguito il comando docker pull copiandolo da GitHub Packages, il comando Docker da usare per eseguire il container contenente l'applicazione è:
@@ -223,6 +223,14 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
 - **RNF3**: Il gioco deve gestire errori e ogni tipo di situazione in modo da non provocare interruzioni o crash. (Affidabilità)<br /><br />
 - **RNF4**: Il gioco deve essere sviluppato in maniera tale da garantire l'aggiunta di nuove funzionalità o miglioramenti senza modificare l'intero codice. (Manutenibilità)<br /><br />
 - **RNF5**: Il gioco deve garantire prestazioni ottime in termini di utilizzo di memoria e latenza. (Efficienza)<br /><br />
+
+
+## 5. OO Design
+
+### 5.1 Diagrammi delle classi e di sequenza
+Di seguito sono riportati i diagrammi delle classi e i diagrammi di sequenza per le user story considerate più importanti.
+Nei diagrammi sono state omesse alcune caratteristiche considerate
+non significative al fine di una maggiore comprensione.
 
 
 ## 7. Manuale utente
@@ -261,7 +269,7 @@ Il comando non imposta la difficoltà corrente a facile.
 ![comando_facile_param.png](img/comando_facile_param.png)
 
 
-##### Comando /medio 
+##### Comando /medio
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti a 30.
 
 ![comando_medio.png](img/comando_medio.png)
@@ -401,7 +409,7 @@ Le tipologie di navi si distinguono in base alla dimensione:
 
 - Incrociatore 		<span style="color:cyan"> X X X </span>	esemplari: 3
 
-- Cacciatorpediniere 	<span style="color:magenta"> X X </span> esemplari: 4 
+- Cacciatorpediniere 	<span style="color:magenta"> X X </span> esemplari: 4
 
 
 ### Fase di gioco
@@ -429,7 +437,7 @@ Dopo aver eseguito il comando ```docker pull``` copiandolo da GitHub Packages, i
 ## 8. Processo di sviluppo e organizzazione del lavoro
 Il gruppo Hamming, durante lo svolgimento delle consegne ha perseguito una strategia precisa nell'organizzazione e nella divisione del lavoro, tale framework di gestione è denominato "Scrum".
 #### Organizzazione del lavoro
-I progetti Scrum fanno progressi in una serie di iterazioni dette sprint, non interrompibili, con una durata, in questo caso, di 2 settimane. 
+I progetti Scrum fanno progressi in una serie di iterazioni dette sprint, non interrompibili, con una durata, in questo caso, di 2 settimane.
 In questo progetto precisamente il gruppo ha lavorato su 3 sprint: sprint0, sprint1, sprint2, per ognuno dei quali i requisiti sono stati: analizzati, progettati, realizzati e testati.
 Per l'organizzazione di lavoro il gruppo ha utilizzato varie piattaforme di comunicazione come: whatsapp, per fissare daily meeting o per avvisi extra di lavoro e discord utilizzato, come alternativa, per condurre daily meeting straordinari quando non vi era la possibilità di effettuarlo fisicamente.
 
@@ -446,7 +454,7 @@ Al termine di ogni sprint, è stata condotta un'analisi retrospettiva tra i memb
 Per ogni sprint, è stata assegnata una lista di user story, ciascuna delle quali rappresenta un lavoro distinto necessario per il completamento del progetto. Queste user story sono state stabilite dal Product Owner, ovvero il responsabile esclusivo della gestione del Product Backlog. Il Product Owner prende decisioni riguardo all'accettazione o al rifiuto dei risultati del lavoro del team di sviluppo e stabilisce la data di scadenza di ciascuno sprint.
 
 ##### Fase intermedia
-Il gruppo ha implementato le user story selezionate dal product backlog per lo sprint. Ogni user story è stata assegnata a uno o due membri del team di sviluppo, la cui gestione è dipesa da loro.   
+Il gruppo ha implementato le user story selezionate dal product backlog per lo sprint. Ogni user story è stata assegnata a uno o due membri del team di sviluppo, la cui gestione è dipesa da loro.
 
 ##### Fase finale
 Nella fase conclusiva è stata condotta una riunione, svolta dopo la consegna di ogni sprint. La sua finalità principale è stata quella di ottenere il feedback dal product owner.
@@ -473,7 +481,7 @@ e mantenere le modifiche localmente prima di aggiornare il branch remoto.
 
 Dopo aver completato il proprio compito e inviato una pull request, è stato chiesto che almeno un membro del gruppo
 confermasse e approvasse le modifiche prima del merge e della cancellazione del branch. Di solito, per modifiche minori o che non avrebbero creato conflitti,
-la revisione di un solo membro è stata sufficiente, mentre per modifiche più significative si è cercato di ottenere più pareri 
+la revisione di un solo membro è stata sufficiente, mentre per modifiche più significative si è cercato di ottenere più pareri
 per garantire maggiore cautela e sicurezza nella correttezza del lavoro svolto. In alcuni casi, la revisione ha richiesto ulteriori modifiche prima
 dell'approvazione delle pull request.
 
