@@ -620,7 +620,7 @@ Per chiudere il gioco, il giocatore, può utilizzare il comando /esci. L'applica
 
 ![comando_esci.png](img/comando_esci.png)
 
-### Impostazione del livello di gioco
+#### Impostazione del livello di gioco
 Il giocatore, prima dell'inizio della partita, può decidere con quale difficoltà giocare, oppure può impostare una difficoltà personalizzata. Le tre difficoltà disponibili sono: facile, medio e difficile. Per selezionare la difficoltà si usa il comando /facile, /medio o /difficile.
 Di default la difficoltà è impostata a medio.
 È possibile modificare il numero massimo di tentativi falliti per ogni difficoltà utilizzando i comandi /facile [numero], /medio [numero] o /difficile [numero].
@@ -633,7 +633,7 @@ Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi fallit
 ![comando_facile.png](img/comando_facile.png)
 
 
-#### Comando /facile [numero]
+##### Comando /facile [numero]
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti della difficoltà facile al valore specificato dall'utente.
 Il comando non imposta la difficoltà corrente a facile.
 
@@ -659,14 +659,14 @@ Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi fallit
 ![comando_difficile.png](img/comando_difficile.png)
 
 
-#### Comando /difficile [numero]
+##### Comando /difficile [numero]
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti della difficoltà difficile al valore specificato dall'utente.
 Il comando non imposta la difficoltà corrente a difficile.
 
 ![comando_difficile_param.png](img/comando_difficile_param.png)
 
 
-#### Comando /tentativi \<numero\>
+##### Comando /tentativi \<numero\>
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti al valore specificato dall'utente creando una nuova difficotlà temporanea personalizzata.
 
 ![comando_tentativi.png](img/comando_tentativi.png)
@@ -758,7 +758,7 @@ Se una partita è in corso il giocatore può utilizzare il comando /mostratentat
 
 #### Attacco
 Il giocatore può utilizzare l'attacco per colpire una cella non colpita della griglia di gioco.
-Il comando è formattato secondo lo standard: [lettera]-[numero] (es: A-1, B-12, ecc...).
+Il comando è formattato secondo lo standard: **[lettera]-[numero]** (es: A-1, B-12, ecc...).
 Il comando visualizza il risultato dell'attacco sulla griglia di gioco, il numero di tentativi già effettuati e il tempo trascorso di gioco.
 
 ![comando_attacco.png](img/comando_attacco.png)
