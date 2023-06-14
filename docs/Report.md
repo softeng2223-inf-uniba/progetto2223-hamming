@@ -220,6 +220,13 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
   Al comando **/extralarge**
 
   l’applicazione risponde con OK e imposta a 26x26 la dimensione della griglia.  <br /><br />
+- **RF10**: Come giocatore voglio impostare il tempo di gioco.
+
+  **Criteri di accettazione**
+
+  Al comando **/tempo numero** 
+
+  l’applicazione risponde con OK e imposta a numero il numero minuti a disposizione per giocare. <br /><br />
 
 ### 3.2 Requisiti non funzionali
 
