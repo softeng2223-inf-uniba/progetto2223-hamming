@@ -237,85 +237,107 @@ non significative al fine di una maggiore comprensione.<br /><br />
 
 #### 5.1.1 Come giocatore voglio inziare una nuova partita
 **Diagramma delle classi**
+
 ![diagramma_classi_gioca](../drawings/diagramma_classi_gioca.jpg)
 
 **Diagramma di sequenza**
+
 ![diagramma_sequenza_gioca](../drawings/diagramma_sequenza_gioca.jpg)<br /><br />
 
 #### 5.1.2 Come giocatore voglio chiudere il gioco
 **Diagramma delle classi**
+
 ![diagramma_classi_esci](../drawings/diagramma_classi_esci.jpg)
 
 **Diagramma di sequenza**
+
 ![diagramma_sequenza_esci](../drawings/diagramma_sequenza_esci.jpg)<br /><br />
 
 #### 5.1.3 Come giocatore voglio mostrare l'help con elenco comandi
 **Diagramma delle classi**
+
 ![diagramma_classi_help](../drawings/diagramma_classi_help.jpg)
 
 **Diagramma di sequenza**
+
 ![diagramma_sequenza_help](../drawings/diagramma_sequenza_help.jpg)<br /><br />
 
 #### 5.1.4 Come giocatore voglio impostare il livello di gioco per variare il numero massimo di tentativi sbagliati
 **Diagramma delle classi**
+
 ![diagramma_classi_facile](../drawings/diagramma_classi_facile.jpg)
 
 **Diagramma di sequenza**
+
 ![diagramma_sequenza_facile](../drawings/diagramma_sequenza_facile.jpg)
 
 Sono stati omessi i diagrammi delle classi e di sequenza relativi ai comandi **/medio** e **/difficile** in quanto sono molto simili a quelli del comando **/facile**.<br /><br />
 
 #### 5.1.5 Come giocatore voglio svelare la griglia con le navi posizionate
 **Diagramma delle classi**
+
 ![diagramma_classi_svelagriglia](../drawings/diagramma_classi_svelagriglia.jpg)
 
 **Diagramma di sequenza**
+
 ![diagramma_sequenza_svelagriglia](../drawings/diagramma_sequenza_svelagriglia.jpg)
 
 Sono stati omessi i diagrammi delle classi e di sequenza della user story relativa al comando **/mostragriglia** in quanto sono molto simili a quelli del comando **/svelagriglia**<br /><br />
 
 #### 5.1.6 Come giocatore voglio abbandonare una partita
 **Diagramma delle classi**
+
 ![diagramma_classi_abbandona](../drawings/diagramma_classi_abbandona.jpg)
 
 **Diagramma di sequenza**
+
 ![diagramma_sequenza_abbandona](../drawings/diagramma_sequenza_abbandona.jpg)<br /><br />
 
 #### 5.1.7 Come giocatore voglio impostare il tempo di gioco
 **Diagramma delle classi**
+
 ![diagramma_classi_tempo](../drawings/diagramma_classi_tempo.jpg)
 
 **Diagramma di sequenza**
+
 ![diagramma_sequenza_tempo](../drawings/diagramma_sequenza_tempo.jpg)<br /><br />
 
 #### 5.1.8 Come giocatore voglio mostrare il tempo di gioco
 **Diagramma delle classi**
+
 ![diagramma_classi_mostratempo](../drawings/diagramma_classi_mostratempo.jpg)
 
 **Diagramma di sequenza**
+
 ![diagramma_sequenza_mostratempo](../drawings/diagramma_sequenza_mostratempo.jpg)<br /><br />
 
 #### 5.1.9 Come giocatore voglio impostare la taglia della griglia
 **Diagramma delle classi**
+
 ![diagramma_classi_standard](../drawings/diagramma_classi_standard.jpg)
 
 **Diagramma di sequenza**
+
 ![diagramma_sequenza_standard](../drawings/diagramma_sequenza_standard.jpg)
 
 Sono stati omessi i diagrammi delle classi e di sequenza relativi ai comandi **/large** e **/extralarge** in quanto sono molto simili a quelli del comando **/standard**.<br /><br />
 
 #### 5.1.10 Come giocatore voglio impostare direttamente il numero massimo di tentativi che si possono fallire
 **Diagramma delle classi**
+
 ![diagramma_classi_tentativi](../drawings/diagramma_classi_tentativi.jpg)
 
 **Diagramma di sequenza**
+
 ![diagramma_sequenza_tentativi](../drawings/diagramma_sequenza_tentativi.jpg)<br /><br />
 
 #### 5.1.11 Come giocatore voglio effettuare un tentativo per colpire una nave
 **Diagramma delle classi**
+
 ![diagramma_classi_attacco](../drawings/diagramma_classi_attacco.jpg)
 
 **Diagramma di sequenza**
+
 ![diagramma_sequenza_attacco](../drawings/diagramma_sequenza_attacco.jpg)<br /><br />
 
 ### 5.2 Analisi delle decisioni prese con riferimento ai principi di OO design
