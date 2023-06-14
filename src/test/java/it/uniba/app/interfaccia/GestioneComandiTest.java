@@ -254,3 +254,49 @@ class EsciTest extends SimulaStdIOStream {
 
 }
 
+/**
+ * Classe di test per il comando /abbandona.
+ * {@link Abbandona}
+ */
+class AbbandonaTest extends SimulaStdIOStream {
+    /**
+     * Termina la partita.
+     */
+    @AfterEach
+    void tearDown() {
+        GestioneComandi.cancellaPartita();
+    }
+
+
+    /**
+     * Test sul comando /abbandona.
+     * Da conferma al voler abbandonare la partita e verifica se interrompe la partita.
+     * {@link Abbandona#esegui(String[])}
+     */
+    @Test
+    @DisplayName("/abbandona interrompe la partita")
+    void testAbbandona() {
+        Abbandona abbandona = new Abbandona();
+        ComandiUtil.iniziaPartita();
+        simulaInput("s");
+        ComandiUtil.eseguiComando(abbandona, new String[0]);
+        assertFalse(GestioneComandi.partitaIniziata(), "/abbandona non ha interrotto la partita");
+    }
+
+    /**
+     * Test sul comando /abbandona con conferma negativa, dunque
+     * il comando non dovrebbe terminare la partita.
+     * {@link Abbandona#esegui(String[])}
+     */
+    @Test
+    @DisplayName("/abbandona con conferma negativa non interrompe la partita")
+    void testAbbandonaConfermaNegativa() {
+        Abbandona abbandona = new Abbandona();
+        ComandiUtil.iniziaPartita();
+        simulaInput("n");
+        ComandiUtil.eseguiComando(abbandona, new String[0]);
+        assertTrue(GestioneComandi.partitaIniziata(), "/abbandona con conferma negativa ha interrotto la partita");
+    }
+
+}
+
