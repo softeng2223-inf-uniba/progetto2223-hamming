@@ -141,7 +141,7 @@ public final class Grafica {
 
     /**
      * Metodo che ridefinisce lo scanner per aggiornare lo stream di input.
-     * Viene richiamato ogni volta si vuole simulare l'input dell'utente.
+     * Viene richiamato ogni volta che si vuole simulare l'input dell'utente.
      * Usato solo per fini di test.
      */
     public static void aggiornaScanner() {
