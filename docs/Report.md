@@ -258,6 +258,13 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
   Al comando **/mostragriglia** 
 
   l’applicazione risponde visualizzando, una griglia 10x10, con le righe numerate da 1 a 10 e le colonne numerate da A a J, con le navi affondate e le sole parti già colpite delle navi non affondate. <br /><br />
+- **RF14**: Come giocatore voglio mostrare il numero di tentativi già effettuati e il numero di tentativi falliti. 
+
+  **Criteri di accettazione**
+
+  Al comando **/mostratentativi** 
+
+  l’applicazione risponde visualizzando il numero di tentativi già effettuati, il numero di tentativi falliti e il numero massimo di tentativi falliti. <br /><br />
 
 ### 3.2 Requisiti non funzionali
 
