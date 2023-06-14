@@ -246,6 +246,13 @@ non significative al fine di una maggiore comprensione.
 **Diagramma di sequenza**
 ![diagramma_sequenza_esci.png](../drawings/diagramma_sequenza_esci.jpg)
 
+#### 5.1.3 Come giocatore voglio mostrare l'help con elenco comandi
+**Diagramma delle classi**
+![diagramma_classi_help.png](../drawings/diagramma_classi_help.jpg)
+
+**Diagramma di sequenza**
+![diagramma_sequenza_help.png](../drawings/diagramma_sequenza_help.jpg)
+
 
 ## 7. Manuale utente
 Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
