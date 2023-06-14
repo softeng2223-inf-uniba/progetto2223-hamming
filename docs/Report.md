@@ -239,6 +239,13 @@ non significative al fine di una maggiore comprensione.
 **Diagramma di sequenza**
 ![diagramma_sequenza_gioca.png](../drawings/diagramma_sequenza_gioca.jpg)
 
+#### 5.1.2 Come giocatore voglio chiudere il gioco
+**Diagramma delle classi**
+![diagramma_classi_esci.png](../drawings/diagramma_classi_esci.jpg)
+
+**Diagramma di sequenza**
+![diagramma_sequenza_esci.png](../drawings/diagramma_sequenza_esci.jpg)
+
 
 ## 7. Manuale utente
 Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
