@@ -265,6 +265,17 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
   Al comando **/mostratentativi** 
 
   l’applicazione risponde visualizzando il numero di tentativi già effettuati, il numero di tentativi falliti e il numero massimo di tentativi falliti. <br /><br />
+- **RF15**: Come giocatore voglio abbandonare una partita. 
+
+  **Criteri di accettazione**
+
+  Al comando **/abbandona**
+
+  l'applicazione chiede conferma 
+
+  - se la conferma è positiva, l’applicazione risponde visualizzando sulla griglia la posizione di tutte le navi e si predispone a ricevere nuovi comandi. 
+
+  - se la conferma è negativa, l'applicazione si predispone a ricevere nuovi tentativi o comandi. <br /><br />
 
 ### 3.2 Requisiti non funzionali
 
