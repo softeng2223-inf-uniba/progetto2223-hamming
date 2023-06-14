@@ -327,6 +327,20 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
 
 ![diagramma_dei_package.png](../drawings/diagramma_dei_package.png) <br /><br />
 
+### Commento delle decisioni prese con riferimento ai requisiti non funzionali
+
+L'applicazione offre un'interfaccia utente intuitiva e facile da usare grazie all'uso dei colori per rappresentare le navi: in particolare, appena colpita, la nave appare bianca e, quando viene affondata, diventa del colore della tipologia di nave a cui appartiene.
+
+Nel caso di operazioni non consentite, se si riscontra un errore viene stampato un messaggio in rosso, mentre per un avviso viene stampato un messaggio in giallo.
+
+Inoltre, nell'help, ogni comando è seguito da una descrizione che ne spiega la funzione. Se viene inserito un comando inesistente dal giocatore, l'applicazione propone un comando simile all'input, mentre se si inseriscono parametri del comando non corretti, verrà stampato un avvertimento sul metodo di utilizzo del comando inserito.
+
+L'applicazione è stata sviluppata in modo da risultare affidabile e non provocare interruzioni o crash: sono state create diverse eccezioni per ogni tipo di errore. In questo modo, nel codice, vengono controllate tutte le situazioni che possono causare errore, gestendolo nella maniera più opportuna.
+
+Grazie al rispetto della tassonomia ECB viene garantita la manutenibilità del codice. Ogni classe possiede un proprio compito ed è il più possibile separata dalle altre. In questo modo si garantisce anche una separazione tra classi che gestiscono l'interfaccia utente e classi che rappresentano concetti principali dell'applicazione.
+
+Infine il gioco offre prestazioni ottime, soprattutto in termini di utilizzo di memoria. Si è evitato di creare attributi che avrebbero assunto troppi valori nulli: per esempio, si è scelto di utilizzare l'attributo nave solo nella classe CellaPiena e non in Cella dato che quest'ultima rappresenta solo celle vuote (non occupate da navi).
+
 ## 7. Manuale utente
 Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
 ### Comandi Disponibili
