@@ -251,6 +251,13 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
   La partita termina con successo se il tentativo ha affondato l’ultima nave.
 
   La partita termina con insuccesso se è stato raggiunto il numero massimo di tentativi falliti o se è scaduto il tempo di gioco. <br /><br />
+- **RF13**: Come giocatore voglio mostrare la griglia con le navi colpite e affondate. 
+
+  **Criteri di accettazione** 
+
+  Al comando **/mostragriglia** 
+
+  l’applicazione risponde visualizzando, una griglia 10x10, con le righe numerate da 1 a 10 e le colonne numerate da A a J, con le navi affondate e le sole parti già colpite delle navi non affondate. <br /><br />
 
 ### 3.2 Requisiti non funzionali
 
