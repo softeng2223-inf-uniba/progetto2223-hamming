@@ -5,6 +5,7 @@
 - [3. Requisiti specifici](#3-requisiti-specifici)
     - [3.1 Requisiti funzionali](#31-requisiti-funzionali)
     - [3.2 Requisiti non funzionali](#32-requisiti-non-funzionali)
+- [6. Riepilogo del test](#6-riepilogo-del-test)
 - [7. Manuale Utente](#7-manuale-utente)
 - [8. Processo di sviluppo e organizzazione del lavoro](#8-Processo-di-sviluppo-e-organizzazione-del-lavoro)
 - [9. Analisi retrospettiva](#9-analisi-retrospettiva)
@@ -321,6 +322,11 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
 - **RNF4**: Il gioco deve essere sviluppato in maniera tale da garantire l'aggiunta di nuove funzionalità o miglioramenti senza modificare l'intero codice. (Manutenibilità)<br /><br />
 - **RNF5**: Il gioco deve garantire prestazioni ottime in termini di utilizzo di memoria e latenza. (Efficienza)<br /><br />
 
+
+
+## 6. Riepilogo del test
+
+Nella fase di test, sono stati creati test di unità per le classi che compongono il programma. I test sono stati scritti utilizzando il framework JUnit 5.
 
 ## 7. Manuale utente
 Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
