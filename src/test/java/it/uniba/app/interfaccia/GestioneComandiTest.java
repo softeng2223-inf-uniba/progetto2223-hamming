@@ -558,3 +558,81 @@ abstract class DifficoltaTest extends SimulaStdIOStream {
     }
 }
 
+/**
+ * Classe di test per il comando /facile.
+ * {@link Facile}
+ */
+class FacileTest extends DifficoltaTest {
+    FacileTest() {
+        super("facile", new Facile());
+    }
+
+    /**
+     * Test sul comando /facile.
+     * Imposta la difficoltà facile.
+     * Il metodo è stato spostato da DifficoltaTest perché Checkstyle
+     * non vedeva alcun metodo di test in questa classe di test.
+     * {@link Facile#esegui(String[])}
+     */
+    @Test
+    @DisplayName("/facile imposta correttamente la difficoltà")
+    void testCambioDifficolta() {
+        Comando comando = new Facile();
+        ComandiUtil.eseguiComando(comando, new String[0]);
+        assertEquals("facile", GestioneComandi.getLivello(),
+                "/facile non imposta la difficoltà correttamente");
+    }
+}
+
+/**
+ * Classe di test per il comando /medio.
+ * {@link Medio}
+ */
+class MedioTest extends DifficoltaTest {
+    MedioTest() {
+        super("medio", new Medio());
+    }
+
+    /**
+     * Test sul comando /medio.
+     * Imposta la difficoltà media.
+     * Il metodo è stato spostato da DifficoltaTest perché Checkstyle
+     * non vedeva alcun metodo di test in questa classe di test.
+     * {@link Medio#esegui(String[])}
+     */
+    @Test
+    @DisplayName("/medio imposta correttamente la difficoltà")
+    void testCambioDifficolta() {
+        Comando comando = new Medio();
+        ComandiUtil.eseguiComando(comando, new String[0]);
+        assertEquals("medio", GestioneComandi.getLivello(),
+                "/medio non imposta la difficoltà correttamente");
+    }
+}
+
+/**
+ * Classe di test per il comando /difficile.
+ * {@link Difficile}
+ */
+class DifficileTest extends DifficoltaTest {
+    DifficileTest() {
+        super("difficile", new Difficile());
+    }
+
+    /**
+     * Test sul comando /difficile.
+     * Imposta la difficoltà difficile.
+     * Il metodo è stato spostato da DifficoltaTest perché Checkstyle
+     * non vedeva alcun metodo di test in questa classe di test.
+     * {@link Difficile#esegui(String[])}
+     */
+    @Test
+    @DisplayName("/difficile imposta correttamente la difficoltà")
+    void testCambioDifficolta() {
+        Comando comando = new Difficile();
+        ComandiUtil.eseguiComando(comando, new String[0]);
+        assertEquals("difficile", GestioneComandi.getLivello(),
+                "/difficile non imposta la difficoltà correttamente");
+    }
+}
+
