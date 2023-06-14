@@ -285,6 +285,13 @@ Sono stati omessi i diagrammi delle classi e di sequenza della user story relati
 **Diagramma di sequenza**
 ![diagramma_sequenza_tempo.png](../drawings/diagramma_sequenza_tempo.jpg)<br /><br />
 
+#### 5.1.8 Come giocatore voglio mostrare il tempo di gioco
+**Diagramma delle classi**
+![diagramma_classi_mostratempo.png](../drawings/diagramma_classi_mostratempo.jpg)
+
+**Diagramma di sequenza**
+![diagramma_sequenza_mostratempo.png](../drawings/diagramma_sequenza_mostratempo.jpg)<br /><br />
+
 
 ## 7. Manuale utente
 Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
