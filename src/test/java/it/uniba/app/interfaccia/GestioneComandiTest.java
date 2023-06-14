@@ -636,3 +636,45 @@ class DifficileTest extends DifficoltaTest {
     }
 }
 
+/**
+ * Classe di test per i comandi che modificano la taglia della griglia.
+ * {@link CambioTagliaGriglia}
+ */
+abstract class TagliaGrigliaTest extends SimulaStdIOStream {
+    private final int tagliaGriglia;
+    private final Comando comando;
+
+    /**
+     * Test sul comando di cambio taglia griglia.
+     *
+     * @param tagliaGrigliaParam taglia della griglia
+     * @param comandoParam       comando da testare
+     */
+    TagliaGrigliaTest(final int tagliaGrigliaParam, final Comando comandoParam) {
+        tagliaGriglia = tagliaGrigliaParam;
+        comando = comandoParam;
+    }
+
+    /**
+     * Ripristina la taglia della griglia di default.
+     */
+    @AfterEach
+    public void tearDown() {
+        GestioneComandi.cancellaPartita();
+        Configurazioni.setRigheGriglia(Configurazioni.DIMENSIONI_GRIGLIA_STANDARD);
+        Configurazioni.setColonneGriglia(Configurazioni.DIMENSIONI_GRIGLIA_STANDARD);
+    }
+
+    /**
+     * Test sul comando di cambio taglia griglia a partita in corso.
+     * Il comando non dovrebbe modificare la taglia della griglia.
+     */
+    @Test
+    @DisplayName("Il comando per il cambio della taglia della griglia fallisce se la partita è in corso")
+    void testCambioTagliaGrigliaPartitaInCorso() {
+        ComandiUtil.iniziaPartita();
+        assertThrows(PartitaGiaIniziataException.class, () -> comando.esegui(new String[0]),
+                "Il comando per il cambio della taglia della griglia non fallisce se la partita è in corso");
+    }
+}
+
