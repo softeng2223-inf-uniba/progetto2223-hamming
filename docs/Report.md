@@ -260,14 +260,23 @@ non significative al fine di una maggiore comprensione.<br /><br />
 **Diagramma di sequenza**
 ![diagramma_sequenza_facile.png](../drawings/diagramma_sequenza_facile.jpg)
 
-Sono stati omessi i diagrammi delle classi e di sequenza relativi ai comandi **/medio** e **/difficile** in quanto sono molto simili al comando **/facile**.<br /><br />
+Sono stati omessi i diagrammi delle classi e di sequenza relativi ai comandi **/medio** e **/difficile** in quanto sono molto simili a quelli del comando **/facile**.<br /><br />
 
 #### 5.1.5 Come giocatore voglio svelare la griglia con le navi posizionate
 **Diagramma delle classi**
 ![diagramma_classi_svelagriglia.png](../drawings/diagramma_classi_svelagriglia.jpg)
 
 **Diagramma di sequenza**
-![diagramma_sequenza_svelagriglia.png](../drawings/diagramma_sequenza_svelagriglia.jpg)<br /><br />
+![diagramma_sequenza_svelagriglia.png](../drawings/diagramma_sequenza_svelagriglia.jpg)
+
+Sono stati omessi i diagrammi delle classi e di sequenza della user story relativa al comando **/mostragriglia** in quanto sono molto simili a quelli del comando **/svelagriglia**<br /><br />
+
+#### 5.1.6 Come giocatore voglio abbandonare una partita
+**Diagramma delle classi**
+![diagramma_classi_abbandona.png](../drawings/diagramma_classi_abbandona.jpg)
+
+**Diagramma di sequenza**
+![diagramma_sequenza_abbandona.png](../drawings/diagramma_sequenza_abbandona.jpg)<br /><br />
 
 
 ## 7. Manuale utente
