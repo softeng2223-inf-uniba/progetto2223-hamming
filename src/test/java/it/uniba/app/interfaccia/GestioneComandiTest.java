@@ -439,3 +439,43 @@ class TentativiTest extends SimulaStdIOStream {
                 "/tentativi non lancia PartitaGiaIniziataException a partita iniziata");
     }
 }
+
+/**
+ * Classe di test per il comando /gioca.
+ * {@link Gioca}
+ */
+class GiocaTest extends SimulaStdIOStream {
+    /**
+     * Ripristina la partita.
+     */
+    @AfterEach
+    public void tearDown() {
+        GestioneComandi.cancellaPartita();
+    }
+
+    /**
+     * Test sul comando /gioca.
+     * {@link Gioca#esegui(String[])}
+     */
+    @Test
+    @DisplayName("/gioca inizia una nuova partita")
+    void testGioca() {
+        Gioca gioca = new Gioca();
+        ComandiUtil.eseguiComando(gioca, new String[0]);
+        assertTrue(GestioneComandi.partitaIniziata(), "/gioca non inizia una nuova partita");
+    }
+
+    /**
+     * Test sul comando /gioca con partita in corso.
+     * Il comando dovrebbe lanciare l'eccezione PartitaGiaIniziataException.
+     * {@link Gioca#esegui(String[])}
+     */
+    @Test
+    @DisplayName("/gioca a partita in corso fallisce")
+    void testGiocaPartitaInCorso() {
+        Gioca gioca = new Gioca();
+        ComandiUtil.iniziaPartita();
+        assertThrows(PartitaGiaIniziataException.class, () -> gioca.esegui(new String[0]),
+                "/gioca con partita in corso non fallisce");
+    }
+}
