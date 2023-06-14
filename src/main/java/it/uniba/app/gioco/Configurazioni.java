@@ -1,4 +1,5 @@
 package it.uniba.app.gioco;
+
 import it.uniba.app.exceptions.LivelloNonEsistenteException;
 import it.uniba.app.exceptions.TipologiaNonEsistenteException;
 
@@ -13,13 +14,15 @@ import java.util.Set;
  */
 public final class Configurazioni {
 
-    private Configurazioni() { }
+    private Configurazioni() {
+    }
 
     // SEZIONE PARTITA
     private static final int TENTATIVI_MASSIMI_POSIZIONAMENTO = 100;
 
     /**
      * Metodo che restituisce il numero massimo di tentativi per posizionare casualmente una nave sulla griglia.
+     *
      * @return numero massimo di tentativi
      */
     public static int getTentativiMassimiPosizionamento() {
@@ -61,8 +64,19 @@ public final class Configurazioni {
 
 
     /**
-     * Modifica il numero di tentativi di un livello di difficoltà.
+     * Verifica se un livello di difficoltà esiste.
+     *
      * @param livello livello di difficoltà
+     * @return true se il livello esiste, false altrimenti
+     */
+    public static boolean esisteLivello(final String livello) {
+        return CONFIGURAZIONE_LIVELLO.containsKey(livello);
+    }
+
+    /**
+     * Modifica il numero di tentativi di un livello di difficoltà.
+     *
+     * @param livello   livello di difficoltà
      * @param tentativi numero di tentativi
      */
     public static void setTentativi(final String livello, final int tentativi) {
@@ -88,6 +102,7 @@ public final class Configurazioni {
 
     /**
      * Crea un nuovo livello di difficoltà custom.
+     *
      * @param tentativi numero di tentativi del livello custom.
      */
     public static void setCustomTentativi(final int tentativi) {
@@ -105,6 +120,7 @@ public final class Configurazioni {
 
     /**
      * Restituisce il livello di default.
+     *
      * @return livello di default
      */
     public static String getLivelloDefault() {
@@ -118,10 +134,11 @@ public final class Configurazioni {
     private static final ConfigurazioneNave CACCIATORPEDINIERE = new ConfigurazioneNave(4, 2);
 
     private static final Map<String, ConfigurazioneNave> CONFIGURAZIONE_NAVI =
-    new LinkedHashMap<String, ConfigurazioneNave>();
+            new LinkedHashMap<String, ConfigurazioneNave>();
 
     /**
      * Restituisce la lunghezza di una tipologia di navi.
+     *
      * @param tipologia tipologia di nave
      */
     public static int getLunghezzaNavi(final String tipologia) {
@@ -133,6 +150,7 @@ public final class Configurazioni {
 
     /**
      * Restituisce il numero di navi di una tipologia.
+     *
      * @param tipologia tipologia di nave
      * @return numero di navi di una tipologia
      */
@@ -146,6 +164,7 @@ public final class Configurazioni {
 
     /**
      * Restituisce le tipologie di navi.
+     *
      * @return tipologie di navi
      */
     public static Set<String> getTipologieNavi() {
