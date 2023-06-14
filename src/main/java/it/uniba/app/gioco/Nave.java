@@ -16,7 +16,7 @@ public class Nave implements Cloneable {
      * Costruttore che inizializza la nave con la tipologia e il numero di celle
      * rimanenti
      * per essere distrutta.
-     * 
+     *
      * @param tipologiaParam tipologia della nave
      */
     public Nave(final String tipologiaParam) {
@@ -26,7 +26,7 @@ public class Nave implements Cloneable {
 
     /**
      * Metodo che restituisce il numero di celle rimanenti per distruggere la nave.
-     * 
+     *
      * @return il numero di celle rimanenti per distruggere la nave.
      */
     public String getTipologia() {
@@ -35,7 +35,7 @@ public class Nave implements Cloneable {
 
     /**
      * Metodo che restituisce il numero di celle rimanenti per distruggere la nave.
-     * 
+     *
      * @return il numero di celle rimanenti per distruggere la nave.
      */
     public int getCelleRimanenti() {
@@ -44,7 +44,7 @@ public class Nave implements Cloneable {
 
     /**
      * Restituisce la lunghezza della nave.
-     * 
+     *
      * @return lunghezza della nave
      */
     public int getLunghezza() {
@@ -53,7 +53,7 @@ public class Nave implements Cloneable {
 
     /**
      * Metodo che indica se la nave è affondata.
-     * 
+     *
      * @return true se la nave è affondata, false altrimenti.
      */
     public boolean eAffondata() {
@@ -62,7 +62,7 @@ public class Nave implements Cloneable {
 
     /**
      * Metodo che clone la nave.
-     * 
+     *
      * @return la nave clonata.
      */
     public Nave clone() throws CloneNotSupportedException {
@@ -73,6 +73,8 @@ public class Nave implements Cloneable {
      * Metodo che decrementa il numero di celle rimanenti per affondare la nave.
      */
     public void colpisciNave() {
-        celleRimanenti--;
+        if (celleRimanenti > 0) {
+            celleRimanenti--;
+        }
     }
 }

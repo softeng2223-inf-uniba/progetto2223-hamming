@@ -8,6 +8,7 @@
 - [5. OO Design](#5-oo-design)
     - [5.1 Diagrammi delle classi e di sequenza](#51-diagrammi-delle-classi-e-di-sequenza)
     - [5.2 Analisi delle decisioni prese con riferimento ai principi di OO design](#52-analisi-delle-decisioni-prese-con-riferimento-ai-principi-di-oo-design)
+- [6. Riepilogo del test](#6-riepilogo-del-test)
 - [7. Manuale Utente](#7-manuale-utente)
 - [8. Processo di sviluppo e organizzazione del lavoro](#8-Processo-di-sviluppo-e-organizzazione-del-lavoro)
 - [9. Analisi retrospettiva](#9-analisi-retrospettiva)
@@ -182,9 +183,9 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
 
     L'applicazione risponde visualizzando, per ogni tipo di nave, la dimensione in quadrati e il numero di esemplari da affondare:
     <table><tr>
-    <td style="border: none">- Cacciatorpediniere<br />- Incrociatore<br />- Corazzata<br />- Portaerei</td>
-    <td style="border: none">⊠⊠<br />⊠⊠⊠<br />⊠⊠⊠⊠<br />⊠⊠⊠⊠⊠</td>
-    <td style="border: none">esemplari: 4<br />esemplari: 3<br />esemplari: 2<br />esemplari: 1</td>
+    <td style="border: none">- Portaerei<br />- Corazzata<br />- Incrociatore<br />- Cacciatorpediniere</td>
+    <td style="border: none">X X<br />X X X<br />X X X X<br />X X X X X</td>
+    <td style="border: none">esemplari: 1<br />esemplari: 2<br />esemplari: 3<br />esemplari: 4</td>
     </tr></table><br />
 - **RF6**: Come giocatore voglio iniziare una nuova partita.
 
@@ -199,7 +200,104 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
 
     Al comando **/svelagriglia**
 
-    L'applicazione risponde visualizzando una griglia 10 x 10 con le righe numerate da 1 a 10 e le colonne numerate da A a J e tutte le navi posizionate<br /><br />
+    L'applicazione risponde visualizzando una griglia 10 x 10 con le righe numerate da 1 a 10 e le colonne numerate da A a J e tutte le navi posizionate.
+    
+    La griglia può variare di dimensione in base alla scelta del giocatore prima di iniziare la partita. <br /><br />
+- **RF8**: Come giocatore voglio impostare direttamente il numero massimo di tentativi che si possono fallire 
+
+    **Criteri di accettazione**
+
+    Al comando **/tentativi numero**
+
+    l’applicazione risponde con OK e imposta a numero il numero massimo di tentativi falliti. <br /><br />
+- **RF9**: Come giocatore voglio impostare la taglia della griglia.
+
+    **Criteri di accettazione**
+
+    Al comando **/standard**
+
+    l’applicazione risponde con OK e imposta a 10x10 la dimensione della griglia (è il default).
+
+    Al comando **/large**
+
+    l’applicazione risponde con OK e imposta a 18x18 la dimensione della griglia.
+
+    Al comando **/extralarge**
+
+    l’applicazione risponde con OK e imposta a 26x26 la dimensione della griglia.  <br /><br />
+- **RF10**: Come giocatore voglio impostare il tempo di gioco.
+
+    **Criteri di accettazione**
+
+    Al comando **/tempo numero** 
+
+    l’applicazione risponde con OK e imposta a numero il numero minuti a disposizione per giocare. <br /><br />
+- **RF11**: Come giocatore voglio mostrare il tempo di gioco.
+
+    **Criteri di accettazione** 
+
+    Al comando **/mostratempo** 
+
+    l’applicazione risponde visualizzando il numero di minuti trascorsi nel gioco e il numero di minuti ancora disponibili. <br /><br />
+- **RF12**: Come giocatore voglio effettuare un tentativo per colpire una nave.
+
+    **Criteri di accettazione** 
+
+    Digitando una coppia di caratteri separati da un trattino, corrispondenti rispettivamente al numero di riga e alla lettera della colonna, (es. B-4), l’applicazione risponde:
+
+    - **“acqua”** se sulla cella non è posizionata nessuna nave;
+  
+    - **"colpito"** se sulla cella è posizionata una nave;
+  
+    - **"colpito e affondato"** se sulla cella è posizionata una nave ed è l’ultima cella non colpita della nave. 
+
+    Qualunque sia l’esito del tentativo, l’applicazione mostra la griglia con le navi colpite parzialmente o affondate, il numero di tentativi già effettuati, e il tempo trascorso. 
+
+    La partita termina con successo se il tentativo ha affondato l’ultima nave.
+
+    La partita termina con insuccesso se è stato raggiunto il numero massimo di tentativi falliti o se è scaduto il tempo di gioco. <br /><br />
+- **RF13**: Come giocatore voglio mostrare la griglia con le navi colpite e affondate. 
+
+    **Criteri di accettazione** 
+
+    Al comando **/mostragriglia** 
+
+    l’applicazione risponde visualizzando, una griglia 10x10, con le righe numerate da 1 a 10 e le colonne numerate da A a J, con le navi affondate e le sole parti già colpite delle navi non affondate.
+  
+    La griglia può variare di dimensione in base alla scelta del giocatore prima di iniziare la partita. <br /><br />
+- **RF14**: Come giocatore voglio mostrare il numero di tentativi già effettuati e il numero di tentativi falliti. 
+
+    **Criteri di accettazione**
+
+    Al comando **/mostratentativi** 
+
+    l’applicazione risponde visualizzando il numero di tentativi già effettuati, il numero di tentativi falliti e il numero massimo di tentativi falliti. <br /><br />
+- **RF15**: Come giocatore voglio abbandonare una partita. 
+
+    **Criteri di accettazione**
+
+    Al comando **/abbandona**
+
+    l'applicazione chiede conferma 
+
+    - se la conferma è positiva, l’applicazione risponde visualizzando sulla griglia la posizione di tutte le navi e si predispone a ricevere nuovi comandi. 
+
+    - se la conferma è negativa, l'applicazione si predispone a ricevere nuovi tentativi o comandi. <br /><br />
+- **RF16**: Come giocatore voglio impostare il numero massimo di tentativi falliti per livello di gioco. 
+
+    **Criteri di accettazione** 
+
+    Al comando **/facile numero**
+
+    l’applicazione risponde con OK e imposta a numero il numero massimo di tentativi falliti.
+
+    Al comando **/medio numero** 
+
+    l’applicazione risponde con OK e imposta a numero il numero massimo di tentativi falliti.
+
+    Al comando **/difficile numero** 
+
+    l’applicazione risponde con OK e imposta a numero il numero massimo di tentativi falliti. <br /><br />
 
 ### 3.2 Requisiti non funzionali
 
@@ -363,6 +461,86 @@ Con questo errore, Spotbugs avvisa che, restituendo il riferimento all'oggetto *
 Per risolvere l'errore è stata implementata l'interfaccia **Cloneable** nelle classi **Griglia**, **Cella** e **Nave** e restituendo nei metodi get, relativi a questi oggetti, il loro clone. E' stato possibile implementare questa soluzione in quanto si aveva la necessità di accedere alla griglia (così come alle celle e alle navi) dall'esterno dell'istanza di **Partita** solo per prendere informazioni e non per modificarle.
 
 
+## 6. Riepilogo del test
+
+Nella fase di test, sono stati creati test di unità per le classi che compongono il programma. I test sono stati scritti utilizzando il framework JUnit 5.
+
+### Criteri di selezione
+
+Per la selezione dei casi di test, sono stati usati sia criteri white-box sia black-box. Per i criteri white-box, sono stati scelti i casi di test in modo da coprire tutti i possibili percorsi di esecuzione del programma.
+- **Criteri black-box**
+
+  Sono stati scelti i casi di test in modo da coprire buona parte dei possibili input dell'utente.
+
+  - **Analisi dei valori limite**
+
+    Criterio usato in particolare per i casi in cui è chiaro l'intervallo di valori accettabili per l'input.
+
+    Ad esempio, nell'attacco di una cella con coordinate vicine al bordo, anche in caso di taglie di griglia più grandi.
+
+  - **Suddivisione in classi di equivalenza**
+
+    Per i casi di test che riguardano metodi con argomenti, in particolare per i comandi.
+    Per gli argomenti non validi i test si assicurano che venga lanciata l'eccezione appropriata.
+
+- **Criteri white-box**
+
+  - **Criteri basati sul flusso di controllo**
+
+    Sono stati scelti casi di test in modo da coprire la maggior parte dei possibili percorsi di esecuzione dei metodi.
+
+  - **Criteri basati sul binding**
+
+    Sono stati testati i metodi implementati in una gerarchia di classi e il cui comportamento cambia a seconda della classe.
+
+    Ad esempio, è stato applicato questo criterio con colpisci di Cella e CellaPiena.
+
+
+### Localizzazione
+
+I casi di test si trovano nella cartella _src/test/java_, disponendoli in modo da **rispecchiare la struttura** del codice sorgente, nella cartella _src/main/java_.
+Ogni classe di test si trova nello stesso package della classe testata ed ha lo stesso nome della classe testata, con l'aggiunta del suffisso **Test**.
+
+Sono stati creati i casi di test per le seguenti classi:
+- **Cella**;
+- **CellaPiena**;
+- **Nave**;
+- **Griglia**;
+- **Partita**;
+- **GestioneStampe**;
+- **Util**;
+- **GestioneComandi** e le **classi di comandi**:
+  - **Abbandona**;
+  - **Esci**;
+  - **Facile**;
+  - **Medio**;
+  - **Difficile**;
+  - **Gioca**;
+  - **Standard**;
+  - **Large**;
+  - **ExtraLarge**;
+  - **Tempo**;
+  - **Tentativi**.
+
+
+#### Note
+
+- Per i **comandi di cambio della difficoltà**, ovvero /facile, /medio e /difficile, a causa della **ripetizione** del codice dei casi di test,
+  è stata creata una classe di test astratta, **DifficoltaTest**, che contiene i **casi di test comuni** a tutti e tre i comandi. Questa classe di test è estesa dalle classi di test per i singoli comandi.
+
+  Una metodologia analoga è stata applicata per testare i comandi di modifica della taglia della griglia, ovvero /standard, /large e /extralarge, creando la classe **TagliaGrigliaTest**.
+
+- È stato deciso di non testare i comandi di stampa, come /help e /mostratentativi, in quanto non modificano lo stato del gioco.
+
+
+### Numero di casi di test
+
+Sono stati creati **78** casi di test per testare le classi del programma.
+
+
+![screenshot_test.png](img/screenshot_test.png)
+
+
 ## 7. Manuale utente
 Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
 ### Comandi Disponibili
@@ -376,8 +554,10 @@ Si utilizza per visualizzare l'elenco dei comandi disponibili, uno per riga, per
 
 ![comando_help.png](img/comando_help.png)
 
+
 #### Comando /esci
 Per chiudere il gioco, il giocatore, può utilizzare il comando /esci. L'applicazione richiederà una conferma per procedere. Se il giocatore conferma la chiusura, l'applicazione si chiuderà e il controllo verrà restituito al sistema operativo. Se il giocatore nega la chiusura, l'applicazione sarà pronta a ricevere nuovi tentativi o comandi.
+
 ![comando_esci.png](img/comando_esci.png)
 
 ### Impostazione del livello di gioco
@@ -385,6 +565,7 @@ Il giocatore, prima dell'inizio della partita, può decidere con quale difficolt
 Di default la difficoltà è impostata a medio.
 È possibile modificare il numero massimo di tentativi falliti per ogni difficoltà utilizzando i comandi /facile [numero], /medio [numero] o /difficile [numero].
 È possibile inoltre tramite il comando /tentativi \<numero\> impostare il numero massimo di tentativi falliti senza specificarne la difficoltà.
+
 
 ##### Comando /facile
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti a 50.
@@ -483,7 +664,7 @@ Il giocatore può utilizzare il comando /extralarge per impostare la grandezza d
 ![comando_extralarge.png](img/comando_extralarge.png)
 
 
-## Comando /mostragriglia
+#### Comando /mostragriglia
 Il giocatore può utilizzare il comando /mostragriglia per visualizzare la griglia di gioco nel quale si possono vedere le navi colpite, le navi affondate e i colpi andati in mare.
 Se la nave è affondata risulterà colorata con il colore che identifica la tipologia di nave.
 Se la nave non è affondata invece risulterà del colore di base del testo del terminale utilizzato.
@@ -566,8 +747,8 @@ Dopo aver eseguito il comando ```docker pull``` copiandolo da GitHub Packages, i
 
 ## 8. Processo di sviluppo e organizzazione del lavoro
 Il gruppo Hamming, durante lo svolgimento delle consegne ha perseguito una strategia precisa nell'organizzazione e nella divisione del lavoro, tale framework di gestione è denominato "Scrum".
-#### Organizzazione del lavoro
-I progetti Scrum fanno progressi in una serie di iterazioni dette sprint, non interrompibili, con una durata, in questo caso, di 2 settimane.
+### Organizzazione del lavoro
+I progetti Scrum fanno progressi in una serie di iterazioni dette sprint, non interrompibili, con una durata, in questo caso, di 2 settimane. 
 In questo progetto precisamente il gruppo ha lavorato su 3 sprint: sprint0, sprint1, sprint2, per ognuno dei quali i requisiti sono stati: analizzati, progettati, realizzati e testati.
 Per l'organizzazione di lavoro il gruppo ha utilizzato varie piattaforme di comunicazione come: whatsapp, per fissare daily meeting o per avvisi extra di lavoro e discord utilizzato, come alternativa, per condurre daily meeting straordinari quando non vi era la possibilità di effettuarlo fisicamente.
 
@@ -579,17 +760,17 @@ Organizzazione daily meeting dello Sprint2:
 
 Al termine di ogni sprint, è stata condotta un'analisi retrospettiva tra i membri del gruppo. Questa sessione, di solito della durata di 15-30 minuti, ha fornito a ciascun membro l'opportunità di esprimere un feedback sul lavoro svolto, identificando ciò che è stato fatto correttamente e ciò che è necessario evitare per gli sprint successivi.
 
-#### Processo di sviluppo
-##### Fase iniziale
+### Processo di sviluppo
+#### Fase iniziale
 Per ogni sprint, è stata assegnata una lista di user story, ciascuna delle quali rappresenta un lavoro distinto necessario per il completamento del progetto. Queste user story sono state stabilite dal Product Owner, ovvero il responsabile esclusivo della gestione del Product Backlog. Il Product Owner prende decisioni riguardo all'accettazione o al rifiuto dei risultati del lavoro del team di sviluppo e stabilisce la data di scadenza di ciascuno sprint.
 
-##### Fase intermedia
-Il gruppo ha implementato le user story selezionate dal product backlog per lo sprint. Ogni user story è stata assegnata a uno o due membri del team di sviluppo, la cui gestione è dipesa da loro.
+#### Fase intermedia
+Il gruppo ha implementato le user story selezionate dal product backlog per lo sprint. Ogni user story è stata assegnata a uno o due membri del team di sviluppo, la cui gestione è dipesa da loro.   
 
-##### Fase finale
+#### Fase finale
 Nella fase conclusiva è stata condotta una riunione, svolta dopo la consegna di ogni sprint. La sua finalità principale è stata quella di ottenere il feedback dal product owner.
 
-#### Strumenti utilizzati
+### Strumenti utilizzati
 Durante la fase di sviluppo del progetto è stato utilizzato il sistema di versionamento Git, in particolare il modello di branching GitHub Flow.
 Per ognuno dei tre sprint è stato creato una milestone, chiamato con il nome del relativo sprint, a cui sono state assegnate tutte le issues e la project board associati allo sprint in corso.
 
