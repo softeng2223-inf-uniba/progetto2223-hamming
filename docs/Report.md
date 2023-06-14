@@ -328,6 +328,36 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
 
 Nella fase di test, sono stati creati test di unità per le classi che compongono il programma. I test sono stati scritti utilizzando il framework JUnit 5.
 
+### Criteri di selezione
+
+Per la selezione dei casi di test, sono stati usati sia criteri white-box sia black-box. Per i criteri white-box, sono stati scelti i casi di test in modo da coprire tutti i possibili percorsi di esecuzione del programma.
+- Criteri black-box
+
+  Sono stati scelti i casi di test in modo da coprire buona parte dei possibili input dell'utente.
+
+  - Analisi dei valori limite
+
+    Criterio usato in particolare per i casi in cui è chiaro l'intervallo di valori accettabili per l'input.
+
+    Ad esempio, nell'attacco di una cella con coordinate vicine al bordo, anche in caso di taglie di griglia più grandi.
+
+  - Suddivisione in classi di equivalenza
+
+    Per i casi di test che riguardano metodi con argomenti, in particolare per i comandi.
+    Per gli argomenti non validi i test si assicurano che venga lanciata l'eccezione appropriata.
+
+- Criteri white-box
+
+  - Criteri basati sul flusso di controllo
+
+    Sono stati scelti casi di test in modo da coprire la maggior parte dei possibili percorsi di esecuzione dei metodi.
+
+  - Criteri basati sul binding
+
+    Sono stati testati i metodi implementati in una gerarchia di classi e il cui comportamento cambia a seconda della classe.
+
+    Ad esempio, è stato applicato questo criterio con colpisci di Cella e CellaPiena.
+
 ## 7. Manuale utente
 Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
 ### Comandi Disponibili
