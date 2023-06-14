@@ -479,3 +479,82 @@ class GiocaTest extends SimulaStdIOStream {
                 "/gioca con partita in corso non fallisce");
     }
 }
+
+abstract class DifficoltaTest extends SimulaStdIOStream {
+    private final String difficolta;
+    private final Comando comando;
+
+    /**
+     * Costruttore della classe di test.
+     *
+     * @param difficoltaParam difficoltà da impostare
+     * @param comandoParam    comando da testare
+     */
+    DifficoltaTest(final String difficoltaParam, final Comando comandoParam) {
+        difficolta = difficoltaParam;
+        comando = comandoParam;
+    }
+
+    /**
+     * Ripristina la difficoltà di default.
+     */
+    @AfterEach
+    public void tearDown() {
+        final int tentativiFacile = 50;
+        final int tentativiMedio = 30;
+        final int tentativiDifficile = 10;
+        GestioneComandi.cancellaPartita();
+        try {
+            GestioneComandi.setLivello(Configurazioni.getLivelloDefault());
+            Configurazioni.setTentativi("facile", tentativiFacile);
+            Configurazioni.setTentativi("medio", tentativiMedio);
+            Configurazioni.setTentativi("difficile", tentativiDifficile);
+        } catch (PartitaGiaIniziataException e) {
+            fail("Il ripristino della difficoltà ha lanciato un'eccezione");
+        }
+    }
+
+    /**
+     * Test sul comando di cambio difficoltà a partita in corso.
+     * Il comando dovrebbe lanciare l'eccezione PartitaGiaIniziataException.
+     */
+    @Test
+    @DisplayName("Il comando per il cambio della difficoltà a partita in corso fallisce")
+    void testCambioDifficoltaPartitaInCorso() {
+        ComandiUtil.iniziaPartita();
+        assertThrows(PartitaGiaIniziataException.class, () -> comando.esegui(new String[0]),
+                "Il comando per il cambio della difficoltà a partita in corso non fallisce");
+    }
+
+    /**
+     * Test sul comando di cambio difficoltà con parametro valido.
+     * Il comando dovrebbe modificare la difficoltà in base al parametro.
+     */
+    @Test
+    @DisplayName("Il comando per il cambio della difficoltà con parametro 15 imposta correttamente i tentativi")
+    void testCambioDifficoltaParametroValido() {
+        final int tentativi = 15;
+        try {
+            comando.esegui(new String[]{Integer.toString(tentativi)});
+        } catch (ComandiException e) {
+            fail("Il comando per il cambio della difficoltà con parametro valido "
+                    + "ha lanciato un'eccezione: + " + e.getMessage());
+        }
+        assertEquals(tentativi, Configurazioni.getTentativi(difficolta),
+                "Il comando per il cambio della difficoltà con parametro non imposta correttamente i tentativi");
+    }
+
+
+    /**
+     * Test sul comando di cambio difficoltà con parametro non valido.
+     * Il comando non dovrebbe modificare la difficoltà.
+     */
+    @Test
+    @DisplayName("Il comando per il cambio della difficoltà con parametro non valido fallisce")
+    void testCambioDifficoltaParametroNonValido() {
+        final String parametroNonValido = "parametroNonValido";
+        assertThrows(ParametriNonCorrettiException.class, () -> comando.esegui(new String[]{parametroNonValido}),
+                "Il comando per il cambio della difficoltà con parametro non valido non fallisce");
+    }
+}
+
