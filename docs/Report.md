@@ -326,6 +326,17 @@ Le classi di tipo **\<\<Boundary>>**, ovvero quelle che si occupano dell'interaz
 
 Anche l'ultimo principio, **Do Not Repeat Yourself**, è stato rispettato, eliminando le parti di codice ripetute. Per esempio, i comandi **/facile**, **/medio** e **/difficile**, essendo molto simili tra loro, sono diventati specializzazioni di un comando che racchiude le operazioni che hanno in comune. Stessa cosa è stata realizzata per i comandi **/standard**, **/large** e **/extralarge**.<br /><br />
 
+**ERRORI SPOTBUGS**
+
+L'errore che ha dato più problemi è il seguente:
+```console
+M V EI: it.uniba.app.gioco.Partita.getGriglia() may expose internal representation by returning Partita.griglia
+```
+
+Con questo errore, Spotbugs avvisa che, restituendo il riferimento all'oggetto **griglia** da un metodo della classe **Partita**, sarebbe stato possibile poi modificare la griglia involontariamente al di fuori dell'istanza di Partita. Lo stesso errore valeva anche per i riferimenti degli oggetti **Cella**, **CellaPiena** e **Nave**.
+
+Per risolvere l'errore è stata implementata l'interfaccia **Cloneable** nelle classi **Griglia**, **Cella** e **Nave** e restituendo nei metodi get, relativi a questi oggetti, il loro clone. E' stato possibile implementare questa soluzione in quanto si aveva la necessità di accedere alla griglia (così come alle celle e alle navi) dall'esterno dell'istanza di **Partita** solo per prendere informazioni e non per modificarle.
+
 
 ## 7. Manuale utente
 Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
