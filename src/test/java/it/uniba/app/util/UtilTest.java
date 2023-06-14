@@ -28,7 +28,7 @@ class UtilTest {
      * {@link Util#suggestCommand(String)}
      */
     @Test
-    @DisplayName("Test sul suggerimento di un comando già corretto")
+    @DisplayName("Test sul suggerimento di un comando già corretto (gioca)")
     void testSuggestCommand() {
         assertEquals("gioca", Util.suggestCommand("gioca"), "Suggerimento errato partendo da un comando corretto");
     }
@@ -38,10 +38,8 @@ class UtilTest {
      * {@link Util#suggestCommand(String)}
      */
     @Test
-    @DisplayName("Test sul suggerimento di un comando partendo da un comando errato")
+    @DisplayName("Test sul suggerimento di un comando partendo da un comando errato (goica -> gioca)")
     void testSuggestCommandErrato() {
         assertEquals("gioca", Util.suggestCommand("goica"), "Suggerimento errato partendo un comando errato");
     }
-
-
 }
