@@ -678,3 +678,85 @@ abstract class TagliaGrigliaTest extends SimulaStdIOStream {
     }
 }
 
+/**
+ * Classe di test per il comando /standard.
+ * {@link Standard}
+ */
+class StandardTest extends TagliaGrigliaTest {
+    StandardTest() {
+        super(Configurazioni.DIMENSIONI_GRIGLIA_STANDARD, new Standard());
+    }
+
+    /**
+     * Test sul comando /standard.
+     * Imposta la taglia della griglia a 10x10.
+     * Il metodo è stato spostato da TagliaGrigliaTest perché Checkstyle faceva
+     * notare che non era presente alcun metodo di test in questa classe di test.
+     */
+    @Test
+    @DisplayName("/standard imposta correttamente la taglia della griglia")
+    void testCambioTagliaGriglia() {
+        final int tagliaGriglia = 10;
+        Comando comando = new Standard();
+        ComandiUtil.eseguiComando(comando, new String[0]);
+        assertTrue(Configurazioni.getRigheGriglia() == tagliaGriglia
+                        && Configurazioni.getColonneGriglia() == tagliaGriglia,
+                "Il comando per il cambio della taglia della griglia non la imposta correttamente");
+    }
+}
+
+/**
+ * Classe di test per il comando /large.
+ * {@link Large}
+ */
+class LargeTest extends TagliaGrigliaTest {
+    LargeTest() {
+        super(Configurazioni.DIMENSIONI_GRIGLIA_LARGE, new Large());
+    }
+
+    /**
+     * Test sul comando /large.
+     * Imposta la taglia della griglia a 18x18.
+     * Il metodo è stato spostato da TagliaGrigliaTest perché Checkstyle faceva
+     * notare che non era presente alcun metodo di test in questa classe di test.
+     */
+    @Test
+    @DisplayName("/large imposta correttamente la taglia della griglia")
+    void testCambioTagliaGriglia() {
+        final int tagliaGriglia = 18;
+        Comando comando = new Large();
+        ComandiUtil.eseguiComando(comando, new String[0]);
+        assertTrue(Configurazioni.getRigheGriglia() == tagliaGriglia
+                        && Configurazioni.getColonneGriglia() == tagliaGriglia,
+                "Il comando per il cambio della taglia della griglia non la imposta correttamente");
+    }
+
+}
+
+/**
+ * Classe di test per il comando /extralarge.
+ * {@link ExtraLarge}
+ */
+class ExtraLargeTest extends TagliaGrigliaTest {
+    ExtraLargeTest() {
+        super(Configurazioni.DIMENSIONI_GRIGLIA_EXTRA_LARGE, new ExtraLarge());
+    }
+
+    /**
+     * Test sul comando /extralarge.
+     * Imposta la taglia della griglia a 26x26.
+     * Il metodo è stato spostato da TagliaGrigliaTest perché Checkstyle faceva
+     * notare che non era presente alcun metodo di test in questa classe di test.
+     */
+    @Test
+    @DisplayName("/extralarge imposta correttamente la taglia della griglia")
+    void testCambioTagliaGriglia() {
+        final int tagliaGriglia = 26;
+        Comando comando = new ExtraLarge();
+        ComandiUtil.eseguiComando(comando, new String[0]);
+        assertTrue(Configurazioni.getRigheGriglia() == tagliaGriglia
+                        && Configurazioni.getColonneGriglia() == tagliaGriglia,
+                "Il comando per il cambio della taglia della griglia non la imposta correttamente");
+    }
+
+}
