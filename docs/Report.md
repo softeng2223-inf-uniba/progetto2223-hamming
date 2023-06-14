@@ -315,6 +315,17 @@ Sono stati omessi i diagrammi delle classi e di sequenza relativi ai comandi **/
 **Diagramma di sequenza**
 ![diagramma_sequenza_attacco.png](../drawings/diagramma_sequenza_attacco.jpg)<br /><br />
 
+### 5.2 Analisi delle decisioni prese con riferimento ai principi di OO design
+
+Ogni classe all'interno del codice implementa il principio di **information hiding**. Tutti gli attributi (e quindi lo stato delle classi) sono privati, cioè visibili ai soli metodi della classe. Per quanto riguarda i metodi, quelli necessari a classi in altri package sono stati resi pubblici, quelli utilizzati da classi dello stesso package hanno visibilità friendly, mentre il resto è rimasto privato.
+
+A ogni classe è stato associato un unico compito avendo così una responsabilità ben definita. Le classi diventano quindi di facile comprensione e modifica e, inoltre. Questo soddisfa il principio di **alta coesione**. In questo modo ogni classe viene modificata per non più di una ragione (**Single Responsibility** dei principi SOLID).
+Avendo compiti separati, le modifiche effettuate in una classe avranno poco impatto sulle altre classi: in questo modo viene rispettato il principio di **basso accoppiamento**. Non sono presenti infatti forti dipendenze tra i diversi componenti.
+
+Le classi di tipo **\<\<Boundary>>**, ovvero quelle che si occupano dell'interazione con l'utente, comunicano con le classi **\<\<Entity>>** solo attarverso specifiche classi **\<\<Control>>**. Viceversa, le classi **\<\<Entity>>**, rappresentando i concetti principali dell'applicazione, non hanno bisogno di interagire con la classi **\<\<Boundary>>**. In questo modo si garantisce una separazione tra la parte di codice relativa alla presentazione e il resto dell'applicazione. L'uso della tassonomia ECB garantisce così il principio di **presentazione separata**. In questo modo sarà possibile, in futuro, cambiare le parti grafiche dell'applicazione senza modificare il resto del codice.
+
+Anche l'ultimo principio, **Do Not Repeat Yourself**, è stato rispettato, eliminando le parti di codice ripetute. Per esempio, i comandi **/facile**, **/medio** e **/difficile**, essendo molto simili tra loro, sono diventati specializzazioni di un comando che racchiude le operazioni che hanno in comune. Stessa cosa è stata realizzata per i comandi **/standard**, **/large** e **/extralarge**.<br /><br />
+
 
 ## 7. Manuale utente
 Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
