@@ -335,24 +335,24 @@ Per la selezione dei casi di test, sono stati usati sia criteri white-box sia bl
 
   Sono stati scelti i casi di test in modo da coprire buona parte dei possibili input dell'utente.
 
-  - Analisi dei valori limite
+  - **Analisi dei valori limite**
 
     Criterio usato in particolare per i casi in cui è chiaro l'intervallo di valori accettabili per l'input.
 
     Ad esempio, nell'attacco di una cella con coordinate vicine al bordo, anche in caso di taglie di griglia più grandi.
 
-  - Suddivisione in classi di equivalenza
+  - **Suddivisione in classi di equivalenza**
 
     Per i casi di test che riguardano metodi con argomenti, in particolare per i comandi.
     Per gli argomenti non validi i test si assicurano che venga lanciata l'eccezione appropriata.
 
 - **Criteri white-box**
 
-  - Criteri basati sul flusso di controllo
+  - **Criteri basati sul flusso di controllo**
 
     Sono stati scelti casi di test in modo da coprire la maggior parte dei possibili percorsi di esecuzione dei metodi.
 
-  - Criteri basati sul binding
+  - **Criteri basati sul binding**
 
     Sono stati testati i metodi implementati in una gerarchia di classi e il cui comportamento cambia a seconda della classe.
 
@@ -361,8 +361,8 @@ Per la selezione dei casi di test, sono stati usati sia criteri white-box sia bl
 
 ### Localizzazione
 
-I casi di test si trovano nella cartella src/test/java, secondo una struttura che rispecchia quella del codice sorgente, nella cartella src/main/java.
-Ogni classe di test si trova nello stesso package della classe testata ed ha lo stesso nome della classe testata, con il suffisso **Test**.
+I casi di test si trovano nella cartella _src/test/java_, disponendoli in modo da **rispecchiare la struttura** del codice sorgente, nella cartella _src/main/java_.
+Ogni classe di test si trova nello stesso package della classe testata ed ha lo stesso nome della classe testata, con l'aggiunta del suffisso **Test**.
 
 Sono stati creati i casi di test per le seguenti classi:
 - **Cella**;
@@ -388,17 +388,17 @@ Sono stati creati i casi di test per le seguenti classi:
 
 #### Note
 
-- Per i comandi di cambio della difficoltà, ovvero /facile, /medio e /difficile, a causa della ripetizione nel codice dei casi di test,
-  è stata creata una classe di test astratta, DifficoltaTest, che contiene i casi di test comuni a tutti e tre i comandi. Questa classe di test è estesa dalle classi di test per i singoli comandi.
+- Per i **comandi di cambio della difficoltà**, ovvero /facile, /medio e /difficile, a causa della **ripetizione** del codice dei casi di test,
+  è stata creata una classe di test astratta, **DifficoltaTest**, che contiene i **casi di test comuni** a tutti e tre i comandi. Questa classe di test è estesa dalle classi di test per i singoli comandi.
 
-  Una metodologia analoga è stata applicata per testare i comandi di modifica della taglia della griglia, ovvero /standard, /large e /extralarge, creando la classe TagliaGrigliaTest.
+  Una metodologia analoga è stata applicata per testare i comandi di modifica della taglia della griglia, ovvero /standard, /large e /extralarge, creando la classe **TagliaGrigliaTest**.
 
 - È stato deciso di non testare i comandi di stampa, come /help e /mostratentativi, in quanto non modificano lo stato del gioco.
 
 
 ### Numero di casi di test
 
-Sono stati creati 78 casi di test per testare le classi del programma.
+Sono stati creati **78** casi di test per testare le classi del programma.
 
 
 
