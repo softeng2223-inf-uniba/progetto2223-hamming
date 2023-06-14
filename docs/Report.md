@@ -325,6 +325,7 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
 
 ### Diagramma dei package
 
+![diagramma_dei_package.png](../drawings/diagramma_dei_package.png) <br /><br />
 
 ## 7. Manuale utente
 Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
