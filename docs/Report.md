@@ -318,7 +318,7 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
     Dopo aver eseguito il comando docker pull copiandolo da GitHub Packages, il comando Docker da usare per eseguire il container contenente l'applicazione è:
 
     ```console
-    docker run --rm -it ghcr.io/softeng2223-inf-uniba/battleship-base2223:latest
+    docker run --rm -it ghcr.io/softeng2223-inf-uniba/battleship-hamming:latest
     ```
     <br />
 - **RNF2**: Il gioco deve offrire un'interfaccia utente intuitiva e facile da usare. (Usabilità)<br /><br />
