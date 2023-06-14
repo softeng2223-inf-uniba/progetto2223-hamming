@@ -238,6 +238,7 @@ Si utilizza per visualizzare l'elenco dei comandi disponibili, uno per riga, per
 
 ![comando_help.png](img/comando_help.png)
 
+
 #### Comando /esci
 Per chiudere il gioco, il giocatore, può utilizzare il comando /esci. L'applicazione richiederà una conferma per procedere. Se il giocatore conferma la chiusura, l'applicazione si chiuderà e il controllo verrà restituito al sistema operativo. Se il giocatore nega la chiusura, l'applicazione sarà pronta a ricevere nuovi tentativi o comandi.
 ![comando_esci.png](img/comando_esci.png)
@@ -247,6 +248,7 @@ Il giocatore, prima dell'inizio della partita, può decidere con quale difficolt
 Di default la difficoltà è impostata a medio.
 È possibile modificare il numero massimo di tentativi falliti per ogni difficoltà utilizzando i comandi /facile [numero], /medio [numero] o /difficile [numero].
 È possibile inoltre tramite il comando /tentativi \<numero\> impostare il numero massimo di tentativi falliti senza specificarne la difficoltà.
+
 
 ##### Comando /facile
 Il gioco risponderà con "OK" e imposterà il numero massimo di tentativi falliti a 50.
