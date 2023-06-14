@@ -241,6 +241,7 @@ Si utilizza per visualizzare l'elenco dei comandi disponibili, uno per riga, per
 
 #### Comando /esci
 Per chiudere il gioco, il giocatore, può utilizzare il comando /esci. L'applicazione richiederà una conferma per procedere. Se il giocatore conferma la chiusura, l'applicazione si chiuderà e il controllo verrà restituito al sistema operativo. Se il giocatore nega la chiusura, l'applicazione sarà pronta a ricevere nuovi tentativi o comandi.
+
 ![comando_esci.png](img/comando_esci.png)
 
 ### Impostazione del livello di gioco
