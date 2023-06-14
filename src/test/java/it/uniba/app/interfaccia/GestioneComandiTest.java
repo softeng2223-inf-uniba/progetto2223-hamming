@@ -211,3 +211,46 @@ final class ComandiUtil {
         }
     }
 }
+
+/**
+ * Classe di test per il comando /esci.
+ */
+class EsciTest extends SimulaStdIOStream {
+    /**
+     * Ripristina dall'interruzione dell'applicazione.
+     */
+    @AfterEach
+    void tearDown() {
+        GestioneComandi.setContinua(true);
+    }
+
+    /**
+     * Test sul comando /esci.
+     * Da conferma al voler uscire e verifica se interrompe l'applicazione.
+     * {@link Esci#esegui(String[])}
+     */
+    @Test
+    @DisplayName("/esci interrompe l'applicazione")
+    void testEsci() {
+        Esci esci = new Esci();
+        simulaInput("s");
+        ComandiUtil.eseguiComando(esci, new String[0]);
+        assertFalse(GestioneComandi.getContinua(), "/esci non ha interrotto l'applicazione");
+    }
+
+    /**
+     * Test sul comando /esci con conferma negativa, dunque
+     * il comando non dovrebbe modificare l'applicazione.
+     * {@link Esci#esegui(String[])}
+     */
+    @Test
+    @DisplayName("/esci con conferma negativa non interrompe l'applicazione")
+    void testEsciConfermaNegativa() {
+        Esci esci = new Esci();
+        simulaInput("n");
+        ComandiUtil.eseguiComando(esci, new String[0]);
+        assertTrue(GestioneComandi.getContinua(), "/esci con conferma negativa ha interrotto l'applicazione");
+    }
+
+}
+
