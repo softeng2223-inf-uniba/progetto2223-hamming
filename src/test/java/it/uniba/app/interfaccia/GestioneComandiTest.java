@@ -367,3 +367,75 @@ class TempoTest extends SimulaStdIOStream {
     }
 }
 
+/**
+ * Classe di test per il comando /tentativi.
+ * {@link Tentativi}
+ */
+class TentativiTest extends SimulaStdIOStream {
+    /**
+     * Ripristina la partita.
+     */
+    @AfterEach
+    public void tearDown() {
+        GestioneComandi.cancellaPartita();
+    }
+
+    /**
+     * Test sul comando /tentativi.
+     * Imposta un limite di tentativi pari a 15.
+     * {@link Tentativi#esegui(String[])}
+     */
+    @Test
+    @DisplayName("/tentativi 15 imposta un limite di tentativi pari a 15")
+    void testTentativi() {
+        final int limiteTentativi = 15;
+        Tentativi tentativi = new Tentativi();
+        ComandiUtil.eseguiComando(tentativi, new String[]{Integer.toString(limiteTentativi)});
+        ComandiUtil.iniziaPartita();
+
+        assertEquals(limiteTentativi, GestioneComandi.getPartita().getTentativiRimasti(),
+                "/tentativi non imposta correttamente il limite di tentativi");
+    }
+
+    /**
+     * Test sul comando /tentativi con parametro 0.
+     * Il comando dovrebbe lanciare l'eccezione ParametriNonCorrettiException.
+     * {@link Tentativi#esegui(String[])}
+     */
+    @Test
+    @DisplayName("/tentativi 0 fallisce")
+    void testTentativiParametroZero() {
+        final int limiteTentativi = 0;
+        Tentativi tentativi = new Tentativi();
+        assertThrows(ParametriNonCorrettiException.class, () ->
+                        tentativi.esegui(new String[]{Integer.toString(limiteTentativi)}),
+                "/tentativi con parametro 0 non lancia ParametriNonCorrettiException");
+    }
+
+    /**
+     * Test sul comando /tentativi con parametro non valido.
+     * Il comando non dovrebbe modificare il limite di tentativi.
+     * {@link Tentativi#esegui(String[])}
+     */
+    @Test
+    @DisplayName("/tentativi parametroInvalido non modifica il limite di tentativi")
+    void testTentativiParametroNonValido() {
+        Tentativi tentativi = new Tentativi();
+        assertThrows(ParametriNonCorrettiException.class, () -> tentativi.esegui(new String[]{"parametroInvalido"}),
+                "/tentativi con parametro non valido non lancia ParametriNonCorrettiException");
+    }
+
+    /**
+     * Test sul comando /tentativi a partita iniziata.
+     * Il comando non dovrebbe modificare il limite di tentativi.
+     * {@link Tentativi#esegui(String[])}
+     */
+    @Test
+    @DisplayName("/tentativi non modifica il limite di tentativi a partita iniziata")
+    void testTentativiPartitaIniziata() {
+        Tentativi tentativi = new Tentativi();
+        ComandiUtil.iniziaPartita();
+        assertThrows(PartitaGiaIniziataException.class, () -> tentativi.esegui(new String[]{"20"}),
+                "/tentativi non lancia PartitaGiaIniziataException a partita iniziata");
+    }
+}
