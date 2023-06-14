@@ -5,6 +5,7 @@
 - [3. Requisiti specifici](#3-requisiti-specifici)
     - [3.1 Requisiti funzionali](#31-requisiti-funzionali)
     - [3.2 Requisiti non funzionali](#32-requisiti-non-funzionali)
+- [6. Riepilogo del test](#6-riepilogo-del-test)
 - [7. Manuale Utente](#7-manuale-utente)
 - [8. Processo di sviluppo e organizzazione del lavoro](#8-Processo-di-sviluppo-e-organizzazione-del-lavoro)
 - [9. Analisi retrospettiva](#9-analisi-retrospettiva)
@@ -320,6 +321,88 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
 - **RNF3**: Il gioco deve gestire errori e ogni tipo di situazione in modo da non provocare interruzioni o crash. (Affidabilità)<br /><br />
 - **RNF4**: Il gioco deve essere sviluppato in maniera tale da garantire l'aggiunta di nuove funzionalità o miglioramenti senza modificare l'intero codice. (Manutenibilità)<br /><br />
 - **RNF5**: Il gioco deve garantire prestazioni ottime in termini di utilizzo di memoria e latenza. (Efficienza)<br /><br />
+
+
+
+## 6. Riepilogo del test
+
+Nella fase di test, sono stati creati test di unità per le classi che compongono il programma. I test sono stati scritti utilizzando il framework JUnit 5.
+
+### Criteri di selezione
+
+Per la selezione dei casi di test, sono stati usati sia criteri white-box sia black-box. Per i criteri white-box, sono stati scelti i casi di test in modo da coprire tutti i possibili percorsi di esecuzione del programma.
+- **Criteri black-box**
+
+  Sono stati scelti i casi di test in modo da coprire buona parte dei possibili input dell'utente.
+
+  - **Analisi dei valori limite**
+
+    Criterio usato in particolare per i casi in cui è chiaro l'intervallo di valori accettabili per l'input.
+
+    Ad esempio, nell'attacco di una cella con coordinate vicine al bordo, anche in caso di taglie di griglia più grandi.
+
+  - **Suddivisione in classi di equivalenza**
+
+    Per i casi di test che riguardano metodi con argomenti, in particolare per i comandi.
+    Per gli argomenti non validi i test si assicurano che venga lanciata l'eccezione appropriata.
+
+- **Criteri white-box**
+
+  - **Criteri basati sul flusso di controllo**
+
+    Sono stati scelti casi di test in modo da coprire la maggior parte dei possibili percorsi di esecuzione dei metodi.
+
+  - **Criteri basati sul binding**
+
+    Sono stati testati i metodi implementati in una gerarchia di classi e il cui comportamento cambia a seconda della classe.
+
+    Ad esempio, è stato applicato questo criterio con colpisci di Cella e CellaPiena.
+
+
+### Localizzazione
+
+I casi di test si trovano nella cartella _src/test/java_, disponendoli in modo da **rispecchiare la struttura** del codice sorgente, nella cartella _src/main/java_.
+Ogni classe di test si trova nello stesso package della classe testata ed ha lo stesso nome della classe testata, con l'aggiunta del suffisso **Test**.
+
+Sono stati creati i casi di test per le seguenti classi:
+- **Cella**;
+- **CellaPiena**;
+- **Nave**;
+- **Griglia**;
+- **Partita**;
+- **GestioneStampe**;
+- **Util**;
+- **GestioneComandi** e le **classi di comandi**:
+  - **Abbandona**;
+  - **Esci**;
+  - **Facile**;
+  - **Medio**;
+  - **Difficile**;
+  - **Gioca**;
+  - **Standard**;
+  - **Large**;
+  - **ExtraLarge**;
+  - **Tempo**;
+  - **Tentativi**.
+
+
+#### Note
+
+- Per i **comandi di cambio della difficoltà**, ovvero /facile, /medio e /difficile, a causa della **ripetizione** del codice dei casi di test,
+  è stata creata una classe di test astratta, **DifficoltaTest**, che contiene i **casi di test comuni** a tutti e tre i comandi. Questa classe di test è estesa dalle classi di test per i singoli comandi.
+
+  Una metodologia analoga è stata applicata per testare i comandi di modifica della taglia della griglia, ovvero /standard, /large e /extralarge, creando la classe **TagliaGrigliaTest**.
+
+- È stato deciso di non testare i comandi di stampa, come /help e /mostratentativi, in quanto non modificano lo stato del gioco.
+
+
+### Numero di casi di test
+
+Sono stati creati **78** casi di test per testare le classi del programma.
+
+
+![screenshot_test.png](img/screenshot_test.png)
+
 
 
 ## 7. Manuale utente
