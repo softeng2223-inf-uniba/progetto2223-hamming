@@ -358,6 +358,31 @@ Per la selezione dei casi di test, sono stati usati sia criteri white-box sia bl
 
     Ad esempio, è stato applicato questo criterio con colpisci di Cella e CellaPiena.
 
+
+### Localizzazione
+
+I casi di test si trovano nella cartella **src/test/java**, secondo una struttura che rispecchia quella del codice sorgente, nella cartella **src/main/java**.
+Ogni classe di test si trova nello stesso package della classe testata ed ha lo stesso nome della classe testata, con il suffisso Test.
+Sono stati creati i casi di test per le seguenti classi:
+- **Cella**;
+- **CellaPiena**;
+- **Nave**;
+- **Griglia**;
+- **Partita**;
+- **GestioneStampe**;
+- **Util**;
+- **GestioneComandi** e le **classi di comandi**:
+  - **Abbandona**;
+  - **Esci**;
+  - **Facile**;
+  - **Medio**;
+  - **Difficile**;
+  - **Gioca**;
+  - **Standard**;
+  - **Large**;
+  - **ExtraLarge**;
+  - **Tempo**;
+  - **Tentativi**.
 ## 7. Manuale utente
 Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
 ### Comandi Disponibili
