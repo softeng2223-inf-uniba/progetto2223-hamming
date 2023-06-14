@@ -292,6 +292,15 @@ Sono stati omessi i diagrammi delle classi e di sequenza della user story relati
 **Diagramma di sequenza**
 ![diagramma_sequenza_mostratempo.png](../drawings/diagramma_sequenza_mostratempo.jpg)<br /><br />
 
+#### 5.1.9 Come giocatore voglio impostare la taglia della griglia
+**Diagramma delle classi**
+![diagramma_classi_standard.png](../drawings/diagramma_classi_standard.jpg)
+
+**Diagramma di sequenza**
+![diagramma_sequenza_standard.png](../drawings/diagramma_sequenza_standard.jpg)
+
+Sono stati omessi i diagrammi delle classi e di sequenza relativi ai comandi **/large** e **/extralarge** in quanto sono molto simili a quelli del comando **/standard**.<br /><br />
+
 
 ## 7. Manuale utente
 Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
