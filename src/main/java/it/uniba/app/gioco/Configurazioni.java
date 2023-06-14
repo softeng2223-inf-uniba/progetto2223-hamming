@@ -166,7 +166,7 @@ public final class Configurazioni {
 }
 
 /**
- * Classe che rappresentale le configurazioni di una tipologia di nave.
+ * Classe che rappresenta le configurazioni di una tipologia di nave.
  * Contiene il numero di navi della stessa tipologia, la lunghezza e il simbolo
  * da stampare per
  * far vedere la nave sulla griglia.
