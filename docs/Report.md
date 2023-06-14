@@ -308,6 +308,13 @@ Sono stati omessi i diagrammi delle classi e di sequenza relativi ai comandi **/
 **Diagramma di sequenza**
 ![diagramma_sequenza_tentativi.png](../drawings/diagramma_sequenza_tentativi.jpg)<br /><br />
 
+#### 5.1.11 Come giocatore voglio effettuare un tentativo per colpire una nave
+**Diagramma delle classi**
+![diagramma_classi_attacco.png](../drawings/diagramma_classi_attacco.jpg)
+
+**Diagramma di sequenza**
+![diagramma_sequenza_attacco.png](../drawings/diagramma_sequenza_attacco.jpg)<br /><br />
+
 
 ## 7. Manuale utente
 Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
