@@ -25,7 +25,7 @@
 
 # Convenzioni del codice
 * Nomi di **classi e interfacce**: I nomi iniziano con la lettera maiuscola e ogni nuova parola inizia con la lettera maiuscola. Lo spazio tra le parole viene eliminato (PascalCase). Esempio: ***NomeClasse***
-* Nomi di **variabili**: I nomi sono scritti tutti in lettere minuscole e lo spazio tra le parole viene sostituito dal carattere speciale "**_**" (snake_case). Esempio: ***nome_variabile***
+* Nomi di **variabili**: I nomi sono scritti con la prima lettera minuscola e ogni nuova parola inizia con la lettera maiuscola. Lo spazio tra le parole viene eliminato (camelCase). Esempio: ***nomeVariabile***
 * Nomi di **costanti**: I nomi sono scritti tutti in lettere maiuscole e lo spazio tra le parole viene sostituito dal carattere speciale "**_**" (UPPER_SNAKE_CASE). Esempio: ***NOME_COSTANTE***
 * Nomi di **metodi**: I nomi sono scritti con la prima lettera minuscola e ogni nuova parola inizia con la lettera maiuscola. Lo spazio tra le parole viene eliminato (camelCase). Esempio: ***nomeMetodo()***
 * Nomi di **package**: I nomi sono scritti in lettere minuscole e lo spazio tra le parole viene eliminato (lowercase). Esempio: ***nomepackage***
