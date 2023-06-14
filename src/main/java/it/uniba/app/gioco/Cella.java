@@ -15,7 +15,7 @@ public class Cella implements Cloneable {
     private boolean colpita;
 
     /**
-     * Costruttore della classe che initializza la cella come non colpita.
+     * Costruttore della classe che inizializza la cella come non colpita.
      */
     public Cella() {
         colpita = false;

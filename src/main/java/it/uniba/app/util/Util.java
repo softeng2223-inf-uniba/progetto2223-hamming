@@ -53,4 +53,17 @@ public final class Util {
         }
         return suggestedString;
     }
+
+    /**
+     * Metodo che restituisce una stringa contenente i minuti e i secondi.
+     *
+     * @param secondi tempo in secondi
+     * @return stringa contenente i minuti e i secondi
+     */
+    public static String getMinuti(final float secondi) {
+        final int secondiInMinuto = 60;
+        int min = (int) (secondi / secondiInMinuto);
+        int sec = Math.round(secondi % secondiInMinuto);
+        return min + ":" + (String.valueOf(sec).length() == 2 ? sec : "0" + sec);
+    }
 }

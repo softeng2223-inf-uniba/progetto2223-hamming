@@ -1,17 +1,19 @@
 package it.uniba.app.interfaccia;
 
-import java.util.Arrays;
-
 import it.uniba.app.exceptions.CellaGiaColpitaException;
 import it.uniba.app.exceptions.ComandiException;
 import it.uniba.app.exceptions.ComandoNonEsistenteException;
 import it.uniba.app.exceptions.FuoriDallaGrigliaException;
+import it.uniba.app.exceptions.LivelloNonEsistenteException;
 import it.uniba.app.exceptions.ParametriNonCorrettiException;
 import it.uniba.app.exceptions.PartitaGiaIniziataException;
 import it.uniba.app.exceptions.PartitaNonIniziataException;
 import it.uniba.app.gioco.Configurazioni;
 import it.uniba.app.gioco.EsitoColpo;
 import it.uniba.app.gioco.Partita;
+import it.uniba.app.util.Util;
+
+import java.util.Arrays;
 
 /**
  * <<Control>>
@@ -93,6 +95,9 @@ public final class GestioneComandi {
      * Imposta il livello di difficoltà.
      */
     public static void setLivello(final String livelloParam) throws PartitaGiaIniziataException {
+        if (!Configurazioni.esisteLivello(livelloParam)) {
+            throw new LivelloNonEsistenteException("Il livello inserito non esiste");
+        }
         if (partita != null) {
             throw new PartitaGiaIniziataException("Non puoi cambiare difficoltà durante una partita");
         }
@@ -152,6 +157,13 @@ public final class GestioneComandi {
     }
 
     /**
+     * Imposta l'attributo tempoInizio.
+     */
+    public static void setTempoInizio(final long tempoInizioParam) {
+        tempoInizio = tempoInizioParam;
+    }
+
+    /**
      * Metodo che inizia il conteggio del tempo della partita.
      */
     static void avviaTempo() {
@@ -182,22 +194,10 @@ public final class GestioneComandi {
      * @return true se il tempo è scaduto, false altrimenti
      */
     public static boolean tempoScaduto() {
-        if(!tempoImpostato()) {
+        if (!tempoImpostato()) {
             return false;
         }
         return tempoTrascorso() >= tempo * SECONDI;
-    }
-
-    /**
-     * Metodo che restituisce una stringa contenente i minuti e i secondi.
-     *
-     * @param secondi tempo in secondi
-     * @return stringa contenente i minuti e i secondi
-     */
-    static String getMinuti(final float secondi) {
-        int min = (int) (secondi / SECONDI);
-        int sec = Math.round(secondi % SECONDI);
-        return min + ":" + (String.valueOf(sec).length() == 2 ? sec : "0" + sec);
     }
 
     /**
@@ -257,7 +257,7 @@ public final class GestioneComandi {
             }
             Grafica.stampaMessaggio("Tentativi effettuati: " + GestioneComandi.getPartita().getTentativiEffettuati());
             Grafica.stampaMessaggio("Tempo trascorso: "
-                    + GestioneComandi.getMinuti(GestioneComandi.tempoTrascorso()) + " minuti");
+                    + Util.getMinuti(GestioneComandi.tempoTrascorso()) + " minuti");
         } catch (FuoriDallaGrigliaException | CellaGiaColpitaException e) {
             Grafica.stampaWarning(e.getMessage());
         } catch (CloneNotSupportedException e) {
@@ -327,7 +327,7 @@ abstract class CambioDifficolta extends Comando {
      * @throws ParametriNonCorrettiException i parametri sono più di uno
      * @throws PartitaGiaIniziataException   non si può inizializzare una partita se è già in corso
      */
-    void cambiaDifficolta(final String difficolta, final String[] parametri)
+    static void cambiaDifficolta(final String difficolta, final String[] parametri)
             throws ParametriNonCorrettiException, PartitaGiaIniziataException {
         if (parametri.length > 1) {
             throw new ParametriNonCorrettiException("Troppi parametri per il comando. "
@@ -437,7 +437,7 @@ class MostraLivello extends Comando {
     void esegui(final String[] parametri) throws ParametriNonCorrettiException {
         if (parametri.length > 0) {
             throw new ParametriNonCorrettiException("Troppo parametri per il comando."
-            + " Utilizzo corretto: /mostralivello");
+                    + " Utilizzo corretto: /mostralivello");
         }
 
         Grafica.mostraLivello(GestioneComandi.getLivello());
@@ -460,7 +460,7 @@ class Gioca extends Comando {
         return "Inizia una nuova partita";
     }
 
-    void esegui(final String[] parametri) throws ParametriNonCorrettiException {
+    void esegui(final String[] parametri) throws ParametriNonCorrettiException, PartitaGiaIniziataException {
         if (parametri.length > 0) {
             throw new ParametriNonCorrettiException("Troppo parametri per il comando. Utilizzo corretto: /gioca");
         }
@@ -471,8 +471,6 @@ class Gioca extends Comando {
             Grafica.stampaMessaggio("Nuova partita iniziata\n");
             GestioneComandi.avviaTempo();
             GestioneStampe.stampaGrigliaColpita(GestioneComandi.getPartita().getGriglia());
-        } catch (PartitaGiaIniziataException e) {
-            Grafica.stampaWarning(e.getMessage());
         } catch (CloneNotSupportedException e) {
             Grafica.stampaErrore("Impossibile stampare la griglia: clonazione di griglia fallita");
         }
@@ -519,7 +517,7 @@ class SvelaGriglia extends Comando {
     public void esegui(final String[] parametri) throws ParametriNonCorrettiException, PartitaNonIniziataException {
         if (parametri.length > 0) {
             throw new ParametriNonCorrettiException("Troppo parametri per il comando."
-            + " Utilizzo corretto: /svelagriglia");
+                    + " Utilizzo corretto: /svelagriglia");
         }
 
         if (!GestioneComandi.partitaIniziata()) {
@@ -575,14 +573,12 @@ abstract class CambioTagliaGriglia extends Comando {
         }
 
         if (GestioneComandi.partitaIniziata()) {
-            throw new PartitaGiaIniziataException();
+            throw new PartitaGiaIniziataException("Non puoi cambiare la taglia della griglia durante una partita");
         }
-
 
         Configurazioni.setRigheGriglia(tagliaGriglia);
         Configurazioni.setColonneGriglia(tagliaGriglia);
         Grafica.stampaMessaggio("Dimensione della griglia impostata a " + tagliaGriglia + "x" + tagliaGriglia);
-
     }
 }
 
@@ -706,19 +702,20 @@ class Tempo extends Comando {
         if (GestioneComandi.partitaIniziata()) {
             throw new PartitaGiaIniziataException("Non puoi cambiare il tempo di gioco durante una partita");
         }
+        int tempo;
         try {
-            int tempo = Integer.parseInt(parametri[0]);
-            if (tempo < 0) {
-                throw new ParametriNonCorrettiException("Il tempo di gioco deve essere maggiore o"
-                        + "uguale a 0 (0 in caso di nessun limite)");
-            }
-            GestioneComandi.setTempo(tempo);
-            Grafica.stampaMessaggio(
-                    "Tempo di gioco impostato a: " + (tempo == 0 ? "nessun limite" : tempo + " minuti"));
+            tempo = Integer.parseInt(parametri[0]);
         } catch (NumberFormatException e) {
             throw new ParametriNonCorrettiException("Il parametro <tempo> non è un numero intero."
                     + "Utilizzo corretto: /tempo <tempo>");
         }
+        if (tempo < 0) {
+            throw new ParametriNonCorrettiException("Il tempo di gioco deve essere maggiore o"
+                    + "uguale a 0 (0 in caso di nessun limite)");
+        }
+        GestioneComandi.setTempo(tempo);
+        Grafica.stampaMessaggio(
+                "Tempo di gioco impostato a: " + (tempo == 0 ? "nessun limite" : tempo + " minuti"));
     }
 }
 
@@ -740,7 +737,7 @@ class MostraGriglia extends Comando {
     public void esegui(final String[] parametri) throws ParametriNonCorrettiException, PartitaNonIniziataException {
         if (parametri.length > 0) {
             throw new ParametriNonCorrettiException("Troppi parametri per il comando."
-            + " Utilizzo corretto: /mostragriglia");
+                    + " Utilizzo corretto: /mostragriglia");
         }
 
         if (!GestioneComandi.partitaIniziata()) {
@@ -784,12 +781,12 @@ class MostraTempo extends Comando {
 
         if (!GestioneComandi.tempoScaduto()) {
             Grafica.stampaMessaggio("Tempo trascorso: "
-                    + GestioneComandi.getMinuti(GestioneComandi.tempoTrascorso()) + " minuti");
+                    + Util.getMinuti(GestioneComandi.tempoTrascorso()) + " minuti");
             if (!GestioneComandi.tempoImpostato()) {
                 Grafica.stampaMessaggio("Tempo rimanente: nessun limite di tempo");
             } else {
                 Grafica.stampaMessaggio("Tempo rimanente: "
-                        + GestioneComandi.getMinuti(GestioneComandi.tempoRimasto()) + " minuti");
+                        + Util.getMinuti(GestioneComandi.tempoRimasto()) + " minuti");
             }
         } else {
             GestioneComandi.terminaPartita("persa: tempo scaduto");
@@ -868,9 +865,9 @@ class MostraTentativi extends Comando {
 
         Grafica.stampaMessaggio("Tentativi effettuati: " + GestioneComandi.getPartita().getTentativiEffettuati());
         Grafica.stampaMessaggio("Tentativi falliti: "
-        + (Configurazioni.getTentativi(GestioneComandi.getPartita().getLivello())
-        - GestioneComandi.getPartita().getTentativiRimasti()));
+                + (Configurazioni.getTentativi(GestioneComandi.getPartita().getLivello())
+                - GestioneComandi.getPartita().getTentativiRimasti()));
         Grafica.stampaMessaggio("Tentativi massimi: "
-        + Configurazioni.getTentativi(GestioneComandi.getPartita().getLivello()));
+                + Configurazioni.getTentativi(GestioneComandi.getPartita().getLivello()));
     }
 }
