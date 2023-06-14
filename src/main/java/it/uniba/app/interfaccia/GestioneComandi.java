@@ -152,6 +152,13 @@ public final class GestioneComandi {
     }
 
     /**
+     * Imposta l'attributo tempoInizio.
+     */
+    public static void setTempoInizio(final long tempoInizioParam) {
+        tempoInizio = tempoInizioParam;
+    }
+
+    /**
      * Metodo che inizia il conteggio del tempo della partita.
      */
     static void avviaTempo() {
