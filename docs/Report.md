@@ -276,6 +276,21 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
   - se la conferma è positiva, l’applicazione risponde visualizzando sulla griglia la posizione di tutte le navi e si predispone a ricevere nuovi comandi. 
 
   - se la conferma è negativa, l'applicazione si predispone a ricevere nuovi tentativi o comandi. <br /><br />
+- **RF16**: Come giocatore voglio impostare il numero massimo di tentativi falliti per livello di gioco. 
+
+  **Criteri di accettazione** 
+
+  Al comando **/facile numero**
+
+  l’applicazione risponde con OK e imposta a numero il numero massimo di tentativi falliti.
+
+  Al comando **/medio numero** 
+
+  l’applicazione risponde con OK e imposta a numero il numero massimo di tentativi falliti.
+
+  Al comando **/difficile numero** 
+
+  l’applicazione risponde con OK e imposta a numero il numero massimo di tentativi falliti. <br /><br />
 
 ### 3.2 Requisiti non funzionali
 
