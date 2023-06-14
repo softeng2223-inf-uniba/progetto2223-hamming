@@ -331,7 +331,7 @@ Nella fase di test, sono stati creati test di unità per le classi che compongon
 ### Criteri di selezione
 
 Per la selezione dei casi di test, sono stati usati sia criteri white-box sia black-box. Per i criteri white-box, sono stati scelti i casi di test in modo da coprire tutti i possibili percorsi di esecuzione del programma.
-- Criteri black-box
+- **Criteri black-box**
 
   Sono stati scelti i casi di test in modo da coprire buona parte dei possibili input dell'utente.
 
@@ -346,7 +346,7 @@ Per la selezione dei casi di test, sono stati usati sia criteri white-box sia bl
     Per i casi di test che riguardano metodi con argomenti, in particolare per i comandi.
     Per gli argomenti non validi i test si assicurano che venga lanciata l'eccezione appropriata.
 
-- Criteri white-box
+- **Criteri white-box**
 
   - Criteri basati sul flusso di controllo
 
@@ -361,8 +361,9 @@ Per la selezione dei casi di test, sono stati usati sia criteri white-box sia bl
 
 ### Localizzazione
 
-I casi di test si trovano nella cartella **src/test/java**, secondo una struttura che rispecchia quella del codice sorgente, nella cartella **src/main/java**.
-Ogni classe di test si trova nello stesso package della classe testata ed ha lo stesso nome della classe testata, con il suffisso Test.
+I casi di test si trovano nella cartella src/test/java, secondo una struttura che rispecchia quella del codice sorgente, nella cartella src/main/java.
+Ogni classe di test si trova nello stesso package della classe testata ed ha lo stesso nome della classe testata, con il suffisso **Test**.
+
 Sono stati creati i casi di test per le seguenti classi:
 - **Cella**;
 - **CellaPiena**;
@@ -384,12 +385,8 @@ Sono stati creati i casi di test per le seguenti classi:
   - **Tempo**;
   - **Tentativi**.
 
-### Numero di casi di test
 
-Sono stati creati 78 casi di test per testare le classi del programma.
-
-
-### Note
+#### Note
 
 - Per i comandi di cambio della difficoltà, ovvero /facile, /medio e /difficile, a causa della ripetizione nel codice dei casi di test,
   è stata creata una classe di test astratta, DifficoltaTest, che contiene i casi di test comuni a tutti e tre i comandi. Questa classe di test è estesa dalle classi di test per i singoli comandi.
@@ -398,6 +395,10 @@ Sono stati creati 78 casi di test per testare le classi del programma.
 
 - È stato deciso di non testare i comandi di stampa, come /help e /mostratentativi, in quanto non modificano lo stato del gioco.
 
+
+### Numero di casi di test
+
+Sono stati creati 78 casi di test per testare le classi del programma.
 
 
 
