@@ -196,7 +196,15 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
 
     Al comando **/svelagriglia**
 
-    L'applicazione risponde visualizzando una griglia 10 x 10 con le righe numerate da 1 a 10 e le colonne numerate da A a J e tutte le navi posizionate<br /><br />
+    L'applicazione risponde visualizzando una griglia 10 x 10 con le righe numerate da 1 a 10 e le colonne numerate da A a J e tutte le navi posizionate.
+    La griglia può variare di dimensione in base alla scelta del giocatore prima di iniziare la partita. <br /><br />
+- **RF8**: Come giocatore voglio impostare direttamente il numero massimo di tentativi che si possono fallire 
+
+  **Criteri di accettazione**
+
+  Al comando **/tentativi numero**
+
+  l’applicazione risponde con OK e imposta a numero il numero massimo di tentativi falliti. <br /><br />
 
 ### 3.2 Requisiti non funzionali
 
