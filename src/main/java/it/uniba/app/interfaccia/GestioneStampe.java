@@ -82,12 +82,10 @@ public final class GestioneStampe {
         for (int i = 0; i < colonne; i++) {
             riga.append(lettereColonne[i]).append("   ");
         }
-        //System.out.println(riga);
         stampa += riga + "\n";
 
         // +---+---+---+---+---+---+---+---+---+---+
         String divisore = " ".repeat(margine) + "+---".repeat(colonne) + "+";
-        //System.out.println(divisore);
         stampa += divisore + "\n";
 
         for (int i = 0; i < righe; i++) {
@@ -98,9 +96,7 @@ public final class GestioneStampe {
                 riga.append("| ").append(getSimboloCella(griglia.getCella(i, y))).append(" ");
             }
             riga.append("|");
-            //System.out.println(riga);
             stampa += riga + "\n";
-            //System.out.println(divisore);
             stampa += divisore + "\n";
         }
 
@@ -122,7 +118,6 @@ public final class GestioneStampe {
         String[] lettereColonne = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
                 "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
 
-        //System.out.println("Posizione delle navi:\n");
         stampa += "Posizione delle navi:\n\n";
 
         // A B C D E F G H I J
@@ -130,12 +125,10 @@ public final class GestioneStampe {
         for (int i = 0; i < colonne; i++) {
             riga.append(lettereColonne[i]).append("   ");
         }
-        //System.out.println(riga);
         stampa += riga + "\n";
 
         // +---+---+---+---+---+---+---+---+---+---+
         String divisore = " ".repeat(margine) + "+---".repeat(colonne) + "+";
-        //System.out.println(divisore);
         stampa += divisore + "\n";
 
         for (int i = 0; i < righe; i++) {
@@ -146,9 +139,7 @@ public final class GestioneStampe {
                 riga.append("| ").append(getSimboloCellaSvelata(griglia.getCella(i, y))).append(" ");
             }
             riga.append("|");
-            //System.out.println(riga);
             stampa += riga + "\n";
-            //System.out.println(divisore);
             stampa += divisore + "\n";
         }
 
@@ -159,8 +150,8 @@ public final class GestioneStampe {
      * Metodo che stampa il messaggio di fine partita.
      */
     public static void stampaFinePartita(final String esito, final Griglia griglia) {
-        System.out.println("Abbandono della partita...\n");
+        Grafica.stampaMessaggio("Abbandono della partita...\n");
         GestioneStampe.svelaGrigliaNavi(griglia);
-        System.out.println("\nPartita " + esito);
+        Grafica.stampaMessaggio("\nPartita " + esito);
     }
 }
