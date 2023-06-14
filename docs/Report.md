@@ -253,6 +253,14 @@ non significative al fine di una maggiore comprensione.
 **Diagramma di sequenza**
 ![diagramma_sequenza_help.png](../drawings/diagramma_sequenza_help.jpg)
 
+#### 5.1.4 Come giocatore voglio impostare il livello di gioco per variare il numero massimo di tentativi sbagliati
+![diagramma_classi_facile.png](../drawings/diagramma_classi_facile.jpg)
+
+**Diagramma di sequenza**
+![diagramma_sequenza_facile.png](../drawings/diagramma_sequenza_facile.jpg)
+
+Sono stati omessi i diagrammi delle classi e di sequenza relativi ai comandi **/medio** e **/difficile** in quanto sono molto simili al comando **/facile**.
+
 
 ## 7. Manuale utente
 Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
