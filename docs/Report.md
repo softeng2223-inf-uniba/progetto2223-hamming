@@ -323,6 +323,46 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
 
 ## 4. System Design
 
+### Stile architetturale
+Rispettando la tassonomia ECB(Entity-Control-Boundary), è stato deciso di adottare lo stile architetturale MVP(Model-View-Presenter), essendo questi due stili molto simili.
+Le classi del progetto sono quindi suddivise in base alla propria responsabilità.
+
+#### Model
+ - Cella
+ - CellaPiena
+ - Nave
+ - Griglia
+ - Partita
+
+#### Presenter
+ - Comando
+ - GestioneComandi e i comandi:
+   - Esci
+   - Facile
+   - Medio
+   - Difficile
+   - MostraLivello
+   - Gioca
+   - MostraNavi
+   - SvelaGriglia
+   - Help
+   - Standard
+   - Large
+   - ExtraLarge
+   - Abbandona
+   - Tempo
+   - MostraGriglia
+   - MostraTempo
+   - Tentativi
+   - MostraTentativi
+   - CambioTagliaGriglia
+   - CambioDifficolta
+ - GestioneStampe
+
+#### View
+ - Grafica
+ - App
+
 ### Diagramma dei package
 
 ![diagramma_dei_package.png](../drawings/diagramma_dei_package.png) <br /><br />
