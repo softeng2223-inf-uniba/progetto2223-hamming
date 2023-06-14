@@ -197,100 +197,103 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
     Al comando **/svelagriglia**
 
     L'applicazione risponde visualizzando una griglia 10 x 10 con le righe numerate da 1 a 10 e le colonne numerate da A a J e tutte le navi posizionate.
+    
     La griglia può variare di dimensione in base alla scelta del giocatore prima di iniziare la partita. <br /><br />
 - **RF8**: Come giocatore voglio impostare direttamente il numero massimo di tentativi che si possono fallire 
 
-  **Criteri di accettazione**
+    **Criteri di accettazione**
 
-  Al comando **/tentativi numero**
+    Al comando **/tentativi numero**
 
-  l’applicazione risponde con OK e imposta a numero il numero massimo di tentativi falliti. <br /><br />
+    l’applicazione risponde con OK e imposta a numero il numero massimo di tentativi falliti. <br /><br />
 - **RF9**: Come giocatore voglio impostare la taglia della griglia.
 
-  **Criteri di accettazione**
+    **Criteri di accettazione**
 
-  Al comando **/standard**
+    Al comando **/standard**
 
-  l’applicazione risponde con OK e imposta a 10x10 la dimensione della griglia (è il default).
+    l’applicazione risponde con OK e imposta a 10x10 la dimensione della griglia (è il default).
 
-  Al comando **/large**
+    Al comando **/large**
 
-  l’applicazione risponde con OK e imposta a 18x18 la dimensione della griglia.
+    l’applicazione risponde con OK e imposta a 18x18 la dimensione della griglia.
 
-  Al comando **/extralarge**
+    Al comando **/extralarge**
 
-  l’applicazione risponde con OK e imposta a 26x26 la dimensione della griglia.  <br /><br />
+    l’applicazione risponde con OK e imposta a 26x26 la dimensione della griglia.  <br /><br />
 - **RF10**: Come giocatore voglio impostare il tempo di gioco.
 
-  **Criteri di accettazione**
+    **Criteri di accettazione**
 
-  Al comando **/tempo numero** 
+    Al comando **/tempo numero** 
 
-  l’applicazione risponde con OK e imposta a numero il numero minuti a disposizione per giocare. <br /><br />
+    l’applicazione risponde con OK e imposta a numero il numero minuti a disposizione per giocare. <br /><br />
 - **RF11**: Come giocatore voglio mostrare il tempo di gioco.
 
-  **Criteri di accettazione** 
+    **Criteri di accettazione** 
 
-  Al comando **/mostratempo** 
+    Al comando **/mostratempo** 
 
-  l’applicazione risponde visualizzando il numero di minuti trascorsi nel gioco e il numero di minuti ancora disponibili. <br /><br />
+    l’applicazione risponde visualizzando il numero di minuti trascorsi nel gioco e il numero di minuti ancora disponibili. <br /><br />
 - **RF12**: Come giocatore voglio effettuare un tentativo per colpire una nave.
 
-  **Criteri di accettazione** 
+    **Criteri di accettazione** 
 
-  Digitando una coppia di caratteri separati da un trattino, corrispondenti rispettivamente al numero di riga e alla lettera della colonna, (es. B-4), l’applicazione risponde:
+    Digitando una coppia di caratteri separati da un trattino, corrispondenti rispettivamente al numero di riga e alla lettera della colonna, (es. B-4), l’applicazione risponde:
 
-  - **“acqua”** se sulla cella non è posizionata nessuna nave;
+    - **“acqua”** se sulla cella non è posizionata nessuna nave;
   
-  - **"colpito"** se sulla cella è posizionata una nave;
+    - **"colpito"** se sulla cella è posizionata una nave;
   
-  - **"colpito e affondato"** se sulla cella è posizionata una nave ed è l’ultima cella non colpita della nave. 
+    - **"colpito e affondato"** se sulla cella è posizionata una nave ed è l’ultima cella non colpita della nave. 
 
-  Qualunque sia l’esito del tentativo, l’applicazione mostra la griglia con le navi colpite parzialmente o affondate, il numero di tentativi già effettuati, e il tempo trascorso. 
+    Qualunque sia l’esito del tentativo, l’applicazione mostra la griglia con le navi colpite parzialmente o affondate, il numero di tentativi già effettuati, e il tempo trascorso. 
 
-  La partita termina con successo se il tentativo ha affondato l’ultima nave.
+    La partita termina con successo se il tentativo ha affondato l’ultima nave.
 
-  La partita termina con insuccesso se è stato raggiunto il numero massimo di tentativi falliti o se è scaduto il tempo di gioco. <br /><br />
+    La partita termina con insuccesso se è stato raggiunto il numero massimo di tentativi falliti o se è scaduto il tempo di gioco. <br /><br />
 - **RF13**: Come giocatore voglio mostrare la griglia con le navi colpite e affondate. 
 
-  **Criteri di accettazione** 
+    **Criteri di accettazione** 
 
-  Al comando **/mostragriglia** 
+    Al comando **/mostragriglia** 
 
-  l’applicazione risponde visualizzando, una griglia 10x10, con le righe numerate da 1 a 10 e le colonne numerate da A a J, con le navi affondate e le sole parti già colpite delle navi non affondate. <br /><br />
+    l’applicazione risponde visualizzando, una griglia 10x10, con le righe numerate da 1 a 10 e le colonne numerate da A a J, con le navi affondate e le sole parti già colpite delle navi non affondate.
+  
+    La griglia può variare di dimensione in base alla scelta del giocatore prima di iniziare la partita. <br /><br />
 - **RF14**: Come giocatore voglio mostrare il numero di tentativi già effettuati e il numero di tentativi falliti. 
 
-  **Criteri di accettazione**
+    **Criteri di accettazione**
 
-  Al comando **/mostratentativi** 
+    Al comando **/mostratentativi** 
 
-  l’applicazione risponde visualizzando il numero di tentativi già effettuati, il numero di tentativi falliti e il numero massimo di tentativi falliti. <br /><br />
+    l’applicazione risponde visualizzando il numero di tentativi già effettuati, il numero di tentativi falliti e il numero massimo di tentativi falliti. <br /><br />
 - **RF15**: Come giocatore voglio abbandonare una partita. 
 
-  **Criteri di accettazione**
+    **Criteri di accettazione**
 
-  Al comando **/abbandona**
+    Al comando **/abbandona**
 
-  l'applicazione chiede conferma 
+    l'applicazione chiede conferma 
 
-  - se la conferma è positiva, l’applicazione risponde visualizzando sulla griglia la posizione di tutte le navi e si predispone a ricevere nuovi comandi. 
+    - se la conferma è positiva, l’applicazione risponde visualizzando sulla griglia la posizione di tutte le navi e si predispone a ricevere nuovi comandi. 
 
-  - se la conferma è negativa, l'applicazione si predispone a ricevere nuovi tentativi o comandi. <br /><br />
+    - se la conferma è negativa, l'applicazione si predispone a ricevere nuovi tentativi o comandi. <br /><br />
 - **RF16**: Come giocatore voglio impostare il numero massimo di tentativi falliti per livello di gioco. 
 
-  **Criteri di accettazione** 
+    **Criteri di accettazione** 
 
-  Al comando **/facile numero**
+    Al comando **/facile numero**
 
-  l’applicazione risponde con OK e imposta a numero il numero massimo di tentativi falliti.
+    l’applicazione risponde con OK e imposta a numero il numero massimo di tentativi falliti.
 
-  Al comando **/medio numero** 
+    Al comando **/medio numero** 
 
-  l’applicazione risponde con OK e imposta a numero il numero massimo di tentativi falliti.
+    l’applicazione risponde con OK e imposta a numero il numero massimo di tentativi falliti.
 
-  Al comando **/difficile numero** 
+    Al comando **/difficile numero** 
 
-  l’applicazione risponde con OK e imposta a numero il numero massimo di tentativi falliti. <br /><br />
+    l’applicazione risponde con OK e imposta a numero il numero massimo di tentativi falliti. <br /><br />
 
 ### 3.2 Requisiti non funzionali
 
