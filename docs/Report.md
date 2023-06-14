@@ -603,7 +603,7 @@ Sono stati creati **78** casi di test per testare le classi del programma.
 
 ## 7. Manuale utente
 Questo manuale utente fornirà al giocatore le informazioni necessarie per giocare.
-### Comandi Disponibili
+### Azioni disponibili
 Il giocatore può utilizzare una serie di comandi utili per impostare e avere informazioni relative al gioco.
 #### Comando /help
 Si utilizza per visualizzare l'elenco dei comandi disponibili, uno per riga, per esempio:
@@ -756,9 +756,9 @@ Se una partita è in corso il giocatore può utilizzare il comando /mostratentat
 
 ![comando_mostratentativi.png](img/comando_mostratentativi.png)
 
-#### Comando di attacco
-Il giocatore può utilizzare il comando di attacco per colpire una cella non colpita della griglia di gioco.
-Il comando è formattato secondo lo standard: [lettera]-[numero] (es: A-1, B-2, ecc...).
+#### Attacco
+Il giocatore può utilizzare l'attacco per colpire una cella non colpita della griglia di gioco.
+Il comando è formattato secondo lo standard: [lettera]-[numero] (es: A-1, B-12, ecc...).
 Il comando visualizza il risultato dell'attacco sulla griglia di gioco, il numero di tentativi già effettuati e il tempo trascorso di gioco.
 
 ![comando_attacco.png](img/comando_attacco.png)
