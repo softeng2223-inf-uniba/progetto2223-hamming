@@ -227,6 +227,13 @@ Il team di sviluppo segue cicli iterativi e incrementali, detti sprint, della du
   Al comando **/tempo numero** 
 
   l’applicazione risponde con OK e imposta a numero il numero minuti a disposizione per giocare. <br /><br />
+- **RF11**: Come giocatore voglio mostrare il tempo di gioco.
+
+  **Criteri di accettazione** 
+
+  Al comando **/mostratempo** 
+
+  l’applicazione risponde visualizzando il numero di minuti trascorsi nel gioco e il numero di minuti ancora disponibili. <br /><br />
 
 ### 3.2 Requisiti non funzionali
 
